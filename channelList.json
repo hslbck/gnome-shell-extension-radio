@@ -1,0 +1,25 @@
+{ "channels":[
+	{
+	"name": "Byte FM",
+	"address": "http://streamingserver01.byte.fm:8000/",
+	"favourite": true
+},	{
+	"name": "FM 4",
+	"address": "http://mp3stream1.apasf.apa.at:8000",
+	"favourite": true
+},	{
+	"name": "DRadio Wissen",
+	"address": "http://dradio-ogg-dwissen-l.akacast.akamaistream.net/7/192/135496/v1/gnl.akacast.akamaistream.net/dradio_ogg_dwissen_l",
+	"favourite": true
+},	{
+	"name": "DRadio Kultur",
+	"address": "http://dradio-ogg-dkultur-l.akacast.akamaistream.net/7/978/135496/v1/gnl.akacast.akamaistream.net/dradio_ogg_dkultur_l",
+	"favourite": false
+}
+],
+
+  "lastplayed":{
+	"name": "Byte FM",
+	"address": "http://streamingserver01.byte.fm:8000/"
+}
+}

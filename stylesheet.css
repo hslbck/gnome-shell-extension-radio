@@ -1,0 +1,16 @@
+.control-box {
+    border-radius: 2px;
+    padding: .1em 1.5em;
+}
+
+.play-label {
+	font-size: 18px;
+	font-weight: bold;
+	padding: .5em 1.7em;
+}
+
+.indicator-icon {
+    padding-right: 0px;
+	padding-bottom: 0px;
+}
+
