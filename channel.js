@@ -32,5 +32,5 @@ const Channel = new Lang.Class({
 
     getFavourite: function () {
         return this._favourite;
-    },
+    }
 });

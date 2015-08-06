@@ -1,9 +1,11 @@
-/* jshint esnext:true */
 const Clutter = imports.gi.Clutter;
 const Lang = imports.lang;
 const St = imports.gi.St;
 const ModalDialog = imports.ui.modalDialog;
 const ShellEntry = imports.ui.shellEntry;
+const Extension = imports.misc.extensionUtils.getCurrentExtension();
+const Channel = Extension.imports.channel;
+const MyE = Extension.imports.extension;
 
 // translation support
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
@@ -12,13 +14,6 @@ const _ = Gettext.gettext;
 // import to get m3u, pls files
 const Soup = imports.gi.Soup;
 const _httpSession = new Soup.SessionSync();
-
-
-// custom libraries
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Channel = Extension.imports.channel;
-const MyE = Extension.imports.extension;
-
 
 
 const AddChannelDialog = new Lang.Class({
@@ -30,9 +25,7 @@ const AddChannelDialog = new Lang.Class({
             styleClass: 'run-dialog'
         });
         this._buildLayout();
-
     },
-
 
     _buildLayout: function () {
 
@@ -122,6 +115,7 @@ const AddChannelDialog = new Lang.Class({
                     if (contentLines[line].search(/http:/i) != -1) {
                         // get url
                         streamAddress = contentLines[line].slice((contentLines[line].search(/http:/))) //, contentLines[line].search(/\n/));
+                        break;  // break on the first occurrence
                     }
                 }
             }

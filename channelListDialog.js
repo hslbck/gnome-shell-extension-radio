@@ -1,4 +1,3 @@
-/* jshint esnext:true */
 const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
@@ -8,13 +7,14 @@ const ModalDialog = imports.ui.modalDialog;
 const Util = imports.misc.util;
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
 const _ = Gettext.gettext;
-
-
-// custom libraries
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
 const MyE = Extension.imports.extension;
 
+// icons
+const StoppedIcon = "gser-radio-icon-stopped-symbolic";
+const FavouriteEnabledIcon = 'starred-symbolic';
+const FavouriteDisabledIcon = 'non-starred-symbolic';
 
 let _selectedChannel;
 
@@ -37,7 +37,7 @@ const ChannelListDialog = new Lang.Class({
 
         let icon = new St.Icon({
             style_class: 'nm-dialog-header-icon',
-            icon_name: 'radio-icon-stopped-symbolic'
+            icon_name: StoppedIcon
         });
 
         let titleBox = new St.BoxLayout({
@@ -191,20 +191,20 @@ const ChannelListDialogItem = new Lang.Class({
             style_class: 'nm-dialog-icons'
         });
         if (channel.getFavourite()) {
-            this._favouriteIcon.set_icon_name('favourite-icon-enabled');
+            this._favouriteIcon.set_icon_name(FavouriteEnabledIcon);
         } else {
-            this._favouriteIcon.set_icon_name('favourite-icon-disabled');
+            this._favouriteIcon.set_icon_name(FavouriteDisabledIcon);
         }
 
         // Set - unset Favourites
         this._icons.connect('clicked', Lang.bind(this, function () {
             if (channel.getFavourite()) {
-                this._favouriteIcon.set_icon_name('favourite-icon-disabled');
+                this._favouriteIcon.set_icon_name(FavouriteDisabledIcon);
                 channel.setFavourite(false);
                 MyE.radioMenu._updateChannel(channel);
                 MyE.radioMenu._removeFromFavourites(channel);
             } else {
-                this._favouriteIcon.set_icon_name('favourite-icon-enabled');
+                this._favouriteIcon.set_icon_name(FavouriteEnabledIcon);
                 channel.setFavourite(true);
                 MyE.radioMenu._updateChannel(channel);
                 MyE.radioMenu._addToFavourites(channel);

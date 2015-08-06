@@ -4,10 +4,6 @@ const Main = imports.ui.main;
 const PopupMenu = imports.ui.popupMenu;
 const PanelMenu = imports.ui.panelMenu;
 const Lang = imports.lang;
-
-// import for json file
-const Gio = imports.gi.Gio;
-const Shell = imports.gi.Shell;
 const Gtk = imports.gi.Gtk;
 
 // import for timer
@@ -15,10 +11,11 @@ const Mainloop = imports.mainloop;
 
 // import custom files
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const PlayStream = Extension.imports.playStream;
+const Player = Extension.imports.player;
 const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 const ChannelListDialog = Extension.imports.channelListDialog;
+const Io = Extension.imports.io;
 
 // translation support
 const Convenience = Extension.imports.convenience;
@@ -27,36 +24,42 @@ const _ = Gettext.gettext;
 
 // timer for stream tag
 const Interval = 10000; // 10 seconds
-let _timeoutId = 0;
+let timeoutId = 0;
+
+// icons
+const PlayingIcon = "gser-icon-playing-symbolic";
+const StoppedIcon = "gser-icon-stopped-symbolic";
 
 const RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
     Extends: PanelMenu.Button,
 
     _init: function () {
-        PanelMenu.Button.prototype._init.call(this, 0.5);
+    	this.parent(0.0, Extension.name);
 
         // path for icon
         Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
+
         // Icon for the Panel
         this.radioIcon = new St.Icon({
-            icon_name: 'radio-icon-stopped-symbolic',
-            style_class: 'system-status-icon indicator-icon',
-            icon_size: 27,
+            icon_name: StoppedIcon,
+            style_class: 'system-status-icon'
         });
+
+
         this.actor.add_actor(this.radioIcon);
         this.actor.add_style_class_name('panel-status-button');
 
         // get channels from json file
-        this.channelList = this._getChannels();
+        this.channelList = Io.read();
         this.chas = this.channelList.channels;
         this.lastPlayed = this.channelList.lastplayed;
 
         // init last played channel
         this.lastPlayedChannel = new Channel.Channel(this.lastPlayed.name, this.lastPlayed.address, false);
 
-        // Initialize Pipeline with first entry
-        this.playStream = new PlayStream.PlayStream(this.lastPlayedChannel);
+        // init player
+        this.player = new Player.Player(this.lastPlayedChannel);
 
         // Box for the Control Elements
         this.controlsBox = new St.BoxLayout({
@@ -149,9 +152,12 @@ const RadioMenuButton = new Lang.Class({
 
     // start streaming
     _start: function () {
-        this.playStream.startPlaying();
-        this.playLabel.set_text(this.playStream.getCurrentChannel().getName());
-        this.radioIcon.set_icon_name('radio-icon-playing-symbolic');
+        Player.start(this.lastPlayedChannel);
+/*
+        global.log("Source Bus Id: " + this.player._sourceBusId);
+*/
+        this.playLabel.set_text(Player.getCurrentChannel().getName());
+        this.radioIcon.set_icon_name(PlayingIcon);
         this._checkTitle(Interval);
         this.playButton.set_child(this.stopIcon);
         this.playButton.connect('clicked', Lang.bind(this, this._stop));
@@ -159,8 +165,9 @@ const RadioMenuButton = new Lang.Class({
 
     // stop streaming
     _stop: function () {
-        this.playStream.stopPlaying();
-        this.radioIcon.set_icon_name('radio-icon-stopped-symbolic');
+        Player.stop();
+        this.radioIcon.set_icon_name(StoppedIcon);
+        this.tagListLabel.set_text("");
         this.playButton.set_child(this.playIcon);
         this.playButton.connect('clicked', Lang.bind(this, this._start));
     },
@@ -168,64 +175,10 @@ const RadioMenuButton = new Lang.Class({
     // change radio station
     _changeChannel: function (cha) {
         this._stop();
-        this.playStream.changeChannel(cha);
+        Player.changeChannel(cha);
         this.lastPlayedChannel = cha;
-        this._writeChannels();
+        Io.write(this.helperChannelList, this.lastPlayedChannel);
         this._start();
-    },
-
-    // return the channels defined in channelList.json
-    _getChannels: function () {
-        // Load Path and file
-        let dir = Gio.file_new_for_path(Extension.path);
-        let channelFile = dir.get_child('channelList.json');
-        let content;
-        try {
-            content = Shell.get_file_contents_utf8_sync(channelFile.get_path());
-        } catch (e) {
-            global.logError('Failed to load channelList.json: ' + e);
-            return null;
-        }
-        // parse json file
-        try {
-            this.channelList = JSON.parse(content);
-        } catch (e) {
-            global.logError('Failed to parse channelList.json: ' + e);
-            return null;
-        }
-        return this.channelList;
-    },
-
-    // write channels to the channelList.json
-    _writeChannels: function () {
-        let dir = Gio.file_new_for_path(Extension.path);
-        let channelFile = dir.get_child('channelList.json');
-
-        let raw = channelFile.replace(null, false, Gio.FileCreateFlags.NONE, null);
-        let out = Gio.BufferedOutputStream.new_sized(raw, 4096);
-
-        // Format output and write helperChannelList
-        Shell.write_string_to_stream(out, "{ \"channels\":[\n");
-        for (var i = 0; i < this.helperChannelList.length; i++) {
-            Shell.write_string_to_stream(out, "\t");
-            Shell.write_string_to_stream(out, JSON.stringify({
-                name: this.helperChannelList[i].getName(),
-                address: this.helperChannelList[i].getUri(),
-                favourite: this.helperChannelList[i].getFavourite()
-            }, null, "\t"));
-            // remove last comma
-            if (i != this.helperChannelList.length - 1) {
-                Shell.write_string_to_stream(out, ",");
-            }
-        }
-        // write lastplayed channel
-        Shell.write_string_to_stream(out, "\n],\n\n  \"lastplayed\":");
-        Shell.write_string_to_stream(out, JSON.stringify({
-            name: this.lastPlayedChannel.getName(),
-            address: this.lastPlayedChannel.getUri()
-        }, null, "\t"));
-        Shell.write_string_to_stream(out, "\n}");
-        out.close(null);
     },
 
     // init channel and add channels to the PopupMenu
@@ -266,7 +219,7 @@ const RadioMenuButton = new Lang.Class({
     // create a new Channel
     _addChannel: function (cha) {
         this.helperChannelList.push(cha);
-        this._writeChannels();
+        Io.write(this.helperChannelList, this.lastPlayedChannel);
     },
 
     // Delete a Channel
@@ -274,7 +227,7 @@ const RadioMenuButton = new Lang.Class({
         for (var i in this.helperChannelList) {
             if (this.helperChannelList[i].getName() === cha.getName()) {
                 this.helperChannelList.splice(i, 1); // remove 1 element from the given index
-                this._writeChannels();
+                Io.write(this.helperChannelList, this.lastPlayedChannel);
             }
         }
     },
@@ -284,26 +237,34 @@ const RadioMenuButton = new Lang.Class({
         for (var i in this.helperChannelList) {
             if (this.helperChannelList[i].getName() === cha.getName()) {
                 this.helperChannelList[i] = cha;
-                this._writeChannels();
+                Io.write(this.helperChannelList, this.lastPlayedChannel);
             }
         }
     },
 
     // timer to check the stream title
     _checkTitle: function (timeout) {
-        if (_timeoutId !== 0) {
-            Mainloop.source_remove(_timeoutId);
-
+        if (timeoutId !== 0) {
+            Mainloop.source_remove(timeoutId);
         }
-        _timeoutId = Mainloop.timeout_add(timeout, Lang.bind(this, this._setTagLabel));
+        timeoutId = Mainloop.timeout_add(timeout, Lang.bind(this, this._setTagLabel));
     },
 
 
-    // update Title label	
+    // update Title label
     _setTagLabel: function () {
-        let tagLabel = this.playStream.getTag();
+        let tagLabel = Player.getTag();
         this.tagListLabel.set_text(tagLabel);
         this._checkTitle(Interval);
+    },
+
+    destroy: function () {
+        if (timeoutId !== 0) {
+            Mainloop.source_remove(timeoutId);
+            timeoutId = 0;
+        }
+        Player.disconnectSourceBus();
+    	this.parent();
     }
 });
 
@@ -322,10 +283,6 @@ function enable() {
 
 //  stop playing and destroy extension content
 function disable() {
-    if (_timeoutId !== 0) {
-        Mainloop.source_remove(_timeoutId);
-        _timeoutId = 0;
-    }
     // stop playing before destruction
     // affects lock screen
     radioMenu._stop();
