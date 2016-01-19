@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-14 15:32+0200\n"
+"PO-Revision-Date: 2016-01-14 10:26+0100\n"
+"Last-Translator: DAEM Q.\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Language: fr\n"
+"Language-Team: \n"
+
+#: addChannelDialog.js:39
+msgid "Channel Name"
+msgstr "Nom Cannal"
+
+#: addChannelDialog.js:58
+msgid "Stream Address"
+msgstr "Adresse du flux"
+
+#: addChannelDialog.js:85 channelListDialog.js:88
+msgid "Cancel"
+msgstr "Annuler"
+
+#: addChannelDialog.js:90
+msgid "Add"
+msgstr "Ajouter"
+
+#: channelListDialog.js:48
+msgid "List of Channels"
+msgstr "Liste des Cannaux"
+
+#: channelListDialog.js:52
+msgid "Manage your radio stations"
+msgstr "Gérer vos stations radios"
+
+#: channelListDialog.js:95
+msgid "Delete"
+msgstr "Supprimer"
+
+#: channelListDialog.js:104
+msgid "Play"
+msgstr "Lecture"
+
+#: extension.js:127
+msgid "Favourites"
+msgstr "Favoris"
+
+#: extension.js:133
+msgid "Channels"
+msgstr "Cannaux"
+
+#: extension.js:151
+msgid "Add Channel"
+msgstr "Ajouter Cannal"
