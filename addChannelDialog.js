@@ -98,7 +98,7 @@ const AddChannelDialog = new Lang.Class({
     // get the valid stream address
     _getStreamAddress: function (input) {
         let streamAddress;
-        let regexp = /\.(m3u|pls)/i;
+        let regexp = /\.(m3u|m3u8|pls)/i;
 
         // test for m3u / pls
         if (input.search(regexp) != -1) {
