@@ -10,6 +10,7 @@ const _ = Gettext.gettext;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
 const MyE = Extension.imports.extension;
+const AddChannelDialog = Extension.imports.addChannelDialog;
 
 // icons
 const StoppedIcon = "gser-radio-icon-stopped-symbolic";
@@ -82,7 +83,7 @@ const ChannelListDialog = new Lang.Class({
             expand: true
         });
 
-        // Cancel, Delete and Play Button
+        // Cancel, Delete, Edit and Play Button
         this._cancelButton = this.addButton({
             action: Lang.bind(this, this.close),
             label: _("Cancel"),
@@ -93,6 +94,14 @@ const ChannelListDialog = new Lang.Class({
         this._deleteButton = this.addButton({
             action: Lang.bind(this, this._delete),
             label: _("Delete")
+        }, {
+            expand: true,
+            x_fill: false,
+            x_align: St.Align.END
+        });
+        this._editButton = this.addButton({
+            action: Lang.bind(this, this._edit),
+            label: _("Edit")
         }, {
             expand: true,
             x_fill: false,
@@ -112,6 +121,8 @@ const ChannelListDialog = new Lang.Class({
         this._playButton.can_focus = false;
         this._deleteButton.reactive = false;
         this._deleteButton.can_focus = false;
+        this._editButton.reactive = false;
+        this._editButton.can_focus = false;
     },
 
     // Play the selected Radio Channel
@@ -127,12 +138,21 @@ const ChannelListDialog = new Lang.Class({
         this.close();
     },
 
+    _edit: function () {
+        let cha = _selectedChannel;
+        this.close();
+        this.addChannelDialog = new AddChannelDialog.AddChannelDialog(cha);
+        this.addChannelDialog.open();
+    },
+
     // Set the Selected Channel
     _selectChannel: function (cha) {
         this._playButton.reactive = true;
         this._playButton.can_focus = true;
         this._deleteButton.reactive = true;
         this._deleteButton.can_focus = true;
+        this._editButton.reactive = true;
+        this._editButton.can_focus = true;
         if (_selectedChannel) {
             _selectedChannel.item.actor.remove_style_pseudo_class('selected');
         }

@@ -15,12 +15,14 @@ const _ = Gettext.gettext;
 const Soup = imports.gi.Soup;
 const _httpSession = new Soup.SessionSync();
 
+let oldChannel = null;
 
 const AddChannelDialog = new Lang.Class({
     Name: 'AddChannelDialog',
     Extends: ModalDialog.ModalDialog,
 
-    _init: function () {
+    _init: function (channel) {
+        oldChannel = channel;
         this.parent({
             styleClass: 'run-dialog'
         });
@@ -67,6 +69,9 @@ const AddChannelDialog = new Lang.Class({
             y_align: St.Align.START
         });
 
+        // set values when editing a channel
+        this._setTextValues();
+
         // set focus on the name entry
         this.setInitialKeyFocus(this._nameEntryText);
 
@@ -86,11 +91,26 @@ const AddChannelDialog = new Lang.Class({
         });
     },
 
+    _setTextValues: function () {
+        if (oldChannel != null) {
+            this._nameEntry.set_text(oldChannel.getName());
+            this._addressEntry.set_text(oldChannel.getUri());
+        }
+    },
+
     // create a new channel
     _createChannel: function () {
         let inputName = this._nameEntry.get_text();
         let inputStream = this._getStreamAddress(this._addressEntry.get_text());
         let newChannel = new Channel.Channel(inputName, inputStream, false);
+        if (oldChannel != null) {
+            if (oldChannel.getFavourite()){
+                newChannel.setFavourite(oldChannel.getFavourite());
+                MyE.radioMenu._removeFromFavourites(oldChannel);
+                MyE.radioMenu._addToFavourites(newChannel);
+            }
+            MyE.radioMenu._deleteChannel(oldChannel);
+        }
         MyE.radioMenu._addChannel(newChannel);
         this.close();
     },
