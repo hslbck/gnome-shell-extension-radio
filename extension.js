@@ -147,8 +147,23 @@ const RadioMenuButton = new Lang.Class({
         }));
 
         this.menu.addMenuItem(this.addChannel);
+
+        this.isPlaying = false;
+        this.actor.connect('button-press-event', Lang.bind(this, this._middleClick));
     },
 
+    // quick play option by middle click
+    _middleClick: function(actor, event) {
+        // left click === 1, middle clickc === 2, right click === 3
+        if (event.get_button() === 2) {
+            this.menu.close();
+            if (!this.isPlaying) {
+                this._start();
+            } else {
+                this._stop();
+            }
+        }
+    },
 
     // start streaming
     _start: function () {
@@ -159,6 +174,7 @@ const RadioMenuButton = new Lang.Class({
         this.playLabel.set_text(Player.getCurrentChannel().getName());
         this.radioIcon.set_icon_name(PlayingIcon);
         this._checkTitle(Interval);
+        this.isPlaying = true;
         this.playButton.set_child(this.stopIcon);
         this.playButton.connect('clicked', Lang.bind(this, this._stop));
     },
@@ -168,6 +184,7 @@ const RadioMenuButton = new Lang.Class({
         Player.stop();
         this.radioIcon.set_icon_name(StoppedIcon);
         this.tagListLabel.set_text("");
+        this.isPlaying = false;
         this.playButton.set_child(this.playIcon);
         this.playButton.connect('clicked', Lang.bind(this, this._start));
     },
