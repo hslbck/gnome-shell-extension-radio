@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-14 13:53+0100\n"
+"PO-Revision-Date: 2016-02-14 13:57+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: da\n"
+
+#: addChannelDialog.js:39
+msgid "Channel Name"
+msgstr "Kanalnavn"
+
+#: addChannelDialog.js:58
+msgid "Stream Address"
+msgstr "Stream adresse"
+
+#: addChannelDialog.js:85 channelListDialog.js:88
+msgid "Cancel"
+msgstr "Annullér"
+
+#: addChannelDialog.js:90
+msgid "Add"
+msgstr "Tilføj"
+
+#: channelListDialog.js:48
+msgid "List of Channels"
+msgstr "Kanalliste"
+
+#: channelListDialog.js:52
+msgid "Manage your radio stations"
+msgstr "Redigér dine radiostationer"
+
+#: channelListDialog.js:95
+msgid "Delete"
+msgstr "Slet"
+
+#: channelListDialog.js:104
+msgid "Play"
+msgstr "Afspil"
+
+#: extension.js:127
+msgid "Favourites"
+msgstr "Favoritter"
+
+#: extension.js:133
+msgid "Channels"
+msgstr "Kanaler"
+
+#: extension.js:151
+msgid "Add Channel"
+msgstr "Tilføj kanal"
