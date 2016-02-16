@@ -70,6 +70,8 @@ function onGstMessage(message) {
             let tmp = tagList.get_string('title').toString();
             if (tmp.match('true')) {
                 tag = tmp.slice(5);
+            } else {
+                tag = "";
             }
             break;
         case Gst.MessageType.ERROR:
