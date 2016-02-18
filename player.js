@@ -10,6 +10,7 @@ const Mainloop = imports.mainloop;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
 const MyE = Extension.imports.extension;
+const Convert = Extension.imports.convertCharset;
 
 Gst.init(null, 0);
 
@@ -69,7 +70,20 @@ function onGstMessage(message) {
             let tagList = message.parse_tag();
             let tmp = tagList.get_string('title').toString();
             if (tmp.match('true')) {
-                tag = tmp.slice(5);
+                switch (getCurrentChannel().getEncoding()) {
+                    case "windows-1251":
+                        tag = Convert.convertToUnicode("windows-1251", tmp.slice(5));
+                        break;
+                    case "koi8-r":
+                        tag = Convert.convertToUnicode("koi8-r", tmp.slice(5));
+                        break;
+                    case "koi8-u":
+                        tag = Convert.convertToUnicode("koi8-u", tmp.slice(5));
+                        break;
+                     default:
+                        tag = tmp.slice(5);
+                        break;
+                }
             } else {
                 tag = "";
             }

@@ -39,7 +39,8 @@ function write(channels, lastPlayed) {
 			Shell.write_string_to_stream(out, JSON.stringify({
 				name: channels[i].getName(),
 				address: channels[i].getUri(),
-				favourite: channels[i].getFavourite()
+				favourite: channels[i].getFavourite(),
+				encoding: channels[i].getEncoding()
 			}, null, "\t"));
 			// remove last comma
 			if (i != channels.length - 1) {
@@ -50,7 +51,8 @@ function write(channels, lastPlayed) {
 		Shell.write_string_to_stream(out, "\n],\n\n  \"lastplayed\":");
 		Shell.write_string_to_stream(out, JSON.stringify({
 			name: lastPlayed.getName(),
-			address: lastPlayed.getUri()
+			address: lastPlayed.getUri(),
+			encoding: lastPlayed.getEncoding()
 		}, null, "\t"));
 		Shell.write_string_to_stream(out, "\n}");
 		out.close(null);
