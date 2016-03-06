@@ -6,7 +6,7 @@
 
 ### Installation
 Prerequisites: gstreamer plugins are installed
-##### Using gnome shell extension webpage:
+##### Using gnome shell extension webpage
 https://extensions.gnome.org/extension/836/internet-radio/
 ##### Manual
 * Download source from github (clone repository or download zip)
@@ -16,7 +16,8 @@ https://extensions.gnome.org/extension/836/internet-radio/
 ### Features
 * Manage radio station list
 * Mark stations as favourites
-* Middle click to quick start/stop last played station
+* Middle click to start/stop last played station
+* Cyrillic tag support (nielsrune): Usage description in pull request comment https://github.com/hslbck/gnome-shell-extension-radio/pull/18
 
 ### Notice when updating this extension - Preventing loss of configured channels
 * An update through the extension page will replace your copy of this extension with the updated files

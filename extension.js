@@ -241,6 +241,9 @@ const RadioMenuButton = new Lang.Class({
 
     // Delete a Channel
     _deleteChannel: function (cha) {
+        if (cha.getFavourite()) {
+            this._removeFromFavourites(cha);
+        }
         for (var i in this.helperChannelList) {
             if (this.helperChannelList[i].getName() === cha.getName()) {
                 this.helperChannelList.splice(i, 1); // remove 1 element from the given index
