@@ -102,7 +102,7 @@ const AddChannelDialog = new Lang.Class({
     _createChannel: function () {
         let inputName = this._nameEntry.get_text();
         let inputStream = this._getStreamAddress(this._addressEntry.get_text());
-        let newChannel = new Channel.Channel(inputName, inputStream, false);
+        let newChannel = new Channel.Channel(inputName, inputStream, false, false);
         if (oldChannel != null) {
             if (oldChannel.getFavourite()){
                 newChannel.setFavourite(oldChannel.getFavourite());

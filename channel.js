@@ -4,10 +4,11 @@ const Lang = imports.lang;
 const Channel = new Lang.Class({
     Name: 'Channel',
 
-    _init: function (name, uri, favourite) {
+    _init: function (name, uri, favourite, encoding) {
         this._name = name;
         this._uri = uri;
         this._favourite = favourite;
+        this._encoding = encoding;
     },
 
     setName: function (name) {
@@ -22,6 +23,10 @@ const Channel = new Lang.Class({
         this._favourite = favourite;
     },
 
+    setEncoding: function (encoding) {
+        this._encoding = encoding;
+    },
+
     getName: function () {
         return this._name;
     },
@@ -32,5 +37,13 @@ const Channel = new Lang.Class({
 
     getFavourite: function () {
         return this._favourite;
+    },
+
+    getEncoding: function () {
+        if(typeof this._encoding === 'string') {
+            return this._encoding.toLowerCase();
+        } else {
+            return this._encoding;
+        }
     }
 });
