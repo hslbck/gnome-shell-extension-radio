@@ -12,6 +12,7 @@ https://extensions.gnome.org/extension/836/internet-radio/
 * Download source from github (clone repository or download zip)
 * Copy sources to ~/.local/share/gnome-shell/extensions/radio@hslbck.gmail.com
 * Reload the shell: Press `Alt+F2` write `r` and press `Enter`  
+* Enable via Gnome Tweak Tool
 
 ### Features
 * Manage radio station list
