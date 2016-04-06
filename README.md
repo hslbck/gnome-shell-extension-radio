@@ -1,6 +1,6 @@
 ## Gnome Shell Extension Radio
 * Extension for listening to internet radio streams
-* Supports Gnome-Shell 3.16 and 3.18
+* Supports Gnome-Shell 3.14, 3.16, 3.18 and 3.20
 
 ![alt text](https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png)
 
