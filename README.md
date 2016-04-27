@@ -21,11 +21,14 @@ https://extensions.gnome.org/extension/836/internet-radio/
 * Cyrillic tag support (nielsrune): Usage description in pull request comment https://github.com/hslbck/gnome-shell-extension-radio/pull/18
 
 ### Notice when updating this extension - Preventing loss of configured channels
-* An update through the extension page will replace your copy of this extension with the updated files
-* Prevent this by backing up your `channelList.json` file
-* Go to ~/.local/share/gnome-shell/extensions/radio@hslbck.gmail.com and copy `channelList.json` to a folder of your choice
-* Update the extension
-* Replace `channelList.json` with your backup
+* With the latest commit the `channelList.json` file is being moved to the home directory
+* Currently only update through sources (github download) is affected, not an update through the extension webpage!
+* Before installing the new version make a backup of your `channelList.json`
+* `channelList.json` can be found in the directory ~/.local/share/gnome-shell/extensions/radio@hslbck.gmail.com
+* Replace the extension and reload the gnome-shell
+* A new directory `~/.gse-radio` is created with a copy of the default `channelList.json`
+* Replace this `channelList.json` with your backup
+* On future updates your configured  channels aren't replaced anymore
 
 ### Credits
 nielsrune  
