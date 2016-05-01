@@ -14,7 +14,7 @@ msgstr ""
 
 #: addChannelDialog.js:39
 msgid "Channel Name"
-msgstr "Nom Cannal"
+msgstr "Nom Canal"
 
 #: addChannelDialog.js:58
 msgid "Stream Address"
@@ -30,7 +30,7 @@ msgstr "Ajouter"
 
 #: channelListDialog.js:48
 msgid "List of Channels"
-msgstr "Liste des Cannaux"
+msgstr "Liste des Canaux"
 
 #: channelListDialog.js:52
 msgid "Manage your radio stations"
@@ -50,8 +50,8 @@ msgstr "Favoris"
 
 #: extension.js:133
 msgid "Channels"
-msgstr "Cannaux"
+msgstr "Canaux"
 
 #: extension.js:151
 msgid "Add Channel"
-msgstr "Ajouter Cannal"
+msgstr "Ajouter Canal"
