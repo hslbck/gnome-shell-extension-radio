@@ -35,7 +35,7 @@ nielsrune
 ##### Translations
 Chinese: gmg137  
 Danish: nielsrune   
-French: narzb, BridouZ  
+French: narzb, BridouZ, thony8  
 Turkish: marjinal1st  
 
 ### License
