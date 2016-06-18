@@ -5,6 +5,8 @@ const PopupMenu = imports.ui.popupMenu;
 const PanelMenu = imports.ui.panelMenu;
 const Lang = imports.lang;
 const Gtk = imports.gi.Gtk;
+const Gio = imports.gi.Gio;
+const GLib = imports.gi.GLib;
 
 // import for timer
 const Mainloop = imports.mainloop;
@@ -29,6 +31,9 @@ let timeoutId = 0;
 // icons
 const PlayingIcon = "gser-icon-playing-symbolic";
 const StoppedIcon = "gser-icon-stopped-symbolic";
+
+// enable Media Player keys
+let useMediaPlayerKeys = false;
 
 const RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
@@ -150,11 +155,48 @@ const RadioMenuButton = new Lang.Class({
 
         this.isPlaying = false;
         this.actor.connect('button-press-event', Lang.bind(this, this._middleClick));
+
+        // connect media keys
+        if (useMediaPlayerKeys) {
+            this.proxy = Gio.DBusProxy.new_sync(Gio.bus_get_sync(Gio.BusType.SESSION, null),
+                                            Gio.DBusProxyFlags.NONE,
+                                            null,
+                                            'org.gnome.SettingsDaemon',
+                                            '/org/gnome/SettingsDaemon/MediaKeys',
+                                            'org.gnome.SettingsDaemon.MediaKeys',
+                                            null);
+            this.proxy.call_sync('GrabMediaPlayerKeys',
+                             GLib.Variant.new('(su)', 'Music'),
+                             Gio.DBusCallFlags.NONE,
+                             -1,
+                                null);
+            this.proxy.connect('g-signal', Lang.bind(this, this._handleMediaKeys));
+        }
     },
+
+    // handle play/stop media key events
+    _handleMediaKeys: function(proxy, sender, signal, parameters) {
+        if (signal != 'MediaPlayerKeyPressed') {
+            global.log ('Received an unexpected signal \'%s\' from media player'.format(signal));
+            return;
+        }
+
+        let key = parameters.get_child_value(1).get_string()[0];
+        if (key == 'Play') {
+            if (!this.isPlaying) {
+                this._start();
+            } else {
+                this._stop();
+            }
+        }
+        else if (key == 'Stop') {
+            this._stop();
+        }
+     },
 
     // quick play option by middle click
     _middleClick: function(actor, event) {
-        // left click === 1, middle clickc === 2, right click === 3
+        // left click === 1, middle click === 2, right click === 3
         if (event.get_button() === 2) {
             this.menu.close();
             if (!this.isPlaying) {

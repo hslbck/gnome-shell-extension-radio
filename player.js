@@ -6,6 +6,7 @@ imports.gi.versions.Gst = '1.0';
 
 const Lang = imports.lang;
 const Gst = imports.gi.Gst;
+const Gstpbutils = imports.gi.GstPbutils;
 const Mainloop = imports.mainloop;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
@@ -66,6 +67,11 @@ function readTags(){
 
 function onGstMessage(message) {
     switch (message.type) {
+        case Gst.MessageType.ELEMENT:
+             if (Gstpbutils.is_missing_plugin_message(message)) {
+                 global.log(Gstpbutils.missing_plugin_message_get_description(message));
+             }
+             break;
         case Gst.MessageType.TAG:
             let tagList = message.parse_tag();
             let tmp = tagList.get_string('title').toString();
