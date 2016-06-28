@@ -7,6 +7,7 @@ const Lang = imports.lang;
 const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
+const Shell = imports.gi.Shell;
 
 // import for timer
 const Mainloop = imports.mainloop;
@@ -32,8 +33,8 @@ let timeoutId = 0;
 const PlayingIcon = "gser-icon-playing-symbolic";
 const StoppedIcon = "gser-icon-stopped-symbolic";
 
-// enable Media Player keys
-let useMediaPlayerKeys = false;
+// Settings
+const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 
 const RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
@@ -41,6 +42,9 @@ const RadioMenuButton = new Lang.Class({
 
     _init: function () {
     	this.parent(0.0, Extension.name);
+
+        // read settings
+        this._settings = Convenience.getSettings();
 
         // path for icon
         Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
@@ -144,34 +148,76 @@ const RadioMenuButton = new Lang.Class({
         let separator2 = new PopupMenu.PopupSeparatorMenuItem();
         this.menu.addMenuItem(separator2);
 
-        // Add Channel PopupMenu
-        this.addChannel = new PopupMenu.PopupMenuItem(_("Add Channel"));
-        this.addChannel.connect('activate', Lang.bind(this, function () {
+        // settings and add channel item
+        this.settingsItem = new PopupMenu.PopupBaseMenuItem({
+            reactive: false,
+            can_focus: false
+        });
+        this.settingsIcon = new St.Icon({
+            icon_name: 'preferences-system-symbolic'
+        });
+        this.settingsButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.settingsButton.set_child(this.settingsIcon);
+        this.settingsButton.connect('clicked', Lang.bind(this, function() {
+            this.menu.close();
+            openPrefs();
+        }));
+
+        this.addChannelIcon = new St.Icon({
+            icon_name: 'list-add-symbolic'
+        });
+        this.addChannelButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.addChannelButton.set_child(this.addChannelIcon);
+        this.addChannelButton.connect('clicked', Lang.bind(this, function () {
+            this.menu.close();
             this.addChannelDialog = new AddChannelDialog.AddChannelDialog();
             this.addChannelDialog.open();
         }));
-
-        this.menu.addMenuItem(this.addChannel);
+        this.settingsItem.actor.add(this.settingsButton, {expand: true, x_fill: false});
+        this.settingsItem.actor.add(this.addChannelButton, {expand: true, x_fill: false});
+        this.menu.addMenuItem(this.settingsItem);
 
         this.isPlaying = false;
         this.actor.connect('button-press-event', Lang.bind(this, this._middleClick));
 
-        // connect media keys
-        if (useMediaPlayerKeys) {
-            this.proxy = Gio.DBusProxy.new_sync(Gio.bus_get_sync(Gio.BusType.SESSION, null),
-                                            Gio.DBusProxyFlags.NONE,
-                                            null,
-                                            'org.gnome.SettingsDaemon',
-                                            '/org/gnome/SettingsDaemon/MediaKeys',
-                                            'org.gnome.SettingsDaemon.MediaKeys',
-                                            null);
-            this.proxy.call_sync('GrabMediaPlayerKeys',
-                             GLib.Variant.new('(su)', 'Music'),
-                             Gio.DBusCallFlags.NONE,
-                             -1,
-                                null);
-            this.proxy.connect('g-signal', Lang.bind(this, this._handleMediaKeys));
+        // media keys for registration on startup
+        if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
+            this._registerMediaKeys();
         }
+
+        // media keys setting change
+        this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, Lang.bind(this, function() {
+            if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
+                this._registerMediaKeys();
+            }
+            else {
+                if (this.proxyId) {
+                    this.proxy.disconnect(this.proxyId);
+                }
+            }
+        }));
+    },
+
+    _registerMediaKeys: function() {
+        this.proxy = Gio.DBusProxy.new_sync(Gio.bus_get_sync(Gio.BusType.SESSION, null),
+                                        Gio.DBusProxyFlags.NONE,
+                                        null,
+                                        'org.gnome.SettingsDaemon',
+                                        '/org/gnome/SettingsDaemon/MediaKeys',
+                                        'org.gnome.SettingsDaemon.MediaKeys',
+                                        null);
+        this.proxy.call_sync('GrabMediaPlayerKeys',
+                         GLib.Variant.new('(su)', 'Music'),
+                         Gio.DBusCallFlags.NONE,
+                         -1,
+                            null);
+        this.proxyId = this.proxy.connect('g-signal', Lang.bind(this, this._handleMediaKeys));
     },
 
     // handle play/stop media key events
@@ -326,6 +372,9 @@ const RadioMenuButton = new Lang.Class({
             timeoutId = 0;
         }
         Player.disconnectSourceBus();
+        if (this.proxyId) {
+            this.proxy.disconnect(this.proxyId);
+        }
     	this.parent();
     }
 });
@@ -349,4 +398,19 @@ function disable() {
     // affects lock screen
     radioMenu._stop();
     radioMenu.destroy();
+}
+
+// open preferences RadioPrefsWidget
+function openPrefs() {
+    let _appSys = Shell.AppSystem.get_default();
+    let _gsmPrefs = _appSys.lookup_app('gnome-shell-extension-prefs.desktop');
+
+    if (_gsmPrefs.get_state() == _gsmPrefs.SHELL_APP_STATE_RUNNING) {
+        _gsmPrefs.activate();
+    } else {
+        let info = _gsmPrefs.get_app_info();
+        let timestamp = global.display.get_current_time_roundtrip();
+        let metadata = Extension.metadata;
+        info.launch_uris([metadata.uuid], global.create_app_launch_context(timestamp, -1));
+    }
 }

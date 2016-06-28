@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="radio@hslbck.gmail.com">
+    <schema path="/org/gnome/shell/extensions/radio/" id="org.gnome.shell.extensions.radio">
+        <key name="use-media-keys" type="b">
+            <default>false</default>
+            <summary>Use Media Keys</summary>
+            <description>Enable/disable play and stop keys</description>
+        </key>
+    </schema>
+</schemalist>
