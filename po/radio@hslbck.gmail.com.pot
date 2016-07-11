@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-28 16:48+0200\n"
+"POT-Creation-Date: 2016-07-11 21:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: addChannelDialog.js:37
 msgid "Channel Name"
@@ -53,14 +55,18 @@ msgstr ""
 msgid "Play"
 msgstr ""
 
-#: extension.js:128
+#: extension.js:131
 msgid "Favourites"
 msgstr ""
 
-#: extension.js:134
+#: extension.js:137
 msgid "Channels"
 msgstr ""
 
-#: prefs.js:38
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr ""
+
+#: prefs.js:56
 msgid "Enable Play/Stop Media Keys"
 msgstr ""

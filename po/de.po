@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-28 16:54+0200\n"
-"PO-Revision-Date: 2016-06-28 17:01+0200\n"
+"POT-Creation-Date: 2016-07-11 21:38+0200\n"
+"PO-Revision-Date: 2016-07-11 21:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -54,15 +54,19 @@ msgstr "Editieren"
 msgid "Play"
 msgstr "Abspielen"
 
-#: extension.js:128
+#: extension.js:131
 msgid "Favourites"
 msgstr "Favoriten"
 
-#: extension.js:134
+#: extension.js:137
 msgid "Channels"
 msgstr "Alle Sender"
 
-#: prefs.js:38
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Zeige Titel Benachrichtigungen"
+
+#: prefs.js:56
 msgid "Enable Play/Stop Media Keys"
 msgstr "Play/Stop Steuerung über Medientasten"
 

@@ -19,6 +19,8 @@ https://extensions.gnome.org/extension/836/internet-radio/
 * Mark stations as favourites
 * Middle click to start/stop last played station
 * Cyrillic tag support (nielsrune): Usage description in pull request comment https://github.com/hslbck/gnome-shell-extension-radio/pull/18
+* Support for multimedia keys
+* Support for title notification
 
 ### Notice when updating this extension - Preventing loss of configured channels
 * With the latest commit the `channelList.json` file is being moved to the home directory

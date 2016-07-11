@@ -1,6 +1,7 @@
 /* jshint esnext:true */
 const St = imports.gi.St;
 const Main = imports.ui.main;
+const MessageTray = imports.ui.messageTray;
 const PopupMenu = imports.ui.popupMenu;
 const PanelMenu = imports.ui.panelMenu;
 const Lang = imports.lang;
@@ -28,6 +29,7 @@ const _ = Gettext.gettext;
 // timer for stream tag
 const Interval = 10000; // 10 seconds
 let timeoutId = 0;
+let oldTagLabel = '';
 
 // icons
 const PlayingIcon = "gser-icon-playing-symbolic";
@@ -35,6 +37,7 @@ const StoppedIcon = "gser-icon-stopped-symbolic";
 
 // Settings
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
+const SETTING_TITLE_NOTIFICATION = 'title-notification';
 
 const RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
@@ -361,9 +364,26 @@ const RadioMenuButton = new Lang.Class({
 
     // update Title label
     _setTagLabel: function () {
-        let tagLabel = Player.getTag();
-        this.tagListLabel.set_text(tagLabel);
-        this._checkTitle(Interval);
+        if (this.isPlaying) {
+            let tagLabel = Player.getTag();
+            let senderLabel = Player.getCurrentChannel().getName();
+            this.tagListLabel.set_text(tagLabel);
+            this._enableTitleNotification(tagLabel, senderLabel);
+            this._checkTitle(Interval);
+        }
+    },
+
+    _enableTitleNotification: function(tagLabel, senderLabel) {
+        if (this._settings.get_boolean(SETTING_TITLE_NOTIFICATION) && tagLabel !== oldTagLabel) {
+            oldTagLabel = tagLabel;
+            let source = new MessageTray.Source("Radio", StoppedIcon);
+            let notification = new MessageTray.Notification(source,
+                                                tagLabel,
+                                                senderLabel);
+            notification.setTransient(true);
+            Main.messageTray.add(source);
+            source.notify(notification);
+        }
     },
 
     destroy: function () {

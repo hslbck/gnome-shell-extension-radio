@@ -7,6 +7,7 @@ const _ = Gettext.gettext;
 const Lang = imports.lang;
 
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
+const SETTING_TITLE_NOTIFICATION = 'title-notification';
 
 const RadioPrefsWidget = new GObject.Class({
     Name: 'RadioPrefsWidget',
@@ -28,9 +29,26 @@ const RadioPrefsWidget = new GObject.Class({
                              spacing: 10
         });
 
+        this._addTitleNotificationsSwitch();
         this._addEnableMediaKeysSwitch();
 
         this.add(this._widgets.box);
+    },
+
+    _addTitleNotificationsSwitch: function() {
+        let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
+        let label = new Gtk.Label({label: _("Show title notifications"),
+                                        xalign: 0});
+        this._widgets.titleNotificationsSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_TITLE_NOTIFICATION)});
+
+        hbox.pack_start(label, true, true, 0);
+        hbox.add(this._widgets.titleNotificationsSwitch);
+
+        this._widgets.box.add(hbox);
+
+        this._widgets.titleNotificationsSwitch.connect('notify::active', Lang.bind(this, function(button) {
+            this._settings.set_boolean(SETTING_TITLE_NOTIFICATION, button.get_active());
+        }));
     },
 
     _addEnableMediaKeysSwitch: function() {

@@ -6,5 +6,10 @@
             <summary>Use Media Keys</summary>
             <description>Enable/disable play and stop keys</description>
         </key>
+        <key name="title-notification" type="b">
+            <default>false</default>
+            <summary>Title Notification</summary>
+            <description>Show title notifications</description>
+        </key>
     </schema>
 </schemalist>
