@@ -106,12 +106,13 @@ const AddChannelDialog = new Lang.Class({
         if (oldChannel != null) {
             if (oldChannel.getFavourite()){
                 newChannel.setFavourite(oldChannel.getFavourite());
-                MyE.radioMenu._removeFromFavourites(oldChannel);
-                MyE.radioMenu._addToFavourites(newChannel);
             }
             MyE.radioMenu._deleteChannel(oldChannel);
         }
         MyE.radioMenu._addChannel(newChannel);
+        if (newChannel.getFavourite()){
+            MyE.radioMenu._addToFavourites(newChannel);
+        }
         this.close();
     },
 
