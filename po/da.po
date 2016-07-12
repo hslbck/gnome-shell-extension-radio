@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-28 22:16+0200\n"
-"PO-Revision-Date: 2016-06-28 22:22+0200\n"
+"POT-Creation-Date: 2016-07-12 19:56+0200\n"
+"PO-Revision-Date: 2016-07-12 20:04+0200\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -54,17 +54,21 @@ msgstr "Redigér"
 msgid "Play"
 msgstr "Afspil"
 
-#: extension.js:128
+#: extension.js:131
 msgid "Favourites"
 msgstr "Favoritter"
 
-#: extension.js:134
+#: extension.js:137
 msgid "Channels"
 msgstr "Kanaler"
 
-#: prefs.js:38
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
+
+#: prefs.js:56
 msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver Start/Stop multimedieknapper"
+msgstr "Aktiver multimedieknapper (Afspil/Stop)"
 
 #~ msgid "Add Channel"
 #~ msgstr "Tilføj kanal"
