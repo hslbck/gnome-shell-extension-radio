@@ -1,6 +1,6 @@
 ## Gnome Shell Extension Radio
 * Extension for listening to internet radio streams
-* Supports Gnome-Shell 3.14, 3.16, 3.18 and 3.20
+* Supports Gnome-Shell 3.18 and 3.20 (older versions see releases)
 
 ![alt text](https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png)
 
@@ -21,6 +21,7 @@ https://extensions.gnome.org/extension/836/internet-radio/
 * Cyrillic tag support (nielsrune): Usage description in pull request comment https://github.com/hslbck/gnome-shell-extension-radio/pull/18
 * Support for multimedia keys
 * Support for title notification
+* Search online radio directory http://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
 
 ### Notice when updating this extension - Preventing loss of configured channels
 * With the latest commit the `channelList.json` file is being moved to the home directory

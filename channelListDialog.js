@@ -13,7 +13,7 @@ const MyE = Extension.imports.extension;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 
 // icons
-const StoppedIcon = "gser-radio-icon-stopped-symbolic";
+const StoppedIcon = "gser-icon-stopped-symbolic";
 const FavouriteEnabledIcon = 'starred-symbolic';
 const FavouriteDisabledIcon = 'non-starred-symbolic';
 

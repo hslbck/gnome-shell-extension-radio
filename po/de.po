@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-11 21:38+0200\n"
-"PO-Revision-Date: 2016-07-11 21:38+0200\n"
+"POT-Creation-Date: 2016-08-03 19:36+0200\n"
+"PO-Revision-Date: 2016-08-03 19:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addChannelDialog.js:37
@@ -26,11 +26,11 @@ msgstr "Sendername"
 msgid "Stream Address"
 msgstr "Stream Adresse"
 
-#: addChannelDialog.js:80 channelListDialog.js:89
+#: addChannelDialog.js:80 channelListDialog.js:89 searchDialog.js:104
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: addChannelDialog.js:85
+#: addChannelDialog.js:85 searchDialog.js:110
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -54,13 +54,13 @@ msgstr "Editieren"
 msgid "Play"
 msgstr "Abspielen"
 
-#: extension.js:131
+#: extension.js:132
 msgid "Favourites"
 msgstr "Favoriten"
 
-#: extension.js:137
+#: extension.js:138
 msgid "Channels"
-msgstr "Alle Sender"
+msgstr "Meine Sender"
 
 #: prefs.js:40
 msgid "Show title notifications"
@@ -69,6 +69,26 @@ msgstr "Zeige Titel Benachrichtigungen"
 #: prefs.js:56
 msgid "Enable Play/Stop Media Keys"
 msgstr "Play/Stop Steuerung über Medientasten"
+
+#: searchDialog.js:41
+msgid "Browse directory"
+msgstr "Durchsuche das Senderverzeichnis"
+
+#: searchDialog.js:62
+msgid "Search"
+msgstr "Suche"
+
+#: searchDialog.js:145
+msgid "No radio station found!"
+msgstr "Es wurde kein Radiosender gefunden!"
+
+#: searchDialog.js:148
+msgid "Server returned status code"
+msgstr "Server antwortete mit dem status code"
+
+#: searchDialog.js:153
+msgid "Search input was empty!"
+msgstr "Leere Sucheingabe!"
 
 #~ msgid "Add Channel"
 #~ msgstr "Sender hinzufügen"

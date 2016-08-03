@@ -101,7 +101,7 @@ const AddChannelDialog = new Lang.Class({
     // create a new channel
     _createChannel: function () {
         let inputName = this._nameEntry.get_text();
-        let inputStream = this._getStreamAddress(this._addressEntry.get_text());
+        let inputStream = getStreamAddress(this._addressEntry.get_text());
         let newChannel = new Channel.Channel(inputName, inputStream, false, false);
         if (oldChannel != null) {
             if (oldChannel.getFavourite()){
@@ -114,36 +114,35 @@ const AddChannelDialog = new Lang.Class({
             MyE.radioMenu._addToFavourites(newChannel);
         }
         this.close();
-    },
+    }
+});
 
-    // get the valid stream address
-    _getStreamAddress: function (input) {
-        let streamAddress;
-        let regexp = /\.(m3u|m3u8|pls)/i;
+// get the valid stream address
+function getStreamAddress(input) {
+    let streamAddress;
+    let regexp = /\.(m3u|m3u8|pls)/i;
 
-        // test for m3u / pls
-        if (input.search(regexp) != -1) {
+    // test for m3u / pls
+    if (input.search(regexp) != -1) {
 
-            // get file
-            var message = Soup.Message.new('GET', input);
-            _httpSession.send_message(message);
-            // request ok
-            if (message.status_code === 200) {
-                let content = message.response_body.data;
-                let contentLines = content.split('\n');
-                // look for stream url
-                for (var line in contentLines) {
-                    if (contentLines[line].search(/http:/i) != -1) {
-                        // get url
-                        streamAddress = contentLines[line].slice((contentLines[line].search(/http:/))) //, contentLines[line].search(/\n/));
-                        break;  // break on the first occurrence
-                    }
+        // get file
+        var message = Soup.Message.new('GET', input);
+        _httpSession.send_message(message);
+        // request ok
+        if (message.status_code === 200) {
+            let content = message.response_body.data;
+            let contentLines = content.split('\n');
+            // look for stream url
+            for (var line in contentLines) {
+                if (contentLines[line].search(/http:/i) != -1) {
+                    // get url
+                    streamAddress = contentLines[line].slice((contentLines[line].search(/http:/))) //, contentLines[line].search(/\n/));
+                    break;  // break on the first occurrence
                 }
             }
-        } else {
-            streamAddress = input; // case for valid stream address
         }
-        return streamAddress;
+    } else {
+        streamAddress = input; // case for valid stream address
     }
-
-});
+    return streamAddress;
+}

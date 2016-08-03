@@ -19,6 +19,7 @@ const Player = Extension.imports.player;
 const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 const ChannelListDialog = Extension.imports.channelListDialog;
+const SearchDialog = Extension.imports.searchDialog;
 const Io = Extension.imports.io;
 
 // translation support
@@ -151,7 +152,7 @@ const RadioMenuButton = new Lang.Class({
         let separator2 = new PopupMenu.PopupSeparatorMenuItem();
         this.menu.addMenuItem(separator2);
 
-        // settings and add channel item
+        // settings, add channel and search item
         this.settingsItem = new PopupMenu.PopupBaseMenuItem({
             reactive: false,
             can_focus: false
@@ -182,8 +183,23 @@ const RadioMenuButton = new Lang.Class({
             this.addChannelDialog = new AddChannelDialog.AddChannelDialog();
             this.addChannelDialog.open();
         }));
+
+        this.searchIcon = new St.Icon({
+            icon_name: 'system-search-symbolic'
+        });
+        this.searchButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.searchButton.set_child(this.searchIcon);
+        this.searchButton.connect('clicked', Lang.bind(this, function () {
+            this.menu.close();
+            this.searchDialog = new SearchDialog.SearchDialog();
+            this.searchDialog.open();
+        }));
         this.settingsItem.actor.add(this.settingsButton, {expand: true, x_fill: false});
         this.settingsItem.actor.add(this.addChannelButton, {expand: true, x_fill: false});
+        this.settingsItem.actor.add(this.searchButton, {expand: true, x_fill: false});
         this.menu.addMenuItem(this.settingsItem);
 
         this.isPlaying = false;
