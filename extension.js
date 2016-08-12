@@ -257,6 +257,12 @@ const RadioMenuButton = new Lang.Class({
         else if (key == 'Stop') {
             this._stop();
         }
+        else if (key == 'Previous') {
+            this._prev();
+        }
+        else if (key == 'Next') {
+            this._next();
+        }
      },
 
     // quick play option by middle click
@@ -294,6 +300,36 @@ const RadioMenuButton = new Lang.Class({
         this.isPlaying = false;
         this.playButton.set_child(this.playIcon);
         this.playButton.connect('clicked', Lang.bind(this, this._start));
+    },
+
+    // change channel to previous on the list
+    _prev: function () {
+        let currentChannel = Player.getCurrentChannel();
+        let channels = this.channelList.channels;
+        let nextChannel = channels[0];
+        for (var i=0; i < channels.length; i++) {
+           if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
+              if (i == 0) { i = channels.length; }
+              nextChannel = channels[i-1];
+              break;
+           }
+        }
+        this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
+    },
+
+    // change channel to next on the list
+    _next: function () {
+        let currentChannel = Player.getCurrentChannel();
+        let channels = this.channelList.channels;
+        let nextChannel = channels[0];
+        for (var i=0; i < channels.length; i++) {
+           if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
+              if (i+1 == channels.length) { i=-1; }
+              nextChannel = channels[i+1];
+              break;
+           }
+        }
+        this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
     },
 
     // change radio station
