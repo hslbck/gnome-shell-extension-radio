@@ -20,6 +20,8 @@ https://extensions.gnome.org/extension/836/internet-radio/
 * Middle click to start/stop last played station
 * Cyrillic tag support (nielsrune): Usage description in pull request comment https://github.com/hslbck/gnome-shell-extension-radio/pull/18
 * Support for multimedia keys
+  * Play / Stop
+  * Next / Prev cycles through the channels list (X4lldux)
 * Support for title notification
 * Search online radio directory http://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
 
@@ -35,6 +37,7 @@ https://extensions.gnome.org/extension/836/internet-radio/
 
 ### Credits
 nielsrune  
+X4lldux  
 ##### Translations
 Chinese: gmg137  
 Danish: nielsrune   
