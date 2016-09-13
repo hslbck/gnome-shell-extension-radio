@@ -14,7 +14,8 @@ const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 const MyE = Extension.imports.extension;
 
-let _httpSession = new Soup.SessionSync();
+//const _httpSession = new Soup.SessionSync();
+const _httpSession = new Soup.SessionAsync();
 _httpSession.user_agent = "GSE Radio";
 let _selectedChannel;
 
@@ -38,7 +39,7 @@ const SearchDialog = new Lang.Class({
         let titleBox = new St.BoxLayout({
             vertical: false
         });
-        let txt = _("Browse directory");
+        let txt = _("Browse ");
         let uriTxt = "http://www.radio-browser.info";
         let title = new St.Label({
             style_class: 'nm-dialog-header',
@@ -58,12 +59,10 @@ const SearchDialog = new Lang.Class({
         this.setInitialKeyFocus(this._searchEntryText);
 
         let searchButton = new St.Button({
-            style_class: 'button',
+            style_class: 'custom-search-button',
             label: _("Search"),
             can_focus: true,
-            reactive: true,
-            x_expand: true,
-            y_expand: true
+            reactive: true
         });
         searchButton.connect('clicked', Lang.bind(this, this._search));
 
@@ -125,6 +124,7 @@ const SearchDialog = new Lang.Class({
     },
 
     _search: function() {
+        let searchDialog = this;
         let input = this._searchEntry.get_text();
         this._itemBox.remove_all_children();
         if (input != null && input.trim().length > 0) {
@@ -132,26 +132,47 @@ const SearchDialog = new Lang.Class({
             var message = Soup.Message.new('POST', url);
             var postParams = 'name=' + input + '&limit=15';
             message.set_request('application/x-www-form-urlencoded', 2, postParams, postParams.length);
-            _httpSession.send_message(message);
-            // request ok
-            if (message.status_code === 200) {
-                let response = message.response_body.data;
-                let jsonResponse = JSON.parse(response);
-                if (jsonResponse.length > 0) {
-                    for (var i = 0; i<jsonResponse.length; i++) {
-                        this._createChannel(jsonResponse[i]);
+
+            // async call
+            _httpSession.queue_message(message, function(_httpSession, message) {
+                if ( message.status_code === 200) {
+                    let response = message.response_body.data;
+                    let jsonResponse = JSON.parse(response);
+                    if (jsonResponse.length > 0) {
+                        for (var i = 0; i<jsonResponse.length; i++) {
+                            searchDialog._createChannel(jsonResponse[i]);
+                        }
+                    } else {
+                        searchDialog._addMessage(_("No radio station found!"));
                     }
                 } else {
-                    this._addMessage(_("No radio station found!"));
+                    let txt = _("Server returned status code");
+                    searchDialog._addMessage(txt + " " + message.status_code);
                 }
-            } else {
-                let txt = _("Server returned status code");
-                this._addMessage(txt + " " + message.status_code);
-            }
+            });
+        } else {
+            searchDialog._addMessage(_("Search input was empty!"));
         }
-        else {
-            this._addMessage(_("Search input was empty!"));
-        }
+            // sync call
+            // _httpSession.send_message(message);
+            // // request ok
+            // if (message.status_code === 200) {
+            //     let response = message.response_body.data;
+            //     let jsonResponse = JSON.parse(response);
+            //     if (jsonResponse.length > 0) {
+            //         for (var i = 0; i<jsonResponse.length; i++) {
+            //             this._createChannel(jsonResponse[i]);
+            //         }
+            //     } else {
+            //         this._addMessage(_("No radio station found!"));
+            //     }
+            // } else {
+            //     let txt = _("Server returned status code");
+            //     this._addMessage(txt + " " + message.status_code);
+            // }
+        //} else {
+        //    this._addMessage(_("Search input was empty!"));
+        //}
     },
 
     _createChannel: function(jsonObject) {
