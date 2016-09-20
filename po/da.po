@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-04 22:49+0200\n"
-"PO-Revision-Date: 2016-08-04 23:00+0200\n"
+"POT-Creation-Date: 2016-09-18 22:31+0200\n"
+"PO-Revision-Date: 2016-09-18 22:32+0200\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -26,11 +26,11 @@ msgstr "Kanalnavn"
 msgid "Stream Address"
 msgstr "Streamadresse"
 
-#: addChannelDialog.js:80 channelListDialog.js:89 searchDialog.js:104
+#: addChannelDialog.js:80 channelListDialog.js:89 searchDialog.js:102
 msgid "Cancel"
 msgstr "Annullér"
 
-#: addChannelDialog.js:85 searchDialog.js:110
+#: addChannelDialog.js:85 searchDialog.js:108
 msgid "Add"
 msgstr "Tilføj"
 
@@ -68,27 +68,30 @@ msgstr "Vis notifikationer"
 
 #: prefs.js:56
 msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper (Afspil/Stop)"
+msgstr "Aktiver multimedieknapper"
 
 #: searchDialog.js:41
-msgid "Browse directory"
-msgstr "Søg katalog"
+msgid "Browse "
+msgstr "Gennemse"
 
 #: searchDialog.js:62
 msgid "Search"
 msgstr "Søg"
 
-#: searchDialog.js:145
+#: searchDialog.js:143
 msgid "No radio station found!"
 msgstr "Ingen radiostationer fundet!"
 
-#: searchDialog.js:148
+#: searchDialog.js:146
 msgid "Server returned status code"
 msgstr "Serveren returnerede statuskode"
 
-#: searchDialog.js:153
+#: searchDialog.js:151
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
+
+#~ msgid "Browse directory"
+#~ msgstr "Søg katalog"
 
 #~ msgid "Add Channel"
 #~ msgstr "Tilføj kanal"
