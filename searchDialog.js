@@ -14,7 +14,6 @@ const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 const MyE = Extension.imports.extension;
 
-//const _httpSession = new Soup.SessionSync();
 const _httpSession = new Soup.SessionAsync();
 _httpSession.user_agent = "GSE Radio";
 let _selectedChannel;
@@ -153,26 +152,6 @@ const SearchDialog = new Lang.Class({
         } else {
             searchDialog._addMessage(_("Search input was empty!"));
         }
-            // sync call
-            // _httpSession.send_message(message);
-            // // request ok
-            // if (message.status_code === 200) {
-            //     let response = message.response_body.data;
-            //     let jsonResponse = JSON.parse(response);
-            //     if (jsonResponse.length > 0) {
-            //         for (var i = 0; i<jsonResponse.length; i++) {
-            //             this._createChannel(jsonResponse[i]);
-            //         }
-            //     } else {
-            //         this._addMessage(_("No radio station found!"));
-            //     }
-            // } else {
-            //     let txt = _("Server returned status code");
-            //     this._addMessage(txt + " " + message.status_code);
-            // }
-        //} else {
-        //    this._addMessage(_("Search input was empty!"));
-        //}
     },
 
     _createChannel: function(jsonObject) {
