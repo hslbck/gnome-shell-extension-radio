@@ -41,6 +41,7 @@ X4lldux
 Chinese: gmg137  
 Danish: nielsrune   
 French: narzb, BridouZ, thony8  
+Hungarian: urbalazs  
 Turkish: marjinal1st  
 
 ### License
