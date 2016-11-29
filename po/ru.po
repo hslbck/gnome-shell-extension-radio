@@ -76,7 +76,7 @@ msgstr "Включить управление мультимедиа кнопк�
 
 #: searchDialog.js:41
 msgid "Browse "
-msgstr "Поиск"
+msgstr "Поиск "
 
 #: searchDialog.js:62
 msgid "Search"
