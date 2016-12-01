@@ -43,6 +43,7 @@ Danish: nielsrune
 French: narzb, BridouZ, thony8  
 Hungarian: urbalazs  
 Polish: pkomur  
+Russian: stmc  
 Turkish: marjinal1st  
 
 ### License
