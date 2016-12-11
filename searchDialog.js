@@ -16,6 +16,7 @@ const MyE = Extension.imports.extension;
 
 const _httpSession = new Soup.SessionAsync();
 _httpSession.user_agent = "GSE Radio";
+_httpSession.timeout = 10;
 let _selectedChannel;
 
 const SearchDialog = new Lang.Class({

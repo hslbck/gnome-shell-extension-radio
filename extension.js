@@ -77,11 +77,13 @@ const RadioMenuButton = new Lang.Class({
         // Box for the Control Elements
         this.controlsBox = new St.BoxLayout({
             name: 'controlsBox',
-            style_class: 'control-box'
+            style_class: 'control-box',
+            width: 350
         });
         this.tagListBox = new St.BoxLayout({
             name: 'tagListBox',
-            style_class: 'control-box'
+            style_class: 'control-box',
+            width: 350
         });
 
         // Play and Stop Button Images
@@ -417,7 +419,7 @@ const RadioMenuButton = new Lang.Class({
     // update Title label
     _setTagLabel: function () {
         if (this.isPlaying) {
-            let tagLabel = Player.getTag();
+            let tagLabel = Player.getTagWithLineBreaks();
             let senderLabel = Player.getCurrentChannel().getName();
             this.tagListLabel.set_text(tagLabel);
             this._enableTitleNotification(tagLabel, senderLabel);

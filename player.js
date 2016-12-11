@@ -111,6 +111,22 @@ function getTag(){
     return tag;
 }
 
+function getTagWithLineBreaks() {
+    let tagArray = tag.trim().split(" ");
+    let tmpTag = "";
+    let splitIndex = 42;
+    for (let i = 0; i < tagArray.length; i++) {
+        if ((tmpTag.length + tagArray[i].length) < splitIndex) {
+            tmpTag = tmpTag + tagArray[i] + " ";
+        }
+        else {
+            splitIndex = splitIndex + 42;
+            tmpTag = tmpTag + "\n" + tagArray[i] + " " ;
+        }
+    }
+    return tmpTag;
+}
+
 function getCurrentChannel() {
     return currentChannel;
 }
