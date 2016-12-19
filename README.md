@@ -10,7 +10,7 @@ Prerequisites: gstreamer plugins are installed
 https://extensions.gnome.org/extension/836/internet-radio/
 ##### Manual
 * Download source from github (clone repository or download zip)
-* Copy sources to ~/.local/share/gnome-shell/extensions/radio@hslbck.gmail.com
+* Run `make` from the `gnome-shell-extension-radio` directory
 * Reload the shell: Press `Alt+F2` write `r` and press `Enter`  
 * Enable via Gnome Tweak Tool
 

@@ -4,5 +4,6 @@
 	"name": "Internet Radio",
 	"description": "Listen to an Internet Radio Stream",
 	"settings-schema": "org.gnome.shell.extensions.radio",
-	"url": "https://github.com/hslbck/gnome-shell-extension-radio"
+	"url": "https://github.com/hslbck/gnome-shell-extension-radio",
+	"version": -1
 }
