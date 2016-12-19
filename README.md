@@ -11,7 +11,7 @@ https://extensions.gnome.org/extension/836/internet-radio/
 ##### Manual
 * Download source from github (clone repository or download zip)
 * Run `make` from the `gnome-shell-extension-radio` directory
-* Reload the shell: Press `Alt+F2` write `r` and press `Enter`  
+* Reload the shell using X: Press `Alt+F2` write `r` and press `Enter`  
 * Enable via Gnome Tweak Tool
 
 ### Features
@@ -37,6 +37,7 @@ https://extensions.gnome.org/extension/836/internet-radio/
 ### Credits
 nielsrune  
 X4lldux  
+zapashcanon  
 ##### Translations
 Chinese: gmg137  
 Danish: nielsrune   
