@@ -1,2 +1,8 @@
 build/
 build/*
+
+*.compiled
+*.mo
+
+radio@hslbck.gmail.com/locale/
+radio@hslbck.gmail.com/locale/*

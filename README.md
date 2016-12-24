@@ -9,6 +9,9 @@ Prerequisites: gstreamer plugins are installed
 ##### Using gnome shell extension webpage
 https://extensions.gnome.org/extension/836/internet-radio/
 ##### Manual
+
+You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, available through `libglib` and `gettext`.
+
 * Download source from github (clone repository or download zip)
 * Run `make` from the `gnome-shell-extension-radio` directory
 * Reload the shell using X: Press `Alt+F2` write `r` and press `Enter`  
