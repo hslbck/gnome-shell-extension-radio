@@ -6,6 +6,7 @@ const ShellEntry = imports.ui.shellEntry;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
 const MyE = Extension.imports.extension;
+const Convert = Extension.imports.convertCharset;
 
 // translation support
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
@@ -69,6 +70,25 @@ const AddChannelDialog = new Lang.Class({
             y_align: St.Align.START
         });
 
+        // entry for optional tag text charset conversion
+        let charset = new St.Label({
+            style_class: 'run-dialog-label',
+            text: _("Charset (optional)")
+        });
+        this.contentLayout.add(charset, {
+            y_align: St.Align.START
+        });
+        this._charsetEntry = new St.Entry({
+            style_class: 'run-dialog-entry',
+            can_focus: true
+        });
+        ShellEntry.addContextMenu(this._charsetEntry);
+        this._charsetEntry.label_actor = charset;
+        this._charsetEntryText = this._charsetEntry.clutter_text;
+        this.contentLayout.add(this._charsetEntry, {
+            y_align: St.Align.START
+        });
+
         // set values when editing a channel
         this._setTextValues();
 
@@ -95,6 +115,9 @@ const AddChannelDialog = new Lang.Class({
         if (oldChannel != null) {
             this._nameEntry.set_text(oldChannel.getName());
             this._addressEntry.set_text(oldChannel.getUri());
+            if(oldChannel.getEncoding() !== false) {
+                this._charsetEntry.set_text(oldChannel.getEncoding());
+            }
         }
     },
 
@@ -102,7 +125,13 @@ const AddChannelDialog = new Lang.Class({
     _createChannel: function () {
         let inputName = this._nameEntry.get_text();
         let inputStream = getStreamAddress(this._addressEntry.get_text());
-        let newChannel = new Channel.Channel(inputName, inputStream, false, false);
+        let inputCharset = null;
+        if (this._charsetEntry.get_text() !== "") {
+            inputCharset = Convert.validate(this._charsetEntry.get_text());
+        } else {
+            inputCharset = false;
+        }
+        let newChannel = new Channel.Channel(inputName, inputStream, false, inputCharset);
         if (oldChannel != null) {
             if (oldChannel.getFavourite()){
                 newChannel.setFavourite(oldChannel.getFavourite());

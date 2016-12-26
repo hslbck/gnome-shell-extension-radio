@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 22:31+0200\n"
-"PO-Revision-Date: 2016-09-18 22:32+0200\n"
+"POT-Creation-Date: 2016-12-26 16:45+0100\n"
+"PO-Revision-Date: 2016-12-26 16:45+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: addChannelDialog.js:37
@@ -26,11 +26,15 @@ msgstr "Kanalnavn"
 msgid "Stream Address"
 msgstr "Streamadresse"
 
-#: addChannelDialog.js:80 channelListDialog.js:89 searchDialog.js:102
+#: addChannelDialog.js:75
+msgid "Charset (optional)"
+msgstr "Tegnsæt (valgfrit)"
+
+#: addChannelDialog.js:99 channelListDialog.js:89 searchDialog.js:103
 msgid "Cancel"
 msgstr "Annullér"
 
-#: addChannelDialog.js:85 searchDialog.js:108
+#: addChannelDialog.js:104 searchDialog.js:109
 msgid "Add"
 msgstr "Tilføj"
 
@@ -54,11 +58,11 @@ msgstr "Redigér"
 msgid "Play"
 msgstr "Afspil"
 
-#: extension.js:132
+#: extension.js:134
 msgid "Favourites"
 msgstr "Favoritter"
 
-#: extension.js:138
+#: extension.js:140
 msgid "Channels"
 msgstr "Kanaler"
 
@@ -70,23 +74,23 @@ msgstr "Vis notifikationer"
 msgid "Enable Play/Stop Media Keys"
 msgstr "Aktiver multimedieknapper"
 
-#: searchDialog.js:41
+#: searchDialog.js:42
 msgid "Browse "
 msgstr "Gennemse"
 
-#: searchDialog.js:62
+#: searchDialog.js:63
 msgid "Search"
 msgstr "Søg"
 
-#: searchDialog.js:143
+#: searchDialog.js:146
 msgid "No radio station found!"
 msgstr "Ingen radiostationer fundet!"
 
-#: searchDialog.js:146
+#: searchDialog.js:149
 msgid "Server returned status code"
 msgstr "Serveren returnerede statuskode"
 
-#: searchDialog.js:151
+#: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
 

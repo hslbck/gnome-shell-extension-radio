@@ -59,3 +59,10 @@ function convertToUnicode(enc, str) {
     for(let i = 0; i < str.length; i++) res = res + code2char(str.charCodeAt(i));
     return res;
 }
+
+function validate(input){
+if(~["windows-1251", "windows1251", "1251"].indexOf(input)) return "windows-1251";
+if(~["koi8-r", "koi8r", "ru"].indexOf(input)) return "koi8-r";
+if(~["koi8-u", "koi8u", "ua"].indexOf(input)) return "koi8-u";
+return false;
+}
