@@ -125,12 +125,11 @@ const AddChannelDialog = new Lang.Class({
     _createChannel: function () {
         let inputName = this._nameEntry.get_text();
         let inputStream = getStreamAddress(this._addressEntry.get_text());
-        let inputCharset = null;
+        let inputCharset = false;
         if (this._charsetEntry.get_text() !== "") {
             inputCharset = Convert.validate(this._charsetEntry.get_text());
-        } else {
-            inputCharset = false;
         }
+        log("RADIO: "+inputCharset);
         let newChannel = new Channel.Channel(inputName, inputStream, false, inputCharset);
         if (oldChannel != null) {
             if (oldChannel.getFavourite()){
