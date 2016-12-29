@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 22:31+0200\n"
+"POT-Creation-Date: 2016-12-25 21:47+0100\n"
 "PO-Revision-Date: 2016-09-18 22:32+0200\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
@@ -18,21 +18,13 @@ msgstr ""
 "X-Generator: Poedit 1.8.8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: addChannelDialog.js:37
-msgid "Channel Name"
-msgstr "Kanalnavn"
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
 
-#: addChannelDialog.js:56
-msgid "Stream Address"
-msgstr "Streamadresse"
-
-#: addChannelDialog.js:80 channelListDialog.js:89 searchDialog.js:102
-msgid "Cancel"
-msgstr "Annullér"
-
-#: addChannelDialog.js:85 searchDialog.js:108
-msgid "Add"
-msgstr "Tilføj"
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Aktiver multimedieknapper"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -41,6 +33,10 @@ msgstr "Kanalliste"
 #: channelListDialog.js:53
 msgid "Manage your radio stations"
 msgstr "Redigér dine radiostationer"
+
+#: channelListDialog.js:89 addChannelDialog.js:80 searchDialog.js:103
+msgid "Cancel"
+msgstr "Annullér"
 
 #: channelListDialog.js:96
 msgid "Delete"
@@ -54,39 +50,43 @@ msgstr "Redigér"
 msgid "Play"
 msgstr "Afspil"
 
-#: extension.js:132
+#: addChannelDialog.js:37
+msgid "Channel Name"
+msgstr "Kanalnavn"
+
+#: addChannelDialog.js:56
+msgid "Stream Address"
+msgstr "Streamadresse"
+
+#: addChannelDialog.js:85 searchDialog.js:109
+msgid "Add"
+msgstr "Tilføj"
+
+#: extension.js:134
 msgid "Favourites"
 msgstr "Favoritter"
 
-#: extension.js:138
+#: extension.js:140
 msgid "Channels"
 msgstr "Kanaler"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Vis notifikationer"
-
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper"
-
-#: searchDialog.js:41
+#: searchDialog.js:42
 msgid "Browse "
 msgstr "Gennemse"
 
-#: searchDialog.js:62
+#: searchDialog.js:63
 msgid "Search"
 msgstr "Søg"
 
-#: searchDialog.js:143
+#: searchDialog.js:146
 msgid "No radio station found!"
 msgstr "Ingen radiostationer fundet!"
 
-#: searchDialog.js:146
+#: searchDialog.js:149
 msgid "Server returned status code"
 msgstr "Serveren returnerede statuskode"
 
-#: searchDialog.js:151
+#: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
 

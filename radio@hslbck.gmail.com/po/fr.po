@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-15 22:05+0200\n"
+"POT-Creation-Date: 2016-12-25 21:47+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: DAEM Q.\n"
 "Language-Team: \n"
@@ -12,21 +12,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: addChannelDialog.js:37
-msgid "Channel Name"
-msgstr "Nom Canal"
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Afficher les notifications du titre à l'écoute"
 
-#: addChannelDialog.js:56
-msgid "Stream Address"
-msgstr "Adresse du flux"
-
-#: addChannelDialog.js:80 channelListDialog.js:89
-msgid "Cancel"
-msgstr "Annuler"
-
-#: addChannelDialog.js:85
-msgid "Add"
-msgstr "Ajouter"
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Activer les touches démarrer/arrêter le multimedia"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -34,7 +26,11 @@ msgstr "Liste des Canaux"
 
 #: channelListDialog.js:53
 msgid "Manage your radio stations"
-msgstr "Gérer vos stations radios"
+msgstr "Gérer vos stations de radio"
+
+#: channelListDialog.js:89 addChannelDialog.js:80 searchDialog.js:103
+msgid "Cancel"
+msgstr "Annuler"
 
 #: channelListDialog.js:96
 msgid "Delete"
@@ -48,14 +44,45 @@ msgstr "Modifier"
 msgid "Play"
 msgstr "Lecture"
 
-#: extension.js:119
+#: addChannelDialog.js:37
+msgid "Channel Name"
+msgstr "Nom du Canal"
+
+#: addChannelDialog.js:56
+msgid "Stream Address"
+msgstr "Adresse du flux"
+
+#: addChannelDialog.js:85 searchDialog.js:109
+msgid "Add"
+msgstr "Ajouter"
+
+#: extension.js:134
 msgid "Favourites"
 msgstr "Favoris"
 
-#: extension.js:125
+#: extension.js:140
 msgid "Channels"
 msgstr "Canaux"
 
-#: extension.js:143
-msgid "Add Channel"
-msgstr "Ajouter Canal"
+#: searchDialog.js:42
+msgid "Browse "
+msgstr "Parcourir"
+
+#: searchDialog.js:63
+msgid "Search"
+msgstr "Rechercher"
+
+#: searchDialog.js:146
+msgid "No radio station found!"
+msgstr "Aucune station de radio trouvée"
+
+#: searchDialog.js:149
+msgid "Server returned status code"
+msgstr "Le serveur a renvoyé le code d'état"
+
+#: searchDialog.js:154
+msgid "Search input was empty!"
+msgstr "Le texte saisi était vide !"
+
+#~ msgid "Add Channel"
+#~ msgstr "Ajouter Canal"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-13 17:52+0200\n"
+"POT-Creation-Date: 2016-12-25 21:47+0100\n"
 "PO-Revision-Date: 2016-11-29 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -22,21 +22,13 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: addChannelDialog.js:37
-msgid "Channel Name"
-msgstr "Имя радиостанции"
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Показывать уведомления"
 
-#: addChannelDialog.js:56
-msgid "Stream Address"
-msgstr "Адрес потока"
-
-#: addChannelDialog.js:80 channelListDialog.js:89 searchDialog.js:102
-msgid "Cancel"
-msgstr "Отмена"
-
-#: addChannelDialog.js:85 searchDialog.js:108
-msgid "Add"
-msgstr "Добавить"
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Включить управление мультимедиа кнопками"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -45,6 +37,10 @@ msgstr "Список радиостанций"
 #: channelListDialog.js:53
 msgid "Manage your radio stations"
 msgstr "Управление радиостанциями"
+
+#: channelListDialog.js:89 addChannelDialog.js:80 searchDialog.js:103
+msgid "Cancel"
+msgstr "Отмена"
 
 #: channelListDialog.js:96
 msgid "Delete"
@@ -59,38 +55,42 @@ msgstr "Изменить"
 msgid "Play"
 msgstr "Включить"
 
-#: extension.js:132
+#: addChannelDialog.js:37
+msgid "Channel Name"
+msgstr "Имя радиостанции"
+
+#: addChannelDialog.js:56
+msgid "Stream Address"
+msgstr "Адрес потока"
+
+#: addChannelDialog.js:85 searchDialog.js:109
+msgid "Add"
+msgstr "Добавить"
+
+#: extension.js:134
 msgid "Favourites"
 msgstr "Избранные"
 
-#: extension.js:138
+#: extension.js:140
 msgid "Channels"
 msgstr "Радиостанции"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Показывать уведомления"
-
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Включить управление мультимедиа кнопками"
-
-#: searchDialog.js:41
+#: searchDialog.js:42
 msgid "Browse "
 msgstr "Поиск "
 
-#: searchDialog.js:62
+#: searchDialog.js:63
 msgid "Search"
 msgstr "Найти"
 
-#: searchDialog.js:143
+#: searchDialog.js:146
 msgid "No radio station found!"
 msgstr "Радиостанции не найдены"
 
-#: searchDialog.js:146
+#: searchDialog.js:149
 msgid "Server returned status code"
 msgstr "Сервер вернул код статуса"
 
-#: searchDialog.js:151
+#: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Пустой запрос поиска"
