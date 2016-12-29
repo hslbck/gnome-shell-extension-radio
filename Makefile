@@ -29,7 +29,7 @@ endif
 INSTALLBASE := $(INSTALLBASE)/share/gnome-shell/extensions
 INSTALL_DIR := $(INSTALLBASE)/$(UUID)
 
-default: install clean
+default: build clean
 
 $(BUILD_DIR):
 	mkdir -p $@
@@ -44,7 +44,7 @@ $(PO_DIR):
 	mkdir -p $@
 
 $(PO_DIR)/%.po: $(POT_FILE) $(PO_DIR)
-	msgmerge -m -U $@ $<
+	msgmerge -m -U --backup=none $@ $<
 
 $(LOCALE_DIR)/%/LC_MESSAGES/$(UUID).mo: $(PO_DIR)/%.po $(MO_DIR)
 	msgfmt -c $< -o $@
@@ -61,7 +61,7 @@ install: build
 	cp -r $(BUILD_DIR)/* $(INSTALL_DIR)
 
 clean:
-	rm -f $(COMPILED_SCHEMAS) $(POT_FILE) $(PO_DIR)/*.po~
+	rm -f $(COMPILED_SCHEMAS) $(POT_FILE)
 	rm -rf $(LOCALE_DIR)
 
 mrproper: clean
