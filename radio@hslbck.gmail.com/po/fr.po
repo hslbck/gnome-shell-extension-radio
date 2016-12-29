@@ -54,7 +54,7 @@ msgstr "Adresse du flux"
 
 #: addChannelDialog.js:76
 msgid "Charset (optional)"
-msgstr ""
+msgstr "Jeu de caractères (facultatif)"
 
 #: addChannelDialog.js:105 searchDialog.js:109
 msgid "Add"
