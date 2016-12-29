@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-25 21:47+0100\n"
+"POT-Creation-Date: 2016-12-29 23:48+0100\n"
 "PO-Revision-Date: 2016-11-29 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -38,7 +38,7 @@ msgstr "Список радиостанций"
 msgid "Manage your radio stations"
 msgstr "Управление радиостанциями"
 
-#: channelListDialog.js:89 addChannelDialog.js:80 searchDialog.js:103
+#: channelListDialog.js:89 addChannelDialog.js:100 searchDialog.js:103
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -55,15 +55,19 @@ msgstr "Изменить"
 msgid "Play"
 msgstr "Включить"
 
-#: addChannelDialog.js:37
+#: addChannelDialog.js:38
 msgid "Channel Name"
 msgstr "Имя радиостанции"
 
-#: addChannelDialog.js:56
+#: addChannelDialog.js:57
 msgid "Stream Address"
 msgstr "Адрес потока"
 
-#: addChannelDialog.js:85 searchDialog.js:109
+#: addChannelDialog.js:76
+msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:105 searchDialog.js:109
 msgid "Add"
 msgstr "Добавить"
 

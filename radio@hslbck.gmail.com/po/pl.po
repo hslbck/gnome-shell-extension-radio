@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-25 21:47+0100\n"
+"POT-Creation-Date: 2016-12-29 23:48+0100\n"
 "PO-Revision-Date: 2016-11-21 21:35+0100\n"
 "Last-Translator: Piotr Komur <pkomur@gmail.com>\n"
 "Language-Team: \n"
@@ -37,7 +37,7 @@ msgstr "Lista stacji"
 msgid "Manage your radio stations"
 msgstr "Zarządzanie stacjami radiowymi"
 
-#: channelListDialog.js:89 addChannelDialog.js:80 searchDialog.js:103
+#: channelListDialog.js:89 addChannelDialog.js:100 searchDialog.js:103
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -53,15 +53,19 @@ msgstr "Edytuj"
 msgid "Play"
 msgstr "Odtwarzaj"
 
-#: addChannelDialog.js:37
+#: addChannelDialog.js:38
 msgid "Channel Name"
 msgstr "Nazwa stacji"
 
-#: addChannelDialog.js:56
+#: addChannelDialog.js:57
 msgid "Stream Address"
 msgstr "Adres strumienia"
 
-#: addChannelDialog.js:85 searchDialog.js:109
+#: addChannelDialog.js:76
+msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:105 searchDialog.js:109
 msgid "Add"
 msgstr "Dodaj"
 
