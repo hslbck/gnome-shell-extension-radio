@@ -28,14 +28,10 @@ You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, ava
 * Support for title notification
 * Search online radio directory http://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
 
-### Notice when updating this extension - Preventing loss of configured channels
-* With the latest update the `channelList.json` file is being moved to the home directory
-* Before installing the new version make a backup of your `channelList.json` at a folder of your choice
-* `channelList.json` can be found in the directory ~/.local/share/gnome-shell/extensions/radio@hslbck.gmail.com
-* Replace the extension and reload the gnome-shell
-* A new directory `~/.gse-radio` is created with a copy of the default `channelList.json`
-* Replace this `channelList.json` with your backup
-* On future updates your configured  channels aren't replaced anymore
+### Translation
+* Open your source folder
+* Run `make build` in your source directory
+* The file `radio@hslbck.gmail.com.pot` should be created in the `po` folder
 
 ### Credits
 nielsrune  
