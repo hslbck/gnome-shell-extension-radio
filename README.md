@@ -13,7 +13,9 @@ https://extensions.gnome.org/extension/836/internet-radio/
 You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, available through `libglib` and `gettext`.
 
 * Download source from github (clone repository or download zip)
-* Run `make` from the `gnome-shell-extension-radio` directory
+* From the `gnome-shell-extension-radio` directory:
+  * For a user only installation: `make && make install`
+  * For a system-wide installation: `make && sudo make install DESTDIR=/`
 * Reload the shell using X: Press `Alt+F2` write `r` and press `Enter`  
 * Enable via Gnome Tweak Tool
 
