@@ -127,7 +127,7 @@ const AddChannelDialog = new Lang.Class({
         let inputStream = getStreamAddress(this._addressEntry.get_text());
         let inputCharset = false;
         if (this._charsetEntry.get_text() !== "") {
-            inputCharset = Convert.validate(this._charsetEntry.get_text());
+            inputCharset = Convert.validate(this._charsetEntry.get_text().toLowerCase());
         }
         let newChannel = new Channel.Channel(inputName, inputStream, false, inputCharset);
         if (oldChannel != null) {
