@@ -1,0 +1,44 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/).
+
+## [Unreleased]
+
+### Added
+- Charset field in channel dialog
+- Change log
+
+### Changed
+- French, german and danish translations updated
+
+## [1.4] - 2016-12-29
+
+### Added
+- Russian translation
+- Makefile
+
+### Changed
+- French translation updated
+- All generated files (`.mo`, `.pot`) removed
+
+### Fixed
+- Prevent too large size for title and artist display
+
+## [1.2] - 2016-09-27
+
+### Added
+- Browse function for http://www.radio-browser.info
+- Title notifications
+- Multimedia key support
+
+## [1.0] - 2016-06-17
+
+### Added
+- First release
+
+[Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[1.4]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.4
+[1.2]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.2
+[1.0]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.0
