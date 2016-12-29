@@ -40,6 +40,10 @@ const Channel = new Lang.Class({
     },
 
     getEncoding: function () {
+        if(typeof this._encoding === 'undefined') {
+            this.setEncoding(false);
+        }
+
         if(typeof this._encoding === 'string') {
             return this._encoding.toLowerCase();
         } else {

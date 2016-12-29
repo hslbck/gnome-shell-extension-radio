@@ -7,24 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-25 21:47+0100\n"
-"PO-Revision-Date: 2016-09-18 22:32+0200\n"
+"POT-Creation-Date: 2016-12-26 16:45+0100\n"
+"PO-Revision-Date: 2016-12-26 16:45+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Vis notifikationer"
+#: addChannelDialog.js:37
+msgid "Channel Name"
+msgstr "Kanalnavn"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper"
+#: addChannelDialog.js:56
+msgid "Stream Address"
+msgstr "Streamadresse"
+
+#: addChannelDialog.js:75
+msgid "Charset (optional)"
+msgstr "Tegnsæt (valgfrit)"
+
+#: addChannelDialog.js:99 channelListDialog.js:89 searchDialog.js:103
+msgid "Cancel"
+msgstr "Annullér"
+
+#: addChannelDialog.js:104 searchDialog.js:109
+msgid "Add"
+msgstr "Tilføj"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -33,10 +45,6 @@ msgstr "Kanalliste"
 #: channelListDialog.js:53
 msgid "Manage your radio stations"
 msgstr "Redigér dine radiostationer"
-
-#: channelListDialog.js:89 addChannelDialog.js:80 searchDialog.js:103
-msgid "Cancel"
-msgstr "Annullér"
 
 #: channelListDialog.js:96
 msgid "Delete"
@@ -50,18 +58,6 @@ msgstr "Redigér"
 msgid "Play"
 msgstr "Afspil"
 
-#: addChannelDialog.js:37
-msgid "Channel Name"
-msgstr "Kanalnavn"
-
-#: addChannelDialog.js:56
-msgid "Stream Address"
-msgstr "Streamadresse"
-
-#: addChannelDialog.js:85 searchDialog.js:109
-msgid "Add"
-msgstr "Tilføj"
-
 #: extension.js:134
 msgid "Favourites"
 msgstr "Favoritter"
@@ -69,6 +65,14 @@ msgstr "Favoritter"
 #: extension.js:140
 msgid "Channels"
 msgstr "Kanaler"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Aktiver multimedieknapper"
 
 #: searchDialog.js:42
 msgid "Browse "
