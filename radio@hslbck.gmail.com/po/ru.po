@@ -1,14 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the gnome-shell-extension package.
 # Stas Solovey <whats_up@tut.by>, 2016.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-29 23:48+0100\n"
+"Project-Id-Version: gnome-shell-extension-radio 1.6\n"
+"Report-Msgid-Bugs-To: hslbck@gmail.com\n"
+"POT-Creation-Date: 2016-12-30 05:29+0100\n"
 "PO-Revision-Date: 2016-11-29 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"

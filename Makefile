@@ -2,6 +2,8 @@
 
 EXTENSION_NAME := radio
 UUID := $(EXTENSION_NAME)@hslbck.gmail.com
+AUTHOR_MAIL := hslbck@gmail.com
+VERSION := 1.6
 
 BUILD_DIR := _build
 
@@ -50,7 +52,7 @@ $(LOCALE_DIR)/%/LC_MESSAGES/$(UUID).mo: $(PO_DIR)/%.po $(MO_DIR)
 	msgfmt -c $< -o $@
 
 $(POT_FILE): $(PO_DIR)
-	cd $(SRC_DIR) && xgettext -k_ -kN_ -o po/$(UUID).pot $(TOLOCALIZE) && cd -
+	cd $(SRC_DIR) && xgettext --package-name "gnome-shell-extension-$(EXTENSION_NAME)" --package-version=$(VERSION) --msgid-bugs-address=$(AUTHOR_MAIL) -k_ -kN_ -o po/$(UUID).pot $(TOLOCALIZE) && cd -
 
 build: $(BUILD_DIR) $(COMPILED_SCHEMAS) $(MO_FILES)
 	cp -r $(FILES) $<
