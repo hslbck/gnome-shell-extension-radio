@@ -36,7 +36,7 @@ Radio station streams may include tags (track artist and title).
 If tags are not served in UTF-8 encoding, non-latin characters may be printed as garbage characters and must be converted to UTF-8 to make sense.
 
 A specific source charset can optionally be set upon adding or editing each channel.
-Unfortunately, older charsets cannot be reliably determined automatically. Finding the right source charset for a channel's tags are therefore a matter of guessing (or guessing again). A tool like https://2cyr.com/decode/ may come useful.
+Unfortunately, charsets cannot be reliably determined automatically. Finding the right source charset for a channel's tags are therefore a matter of guessing (or guessing again). A tool like https://2cyr.com/decode/ may come useful.
 
 Currently, this extension supports conversion of the following charsets:
 * **windows-1251** (Russian, Bulgarian, Serbian Cyrillic, Macedonian)
