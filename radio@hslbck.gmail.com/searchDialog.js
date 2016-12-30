@@ -40,7 +40,7 @@ const SearchDialog = new Lang.Class({
             vertical: false
         });
         let txt = _("Browse ");
-        let uriTxt = "http://www.radio-browser.info";
+        let uriTxt = "https://www.radio-browser.info";
         let title = new St.Label({
             style_class: 'nm-dialog-header',
             text: txt + " " + uriTxt
