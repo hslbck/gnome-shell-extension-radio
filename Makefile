@@ -2,6 +2,8 @@
 
 EXTENSION_NAME := radio
 UUID := $(EXTENSION_NAME)@hslbck.gmail.com
+AUTHOR_MAIL := hslbck@gmail.com
+VERSION := 1.6
 
 BUILD_DIR := _build
 
@@ -29,7 +31,7 @@ endif
 INSTALLBASE := $(INSTALLBASE)/share/gnome-shell/extensions
 INSTALL_DIR := $(INSTALLBASE)/$(UUID)
 
-default: install clean
+default: build clean
 
 $(BUILD_DIR):
 	mkdir -p $@
@@ -44,13 +46,13 @@ $(PO_DIR):
 	mkdir -p $@
 
 $(PO_DIR)/%.po: $(POT_FILE) $(PO_DIR)
-	msgmerge -m -U $@ $<
+	msgmerge -m -U --backup=none $@ $<
 
 $(LOCALE_DIR)/%/LC_MESSAGES/$(UUID).mo: $(PO_DIR)/%.po $(MO_DIR)
 	msgfmt -c $< -o $@
 
 $(POT_FILE): $(PO_DIR)
-	cd $(SRC_DIR) && xgettext -k_ -kN_ -o po/$(UUID).pot $(TOLOCALIZE) && cd -
+	cd $(SRC_DIR) && xgettext --package-name "gnome-shell-extension-$(EXTENSION_NAME)" --package-version=$(VERSION) --msgid-bugs-address=$(AUTHOR_MAIL) -k_ -kN_ -o po/$(UUID).pot $(TOLOCALIZE) && cd -
 
 build: $(BUILD_DIR) $(COMPILED_SCHEMAS) $(MO_FILES)
 	cp -r $(FILES) $<
@@ -61,7 +63,7 @@ install: build
 	cp -r $(BUILD_DIR)/* $(INSTALL_DIR)
 
 clean:
-	rm -f $(COMPILED_SCHEMAS) $(POT_FILE) $(PO_DIR)/*.po~
+	rm -f $(COMPILED_SCHEMAS) $(POT_FILE)
 	rm -rf $(LOCALE_DIR)
 
 mrproper: clean

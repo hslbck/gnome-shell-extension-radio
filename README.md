@@ -13,7 +13,9 @@ https://extensions.gnome.org/extension/836/internet-radio/
 You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, available through `libglib` and `gettext`.
 
 * Download source from github (clone repository or download zip)
-* Run `make` from the `gnome-shell-extension-radio` directory
+* From the `gnome-shell-extension-radio` directory:
+  * For a user only installation: `make && make install`
+  * For a system-wide installation: `make && sudo make install DESTDIR=/`
 * Reload the shell using X: Press `Alt+F2` write `r` and press `Enter`  
 * Enable via Gnome Tweak Tool
 
@@ -26,7 +28,7 @@ You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, ava
   * Play / Stop
   * Next / Prev cycles through the channels list (X4lldux)
 * Support for title notification
-* Search online radio directory http://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
+* Search online radio directory https://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
 
 ### Translation
 * Open your source folder
@@ -54,4 +56,4 @@ Gnome Shell Extension Radio is free software: you can redistribute it and/or mod
 
 Gnome Shell Extension Radio is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
