@@ -29,7 +29,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [1.2] - 2016-09-27
 
 ### Added
-- Browse function for http://www.radio-browser.info
+- Browse function for https://www.radio-browser.info
 - Title notifications
 - Multimedia key support
 

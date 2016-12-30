@@ -28,7 +28,7 @@ You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, ava
   * Play / Stop
   * Next / Prev cycles through the channels list (X4lldux)
 * Support for title notification
-* Search online radio directory http://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
+* Search online radio directory https://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
 
 ### Translation
 * Open your source folder
@@ -56,4 +56,4 @@ Gnome Shell Extension Radio is free software: you can redistribute it and/or mod
 
 Gnome Shell Extension Radio is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
