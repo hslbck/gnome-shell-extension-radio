@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Change log
 
 ### Changed
-- French, german and danish translations updated
+- French, German and Danish translations updated
 
 ## [1.4] - 2016-12-29
 
