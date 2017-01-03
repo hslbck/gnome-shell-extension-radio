@@ -63,7 +63,7 @@ Turkish: marjinal1st
 
 ### License
 GNOME Shell Extension Radio  
-Copyright (C) 2014 - 2016  hslbck
+Copyright (C) 2014 - 2017  hslbck
 
 GNOME Shell Extension Radio is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
