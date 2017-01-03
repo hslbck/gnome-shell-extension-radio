@@ -23,12 +23,25 @@ You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, ava
 * Manage radio station list
 * Mark stations as favourites
 * Middle click to start/stop last played station
-* Cyrillic tag support (nielsrune): Usage description in pull request comment https://github.com/hslbck/gnome-shell-extension-radio/pull/18
+* Cyrillic tag support (nielsrune): See below
 * Support for multimedia keys
   * Play / Stop
   * Next / Prev cycles through the channels list (X4lldux)
 * Support for title notification
 * Search online radio directory https://www.radio-browser.info/ (https://github.com/hslbck/gnome-shell-extension-radio/issues/23)
+
+### Charset convertion
+Radio station streams may include tags (track artist and title).
+
+If tags are not served in UTF-8 encoding, non-latin characters may be printed as garbage characters and must be converted to UTF-8 to make sense.
+
+A specific source charset can optionally be set upon adding or editing each channel.
+Unfortunately, charsets cannot be reliably determined automatically. Finding the right source charset for a channel's tags are therefore a matter of guessing (or guessing again). A tool like https://2cyr.com/decode/ may come useful.
+
+Currently, this extension supports conversion of the following charsets:
+* **windows-1251** (Russian, Bulgarian, Serbian Cyrillic, Macedonian)
+* **koi8-r** (Russian)
+* **koi8-u** (Ukrainian)
 
 ### Translation
 * Open your source folder
