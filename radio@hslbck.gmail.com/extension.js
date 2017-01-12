@@ -40,6 +40,26 @@ const StoppedIcon = "gser-icon-stopped-symbolic";
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
 
+// media keys
+const BUS_NAME = 'org.gnome.SettingsDaemon';
+const OBJECT_PATH = '/org/gnome/SettingsDaemon/MediaKeys';
+const MediaKeysInterface = '<node> \
+  <interface name="org.gnome.SettingsDaemon.MediaKeys"> \
+    <method name="ReleaseMediaPlayerKeys"> \
+      <arg name="application" type="s" direction="in"/> \
+    </method> \
+    <method name="GrabMediaPlayerKeys"> \
+      <arg name="application" type="s" direction="in"/> \
+      <arg name="time" type="u" direction="in"/> \
+    </method> \
+    <signal name="MediaPlayerKeyPressed"> \
+      <arg type="s"/> \
+      <arg type="s"/> \
+    </signal> \
+  </interface> \
+</node>';
+const MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
+
 const RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
     Extends: PanelMenu.Button,
@@ -226,18 +246,14 @@ const RadioMenuButton = new Lang.Class({
     },
 
     _registerMediaKeys: function() {
-        this.proxy = Gio.DBusProxy.new_sync(Gio.bus_get_sync(Gio.BusType.SESSION, null),
-                                        Gio.DBusProxyFlags.NONE,
-                                        null,
-                                        'org.gnome.SettingsDaemon',
-                                        '/org/gnome/SettingsDaemon/MediaKeys',
-                                        'org.gnome.SettingsDaemon.MediaKeys',
-                                        null);
-        this.proxy.call_sync('GrabMediaPlayerKeys',
-                         GLib.Variant.new('(su)', 'Music'),
-                         Gio.DBusCallFlags.NONE,
-                         -1,
-                            null);
+        this.proxy = new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
+                                    Lang.bind(this, function(proxy, error) {
+                                        if (error) {
+                                            global.log(error.message);
+                                            return;
+                                        }
+                                    }));
+        this.proxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
         this.proxyId = this.proxy.connect('g-signal', Lang.bind(this, this._handleMediaKeys));
     },
 
