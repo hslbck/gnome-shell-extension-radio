@@ -1,10 +1,10 @@
 /**
  * Convert encoding to unicode
  *
- * Supported charsets: windows-1251 windows-1252 windows-1253 koi8-r koi8-u
+ * Supported charsets: windows-1251 windows-1252 windows-1253 windows-1257 koi8-r koi8-u
  * source for windows-1251 koi8-r and koi8-u: http://xpoint.ru/know-how/JavaScript/PoleznyieFunktsii?38#PerekodirovkaIzWindows1251IKOI
  *
- * windows-1252 and windows-1253 added by nielsrune
+ * windows-1252 windows-1253 and windows-1257 added by nielsrune
 **/
 function convertToUnicode(enc, str) {
     let res = "";
