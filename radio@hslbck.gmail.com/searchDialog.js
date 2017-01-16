@@ -59,7 +59,7 @@ const SearchDialog = new Lang.Class({
         this.setInitialKeyFocus(this._searchEntryText);
 
         let searchButton = new St.Button({
-            style_class: 'custom-search-button',
+            style_class: 'button custom-search-button',
             label: _("Search"),
             can_focus: true,
             reactive: true
