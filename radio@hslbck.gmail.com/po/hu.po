@@ -1,8 +1,5 @@
-# Hungarian translation for gnome-shell-extension-radio.
-# Copyright (C) 2014 - 2016 hslbck.
+# Copyright (C) 2016 Balázs Úr <urbalazs@gmail.com>
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
-#
-# Balázs Úr <urbalazs@gmail.com>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"

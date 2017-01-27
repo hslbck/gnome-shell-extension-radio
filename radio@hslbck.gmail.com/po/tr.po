@@ -1,3 +1,5 @@
+# Copyright (C) 2015 Ahmet Sezgin Duran <marjinalist1@gmail.com>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"

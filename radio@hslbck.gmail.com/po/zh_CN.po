@@ -1,9 +1,5 @@
-# Chinese translations for  package
-#  软件包的简体中文翻译.
-# Copyright (C) 2015 THE 'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the  package.
-# gmg <gmg137@live.com>, 2015.
-#
+# Copyright (C) 2015 gmg137 <gmg137@live.com>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
