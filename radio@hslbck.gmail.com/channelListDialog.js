@@ -1,3 +1,7 @@
+/*
+    Copyright (C) 2014-2016 hslbck <hslbck@gmail.com>
+    This file is distributed under the same license as the gnome-shell-extension-radio package.
+*/
 const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;

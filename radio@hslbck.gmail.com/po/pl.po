@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-02-08 16:39+0100\n"
+"POT-Creation-Date: 2017-02-12 18:07+0100\n"
 "PO-Revision-Date: 2016-11-21 21:35+0100\n"
 "Last-Translator: Piotr Komur <pkomur@gmail.com>\n"
 "Language-Team: \n"
@@ -18,81 +18,81 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: extension.js:154
-msgid "Favourites"
-msgstr "Ulubione"
-
-#: extension.js:160
-msgid "Channels"
-msgstr "Lista stacji"
-
-#: channelListDialog.js:49
-msgid "List of Channels"
-msgstr "Lista stacji"
-
-#: channelListDialog.js:53
-msgid "Manage your radio stations"
-msgstr "Zarządzanie stacjami radiowymi"
-
-#: channelListDialog.js:89 addChannelDialog.js:100 searchDialog.js:103
-msgid "Cancel"
-msgstr "Anuluj"
-
-#: channelListDialog.js:96
-msgid "Delete"
-msgstr "Usuń"
-
-#: channelListDialog.js:104
-msgid "Edit"
-msgstr "Edytuj"
-
-#: channelListDialog.js:113
-msgid "Play"
-msgstr "Odtwarzaj"
-
-#: addChannelDialog.js:38
-msgid "Channel Name"
-msgstr "Nazwa stacji"
-
-#: addChannelDialog.js:57
-msgid "Stream Address"
-msgstr "Adres strumienia"
-
-#: addChannelDialog.js:76
-msgid "Charset (optional)"
-msgstr ""
-
-#: addChannelDialog.js:105 searchDialog.js:109
-msgid "Add"
-msgstr "Dodaj"
-
-#: searchDialog.js:42
-msgid "Browse "
-msgstr "Przeglądaj"
-
-#: searchDialog.js:63
-msgid "Search"
-msgstr "Szukaj"
-
-#: searchDialog.js:146
-msgid "No radio station found!"
-msgstr "Nie znaleziono stacji!"
-
-#: searchDialog.js:149
-msgid "Server returned status code"
-msgstr "Serwer zwrócił kod statusu"
-
-#: searchDialog.js:154
-msgid "Search input was empty!"
-msgstr "Nie podano nazwy stacji!"
-
-#: prefs.js:40
+#: prefs.js:44
 msgid "Show title notifications"
 msgstr "Pokazuj powiadomienia"
 
-#: prefs.js:56
+#: prefs.js:60
 msgid "Enable Play/Stop Media Keys"
 msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
+
+#: channelListDialog.js:53
+msgid "List of Channels"
+msgstr "Lista stacji"
+
+#: channelListDialog.js:57
+msgid "Manage your radio stations"
+msgstr "Zarządzanie stacjami radiowymi"
+
+#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: channelListDialog.js:100
+msgid "Delete"
+msgstr "Usuń"
+
+#: channelListDialog.js:108
+msgid "Edit"
+msgstr "Edytuj"
+
+#: channelListDialog.js:117
+msgid "Play"
+msgstr "Odtwarzaj"
+
+#: addChannelDialog.js:44
+msgid "Channel Name"
+msgstr "Nazwa stacji"
+
+#: addChannelDialog.js:63
+msgid "Stream Address"
+msgstr "Adres strumienia"
+
+#: addChannelDialog.js:82
+msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:111 searchDialog.js:114
+msgid "Add"
+msgstr "Dodaj"
+
+#: extension.js:160
+msgid "Favourites"
+msgstr "Ulubione"
+
+#: extension.js:166
+msgid "Channels"
+msgstr "Lista stacji"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Przeglądaj"
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Szukaj"
+
+#: searchDialog.js:151
+msgid "No radio station found!"
+msgstr "Nie znaleziono stacji!"
+
+#: searchDialog.js:154
+msgid "Server returned status code"
+msgstr "Serwer zwrócił kod statusu"
+
+#: searchDialog.js:159
+msgid "Search input was empty!"
+msgstr "Nie podano nazwy stacji!"
 
 #~ msgid "Use Media Keys"
 #~ msgstr "Użyj przycisków sterowania"
