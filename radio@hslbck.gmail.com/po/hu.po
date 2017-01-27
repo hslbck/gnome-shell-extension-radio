@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:08+0100\n"
+"POT-Creation-Date: 2017-02-08 16:39+0100\n"
 "PO-Revision-Date: 2016-10-15 00:07+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian \n"
@@ -17,13 +17,13 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Címértesítések megjelenítése"
+#: extension.js:154
+msgid "Favourites"
+msgstr "Kedvencek"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
+#: extension.js:160
+msgid "Channels"
+msgstr "Csatornák"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -65,14 +65,6 @@ msgstr ""
 msgid "Add"
 msgstr "Hozzáadás"
 
-#: extension.js:134
-msgid "Favourites"
-msgstr "Kedvencek"
-
-#: extension.js:140
-msgid "Channels"
-msgstr "Csatornák"
-
 #: searchDialog.js:42
 msgid "Browse "
 msgstr "Tallózás "
@@ -92,3 +84,11 @@ msgstr "A kiszolgáló által visszaadott állapotkód"
 #: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "A keresési bemenet üres volt!"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Címértesítések megjelenítése"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"

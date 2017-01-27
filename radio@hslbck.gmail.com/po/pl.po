@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:29+0100\n"
+"POT-Creation-Date: 2017-02-08 16:39+0100\n"
 "PO-Revision-Date: 2016-11-21 21:35+0100\n"
 "Last-Translator: Piotr Komur <pkomur@gmail.com>\n"
 "Language-Team: \n"
@@ -18,13 +18,13 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Pokazuj powiadomienia"
+#: extension.js:154
+msgid "Favourites"
+msgstr "Ulubione"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
+#: extension.js:160
+msgid "Channels"
+msgstr "Lista stacji"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -66,14 +66,6 @@ msgstr ""
 msgid "Add"
 msgstr "Dodaj"
 
-#: extension.js:134
-msgid "Favourites"
-msgstr "Ulubione"
-
-#: extension.js:140
-msgid "Channels"
-msgstr "Lista stacji"
-
 #: searchDialog.js:42
 msgid "Browse "
 msgstr "Przeglądaj"
@@ -93,6 +85,14 @@ msgstr "Serwer zwrócił kod statusu"
 #: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Nie podano nazwy stacji!"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Pokazuj powiadomienia"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
 
 #~ msgid "Use Media Keys"
 #~ msgstr "Użyj przycisków sterowania"

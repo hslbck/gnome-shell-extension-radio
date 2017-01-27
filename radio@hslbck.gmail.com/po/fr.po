@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:08+0100\n"
+"POT-Creation-Date: 2017-02-08 16:39+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Afficher les notifications du titre à l'écoute"
+#: extension.js:154
+msgid "Favourites"
+msgstr "Favoris"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Activer les touches démarrer/arrêter le multimedia"
+#: extension.js:160
+msgid "Channels"
+msgstr "Canaux"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -65,14 +65,6 @@ msgstr "Jeu de caractères (facultatif)"
 msgid "Add"
 msgstr "Ajouter"
 
-#: extension.js:134
-msgid "Favourites"
-msgstr "Favoris"
-
-#: extension.js:140
-msgid "Channels"
-msgstr "Canaux"
-
 #: searchDialog.js:42
 msgid "Browse "
 msgstr "Parcourir"
@@ -92,6 +84,14 @@ msgstr "Le serveur a renvoyé le code d'état"
 #: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Le texte saisi était vide !"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Afficher les notifications du titre à l'écoute"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Activer les touches démarrer/arrêter le multimedia"
 
 #~ msgid "Add Channel"
 #~ msgstr "Ajouter Canal"

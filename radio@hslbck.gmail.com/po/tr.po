@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:29+0100\n"
+"POT-Creation-Date: 2017-02-08 16:39+0100\n"
 "PO-Revision-Date: 2015-10-29 15:44+0100\n"
 "Last-Translator: Ahmet Sezgin Duran <marjinalist1@gmail.com>\n"
 "Language-Team: \n"
@@ -15,13 +15,13 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr ""
+#: extension.js:154
+msgid "Favourites"
+msgstr "Favoriler"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr ""
+#: extension.js:160
+msgid "Channels"
+msgstr "Kanallar"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -63,14 +63,6 @@ msgstr ""
 msgid "Add"
 msgstr "Ekle"
 
-#: extension.js:134
-msgid "Favourites"
-msgstr "Favoriler"
-
-#: extension.js:140
-msgid "Channels"
-msgstr "Kanallar"
-
 #: searchDialog.js:42
 msgid "Browse "
 msgstr ""
@@ -90,6 +82,14 @@ msgstr ""
 
 #: searchDialog.js:154
 msgid "Search input was empty!"
+msgstr ""
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr ""
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
 msgstr ""
 
 #~ msgid "Add Channel"

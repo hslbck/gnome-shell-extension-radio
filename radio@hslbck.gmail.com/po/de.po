@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:08+0100\n"
+"POT-Creation-Date: 2017-02-08 16:39+0100\n"
 "PO-Revision-Date: 2016-12-29 10:18+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
@@ -16,13 +16,13 @@ msgstr ""
 "X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Zeige Benachrichtigungen zu Titeln"
+#: extension.js:154
+msgid "Favourites"
+msgstr "Favoriten"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Play-/Stop-Steuerung über Medientasten"
+#: extension.js:160
+msgid "Channels"
+msgstr "Meine Sender"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -64,14 +64,6 @@ msgstr "Charset (optional)"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: extension.js:134
-msgid "Favourites"
-msgstr "Favoriten"
-
-#: extension.js:140
-msgid "Channels"
-msgstr "Meine Sender"
-
 #: searchDialog.js:42
 msgid "Browse "
 msgstr "Durchsuche"
@@ -91,6 +83,14 @@ msgstr "Server antwortete mit dem Statuscode"
 #: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Leere Sucheingabe!"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Zeige Benachrichtigungen zu Titeln"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Play-/Stop-Steuerung über Medientasten"
 
 #~ msgid "Browse directory"
 #~ msgstr "Durchsuche das Senderverzeichnis"

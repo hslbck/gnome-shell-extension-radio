@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:08+0100\n"
+"POT-Creation-Date: 2017-02-08 16:39+0100\n"
 "PO-Revision-Date: 2016-12-26 16:45+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
@@ -15,13 +15,13 @@ msgstr ""
 "X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:40
-msgid "Show title notifications"
-msgstr "Vis notifikationer"
+#: extension.js:154
+msgid "Favourites"
+msgstr "Favoritter"
 
-#: prefs.js:56
-msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper"
+#: extension.js:160
+msgid "Channels"
+msgstr "Kanaler"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -63,14 +63,6 @@ msgstr "Tegnsæt (valgfrit)"
 msgid "Add"
 msgstr "Tilføj"
 
-#: extension.js:134
-msgid "Favourites"
-msgstr "Favoritter"
-
-#: extension.js:140
-msgid "Channels"
-msgstr "Kanaler"
-
 #: searchDialog.js:42
 msgid "Browse "
 msgstr "Gennemse"
@@ -90,6 +82,14 @@ msgstr "Serveren returnerede statuskode"
 #: searchDialog.js:154
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Aktiver multimedieknapper"
 
 #~ msgid "Browse directory"
 #~ msgstr "Søg katalog"
