@@ -8,6 +8,8 @@
 Prerequisites: GStreamer plugins are installed
 ##### Using gnome shell extension webpage
 https://extensions.gnome.org/extension/836/internet-radio/
+##### Arch Linux
+Install [gnome-shell-extension-radio-git](https://aur.archlinux.org/packages/gnome-shell-extension-radio-git/) from [AUR](https://aur.archlinux.org).
 ##### Manual
 
 You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, available through `libglib` and `gettext`.
