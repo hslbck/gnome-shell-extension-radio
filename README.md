@@ -54,6 +54,7 @@ Currently, this extension supports conversion of the following charsets:
 nielsrune  
 X4lldux  
 zapashcanon  
+morealaz  
 ##### Translations
 Chinese: gmg137  
 Danish: nielsrune   
