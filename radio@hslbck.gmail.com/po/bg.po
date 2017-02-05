@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-shell-extension-radio 1.6\n"
+"Report-Msgid-Bugs-To: hslbck@gmail.com\n"
+"POT-Creation-Date: 2017-02-04 15:12+0100\n"
+"PO-Revision-Date: 2017-02-04 15:23+0100\n"
+"Last-Translator: Ivaylo Kuzev <ivkuzev@gmail.com>\n"
+"Language-Team: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 2.91.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: prefs.js:40
+msgid "Show title notifications"
+msgstr "Показване на известия"
+
+#: prefs.js:56
+msgid "Enable Play/Stop Media Keys"
+msgstr "Включване на мултимедийни бутони"
+
+#: addChannelDialog.js:38
+msgid "Channel Name"
+msgstr "Име на радиостанция"
+
+#: addChannelDialog.js:57
+msgid "Stream Address"
+msgstr "Адрес поток"
+
+#: addChannelDialog.js:76
+msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:100 searchDialog.js:103 channelListDialog.js:89
+msgid "Cancel"
+msgstr "Отмени"
+
+#: addChannelDialog.js:105 searchDialog.js:109
+msgid "Add"
+msgstr "Добавяне"
+
+#: extension.js:154
+msgid "Favourites"
+msgstr "Любими"
+
+#: extension.js:160
+msgid "Channels"
+msgstr "Радиостанции"
+
+#: searchDialog.js:42
+msgid "Browse "
+msgstr "Browse "
+
+#: searchDialog.js:63
+msgid "Search"
+msgstr "Търсене"
+
+#: searchDialog.js:146
+msgid "No radio station found!"
+msgstr "Няма намерена радиостанция!"
+
+#: searchDialog.js:149
+msgid "Server returned status code"
+msgstr "Сървърът е върнал код на състоянието"
+
+#: searchDialog.js:154
+msgid "Search input was empty!"
+msgstr "Празна заявка за търсене!"
+
+#: channelListDialog.js:49
+msgid "List of Channels"
+msgstr "Списък на радиостанции"
+
+#: channelListDialog.js:53
+msgid "Manage your radio stations"
+msgstr "Управление на радиостанции"
+
+#: channelListDialog.js:96
+msgid "Delete"
+msgstr "Изтриване"
+
+#: channelListDialog.js:104
+msgid "Edit"
+msgstr "Редактиране"
+
+# "Воспроизвести" не влазит в меню, поэтому так
+#: channelListDialog.js:113
+msgid "Play"
+msgstr "Възпроизвеждане"
