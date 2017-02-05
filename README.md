@@ -56,6 +56,7 @@ X4lldux
 zapashcanon  
 morealaz  
 ##### Translations
+Bulgarian: ivoarch  
 Chinese: gmg137  
 Danish: nielsrune   
 French: narzb, BridouZ, thony8  
