@@ -15,11 +15,11 @@ msgstr ""
 
 #: prefs.js:40
 msgid "Show title notifications"
-msgstr "Zeige Titel Benachrichtigungen"
+msgstr "Zeige Benachrichtigungen zu Titeln"
 
 #: prefs.js:56
 msgid "Enable Play/Stop Media Keys"
-msgstr "Play/Stop Steuerung über Medientasten"
+msgstr "Play-/Stop-Steuerung über Medientasten"
 
 #: channelListDialog.js:49
 msgid "List of Channels"
@@ -27,7 +27,7 @@ msgstr "Senderliste"
 
 #: channelListDialog.js:53
 msgid "Manage your radio stations"
-msgstr "Verwalten sie hier ihre Senderliste"
+msgstr "Verwalten Sie hier Ihre Senderliste"
 
 #: channelListDialog.js:89 addChannelDialog.js:100 searchDialog.js:103
 msgid "Cancel"
@@ -39,7 +39,7 @@ msgstr "Löschen"
 
 #: channelListDialog.js:104
 msgid "Edit"
-msgstr "Editieren"
+msgstr "Bearbeiten"
 
 #: channelListDialog.js:113
 msgid "Play"
@@ -51,7 +51,7 @@ msgstr "Sendername"
 
 #: addChannelDialog.js:57
 msgid "Stream Address"
-msgstr "Stream Adresse"
+msgstr "Stream-Adresse"
 
 #: addChannelDialog.js:76
 msgid "Charset (optional)"
@@ -83,7 +83,7 @@ msgstr "Es wurde kein Radiosender gefunden!"
 
 #: searchDialog.js:149
 msgid "Server returned status code"
-msgstr "Server antwortete mit dem status code"
+msgstr "Server antwortete mit dem Statuscode"
 
 #: searchDialog.js:154
 msgid "Search input was empty!"
