@@ -60,6 +60,7 @@ Bulgarian: ivoarch
 Chinese: gmg137  
 Danish: nielsrune   
 French: narzb, BridouZ, thony8  
+German: hslbck, bezcitu  
 Hungarian: urbalazs  
 Polish: pkomur  
 Russian: stmc  
