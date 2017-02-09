@@ -31,7 +31,7 @@ endif
 INSTALLBASE := $(INSTALLBASE)/share/gnome-shell/extensions
 INSTALL_DIR := $(INSTALLBASE)/$(UUID)
 
-default: build clean
+default: build
 
 $(BUILD_DIR):
 	mkdir -p $@

@@ -16,8 +16,8 @@ You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, ava
 
 * Download source from github (clone repository or download zip)
 * From the `gnome-shell-extension-radio` directory:
-  * For a user only installation: `make && make install`
-  * For a system-wide installation: `make && sudo make install DESTDIR=/`
+  * For a user only installation: `make install`
+  * For a system-wide installation: `sudo make install DESTDIR=/`
 * Reload the shell using X: Press `Alt+F2` write `r` and press `Enter`  
 * Enable via GNOME Tweak Tool
 
@@ -47,7 +47,7 @@ Currently, this extension supports conversion of the following charsets:
 
 ### Translation
 * Open your source folder
-* Run `make build` in your source directory
+* Run `make` in your source directory
 * The file `radio@hslbck.gmail.com.pot` should be created in the `po` folder
 
 ### Credits
