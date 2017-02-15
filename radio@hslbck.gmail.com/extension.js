@@ -244,33 +244,45 @@ const RadioMenuButton = new Lang.Class({
                 this._registerMediaKeys();
             }
             else {
-                if (this.proxyId) {
-                    this.proxy.disconnect(this.proxyId);
-                }
+                this._disconnectMediaKeys();
             }
         }));
     },
 
     _registerMediaKeys: function() {
-        this.proxy = new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
-                                    Lang.bind(this, function(proxy, error) {
-                                        if (error) {
-                                            global.log(error.message);
-                                            return;
-                                        }
-                                    }));
-        this.proxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
-        this.proxyId = this.proxy.connect('g-signal', Lang.bind(this, this._handleMediaKeys));
+        if (this._mediaKeysProxy) {
+                this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
+        }
+        else {
+            new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
+                                        Lang.bind(this, function(proxy, error) {
+                                            if (error) {
+                                                global.log(error.message);
+                                                return;
+                                            }
+                                            this._mediaKeysProxy = proxy;
+                                            this._proxyId = this._mediaKeysProxy.connectSignal('MediaPlayerKeyPressed', Lang.bind(this, this._mediaKeysPressed));
+                                            this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
+                                        }));
+
+        }
     },
 
-    // handle play/stop media key events
-    _handleMediaKeys: function(proxy, sender, signal, parameters) {
-        if (signal != 'MediaPlayerKeyPressed') {
-            global.log ('Received an unexpected signal \'%s\' from media player'.format(signal));
-            return;
-        }
+     _disconnectMediaKeys: function() {
+         if (this._mediaKeysProxy) {
+             this._mediaKeysProxy.ReleaseMediaPlayerKeysRemote("GSE Radio");
+             if (this._proxyId) {
+                 this._mediaKeysProxy.disconnectSignal(this._proxyId);
+             }
+             this._proxyId = 0;
+             this._mediaKeysProxy = null;
+         }
+     },
 
-        let key = parameters.get_child_value(1).get_string()[0];
+    // handle play/stop media key events
+    _mediaKeysPressed: function(sender, signal, parameters) {
+        let [app, key] = parameters;
+        // global.log("Received key: " + _key);
         if (key == 'Play') {
             if (!this.isPlaying) {
                 this._start();
@@ -468,9 +480,6 @@ const RadioMenuButton = new Lang.Class({
             timeoutId = 0;
         }
         Player.disconnectSourceBus();
-        if (this.proxyId) {
-            this.proxy.disconnect(this.proxyId);
-        }
     	this.parent();
     }
 });
@@ -493,6 +502,7 @@ function disable() {
     // stop playing before destruction
     // affects lock screen
     radioMenu._stop();
+    radioMenu._disconnectMediaKeys();
     radioMenu.destroy();
 }
 
