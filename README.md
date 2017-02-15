@@ -1,46 +1,30 @@
 ## GNOME Shell Extension Radio
 
-A GNOME Shell extension for listening to internet radio streams. Current version support GNOME Shell 3.18, 3.20 and 3.22 - for older versions see releases.
+A GNOME Shell extension for listening to internet radio streams.
 
 ![screenshot01]
 
-### Installation
-
-Prerequisites: GStreamer plugins are installed.
-
-##### Using GNOME Shell extension webpage
-
-Install from [GNOME Shell extension webpage].
-
-##### Arch Linux
-
-Install [gnome-shell-extension-radio-git] from [AUR].
-
-##### Manual
-
-You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, available through `libglib` and `gettext`, then:
-
-* download source from github (clone repository or download zip)
-* from the `gnome-shell-extension-radio` directory:
-  * for a user only installation: `make && make install`
-  * for a system-wide installation: `make && sudo make install DESTDIR=/`
-* reload the shell using X:
-  * press <kbd>Alt</kbd>+<kbd>F2</kbd>
-  * write <kbd>r</kbd>
-  * press <kbd>Enter</kbd>
-* enable via GNOME Tweak Tool
-
 ### Features
 
+* support GNOME Shell 3.18, 3.20 and 3.22 - for older versions see [releases]
 * manage radio station list
 * mark stations as favourites
 * middle click to start/stop last played station
-* cyrillic tag support (see below)
+* cyrillic tag support - see [charset conversion]
 * support for multimedia keys
   * play / stop
   * next / prev cycles through the channels list
 * support for title notification
 * search online radio directory [radio-browser]
+
+### Installation
+
+Prerequisites: GStreamer plugins are installed.
+
+* install from your distribution's package manager:
+  * ArchLinux: [gnome-shell-extension-radio-git] from [AUR]
+* install from [GNOME Shell extension website]
+* build and install from source, see [CONTRIBUTING]
 
 ### Charset convertion
 
@@ -68,8 +52,10 @@ Copyright (C) 2014-2017 hslbck.
 
 GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYING] for details.
 
+[releases]: https://github.com/hslbck/gnome-shell-extension-radio/releases
+[charset conversion]: #charset-convertion
 [screenshot01]: https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png
-[GNOME Shell extension webpage]: https://extensions.gnome.org/extension/836/internet-radio/
+[GNOME Shell extension website]: https://extensions.gnome.org/extension/836/internet-radio/
 [gnome-shell-extension-radio-git]: https://aur.archlinux.org/packages/gnome-shell-extension-radio-git/
 [AUR]: https://aur.archlinux.org
 [radio-browser]: https://www.radio-browser.info/
