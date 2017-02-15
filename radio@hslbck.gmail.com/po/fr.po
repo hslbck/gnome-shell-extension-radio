@@ -1,8 +1,13 @@
+# Copyright (C) 2016 Léo Andrès <leo@ndrs.fr>
+# Copyright (C) 2016 Anthony Chaput <thonyc4@openmailbox.org>
+# Copyright (C) 2016 Berthault Justin <justin.berthault@zaclys.net>
+# Copyright (C) 2016 Quentin Daem <quentin.daem@gmail.com>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:08+0100\n"
+"POT-Creation-Date: 2017-02-12 18:07+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -12,79 +17,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: prefs.js:40
+#: prefs.js:44
 msgid "Show title notifications"
 msgstr "Afficher les notifications du titre à l'écoute"
 
-#: prefs.js:56
+#: prefs.js:60
 msgid "Enable Play/Stop Media Keys"
 msgstr "Activer les touches démarrer/arrêter le multimedia"
 
-#: channelListDialog.js:49
+#: channelListDialog.js:53
 msgid "List of Channels"
 msgstr "Liste des Canaux"
 
-#: channelListDialog.js:53
+#: channelListDialog.js:57
 msgid "Manage your radio stations"
 msgstr "Gérer vos stations de radio"
 
-#: channelListDialog.js:89 addChannelDialog.js:100 searchDialog.js:103
+#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
 msgid "Cancel"
 msgstr "Annuler"
 
-#: channelListDialog.js:96
+#: channelListDialog.js:100
 msgid "Delete"
 msgstr "Supprimer"
 
-#: channelListDialog.js:104
+#: channelListDialog.js:108
 msgid "Edit"
 msgstr "Modifier"
 
-#: channelListDialog.js:113
+#: channelListDialog.js:117
 msgid "Play"
 msgstr "Lecture"
 
-#: addChannelDialog.js:38
+#: addChannelDialog.js:44
 msgid "Channel Name"
 msgstr "Nom du Canal"
 
-#: addChannelDialog.js:57
+#: addChannelDialog.js:63
 msgid "Stream Address"
 msgstr "Adresse du flux"
 
-#: addChannelDialog.js:76
+#: addChannelDialog.js:82
 msgid "Charset (optional)"
 msgstr "Jeu de caractères (facultatif)"
 
-#: addChannelDialog.js:105 searchDialog.js:109
+#: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
 msgstr "Ajouter"
 
-#: extension.js:134
+#: extension.js:160
 msgid "Favourites"
 msgstr "Favoris"
 
-#: extension.js:140
+#: extension.js:166
 msgid "Channels"
 msgstr "Canaux"
 
-#: searchDialog.js:42
+#: searchDialog.js:47
 msgid "Browse "
 msgstr "Parcourir"
 
-#: searchDialog.js:63
+#: searchDialog.js:68
 msgid "Search"
 msgstr "Rechercher"
 
-#: searchDialog.js:146
+#: searchDialog.js:151
 msgid "No radio station found!"
 msgstr "Aucune station de radio trouvée"
 
-#: searchDialog.js:149
+#: searchDialog.js:154
 msgid "Server returned status code"
 msgstr "Le serveur a renvoyé le code d'état"
 
-#: searchDialog.js:154
+#: searchDialog.js:159
 msgid "Search input was empty!"
 msgstr "Le texte saisi était vide !"
 

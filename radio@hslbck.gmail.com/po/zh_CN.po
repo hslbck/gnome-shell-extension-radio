@@ -1,16 +1,12 @@
-# Chinese translations for  package
-#  软件包的简体中文翻译.
-# Copyright (C) 2015 THE 'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the  package.
-# gmg <gmg137@live.com>, 2015.
-#
+# Copyright (C) 2015 gmg137 <gmg137@live.com>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2016-12-30 05:29+0100\n"
+"POT-Creation-Date: 2017-02-12 18:07+0100\n"
 "PO-Revision-Date: 2015-10-17 23:21+0800\n"
-"Last-Translator: gmg <gmg137@live.com>\n"
+"Last-Translator: gmg137 <gmg137@live.com>\n"
 "Language-Team: Chinese (simplified)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -18,80 +14,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.2\n"
 
-#: prefs.js:40
+#: prefs.js:44
 msgid "Show title notifications"
 msgstr ""
 
-#: prefs.js:56
+#: prefs.js:60
 msgid "Enable Play/Stop Media Keys"
 msgstr ""
 
-#: channelListDialog.js:49
+#: channelListDialog.js:53
 msgid "List of Channels"
 msgstr "频道列表"
 
-#: channelListDialog.js:53
+#: channelListDialog.js:57
 msgid "Manage your radio stations"
 msgstr "管理你的电台"
 
-#: channelListDialog.js:89 addChannelDialog.js:100 searchDialog.js:103
+#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
 msgid "Cancel"
 msgstr "取消"
 
-#: channelListDialog.js:96
+#: channelListDialog.js:100
 msgid "Delete"
 msgstr "删除"
 
-#: channelListDialog.js:104
+#: channelListDialog.js:108
 msgid "Edit"
 msgstr ""
 
-#: channelListDialog.js:113
+#: channelListDialog.js:117
 msgid "Play"
 msgstr "播放"
 
-#: addChannelDialog.js:38
+#: addChannelDialog.js:44
 msgid "Channel Name"
 msgstr "频道名称"
 
-#: addChannelDialog.js:57
+#: addChannelDialog.js:63
 msgid "Stream Address"
 msgstr "流地址"
 
-#: addChannelDialog.js:76
+#: addChannelDialog.js:82
 msgid "Charset (optional)"
 msgstr ""
 
-#: addChannelDialog.js:105 searchDialog.js:109
+#: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
 msgstr "添加"
 
-#: extension.js:134
+#: extension.js:160
 msgid "Favourites"
 msgstr "喜欢"
 
-#: extension.js:140
+#: extension.js:166
 msgid "Channels"
 msgstr "频道"
 
-#: searchDialog.js:42
+#: searchDialog.js:47
 msgid "Browse "
 msgstr ""
 
-#: searchDialog.js:63
+#: searchDialog.js:68
 msgid "Search"
 msgstr ""
 
-#: searchDialog.js:146
+#: searchDialog.js:151
 #, fuzzy
 msgid "No radio station found!"
 msgstr "管理你的电台"
 
-#: searchDialog.js:149
+#: searchDialog.js:154
 msgid "Server returned status code"
 msgstr ""
 
-#: searchDialog.js:154
+#: searchDialog.js:159
 msgid "Search input was empty!"
 msgstr ""
 

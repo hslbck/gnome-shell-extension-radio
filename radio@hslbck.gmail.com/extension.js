@@ -1,4 +1,10 @@
 /* jshint esnext:true */
+/*
+    Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016 x4lldux <x4lldux@vectron.io>
+    Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
+    This file is distributed under the same license as the gnome-shell-extension-radio package.
+*/
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const MessageTray = imports.ui.messageTray;
