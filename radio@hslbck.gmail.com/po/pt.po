@@ -1,0 +1,90 @@
+# Copyright (C) 2017 Léo Andrès <leo@ndrs.fr>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-shell-extension-radio 1.6\n"
+"Report-Msgid-Bugs-To: hslbck@gmail.com\n"
+"POT-Creation-Date: 2017-02-16 01:54+0100\n"
+"PO-Revision-Date: 2016-06-15 22:05+0200\n"
+"Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: prefs.js:44
+msgid "Show title notifications"
+msgstr "Mostrar notificações de título"
+
+#: prefs.js:60
+msgid "Enable Play/Stop Media Keys"
+msgstr "Ative os botões iniciar / parar o multimedia"
+
+#: channelListDialog.js:53
+msgid "List of Channels"
+msgstr "Lista dos Canais"
+
+#: channelListDialog.js:57
+msgid "Manage your radio stations"
+msgstr "Gerir as suas estações de rádio"
+
+#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: channelListDialog.js:100
+msgid "Delete"
+msgstr "Suprimir"
+
+#: channelListDialog.js:108
+msgid "Edit"
+msgstr "Modificar"
+
+#: channelListDialog.js:117
+msgid "Play"
+msgstr "Tocar"
+
+#: addChannelDialog.js:44
+msgid "Channel Name"
+msgstr "Nome do Canal"
+
+#: addChannelDialog.js:63
+msgid "Stream Address"
+msgstr "Endereço de fluxo"
+
+#: addChannelDialog.js:82
+msgid "Charset (optional)"
+msgstr "Charset (facultativo)"
+
+#: addChannelDialog.js:111 searchDialog.js:114
+msgid "Add"
+msgstr "Adicionar"
+
+#: extension.js:160
+msgid "Favourites"
+msgstr "Favoritos"
+
+#: extension.js:166
+msgid "Channels"
+msgstr "Canais"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Folhear"
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Buscar"
+
+#: searchDialog.js:151
+msgid "No radio station found!"
+msgstr "Nenhuma estação de rádio encontrada"
+
+#: searchDialog.js:154
+msgid "Server returned status code"
+msgstr "O servidor retornou o código de status"
+
+#: searchDialog.js:159
+msgid "Search input was empty!"
+msgstr "A entrada de pesquisa estava vazia!"
