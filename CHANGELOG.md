@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - Charset field in channel dialog
 - Change log
-- Bulgarian translation
+- Bulgarian and Spanish translations
 
 ### Changed
 - French, German and Danish translations updated
