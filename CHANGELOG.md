@@ -9,9 +9,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - Charset field in channel dialog
 - Change log
+- Bulgarian, Portuguese and Spanish translations
 
 ### Changed
 - French, German and Danish translations updated
+- Documentation, licenses and copyright holders updated
+- Theme improvements
+
+### Fixed
+- Makefile
+- Media key handling updated to fix logout
 
 ## [1.4] - 2016-12-29
 

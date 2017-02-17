@@ -1,3 +1,8 @@
+/*
+    Copyright (C) 2015-2016 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
+    This file is distributed under the same license as the gnome-shell-extension-radio package.
+*/
 /**
  * player.js
  * setup the pipeline, start and stop the stream

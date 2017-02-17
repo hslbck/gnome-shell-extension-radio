@@ -1,3 +1,9 @@
+/*
+    Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
+    Copyright (C) 2014-2016 hslbck <hslbck@gmail.com>
+    This file is distributed under the same license as the gnome-shell-extension-radio package.
+*/
+
 const Clutter = imports.gi.Clutter;
 const Lang = imports.lang;
 const St = imports.gi.St;

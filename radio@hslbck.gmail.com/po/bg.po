@@ -1,58 +1,62 @@
-# Copyright (C) 2015 gmg137 <gmg137@live.com>
+# Copyright (C) 2017 Ivaylo Kuzev <ivkuzev@gmail.com>
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2017-02-12 18:07+0100\n"
-"PO-Revision-Date: 2015-10-17 23:21+0800\n"
-"Last-Translator: gmg137 <gmg137@live.com>\n"
-"Language-Team: Chinese (simplified)\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2017-02-04 15:23+0100\n"
+"Last-Translator: Ivaylo Kuzev <ivkuzev@gmail.com>\n"
+"Language-Team: \n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Gtranslator 2.91.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: prefs.js:44
 msgid "Show title notifications"
-msgstr ""
+msgstr "Показване на известия"
 
 #: prefs.js:60
 msgid "Enable Play/Stop Media Keys"
-msgstr ""
+msgstr "Включване на мултимедийни бутони"
 
 #: channelListDialog.js:53
 msgid "List of Channels"
-msgstr "频道列表"
+msgstr "Списък на радиостанции"
 
 #: channelListDialog.js:57
 msgid "Manage your radio stations"
-msgstr "管理你的电台"
+msgstr "Управление на радиостанции"
 
 #: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
 msgid "Cancel"
-msgstr "取消"
+msgstr "Отмени"
 
 #: channelListDialog.js:100
 msgid "Delete"
-msgstr "删除"
+msgstr "Изтриване"
 
 #: channelListDialog.js:108
 msgid "Edit"
-msgstr ""
+msgstr "Редактиране"
 
+# "Воспроизвести" не влазит в меню, поэтому так
 #: channelListDialog.js:117
 msgid "Play"
-msgstr "播放"
+msgstr "Възпроизвеждане"
 
 #: addChannelDialog.js:44
 msgid "Channel Name"
-msgstr "频道名称"
+msgstr "Име на радиостанция"
 
 #: addChannelDialog.js:63
 msgid "Stream Address"
-msgstr "流地址"
+msgstr "Адрес поток"
 
 #: addChannelDialog.js:82
 msgid "Charset (optional)"
@@ -60,36 +64,32 @@ msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
-msgstr "添加"
+msgstr "Добавяне"
 
 #: extension.js:160
 msgid "Favourites"
-msgstr "喜欢"
+msgstr "Любими"
 
 #: extension.js:166
 msgid "Channels"
-msgstr "频道"
+msgstr "Радиостанции"
 
 #: searchDialog.js:47
 msgid "Browse "
-msgstr ""
+msgstr "Browse "
 
 #: searchDialog.js:68
 msgid "Search"
-msgstr ""
+msgstr "Търсене"
 
 #: searchDialog.js:151
-#, fuzzy
 msgid "No radio station found!"
-msgstr "管理你的电台"
+msgstr "Няма намерена радиостанция!"
 
 #: searchDialog.js:154
 msgid "Server returned status code"
-msgstr ""
+msgstr "Сървърът е върнал код на състоянието"
 
 #: searchDialog.js:159
 msgid "Search input was empty!"
-msgstr ""
-
-#~ msgid "Add Channel"
-#~ msgstr "添加频道"
+msgstr "Празна заявка за търсене!"

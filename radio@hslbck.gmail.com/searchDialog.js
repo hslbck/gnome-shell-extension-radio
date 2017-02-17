@@ -1,3 +1,8 @@
+/*
+    Copyright (C) 2016-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016 Léo Andrès <leo@ndrs.fr>
+    This file is distributed under the same license as the gnome-shell-extension-radio package.
+*/
 const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
@@ -59,7 +64,7 @@ const SearchDialog = new Lang.Class({
         this.setInitialKeyFocus(this._searchEntryText);
 
         let searchButton = new St.Button({
-            style_class: 'custom-search-button',
+            style_class: 'button custom-search-button',
             label: _("Search"),
             can_focus: true,
             reactive: true

@@ -1,3 +1,7 @@
+/*
+    Copyright (C) 2016 hslbck <hslbck@gmail.com>
+    This file is distributed under the same license as the gnome-shell-extension-radio package.
+*/
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
