@@ -1,6 +1,4 @@
 ## GNOME Shell Extension Radio
-* Extension for listening to internet radio streams
-* Supports GNOME Shell 3.18, 3.20 and 3.22 (older versions see releases)
 
 A GNOME Shell extension for listening to internet radio streams.
 
@@ -20,10 +18,6 @@ A GNOME Shell extension for listening to internet radio streams.
 * search online radio directory [radio-browser]
 
 ### Installation
-Prerequisites: GStreamer plugins are installed
-##### Using gnome shell extension webpage
-https://extensions.gnome.org/extension/836/internet-radio/
-##### Manual
 
 Prerequisites: GStreamer plugins are installed.
 
@@ -33,7 +27,6 @@ Prerequisites: GStreamer plugins are installed.
 * build and install from source, see [CONTRIBUTING]
 
 ### Charset convertion
-Radio station streams may include tags (track artist and title).
 
 Radio station streams may include tags - track artist and title.
 
@@ -44,25 +37,19 @@ A specific source charset can optionally be set upon adding or editing each chan
 Unfortunately, charsets cannot be reliably determined automatically. Finding the right source charset for a channel's tags are therefore a matter of guessing - or guessing again. A tool like [2cyr/decode] may come useful.
 
 Currently, this extension supports conversion of the following charsets:
-* **windows-1251** - Russian, Bulgarian, Serbian Cyrillic, Macedonian
+
+* **windows-1251** - Russian, Bulgarian, Serbian Cyrillic and Macedonian
 * **windows-1252** - Western European / Latin 1
 * **windows-1253** - Greek
 * **windows-1257** - Baltic
 * **koi8-r** - Russian
 * **koi8-u** - Ukrainian
 
-### Translation
-* Open your source folder
-* Run `make build` in your source directory
-* The file `radio@hslbck.gmail.com.pot` should be created in the `po` folder
-
 ### Contributing
 
 See [CONTRIBUTING].
 
 ### License
-GNOME Shell Extension Radio  
-Copyright (C) 2014 - 2017  hslbck
 
 Copyright (C) 2014-2017 hslbck.
 
