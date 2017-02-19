@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Charset field in channel dialog
 - Change log
 - Bulgarian, Portuguese and Spanish translations
+- Charset support for Western European, Greek and Baltic
 
 ### Changed
 - French, German and Danish translations updated
