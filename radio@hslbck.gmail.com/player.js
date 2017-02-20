@@ -85,6 +85,15 @@ function onGstMessage(message) {
                     case "windows-1251":
                         tag = Convert.convertToUnicode("windows-1251", tmp.slice(5));
                         break;
+                    case "windows-1252":
+                        tag = Convert.convertToUnicode("windows-1252", tmp.slice(5));
+                        break;
+                    case "windows-1253":
+                        tag = Convert.convertToUnicode("windows-1253", tmp.slice(5));
+                        break;
+                    case "windows-1257":
+                        tag = Convert.convertToUnicode("windows-1257", tmp.slice(5));
+                        break;
                     case "koi8-r":
                         tag = Convert.convertToUnicode("koi8-r", tmp.slice(5));
                         break;

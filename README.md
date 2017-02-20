@@ -39,6 +39,9 @@ Unfortunately, charsets cannot be reliably determined automatically. Finding the
 Currently, this extension supports conversion of the following charsets:
 
 * **windows-1251** - Russian, Bulgarian, Serbian Cyrillic and Macedonian
+* **windows-1252** - Western European / Latin 1
+* **windows-1253** - Greek
+* **windows-1257** - Baltic
 * **koi8-r** - Russian
 * **koi8-u** - Ukrainian
 
