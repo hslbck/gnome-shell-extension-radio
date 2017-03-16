@@ -151,7 +151,7 @@ const RadioMenuButton = new Lang.Class({
         this.menu.box.add_child(this.tagListBox);
 
         // Connect the Button
-        this.playButton.connect('clicked', Lang.bind(this, this._start));
+        this.playButton.connect('clicked', Lang.bind(this, this._onPlayButtonClicked));
 
         // PopupSeparator
         let separator1 = new PopupMenu.PopupSeparatorMenuItem();
@@ -295,11 +295,7 @@ const RadioMenuButton = new Lang.Class({
         let [app, key] = parameters;
         // global.log("Received key: " + _key);
         if (key == 'Play') {
-            if (!this.isPlaying) {
-                this._start();
-            } else {
-                this._stop();
-            }
+            this._onPlayButtonClicked();
         }
         else if (key == 'Stop') {
             this._stop();
@@ -317,11 +313,16 @@ const RadioMenuButton = new Lang.Class({
         // left click === 1, middle click === 2, right click === 3
         if (event.get_button() === 2) {
             this.menu.close();
-            if (!this.isPlaying) {
-                this._start();
-            } else {
-                this._stop();
-            }
+            this._onPlayButtonClicked();
+        }
+    },
+
+    // play button clicked
+    _onPlayButtonClicked: function () {
+        if (!this.isPlaying) {
+            this._start();
+        } else {
+            this._stop();
         }
     },
 
@@ -339,7 +340,6 @@ const RadioMenuButton = new Lang.Class({
         this._checkTitle(Interval);
         this.isPlaying = true;
         this.playButton.set_child(this.stopIcon);
-        this.playButton.connect('clicked', Lang.bind(this, this._stop));
     },
 
     // stop streaming
@@ -350,7 +350,6 @@ const RadioMenuButton = new Lang.Class({
         this.tagListLabel.set_text("");
         this.isPlaying = false;
         this.playButton.set_child(this.playIcon);
-        this.playButton.connect('clicked', Lang.bind(this, this._start));
     },
 
     // change channel to previous on the list
@@ -385,7 +384,9 @@ const RadioMenuButton = new Lang.Class({
 
     // change radio station
     _changeChannel: function (cha) {
-        this._stop();
+        if (this.isPlaying) {
+            this._stop();
+        }
         Player.changeChannel(cha);
         this.lastPlayedChannel = cha;
         Io.write(this.helperChannelList, this.lastPlayedChannel);
