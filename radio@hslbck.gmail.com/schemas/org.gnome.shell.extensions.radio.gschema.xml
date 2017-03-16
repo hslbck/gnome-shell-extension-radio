@@ -11,5 +11,10 @@
             <summary>Title Notification</summary>
             <description>Show title notifications</description>
         </key>
+        <key name="show-title-in-panel" type="b">
+            <default>false</default>
+            <summary>Show title in panel</summary>
+            <description>Show the title notification in the top panel</description>
+        </key>
     </schema>
 </schemalist>

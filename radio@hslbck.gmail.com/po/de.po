@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-02-12 18:07+0100\n"
-"PO-Revision-Date: 2016-12-29 10:18+0100\n"
+"POT-Creation-Date: 2017-03-16 21:25+0100\n"
+"PO-Revision-Date: 2017-03-16 21:24+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,11 +16,15 @@ msgstr ""
 "X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:44
+#: prefs.js:46
 msgid "Show title notifications"
 msgstr "Zeige Benachrichtigungen zu Titeln"
 
-#: prefs.js:60
+#: prefs.js:62
+msgid "Show title notification in the panel"
+msgstr "Zeige Sender- und Titelinformationen im Panel"
+
+#: prefs.js:78
 msgid "Enable Play/Stop Media Keys"
 msgstr "Play-/Stop-Steuerung über Medientasten"
 
@@ -64,14 +68,6 @@ msgstr "Charset (optional)"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: extension.js:160
-msgid "Favourites"
-msgstr "Favoriten"
-
-#: extension.js:166
-msgid "Channels"
-msgstr "Meine Sender"
-
 #: searchDialog.js:47
 msgid "Browse "
 msgstr "Durchsuche"
@@ -91,6 +87,14 @@ msgstr "Server antwortete mit dem Statuscode"
 #: searchDialog.js:159
 msgid "Search input was empty!"
 msgstr "Leere Sucheingabe!"
+
+#: radioMenu.js:161
+msgid "Favourites"
+msgstr "Favoriten"
+
+#: radioMenu.js:167
+msgid "Channels"
+msgstr "Meine Sender"
 
 #~ msgid "Browse directory"
 #~ msgstr "Durchsuche das Senderverzeichnis"

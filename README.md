@@ -15,6 +15,7 @@ A GNOME Shell extension for listening to internet radio streams.
   * play / stop
   * next / prev cycles through the channels list
 * support for title notification
+* show title informations in the panel  
 * search online radio directory [radio-browser]
 
 ### Installation

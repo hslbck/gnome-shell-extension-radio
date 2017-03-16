@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2016 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016 - 2017 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const GObject = imports.gi.GObject;
@@ -12,6 +12,7 @@ const Lang = imports.lang;
 
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
+const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 
 const RadioPrefsWidget = new GObject.Class({
     Name: 'RadioPrefsWidget',
@@ -34,6 +35,7 @@ const RadioPrefsWidget = new GObject.Class({
         });
 
         this._addTitleNotificationsSwitch();
+        this._addShowTitleInPanelSwitch();
         this._addEnableMediaKeysSwitch();
 
         this.add(this._widgets.box);
@@ -52,6 +54,22 @@ const RadioPrefsWidget = new GObject.Class({
 
         this._widgets.titleNotificationsSwitch.connect('notify::active', Lang.bind(this, function(button) {
             this._settings.set_boolean(SETTING_TITLE_NOTIFICATION, button.get_active());
+        }));
+    },
+
+    _addShowTitleInPanelSwitch: function() {
+        let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
+        let label = new Gtk.Label({label: _("Show title notification in the panel"),
+                                        xalign: 0});
+        this._widgets.titleInPanelSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)});
+
+        hbox.pack_start(label, true, true, 0);
+        hbox.add(this._widgets.titleInPanelSwitch);
+
+        this._widgets.box.add(hbox);
+
+        this._widgets.titleInPanelSwitch.connect('notify::active', Lang.bind(this, function(button) {
+            this._settings.set_boolean(SETTING_SHOW_TITLE_IN_PANEL, button.get_active());
         }));
     },
 
