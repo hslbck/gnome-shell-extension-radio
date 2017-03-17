@@ -344,8 +344,10 @@ const RadioMenuButton = new Lang.Class({
 
     // stop streaming
     _stop: function () {
-        Player.stop();
-        TitleMenu.removeFromPanel();
+        if (this.isPlaying) {
+            Player.stop();
+            TitleMenu.removeFromPanel();
+        }
         this.radioIcon.set_icon_name(StoppedIcon);
         this.tagListLabel.set_text("");
         this.isPlaying = false;
@@ -384,9 +386,7 @@ const RadioMenuButton = new Lang.Class({
 
     // change radio station
     _changeChannel: function (cha) {
-        if (this.isPlaying) {
-            this._stop();
-        }
+        this._stop();
         Player.changeChannel(cha);
         this.lastPlayedChannel = cha;
         Io.write(this.helperChannelList, this.lastPlayedChannel);
@@ -492,7 +492,7 @@ const RadioMenuButton = new Lang.Class({
         }
     },
 
-    _destroy: function () {
+    destroy: function () {
         if (timeoutId !== 0) {
             Mainloop.source_remove(timeoutId);
             timeoutId = 0;
