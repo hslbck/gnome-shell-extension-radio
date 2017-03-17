@@ -27,5 +27,5 @@ function disable() {
     // affects lock screen
     radioMenu._stop();
     radioMenu._disconnectMediaKeys();
-    radioMenu._destroy();
+    radioMenu.destroy();
 }
