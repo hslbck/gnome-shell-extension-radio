@@ -6,20 +6,25 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [1.6] - 2017-03-28
+
 ### Added
 - Charset field in channel dialog
 - Change log
 - Bulgarian, Portuguese and Spanish translations
 - Charset support for Western European, Greek and Baltic
+- Show title info in panel
 
 ### Changed
 - French, German and Danish translations updated
 - Documentation, licenses and copyright holders updated
 - Theme improvements
+- Update to GNOME 3.24
 
 ### Fixed
 - Makefile
 - Media key handling updated to fix logout
+- Stop button issue #27
 
 ## [1.4] - 2016-12-29
 
