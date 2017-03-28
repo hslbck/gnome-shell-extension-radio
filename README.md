@@ -6,7 +6,7 @@ A GNOME Shell extension for listening to internet radio streams.
 
 ### Features
 
-* support GNOME Shell 3.18, 3.20 and 3.22 - for older versions see [releases]
+* support GNOME Shell 3.18, 3.20, 3.22 and 3.24 - for older versions see [releases]
 * manage radio station list
 * mark stations as favourites
 * middle click to start/stop last played station
