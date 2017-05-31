@@ -74,7 +74,10 @@ function onGstMessage(message) {
     switch (message.type) {
         case Gst.MessageType.ELEMENT:
              if (Gstpbutils.is_missing_plugin_message(message)) {
-                 global.log(Gstpbutils.missing_plugin_message_get_description(message));
+                 let pluginDescription = Gstpbutils.missing_plugin_message_get_description(message);
+                 MyE.radioMenu._stop();
+                 MyE.radioMenu.playLabel.set_text("Missing plugin");
+                 global.log("Gstreamer plugin missing for " + pluginDescription);
              }
              break;
         case Gst.MessageType.TAG:
