@@ -231,7 +231,9 @@ const ChannelListDialogItem = new Lang.Class({
                 this._favouriteIcon.set_icon_name(FavouriteEnabledIcon);
                 channel.setFavourite(true);
                 MyE.radioMenu._updateChannel(channel);
+                MyE.radioMenu._destroyMenuItems();
                 MyE.radioMenu._addToFavourites(channel);
+                MyE.radioMenu._buildMenuItems();
             }
         }));
         this._icons.set_child(this._favouriteIcon);

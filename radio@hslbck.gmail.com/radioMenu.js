@@ -72,7 +72,7 @@ const RadioMenuButton = new Lang.Class({
     Extends: PanelMenu.Button,
 
     _init: function () {
-    	this.parent(0.0, Extension.name);
+    	this.parent(0.0, Extension.metadata.name);
 
         // read settings
         this._settings = Convenience.getSettings();
@@ -157,79 +157,12 @@ const RadioMenuButton = new Lang.Class({
         let separator1 = new PopupMenu.PopupSeparatorMenuItem();
         this.menu.addMenuItem(separator1);
 
-        // Channel SubMenus
-        this.favourites = new PopupMenu.PopupSubMenuMenuItem(_("Favourites"));
-
         // Init and add Channels to the PopupMenu
         this.helperChannelList = [];
         this._initChannels(this.chas);
 
-        this.allChannels = new PopupMenu.PopupMenuItem(_("Channels"));
-        this.allChannels.connect('activate', Lang.bind(this, function () {
-            this.channelListDialog = new ChannelListDialog.ChannelListDialog(this);
-            for (var i in this.helperChannelList) {
-                this.channelListDialog._createChannelListItem(this.helperChannelList[i]);
-            }
-            this.channelListDialog.open();
-        }));
-
-        // Add PopupMenuItems to the menu
-        this.menu.addMenuItem(this.favourites);
-        this.menu.addMenuItem(this.allChannels);
-
-        // PopupSeparator
-        let separator2 = new PopupMenu.PopupSeparatorMenuItem();
-        this.menu.addMenuItem(separator2);
-
-        // settings, add channel and search item
-        this.settingsItem = new PopupMenu.PopupBaseMenuItem({
-            reactive: false,
-            can_focus: false
-        });
-        this.settingsIcon = new St.Icon({
-            icon_name: 'preferences-system-symbolic'
-        });
-        this.settingsButton = new St.Button({
-            style_class: 'system-menu-action',
-            can_focus: true
-        });
-        this.settingsButton.set_child(this.settingsIcon);
-        this.settingsButton.connect('clicked', Lang.bind(this, function() {
-            this.menu.close();
-            this._openPrefs();
-        }));
-
-        this.addChannelIcon = new St.Icon({
-            icon_name: 'list-add-symbolic'
-        });
-        this.addChannelButton = new St.Button({
-            style_class: 'system-menu-action',
-            can_focus: true
-        });
-        this.addChannelButton.set_child(this.addChannelIcon);
-        this.addChannelButton.connect('clicked', Lang.bind(this, function () {
-            this.menu.close();
-            this.addChannelDialog = new AddChannelDialog.AddChannelDialog();
-            this.addChannelDialog.open();
-        }));
-
-        this.searchIcon = new St.Icon({
-            icon_name: 'system-search-symbolic'
-        });
-        this.searchButton = new St.Button({
-            style_class: 'system-menu-action',
-            can_focus: true
-        });
-        this.searchButton.set_child(this.searchIcon);
-        this.searchButton.connect('clicked', Lang.bind(this, function () {
-            this.menu.close();
-            this.searchDialog = new SearchDialog.SearchDialog();
-            this.searchDialog.open();
-        }));
-        this.settingsItem.actor.add(this.settingsButton, {expand: true, x_fill: false});
-        this.settingsItem.actor.add(this.addChannelButton, {expand: true, x_fill: false});
-        this.settingsItem.actor.add(this.searchButton, {expand: true, x_fill: false});
-        this.menu.addMenuItem(this.settingsItem);
+        // create buttons for settings, list, add and search
+        this._buildMenuItems();
 
         this.isPlaying = false;
         this.actor.connect('button-press-event', Lang.bind(this, this._middleClick));
@@ -405,18 +338,113 @@ const RadioMenuButton = new Lang.Class({
         }
     },
 
-    // adds radio station to the favourites submenu
     _addToFavourites: function (cha) {
         let item = new PopupMenu.PopupMenuItem(cha.getName());
         item.connect('activate', Lang.bind(this, function () {
             this._changeChannel(cha);
         }));
-        this.favourites.menu.addMenuItem(item);
+        this.menu.addMenuItem(item);
+    },
+
+    _buildMenuItems: function() {
+        this._buildMenuItemButtons();
+
+        // PopupSeparator
+        this.separator2 = new PopupMenu.PopupSeparatorMenuItem();
+        this.menu.addMenuItem(this.separator2);
+
+        // settings, add channel and search item
+        this.settingsItem = new PopupMenu.PopupBaseMenuItem({
+            reactive: false,
+            can_focus: false
+        });
+        this.settingsItem.actor.add(this.settingsButton, {expand: true, x_fill: false});
+        this.settingsItem.actor.add(this.channelListButton, {expand: true, x_fill: false});
+        this.settingsItem.actor.add(this.addChannelButton, {expand: true, x_fill: false});
+        this.settingsItem.actor.add(this.searchButton, {expand: true, x_fill: false});
+        this.menu.addMenuItem(this.settingsItem);
+    },
+
+    _destroyMenuItems: function() {
+        this._destroyMenuItemButtons();
+        this.separator2.destroy();
+        this.settingsItem.destroy();
+    },
+
+    _buildMenuItemButtons: function() {
+        this.settingsIcon = new St.Icon({
+            icon_name: 'preferences-system-symbolic'
+        });
+        this.settingsButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.settingsButton.set_child(this.settingsIcon);
+        this.settingsButton.connect('clicked', Lang.bind(this, function() {
+            this.menu.close();
+            this._openPrefs();
+        }));
+
+        this.channelListIcon = new St.Icon({
+            icon_name: 'view-list-symbolic'
+        });
+        this.channelListButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.channelListButton.set_child(this.channelListIcon);
+        this.channelListButton.connect('clicked', Lang.bind(this, function () {
+            this.menu.close();
+            this.channelListDialog = new ChannelListDialog.ChannelListDialog(this);
+            for (var i in this.helperChannelList) {
+                this.channelListDialog._createChannelListItem(this.helperChannelList[i]);
+            }
+            this.channelListDialog.open();
+        }));
+
+        this.addChannelIcon = new St.Icon({
+            icon_name: 'list-add-symbolic'
+        });
+        this.addChannelButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.addChannelButton.set_child(this.addChannelIcon);
+        this.addChannelButton.connect('clicked', Lang.bind(this, function () {
+            this.menu.close();
+            this.addChannelDialog = new AddChannelDialog.AddChannelDialog();
+            this.addChannelDialog.open();
+        }));
+
+        this.searchIcon = new St.Icon({
+            icon_name: 'system-search-symbolic'
+        });
+        this.searchButton = new St.Button({
+            style_class: 'system-menu-action',
+            can_focus: true
+        });
+        this.searchButton.set_child(this.searchIcon);
+        this.searchButton.connect('clicked', Lang.bind(this, function () {
+            this.menu.close();
+            this.searchDialog = new SearchDialog.SearchDialog();
+            this.searchDialog.open();
+        }));
+    },
+
+    _destroyMenuItemButtons: function() {
+        this.settingsIcon.destroy();
+        this.settingsButton.destroy();
+        this.channelListIcon.destroy();
+        this.channelListButton.destroy();
+        this.addChannelIcon.destroy();
+        this.addChannelButton.destroy();
+        this.searchIcon.destroy();
+        this.searchButton.destroy();
     },
 
     // get Favourites Menu Item
     _removeFromFavourites: function (cha) {
-        let items = this.favourites.menu._getMenuItems();
+        let items = this.menu._getMenuItems();
         for (var i in items) {
             let item = items[i];
             if (item.label) {
@@ -426,7 +454,6 @@ const RadioMenuButton = new Lang.Class({
             }
         }
     },
-
 
     // create a new Channel
     _addChannel: function (cha) {

@@ -15,7 +15,7 @@ const TitleMenuButton = new Lang.Class({
     Extends: PanelMenu.Button,
 
     _init: function() {
-        this.parent(0.0, Extension.name);
+        this.parent(0.0, Extension.metadata.name);
 
         this._titleInfo = new St.Label({
             y_align: Clutter.ActorAlign.CENTER,
