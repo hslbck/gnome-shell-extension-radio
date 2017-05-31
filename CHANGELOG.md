@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Changed
+- Layout: removed submenu for favourite -> inital show, new button for the channellist
+
+### Fixed
+- Mising plugin message
+
 ## [1.6] - 2017-03-28
 
 ### Added
