@@ -124,6 +124,11 @@ const SearchDialog = new Lang.Class({
     _add: function() {
         if (_selectedChannel != null) {
             MyE.radioMenu._addChannel(_selectedChannel);
+            if (_selectedChannel.getFavourite()) {
+                MyE.radioMenu._destroyMenuItems();
+                MyE.radioMenu._addToFavourites(_selectedChannel);
+                MyE.radioMenu._buildMenuItems();
+            }
         }
         this.close();
     },

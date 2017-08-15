@@ -339,11 +339,24 @@ const RadioMenuButton = new Lang.Class({
     },
 
     _addToFavourites: function (cha) {
-        let item = new PopupMenu.PopupMenuItem(cha.getName());
-        item.connect('activate', Lang.bind(this, function () {
-            this._changeChannel(cha);
-        }));
-        this.menu.addMenuItem(item);
+        let contains = this._containsChannel(cha);
+        if (contains) {
+            let item = new PopupMenu.PopupMenuItem(cha.getName());
+            item.connect('activate', Lang.bind(this, function () {
+                this._changeChannel(cha);
+            }));
+            this.menu.addMenuItem(item);
+        }
+    },
+
+    _containsChannel: function (cha) {
+        let contains = false;
+        for (let i = 0; i < this.helperChannelList.length; i++) {
+            if (this.helperChannelList[i].getName() === cha.getName()) {
+                contains = true;
+            }
+        }
+        return contains;
     },
 
     _buildMenuItems: function() {
