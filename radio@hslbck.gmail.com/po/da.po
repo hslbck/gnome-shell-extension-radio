@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-03-19 15:07+0100\n"
+"POT-Creation-Date: 2017-08-25 17:37+0300\n"
 "PO-Revision-Date: 2017-03-19 15:07+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
@@ -14,6 +14,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.12\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: prefs.js:48
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
+
+#: prefs.js:64
+msgid "Show title notification in the panel"
+msgstr "Vis notifikationer i panelet"
+
+#: prefs.js:80
+msgid "Enable Play/Stop Media Keys"
+msgstr "Aktiver multimedieknapper"
+
+#: prefs.js:96
+msgid "Show volume adjustment slider in menu"
+msgstr ""
 
 #: channelListDialog.js:53
 msgid "List of Channels"
@@ -55,18 +71,6 @@ msgstr "Tegnsæt (valgfrit)"
 msgid "Add"
 msgstr "Tilføj"
 
-#: prefs.js:46
-msgid "Show title notifications"
-msgstr "Vis notifikationer"
-
-#: prefs.js:62
-msgid "Show title notification in the panel"
-msgstr "Vis notifikationer i panelet"
-
-#: prefs.js:78
-msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper"
-
 #: searchDialog.js:47
 msgid "Browse "
 msgstr "Gennemse"
@@ -75,25 +79,23 @@ msgstr "Gennemse"
 msgid "Search"
 msgstr "Søg"
 
-#: searchDialog.js:151
+#: searchDialog.js:156
 msgid "No radio station found!"
 msgstr "Ingen radiostationer fundet!"
 
-#: searchDialog.js:154
+#: searchDialog.js:159
 msgid "Server returned status code"
 msgstr "Serveren returnerede statuskode"
 
-#: searchDialog.js:159
+#: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
 
-#: radioMenu.js:161
-msgid "Favourites"
-msgstr "Favoritter"
+#~ msgid "Favourites"
+#~ msgstr "Favoritter"
 
-#: radioMenu.js:167
-msgid "Channels"
-msgstr "Kanaler"
+#~ msgid "Channels"
+#~ msgstr "Kanaler"
 
 #~ msgid "Browse directory"
 #~ msgstr "Søg katalog"

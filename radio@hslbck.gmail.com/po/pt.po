@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-02-16 01:54+0100\n"
+"POT-Creation-Date: 2017-08-25 17:37+0300\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -13,13 +13,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: prefs.js:44
+#: prefs.js:48
 msgid "Show title notifications"
 msgstr "Mostrar notificações de título"
 
-#: prefs.js:60
+#: prefs.js:64
+#, fuzzy
+msgid "Show title notification in the panel"
+msgstr "Mostrar notificações de título"
+
+#: prefs.js:80
 msgid "Enable Play/Stop Media Keys"
 msgstr "Ative os botões iniciar / parar o multimedia"
+
+#: prefs.js:96
+msgid "Show volume adjustment slider in menu"
+msgstr ""
 
 #: channelListDialog.js:53
 msgid "List of Channels"
@@ -61,14 +70,6 @@ msgstr "Charset (facultativo)"
 msgid "Add"
 msgstr "Adicionar"
 
-#: extension.js:160
-msgid "Favourites"
-msgstr "Favoritos"
-
-#: extension.js:166
-msgid "Channels"
-msgstr "Canais"
-
 #: searchDialog.js:47
 msgid "Browse "
 msgstr "Folhear"
@@ -77,14 +78,20 @@ msgstr "Folhear"
 msgid "Search"
 msgstr "Buscar"
 
-#: searchDialog.js:151
+#: searchDialog.js:156
 msgid "No radio station found!"
 msgstr "Nenhuma estação de rádio encontrada"
 
-#: searchDialog.js:154
+#: searchDialog.js:159
 msgid "Server returned status code"
 msgstr "O servidor retornou o código de status"
 
-#: searchDialog.js:159
+#: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "A entrada de pesquisa estava vazia!"
+
+#~ msgid "Favourites"
+#~ msgstr "Favoritos"
+
+#~ msgid "Channels"
+#~ msgstr "Canais"

@@ -13,6 +13,7 @@ const Lang = imports.lang;
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
 const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
+const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 
 const RadioPrefsWidget = new GObject.Class({
     Name: 'RadioPrefsWidget',
@@ -37,6 +38,7 @@ const RadioPrefsWidget = new GObject.Class({
         this._addTitleNotificationsSwitch();
         this._addShowTitleInPanelSwitch();
         this._addEnableMediaKeysSwitch();
+	this._addShowVolumeAdjustmentSliderSwitch();
 
         this.add(this._widgets.box);
     },
@@ -86,6 +88,22 @@ const RadioPrefsWidget = new GObject.Class({
 
         this._widgets.mediaKeySwitch.connect('notify::active', Lang.bind(this, function(button) {
             this._settings.set_boolean(SETTING_USE_MEDIA_KEYS, button.get_active());
+        }));
+    },
+
+    _addShowVolumeAdjustmentSliderSwitch: function() {
+        let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
+        let label = new Gtk.Label({label: _("Show volume adjustment slider in menu"),
+                                        xalign: 0});
+        this._widgets.volumeAdjustmentSliderSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)});
+
+        hbox.pack_start(label, true, true, 0);
+        hbox.add(this._widgets.volumeAdjustmentSliderSwitch);
+
+        this._widgets.box.add(hbox);
+
+        this._widgets.volumeAdjustmentSliderSwitch.connect('notify::active', Lang.bind(this, function(button) {
+            this._settings.set_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, button.get_active());
         }));
     }
 });

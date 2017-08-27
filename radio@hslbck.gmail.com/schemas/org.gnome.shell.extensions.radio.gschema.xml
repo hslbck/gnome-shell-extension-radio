@@ -16,5 +16,15 @@
             <summary>Show title in panel</summary>
             <description>Show the title notification in the top panel</description>
         </key>
+        <key name="show-volume-adjustment-slider" type="b">
+            <default>false</default>
+            <summary>Show volume adjustment slider</summary>
+            <description>Show the volume adjustment slider in menu</description>
+        </key>
+        <key name="volume-level" type="d">
+            <default>1</default>
+            <summary>Volume level</summary>
+            <description>Output volume level</description>
+        </key>
     </schema>
 </schemalist>

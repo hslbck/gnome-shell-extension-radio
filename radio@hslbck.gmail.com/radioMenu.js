@@ -2,8 +2,10 @@
     Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 x4lldux <x4lldux@vectron.io>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
+    Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
+
 const St = imports.gi.St;
 const Main = imports.ui.main;
 const MessageTray = imports.ui.messageTray;
@@ -14,6 +16,7 @@ const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Shell = imports.gi.Shell;
+const Slider = imports.ui.slider;
 
 // import for timer
 const Mainloop = imports.mainloop;
@@ -46,6 +49,8 @@ const StoppedIcon = "gser-icon-stopped-symbolic";
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
 const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
+const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
+const SETTING_VOLUME_LEVEL = 'volume-level';
 
 // media keys
 const BUS_NAME = 'org.gnome.SettingsDaemon';
@@ -160,6 +165,11 @@ const RadioMenuButton = new Lang.Class({
         // Init and add Channels to the PopupMenu
         this.helperChannelList = [];
         this._initChannels(this.chas);
+	
+	// Add VolumeSliderBox to the PopupMenu on startup
+        if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
+		this._buildVolumeSlider(0);
+        }
 
         // create buttons for settings, list, add and search
         this._buildMenuItems();
@@ -191,6 +201,17 @@ const RadioMenuButton = new Lang.Class({
                 TitleMenu.removeFromPanel();
             }
         }));
+
+        // Volume slider setting change
+        this._settings.connect("changed::" + SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, Lang.bind(this, function() {
+            if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
+                this._buildVolumeSlider(2);
+            }
+            else {
+                this._destroyVolumeSlider();
+            }
+        }));
+
     },
 
     _registerMediaKeys: function() {
@@ -257,6 +278,10 @@ const RadioMenuButton = new Lang.Class({
         } else {
             this._stop();
         }
+    },
+
+    _onVolumeSliderValueChanged: function(slider, value, property){
+    	Player.setVolume(value);
     },
 
     // start streaming
@@ -357,6 +382,32 @@ const RadioMenuButton = new Lang.Class({
             }
         }
         return contains;
+    },
+
+    _buildVolumeSlider: function(menuItemOffset){
+	// Add volume slider separator
+	this.separator3 = new PopupMenu.PopupSeparatorMenuItem();
+	this.menu.addMenuItem(this.separator3, this.menu.numMenuItems - menuItemOffset);
+	
+	// Create volume slider box
+	this.volumeSliderBox = new PopupMenu.PopupBaseMenuItem();
+	this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
+	this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1/3));
+	this.volumeSliderBox.actor.add(this.volumeIcon);
+	this.volumeSliderBox.actor.add(this.volumeSlider.actor, { expand: true });
+	
+	// Connect sliders 'value-changed' handler
+        this.volumeSlider.connect('value-changed', Lang.bind(this, this._onVolumeSliderValueChanged));
+
+	// Add volume slider box 
+	this.menu.addMenuItem(this.volumeSliderBox,this.menu.numMenuItems - menuItemOffset);
+    },
+
+    _destroyVolumeSlider: function(){
+	this.separator3.destroy();
+	this.volumeIcon.destroy();
+	this.volumeSlider.actor.destroy();
+	this.volumeSliderBox.destroy();
     },
 
     _buildMenuItems: function() {

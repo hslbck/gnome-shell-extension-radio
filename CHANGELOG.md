@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- Volume slider
+
 ### Changed
 - Layout: removed submenu for favourite -> inital show, new button for the channellist
 
