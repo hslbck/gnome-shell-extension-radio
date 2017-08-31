@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-02-12 18:07+0100\n"
+"POT-Creation-Date: 2017-08-25 17:37+0300\n"
 "PO-Revision-Date: 2015-10-17 23:21+0800\n"
 "Last-Translator: gmg137 <gmg137@live.com>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -14,12 +14,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.2\n"
 
-#: prefs.js:44
+#: prefs.js:48
 msgid "Show title notifications"
 msgstr ""
 
-#: prefs.js:60
+#: prefs.js:64
+msgid "Show title notification in the panel"
+msgstr ""
+
+#: prefs.js:80
 msgid "Enable Play/Stop Media Keys"
+msgstr ""
+
+#: prefs.js:96
+msgid "Show volume adjustment slider in menu"
 msgstr ""
 
 #: channelListDialog.js:53
@@ -62,14 +70,6 @@ msgstr ""
 msgid "Add"
 msgstr "添加"
 
-#: extension.js:160
-msgid "Favourites"
-msgstr "喜欢"
-
-#: extension.js:166
-msgid "Channels"
-msgstr "频道"
-
 #: searchDialog.js:47
 msgid "Browse "
 msgstr ""
@@ -78,18 +78,24 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: searchDialog.js:151
+#: searchDialog.js:156
 #, fuzzy
 msgid "No radio station found!"
 msgstr "管理你的电台"
 
-#: searchDialog.js:154
+#: searchDialog.js:159
 msgid "Server returned status code"
 msgstr ""
 
-#: searchDialog.js:159
+#: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr ""
+
+#~ msgid "Favourites"
+#~ msgstr "喜欢"
+
+#~ msgid "Channels"
+#~ msgstr "频道"
 
 #~ msgid "Add Channel"
 #~ msgstr "添加频道"
