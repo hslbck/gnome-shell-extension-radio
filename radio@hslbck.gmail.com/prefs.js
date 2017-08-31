@@ -1,5 +1,6 @@
 /*
     Copyright (C) 2016 - 2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const GObject = imports.gi.GObject;

@@ -165,11 +165,6 @@ const RadioMenuButton = new Lang.Class({
         // Init and add Channels to the PopupMenu
         this.helperChannelList = [];
         this._initChannels(this.chas);
-	
-	// Add VolumeSliderBox to the PopupMenu on startup
-        if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
-		this._buildVolumeSlider(0);
-        }
 
         // create buttons for settings, list, add and search
         this._buildMenuItems();
@@ -384,39 +379,43 @@ const RadioMenuButton = new Lang.Class({
         return contains;
     },
 
-    _buildVolumeSlider: function(menuItemOffset){
-	// Add volume slider separator
-	this.separator3 = new PopupMenu.PopupSeparatorMenuItem();
-	this.menu.addMenuItem(this.separator3, this.menu.numMenuItems - menuItemOffset);
-	
-	// Create volume slider box
-	this.volumeSliderBox = new PopupMenu.PopupBaseMenuItem();
-	this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
-	this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1/3));
-	this.volumeSliderBox.actor.add(this.volumeIcon);
-	this.volumeSliderBox.actor.add(this.volumeSlider.actor, { expand: true });
-	
-	// Connect sliders 'value-changed' handler
+    _buildVolumeSlider: function(menuItemOffset) {
+        // Add volume slider separator
+        this.separator3 = new PopupMenu.PopupSeparatorMenuItem();
+        this.menu.addMenuItem(this.separator3, this.menu.numMenuItems - menuItemOffset);
+
+        // Create volume slider box
+        this.volumeSliderBox = new PopupMenu.PopupBaseMenuItem();
+        this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
+        this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1/3));
+        this.volumeSliderBox.actor.add(this.volumeIcon);
+        this.volumeSliderBox.actor.add(this.volumeSlider.actor, { expand: true });
+
+        // Connect sliders 'value-changed' handler
         this.volumeSlider.connect('value-changed', Lang.bind(this, this._onVolumeSliderValueChanged));
 
-	// Add volume slider box 
-	this.menu.addMenuItem(this.volumeSliderBox,this.menu.numMenuItems - menuItemOffset);
+        // Add volume slider box
+        this.menu.addMenuItem(this.volumeSliderBox,this.menu.numMenuItems - menuItemOffset);
     },
 
     _destroyVolumeSlider: function(){
-	this.separator3.destroy();
-	this.volumeIcon.destroy();
-	this.volumeSlider.actor.destroy();
-	this.volumeSliderBox.destroy();
+        this.separator3.destroy();
+        this.volumeIcon.destroy();
+        this.volumeSlider.actor.destroy();
+        this.volumeSliderBox.destroy();
     },
 
     _buildMenuItems: function() {
-        this._buildMenuItemButtons();
+        // Add VolumeSliderBox to the PopupMenu on startup
+        if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
+            this._buildVolumeSlider(0);
+        }
 
         // PopupSeparator
         this.separator2 = new PopupMenu.PopupSeparatorMenuItem();
         this.menu.addMenuItem(this.separator2);
 
+        this._buildMenuItemButtons();
         // settings, add channel and search item
         this.settingsItem = new PopupMenu.PopupBaseMenuItem({
             reactive: false,
@@ -433,6 +432,9 @@ const RadioMenuButton = new Lang.Class({
         this._destroyMenuItemButtons();
         this.separator2.destroy();
         this.settingsItem.destroy();
+        if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
+    		this._destroyVolumeSlider();
+        }
     },
 
     _buildMenuItemButtons: function() {

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-08-25 17:37+0300\n"
+"POT-Creation-Date: 2017-08-31 19:23+0200\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: prefs.js:48
+#: prefs.js:49
 msgid "Show title notifications"
 msgstr "Afficher les notifications du titre à l'écoute"
 
-#: prefs.js:64
+#: prefs.js:65
 #, fuzzy
 msgid "Show title notification in the panel"
 msgstr "Afficher les notifications du titre à l'écoute"
 
-#: prefs.js:80
+#: prefs.js:81
 msgid "Enable Play/Stop Media Keys"
 msgstr "Activer les touches démarrer/arrêter le multimedia"
 
-#: prefs.js:96
+#: prefs.js:97
 msgid "Show volume adjustment slider in menu"
 msgstr ""
 

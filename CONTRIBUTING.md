@@ -14,6 +14,8 @@ You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, ava
   * press <kbd>Alt</kbd>+<kbd>F2</kbd>
   * write <kbd>r</kbd>
   * press <kbd>Enter</kbd>
+* reload the extension on Wayland:
+    `gnome-shell-extension-tool -r radio@hslbck.gmail.com`  
 * enable via GNOME Tweak Tool
 
 ## Adding a new translation

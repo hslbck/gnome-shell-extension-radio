@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-08-25 17:37+0300\n"
+"POT-Creation-Date: 2017-08-31 19:23+0200\n"
 "PO-Revision-Date: 2016-10-15 00:07+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian \n"
@@ -17,20 +17,20 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:48
+#: prefs.js:49
 msgid "Show title notifications"
 msgstr "Címértesítések megjelenítése"
 
-#: prefs.js:64
+#: prefs.js:65
 #, fuzzy
 msgid "Show title notification in the panel"
 msgstr "Címértesítések megjelenítése"
 
-#: prefs.js:80
+#: prefs.js:81
 msgid "Enable Play/Stop Media Keys"
 msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
 
-#: prefs.js:96
+#: prefs.js:97
 msgid "Show volume adjustment slider in menu"
 msgstr ""
 
