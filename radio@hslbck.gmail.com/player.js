@@ -20,7 +20,7 @@ const MyE = Extension.imports.extension;
 const Convert = Extension.imports.convertCharset;
 const Convenience = Extension.imports.convenience;
 
-Gst.init(null, 0);
+Gst.init(null);
 
 let tag = "";
 let currentChannel;
@@ -32,7 +32,7 @@ let settings;
 
 const SETTING_VOLUME_LEVEL = 'volume-level';
 
-const Player = new Lang.Class({
+var Player = new Lang.Class({
     Name: 'Player',
 
     _init: function (channel) {

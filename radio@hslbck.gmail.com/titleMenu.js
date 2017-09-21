@@ -10,7 +10,7 @@ const Clutter = imports.gi.Clutter;
 const PanelMenu = imports.ui.panelMenu;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 
-const TitleMenuButton = new Lang.Class({
+var TitleMenuButton = new Lang.Class({
     Name: 'Title Button',
     Extends: PanelMenu.Button,
 

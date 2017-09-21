@@ -6,7 +6,7 @@
 */
 const Lang = imports.lang;
 
-const Channel = new Lang.Class({
+var Channel = new Lang.Class({
     Name: 'Channel',
 
     _init: function (name, uri, favourite, encoding) {

@@ -24,7 +24,7 @@ const _httpSession = new Soup.SessionSync();
 
 let oldChannel = null;
 
-const AddChannelDialog = new Lang.Class({
+var AddChannelDialog = new Lang.Class({
     Name: 'AddChannelDialog',
     Extends: ModalDialog.ModalDialog,
 

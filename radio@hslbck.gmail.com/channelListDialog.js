@@ -23,7 +23,7 @@ const FavouriteDisabledIcon = 'non-starred-symbolic';
 
 let _selectedChannel;
 
-const ChannelListDialog = new Lang.Class({
+var ChannelListDialog = new Lang.Class({
     Name: 'ChannelListDialog',
     Extends: ModalDialog.ModalDialog,
 

@@ -16,7 +16,7 @@ const SETTING_TITLE_NOTIFICATION = 'title-notification';
 const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 
-const RadioPrefsWidget = new GObject.Class({
+var RadioPrefsWidget = new GObject.Class({
     Name: 'RadioPrefsWidget',
     GTypeName: 'RadioPrefsWidget',
     Extends: Gtk.Grid,

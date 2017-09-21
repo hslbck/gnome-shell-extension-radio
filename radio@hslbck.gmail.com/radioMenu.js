@@ -72,7 +72,7 @@ const MediaKeysInterface = '<node> \
 </node>';
 const MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
 
-const RadioMenuButton = new Lang.Class({
+var RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
     Extends: PanelMenu.Button,
 
@@ -99,9 +99,10 @@ const RadioMenuButton = new Lang.Class({
         this.channelList = Io.read();
         this.chas = this.channelList.channels;
         this.lastPlayed = this.channelList.lastplayed;
+        let encoding = this.lastPlayed.hasOwnProperty('encoding') ? this.lastPlayed.encoding : null;
 
         // init last played channel
-        this.lastPlayedChannel = new Channel.Channel(this.lastPlayed.name, this.lastPlayed.address, false, this.lastPlayed.encoding);
+        this.lastPlayedChannel = new Channel.Channel(this.lastPlayed.name, this.lastPlayed.address, false, encoding);
 
         // init player
         this.player = new Player.Player(this.lastPlayedChannel);
@@ -349,7 +350,8 @@ const RadioMenuButton = new Lang.Class({
     // init channel and add channels to the PopupMenu
     _initChannels: function (chas) {
         for (var i in chas) {
-            let channel = new Channel.Channel(chas[i].name, chas[i].address, chas[i].favourite, chas[i].encoding);
+            let encoding = chas[i].hasOwnProperty('encoding') ? chas[i].encoding : null;
+            let channel = new Channel.Channel(chas[i].name, chas[i].address, chas[i].favourite, encoding);
             this.helperChannelList[i] = channel;
             if (chas[i].favourite) {
                 this._addToFavourites(channel);

@@ -24,7 +24,7 @@ _httpSession.user_agent = "GSE Radio";
 _httpSession.timeout = 10;
 let _selectedChannel;
 
-const SearchDialog = new Lang.Class({
+var SearchDialog = new Lang.Class({
     Name: 'SearchDialog',
     Extends: ModalDialog.ModalDialog,
 
