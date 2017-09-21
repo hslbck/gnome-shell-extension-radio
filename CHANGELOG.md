@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [7] - 2017-09-21
+
 ### Added
 - Volume slider
 
