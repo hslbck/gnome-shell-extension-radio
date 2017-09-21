@@ -64,6 +64,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[7]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v7
 [1.6]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.6
 [1.4]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.4
 [1.2]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.2
