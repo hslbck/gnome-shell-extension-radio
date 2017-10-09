@@ -27,6 +27,14 @@ Prerequisites: GStreamer plugins are installed.
 * install from [GNOME Shell extension website]
 * build and install from source, see [CONTRIBUTING]
 
+### Known issues
+
+On some hardware configurations `gnome-shell` freezes when started in Wayland session.
+This is believed to be caused by [GStreamer not initialising fully] before the extension tries using it.
+
+Removal of the `gstreamer-vaapi` package fixes this.
+
+
 ### Charset convertion
 
 Radio station streams may include tags - track artist and title.
@@ -61,6 +69,7 @@ GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYIN
 [screenshot01]: https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png
 [GNOME Shell extension website]: https://extensions.gnome.org/extension/836/internet-radio/
 [gnome-shell-extension-radio-git]: https://aur.archlinux.org/packages/gnome-shell-extension-radio-git/
+[GStreamer not initialising fully]: https://github.com/EasyScreenCast/EasyScreenCast/issues/118
 [AUR]: https://aur.archlinux.org
 [radio-browser]: https://www.radio-browser.info/
 [2cyr/decode]: https://2cyr.com/decode/
