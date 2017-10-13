@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2014-2016 hslbck <hslbck@gmail.com>
+    Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const Clutter = imports.gi.Clutter;
@@ -32,6 +32,7 @@ var ChannelListDialog = new Lang.Class({
             styleClass: 'nm-dialog'
         });
         this._buildLayout();
+        this._createChannelList();
     },
 
     _buildLayout: function () {
@@ -139,7 +140,7 @@ var ChannelListDialog = new Lang.Class({
     _delete: function () {
         let cha = _selectedChannel;
         MyE.radioMenu._deleteChannel(cha);
-        this.close();
+        this._itemBox.remove_child(cha.item.actor);
     },
 
     _edit: function () {
@@ -165,6 +166,13 @@ var ChannelListDialog = new Lang.Class({
 
         if (_selectedChannel) {
             _selectedChannel.item.actor.add_style_pseudo_class('selected');
+        }
+    },
+
+    _createChannelList: function () {
+        var channelList = MyE.radioMenu._getHelperChannelList();
+        for (var i in channelList) {
+            this._createChannelListItem(channelList[i]);
         }
     },
 

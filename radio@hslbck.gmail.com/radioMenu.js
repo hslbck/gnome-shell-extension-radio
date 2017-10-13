@@ -464,9 +464,6 @@ var RadioMenuButton = new Lang.Class({
         this.channelListButton.connect('clicked', Lang.bind(this, function () {
             this.menu.close();
             this.channelListDialog = new ChannelListDialog.ChannelListDialog(this);
-            for (var i in this.helperChannelList) {
-                this.channelListDialog._createChannelListItem(this.helperChannelList[i]);
-            }
             this.channelListDialog.open();
         }));
 
@@ -540,6 +537,10 @@ var RadioMenuButton = new Lang.Class({
                 Io.write(this.helperChannelList, this.lastPlayedChannel);
             }
         }
+    },
+
+    _getHelperChannelList: function() {
+            return this.helperChannelList;
     },
 
     // set new values for a specific channel
