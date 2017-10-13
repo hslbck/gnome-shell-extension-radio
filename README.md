@@ -6,17 +6,14 @@ A GNOME Shell extension for listening to internet radio streams.
 
 ### Features
 
-* support GNOME Shell 3.18, 3.20, 3.22 and 3.24 - for older versions see [releases]
-* manage radio station list
-* mark stations as favourites
+* support GNOME Shell 3.18, 3.20, 3.22, 3.24, 3.26 - for older versions see [releases]
+* manage internet radio streams
 * middle click to start/stop last played station
 * cyrillic tag support - see [charset conversion]
-* support for multimedia keys
-  * play / stop
-  * next / prev cycles through the channels list
-* support for title notification
-* show title informations in the panel  
+* support for multimedia keys: play / stop, cycle through stations via next / prev
+* show tags in the panel or via notification
 * search online radio directory [radio-browser]
+* separate volume slider
 
 ### Installation
 
@@ -29,13 +26,13 @@ Prerequisites: GStreamer plugins are installed.
 
 ### Known issues
 
-On some hardware configurations `gnome-shell` freezes when started in Wayland session.
+* Multimedia Keys not working with Wayland [#63]
+* On some hardware configurations `gnome-shell` freezes when started in Wayland session.
 This is believed to be caused by [GStreamer not initialising fully] before the extension tries using it.
-
 Removal of the `gstreamer-vaapi` package fixes this.
 
 
-### Charset convertion
+### Charset conversion
 
 Radio station streams may include tags - track artist and title.
 
@@ -65,7 +62,7 @@ Copyright (C) 2014-2017 hslbck.
 GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYING] for details.
 
 [releases]: https://github.com/hslbck/gnome-shell-extension-radio/releases
-[charset conversion]: #charset-convertion
+[charset conversion]: #charset-conversion
 [screenshot01]: https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png
 [GNOME Shell extension website]: https://extensions.gnome.org/extension/836/internet-radio/
 [gnome-shell-extension-radio-git]: https://aur.archlinux.org/packages/gnome-shell-extension-radio-git/
@@ -75,3 +72,4 @@ GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYIN
 [2cyr/decode]: https://2cyr.com/decode/
 [CONTRIBUTING]: ./CONTRIBUTING.md
 [COPYING]: ./COPYING
+[#63]: https://github.com/hslbck/gnome-shell-extension-radio/issues/63
