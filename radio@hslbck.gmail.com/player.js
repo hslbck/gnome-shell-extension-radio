@@ -25,7 +25,7 @@ Gst.init(null);
 let tag = "";
 let currentChannel;
 let pipeline;
-let source;
+var source;
 let sourceBus;
 let sourceBusId;
 let settings;
