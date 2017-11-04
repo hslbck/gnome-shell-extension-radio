@@ -30,6 +30,7 @@ Prerequisites: GStreamer plugins are installed.
 * On some hardware configurations `gnome-shell` freezes when started in Wayland session.
 This is believed to be caused by [GStreamer not initialising fully] before the extension tries using it.
 Removal of the `gstreamer-vaapi` package fixes this.
+  * E.g. affects Ubuntu 17.10 and Wayland where `gstreamer-vaapi` is installed by default
 
 
 ### Charset conversion
