@@ -105,7 +105,7 @@ var RadioMenuButton = new Lang.Class({
         this.lastPlayedChannel = new Channel.Channel(this.lastPlayed.name, this.lastPlayed.address, false, encoding);
 
         // init player
-        this.player = new Player.Player(this.lastPlayedChannel);
+        this.player = null;
 
         // Box for the Control Elements
         this.controlsBox = new St.BoxLayout({
@@ -277,19 +277,24 @@ var RadioMenuButton = new Lang.Class({
     },
 
     _onVolumeSliderValueChanged: function(slider, value, property){
-    	Player.setVolume(value);
+        if (this.player !== null) {
+            this.player._setVolume(value);
+        }
     },
 
     // start streaming
     _start: function () {
-        Player.start(this.lastPlayedChannel);
+        if (this.player === null) {
+            this.player = new Player.Player(this.lastPlayedChannel);
+        }
+        this.player._start();
         if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
             TitleMenu.addToPanel();
         }
 /*
         global.log("Source Bus Id: " + this.player._sourceBusId);
 */
-        this.playLabel.set_text(Player.getCurrentChannel().getName());
+        this.playLabel.set_text(this.player._getCurrentChannel().getName());
         this.radioIcon.set_icon_name(PlayingIcon);
         this._checkTitle(Interval);
         this.isPlaying = true;
@@ -298,8 +303,8 @@ var RadioMenuButton = new Lang.Class({
 
     // stop streaming
     _stop: function () {
-        if (this.isPlaying) {
-            Player.stop();
+        if (this.isPlaying && this.player !== null) {
+            this.player._stop();
             TitleMenu.removeFromPanel();
         }
         this.radioIcon.set_icon_name(StoppedIcon);
@@ -310,38 +315,44 @@ var RadioMenuButton = new Lang.Class({
 
     // change channel to previous on the list
     _prev: function () {
-        let currentChannel = Player.getCurrentChannel();
-        let channels = this.channelList.channels;
-        let nextChannel = channels[0];
-        for (var i=0; i < channels.length; i++) {
-           if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
-              if (i == 0) { i = channels.length; }
-              nextChannel = channels[i-1];
-              break;
-           }
+        if (this.player !== null) {
+            let currentChannel = this.player._getCurrentChannel();
+            let channels = this.channelList.channels;
+            let nextChannel = channels[0];
+            for (var i=0; i < channels.length; i++) {
+                if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
+                    if (i == 0) { i = channels.length; }
+                    nextChannel = channels[i-1];
+                    break;
+                }
+            }
+            this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
         }
-        this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
     },
 
     // change channel to next on the list
     _next: function () {
-        let currentChannel = Player.getCurrentChannel();
-        let channels = this.channelList.channels;
-        let nextChannel = channels[0];
-        for (var i=0; i < channels.length; i++) {
-           if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
-              if (i+1 == channels.length) { i=-1; }
-              nextChannel = channels[i+1];
-              break;
-           }
+        if (this.player !== null) {
+            let currentChannel = this.player._getCurrentChannel();
+            let channels = this.channelList.channels;
+            let nextChannel = channels[0];
+            for (var i=0; i < channels.length; i++) {
+                if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
+                    if (i+1 == channels.length) { i=-1; }
+                    nextChannel = channels[i+1];
+                    break;
+                }
+            }
+            this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
         }
-        this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
     },
 
     // change radio station
     _changeChannel: function (cha) {
         this._stop();
-        Player.changeChannel(cha);
+        if (this.player !== null) {
+            this.player._changeChannel(cha);
+        }
         this.lastPlayedChannel = cha;
         Io.write(this.helperChannelList, this.lastPlayedChannel);
         this._start();
@@ -564,10 +575,10 @@ var RadioMenuButton = new Lang.Class({
 
     // update Title label
     _setTagLabel: function () {
-        if (this.isPlaying) {
-            let tag = Player.getTag();
-            let tagWithLineBreaks = Player.getTagWithLineBreaks();
-            let channel = Player.getCurrentChannel().getName();
+        if (this.isPlaying && this.player !== null) {
+            let tag = this.player._getTag();
+            let tagWithLineBreaks = this.player._getTagWithLineBreaks();
+            let channel = this.player._getCurrentChannel().getName();
             this.tagListLabel.set_text(tagWithLineBreaks);
             this._enableTitleNotification(tagWithLineBreaks, channel);
             this._checkTitle(Interval);
@@ -593,7 +604,9 @@ var RadioMenuButton = new Lang.Class({
             Mainloop.source_remove(timeoutId);
             timeoutId = 0;
         }
-        Player.disconnectSourceBus();
+        if (this.player !== null) {
+            this.player._disconnectSourceBus();
+        }
     	this.parent();
     },
 
