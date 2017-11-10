@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- pt_BR translation
+
+### Changed
+- #70 delete channel is not closing the channellist window
+
+### Fixed
+- #75 fix extension on wayland and installed gstreamer-vaapi
+
 ## [7] - 2017-09-21
 
 ### Added
