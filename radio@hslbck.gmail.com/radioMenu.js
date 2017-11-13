@@ -53,7 +53,7 @@ const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 const SETTING_VOLUME_LEVEL = 'volume-level';
 
 // media keys
-const BUS_NAME = 'org.gnome.SettingsDaemon';
+const BUS_NAME = 'org.gnome.SettingsDaemon.MediaKeys';
 const OBJECT_PATH = '/org/gnome/SettingsDaemon/MediaKeys';
 const MediaKeysInterface = '<node> \
   <interface name="org.gnome.SettingsDaemon.MediaKeys"> \
