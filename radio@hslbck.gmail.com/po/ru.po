@@ -23,7 +23,6 @@ msgid "Show title notifications"
 msgstr "Показывать уведомления"
 
 #: prefs.js:65
-#, fuzzy
 msgid "Show title notification in the panel"
 msgstr "Показывать заголовок уведомления на панели"
 
