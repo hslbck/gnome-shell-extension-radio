@@ -1,11 +1,11 @@
-# Copyright (C) 2016 Stas Solovey <whats_up@tut.by>
+# Copyright (C) 2017 Stas Solovey <whats_up@tut.by>
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2017-08-31 19:23+0200\n"
-"PO-Revision-Date: 2016-11-29 00:08+0300\n"
+"PO-Revision-Date: 2017-11-13 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -23,9 +23,8 @@ msgid "Show title notifications"
 msgstr "Показывать уведомления"
 
 #: prefs.js:65
-#, fuzzy
 msgid "Show title notification in the panel"
-msgstr "Показывать уведомления"
+msgstr "Показывать заголовок уведомления на панели"
 
 #: prefs.js:81
 msgid "Enable Play/Stop Media Keys"
@@ -33,7 +32,7 @@ msgstr "Включить управление мультимедиа кнопк�
 
 #: prefs.js:97
 msgid "Show volume adjustment slider in menu"
-msgstr ""
+msgstr "Показывать слайдер регулировки громкости"
 
 #: channelListDialog.js:53
 msgid "List of Channels"
@@ -70,7 +69,7 @@ msgstr "Адрес потока"
 
 #: addChannelDialog.js:82
 msgid "Charset (optional)"
-msgstr ""
+msgstr "Кодировка (опционально)"
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
