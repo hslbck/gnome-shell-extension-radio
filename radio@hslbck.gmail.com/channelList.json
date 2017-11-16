@@ -2,24 +2,34 @@
 	{
 	"name": "Byte FM",
 	"address": "http://streamingserver01.byte.fm:8000/",
-	"favourite": true
+	"favourite": true,
+	"encoding": false
 },	{
 	"name": "FM 4",
 	"address": "http://mp3stream1.apasf.apa.at:8000",
-	"favourite": true
+	"favourite": true,
+	"encoding": false
 },	{
-	"name": "DRadio Wissen",
-	"address": "http://dradio-ogg-dwissen-l.akacast.akamaistream.net/7/192/135496/v1/gnl.akacast.akamaistream.net/dradio_ogg_dwissen_l",
-	"favourite": true
+	"name": "egoFM",
+	"address": "http://mp3ad.egofm.c.nmdn.net/ps-egofm_192/livestream.mp3\r",
+	"favourite": true,
+	"encoding": false
 },	{
-	"name": "DRadio Kultur",
-	"address": "http://dradio-ogg-dkultur-l.akacast.akamaistream.net/7/978/135496/v1/gnl.akacast.akamaistream.net/dradio_ogg_dkultur_l",
-	"favourite": false
+	"name": "egoFM Riff",
+	"address": "http://mp3ad.egofm.c.nmdn.net/ps-egofmriff_192/livestream.mp3",
+	"favourite": true,
+	"encoding": false
+},	{
+	"name": "Deutschlandfunk Nova",
+	"address": "http://st03.dlf.de/dlf/03/128/mp3/stream.mp3",
+	"favourite": false,
+	"encoding": false
 }
 ],
 
   "lastplayed":{
 	"name": "Byte FM",
-	"address": "http://streamingserver01.byte.fm:8000/"
+	"address": "http://streamingserver01.byte.fm:8000/",
+	"encoding": false
 }
 }

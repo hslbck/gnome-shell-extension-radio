@@ -474,7 +474,7 @@ var RadioMenuButton = new Lang.Class({
         this.channelListButton.set_child(this.channelListIcon);
         this.channelListButton.connect('clicked', Lang.bind(this, function () {
             this.menu.close();
-            this.channelListDialog = new ChannelListDialog.ChannelListDialog(this);
+            this.channelListDialog = new ChannelListDialog.ChannelListDialog();
             this.channelListDialog.open();
         }));
 
@@ -488,7 +488,7 @@ var RadioMenuButton = new Lang.Class({
         this.addChannelButton.set_child(this.addChannelIcon);
         this.addChannelButton.connect('clicked', Lang.bind(this, function () {
             this.menu.close();
-            this.addChannelDialog = new AddChannelDialog.AddChannelDialog();
+            this.addChannelDialog = new AddChannelDialog.AddChannelDialog(null);
             this.addChannelDialog.open();
         }));
 

@@ -11,6 +11,7 @@ const ModalDialog = imports.ui.modalDialog;
 const ShellEntry = imports.ui.shellEntry;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
+const ChannelListDialog = Extension.imports.channelListDialog;
 const MyE = Extension.imports.extension;
 const Convert = Extension.imports.convertCharset;
 
@@ -102,13 +103,16 @@ var AddChannelDialog = new Lang.Class({
         this.setInitialKeyFocus(this._nameEntryText);
 
         this._disconnectButton = this.addButton({
-            action: Lang.bind(this, this.close),
+            action: Lang.bind(this, this._closeDialog),
             label: _("Cancel"),
             key: Clutter.Escape
         });
+
+        let connectLabel = oldChannel != null ? _("Save") : _("Add");
+
         this._connectButton = this.addButton({
             action: Lang.bind(this, this._createChannel),
-            label: _("Add"),
+            label: connectLabel,
             key: Clutter.Return
         }, {
             expand: true,
@@ -146,7 +150,18 @@ var AddChannelDialog = new Lang.Class({
         if (newChannel.getFavourite()){
             MyE.radioMenu._addToFavourites(newChannel);
         }
-        this.close();
+        this._closeDialog();
+    },
+
+    _closeDialog: function() {
+        if (oldChannel != null) {
+            this.close();
+            this.channelListDialog = new ChannelListDialog.ChannelListDialog();
+            this.channelListDialog.open();
+        }
+        else {
+            this.close();
+        }
     }
 });
 
