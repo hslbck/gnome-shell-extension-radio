@@ -148,7 +148,9 @@ var AddChannelDialog = new Lang.Class({
         }
         MyE.radioMenu._addChannel(newChannel);
         if (newChannel.getFavourite()){
+            MyE.radioMenu._destroyMenuItems();
             MyE.radioMenu._addToFavourites(newChannel);
+            MyE.radioMenu._buildMenuItems();
         }
         this._closeDialog();
     },
