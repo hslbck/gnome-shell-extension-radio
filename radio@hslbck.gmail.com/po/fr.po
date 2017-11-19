@@ -1,4 +1,4 @@
-# Copyright (C) 2016 Léo Andrès <leo@ndrs.fr>
+# Copyright (C) 2016-2017 Léo Andrès <leo@ndrs.fr>
 # Copyright (C) 2016 Anthony Chaput <thonyc4@openmailbox.org>
 # Copyright (C) 2016 Berthault Justin <justin.berthault@zaclys.net>
 # Copyright (C) 2016 Quentin Daem <quentin.daem@gmail.com>
@@ -22,17 +22,16 @@ msgid "Show title notifications"
 msgstr "Afficher les notifications du titre à l'écoute"
 
 #: prefs.js:65
-#, fuzzy
 msgid "Show title notification in the panel"
-msgstr "Afficher les notifications du titre à l'écoute"
+msgstr "Afficher le titre à l'écoute dans la barre supérieure"
 
 #: prefs.js:81
 msgid "Enable Play/Stop Media Keys"
-msgstr "Activer les touches démarrer/arrêter le multimedia"
+msgstr "Activer les touches démarrer/arrêter le multimédia"
 
 #: prefs.js:97
 msgid "Show volume adjustment slider in menu"
-msgstr ""
+msgstr "Afficher la barre de réglage du volume dans le menu"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -72,7 +71,7 @@ msgstr "Jeu de caractères (facultatif)"
 
 #: addChannelDialog.js:111
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
