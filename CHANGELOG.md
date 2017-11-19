@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - #78 fix media keys for X.org, set supported GNOME version to 3.26
 - Rebuild favourite list after channel edit
 - Remove unused parameter for libsoup set_request
+- #81 Replace hard-coded strings to allow translation
 
 ## [8] - 2017-11-10
 

@@ -22,6 +22,10 @@ const Convenience = Extension.imports.convenience;
 
 const SETTING_VOLUME_LEVEL = 'volume-level';
 
+// translation support
+const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
+const _ = Gettext.gettext;
+
 var Player = new Lang.Class({
     Name: 'Player',
 
@@ -89,7 +93,7 @@ var Player = new Lang.Class({
                  if (Gstpbutils.is_missing_plugin_message(message)) {
                      let pluginDescription = Gstpbutils.missing_plugin_message_get_description(message);
                      MyE.radioMenu._stop();
-                     MyE.radioMenu.playLabel.set_text("Missing plugin");
+                     MyE.radioMenu.playLabel.set_text(_("Missing plugin"));
                      global.log("Gstreamer plugin missing for " + pluginDescription);
                  }
                  break;
@@ -126,11 +130,11 @@ var Player = new Lang.Class({
                 break;
             case Gst.MessageType.ERROR:
                 MyE.radioMenu._stop();
-                MyE.radioMenu.playLabel.set_text("Stream error");
+                MyE.radioMenu.playLabel.set_text(_("Stream error"));
                 break;
             case Gst.MessageType.EOS:
                 MyE.radioMenu._stop();
-                MyE.radioMenu.playLabel.set_text("End of stream");
+                MyE.radioMenu.playLabel.set_text(_("End of stream"));
                 break;
             default:
                 break;
