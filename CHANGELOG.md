@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+- #72 open channel list after edit
+- Updated German translation
+
+### Fixed
+- #78 fix media keys for X.org, set supported GNOME version to 3.26
+- Rebuild favourite list after channel edit
+- Remove unused parameter for libsoup set_request
+
 ## [8] - 2017-11-10
 
 ### Added

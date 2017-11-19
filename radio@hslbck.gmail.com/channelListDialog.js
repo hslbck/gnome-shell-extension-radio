@@ -188,7 +188,7 @@ var ChannelListDialog = new Lang.Class({
 });
 
 
-const ChannelListDialogItem = new Lang.Class({
+var ChannelListDialogItem = new Lang.Class({
     Name: 'ChannelListDialogItem',
 
     _init: function (cha) {

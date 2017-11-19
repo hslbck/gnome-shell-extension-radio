@@ -141,7 +141,7 @@ var SearchDialog = new Lang.Class({
             let url = "http://www.radio-browser.info/webservice/json/stations/search"
             var message = Soup.Message.new('POST', url);
             var postParams = 'name=' + input + '&limit=15';
-            message.set_request('application/x-www-form-urlencoded', 2, postParams, postParams.length);
+            message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, postParams);
 
             // async call
             _httpSession.queue_message(message, function(_httpSession, message) {
