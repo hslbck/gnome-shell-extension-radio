@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Changed
 - #72 open channel list after edit
 - Updated German translation
+- Updated Danish translation
 - Updated French translation
 
 ### Fixed

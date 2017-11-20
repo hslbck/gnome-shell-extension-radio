@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 16:46+0100\n"
-"PO-Revision-Date: 2017-03-19 15:07+0100\n"
+"POT-Creation-Date: 2017-11-19 21:30+0100\n"
+"PO-Revision-Date: 2017-11-19 21:33+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: prefs.js:49
@@ -29,7 +29,7 @@ msgstr "Aktiver multimedieknapper"
 
 #: prefs.js:97
 msgid "Show volume adjustment slider in menu"
-msgstr ""
+msgstr "Vis lydstyrkekontrol i menu"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -67,9 +67,13 @@ msgstr "Streamadresse"
 msgid "Charset (optional)"
 msgstr "Tegnsæt (valgfrit)"
 
+#: addChannelDialog.js:107 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Annullér"
+
 #: addChannelDialog.js:111
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
@@ -77,7 +81,7 @@ msgstr "Tilføj"
 
 #: searchDialog.js:47
 msgid "Browse "
-msgstr "Gennemse"
+msgstr "Gennemse "
 
 #: searchDialog.js:68
 msgid "Search"
@@ -94,6 +98,26 @@ msgstr "Serveren returnerede statuskode"
 #: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
+
+#: channelListDialog.js:54
+msgid "List of Channels"
+msgstr "Kanalliste"
+
+#: channelListDialog.js:58
+msgid "Manage your radio stations"
+msgstr "Redigér dine radiostationer"
+
+#: channelListDialog.js:101
+msgid "Delete"
+msgstr "Slet"
+
+#: channelListDialog.js:109
+msgid "Edit"
+msgstr "Redigér"
+
+#: channelListDialog.js:118
+msgid "Play"
+msgstr "Afspil"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoritter"
