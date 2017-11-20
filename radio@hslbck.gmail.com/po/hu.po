@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-08-31 19:23+0200\n"
+"POT-Creation-Date: 2017-11-19 16:46+0100\n"
 "PO-Revision-Date: 2016-10-15 00:07+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian \n"
@@ -34,40 +34,44 @@ msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
 msgid "Show volume adjustment slider in menu"
 msgstr ""
 
-#: channelListDialog.js:53
+#: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "Csatornák listája"
 
-#: channelListDialog.js:57
+#: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Rádióállomások kezelése"
 
-#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
 msgid "Cancel"
 msgstr "Mégse"
 
-#: channelListDialog.js:100
+#: channelListDialog.js:101
 msgid "Delete"
 msgstr "Törlés"
 
-#: channelListDialog.js:108
+#: channelListDialog.js:109
 msgid "Edit"
 msgstr "Szerkesztés"
 
-#: channelListDialog.js:117
+#: channelListDialog.js:118
 msgid "Play"
 msgstr "Lejátszás"
 
-#: addChannelDialog.js:44
+#: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "Csatorna neve"
 
-#: addChannelDialog.js:63
+#: addChannelDialog.js:64
 msgid "Stream Address"
 msgstr "Adatfolyam címe"
 
-#: addChannelDialog.js:82
+#: addChannelDialog.js:83
 msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:111
+msgid "Save"
 msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114
