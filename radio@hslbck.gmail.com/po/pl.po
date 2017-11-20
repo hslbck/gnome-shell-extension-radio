@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-09-22 06:53+0200\n"
+"POT-Creation-Date: 2017-11-19 16:46+0100\n"
 "PO-Revision-Date: 2017-09-22 06:55+0200\n"
 "Last-Translator: Piotr Komur <pkomur@gmail.com>\n"
 "Language-Team: \n"
@@ -18,41 +18,61 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: channelListDialog.js:53
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Pokazuj powiadomienia"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Pokazuj powiadomienia na górnym pasku"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Pokazuj regulator głośności w menu"
+
+#: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "Lista stacji"
 
-#: channelListDialog.js:57
+#: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Zarządzanie stacjami radiowymi"
 
-#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: channelListDialog.js:100
+#: channelListDialog.js:101
 msgid "Delete"
 msgstr "Usuń"
 
-#: channelListDialog.js:108
+#: channelListDialog.js:109
 msgid "Edit"
 msgstr "Edytuj"
 
-#: channelListDialog.js:117
+#: channelListDialog.js:118
 msgid "Play"
 msgstr "Odtwarzaj"
 
-#: addChannelDialog.js:44
+#: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "Nazwa stacji"
 
-#: addChannelDialog.js:63
+#: addChannelDialog.js:64
 msgid "Stream Address"
 msgstr "Adres strumienia"
 
-#: addChannelDialog.js:82
+#: addChannelDialog.js:83
 msgid "Charset (optional)"
 msgstr "Zestaw znaków (opcjonalnie)"
+
+#: addChannelDialog.js:111
+msgid "Save"
+msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"
@@ -77,22 +97,6 @@ msgstr "Serwer zwrócił kod statusu"
 #: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "Nie podano nazwy stacji!"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Pokazuj powiadomienia"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Pokazuj powiadomienia na górnym pasku"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Pokazuj regulator głośności w menu"
 
 #~ msgid "Favourites"
 #~ msgstr "Ulubione"

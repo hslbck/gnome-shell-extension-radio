@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-08-31 19:23+0200\n"
+"POT-Creation-Date: 2017-11-19 16:46+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -30,41 +30,45 @@ msgstr "Habilitar el botón de inicio / parada de la multimedia"
 msgid "Show volume adjustment slider in menu"
 msgstr ""
 
-#: channelListDialog.js:53
+#: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "Lista de los Canales"
 
-#: channelListDialog.js:57
+#: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Administrar sus estaciones de radio"
 
-#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: channelListDialog.js:100
+#: channelListDialog.js:101
 msgid "Delete"
 msgstr "Suprimir"
 
-#: channelListDialog.js:108
+#: channelListDialog.js:109
 msgid "Edit"
 msgstr "Modificar"
 
-#: channelListDialog.js:117
+#: channelListDialog.js:118
 msgid "Play"
 msgstr "Tocar"
 
-#: addChannelDialog.js:44
+#: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "Nombre del Canal"
 
-#: addChannelDialog.js:63
+#: addChannelDialog.js:64
 msgid "Stream Address"
 msgstr "Dirección del flujo"
 
-#: addChannelDialog.js:82
+#: addChannelDialog.js:83
 msgid "Charset (optional)"
 msgstr "Charset (opcional)"
+
+#: addChannelDialog.js:111
+msgid "Save"
+msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"

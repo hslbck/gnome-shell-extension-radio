@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-08-31 19:23+0200\n"
+"POT-Creation-Date: 2017-11-19 16:46+0100\n"
 "PO-Revision-Date: 2015-10-17 23:21+0800\n"
 "Last-Translator: gmg137 <gmg137@live.com>\n"
 "Language-Team: Chinese (simplified)\n"
@@ -30,40 +30,44 @@ msgstr ""
 msgid "Show volume adjustment slider in menu"
 msgstr ""
 
-#: channelListDialog.js:53
+#: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "频道列表"
 
-#: channelListDialog.js:57
+#: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "管理你的电台"
 
-#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
 msgid "Cancel"
 msgstr "取消"
 
-#: channelListDialog.js:100
+#: channelListDialog.js:101
 msgid "Delete"
 msgstr "删除"
 
-#: channelListDialog.js:108
+#: channelListDialog.js:109
 msgid "Edit"
 msgstr ""
 
-#: channelListDialog.js:117
+#: channelListDialog.js:118
 msgid "Play"
 msgstr "播放"
 
-#: addChannelDialog.js:44
+#: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "频道名称"
 
-#: addChannelDialog.js:63
+#: addChannelDialog.js:64
 msgid "Stream Address"
 msgstr "流地址"
 
-#: addChannelDialog.js:82
+#: addChannelDialog.js:83
 msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:111
+msgid "Save"
 msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114

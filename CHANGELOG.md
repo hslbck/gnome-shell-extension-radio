@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - #72 open channel list after edit
 - Updated German translation
 - Updated Danish translation
+- Updated French translation
 
 ### Fixed
 - #78 fix media keys for X.org, set supported GNOME version to 3.26

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-10-22 13:27-0200\n"
+"POT-Creation-Date: 2017-11-19 16:46+0100\n"
 "PO-Revision-Date: 2017-10-22 13:27-0200\n"
 "Last-Translator: Felipe Bueno <bueno.felipe@gmail.com>\n"
 "Language-Team: \n"
@@ -41,7 +41,7 @@ msgstr "Lista de Canais"
 msgid "Manage your radio stations"
 msgstr "Administrar suas estações de rádio"
 
-#: channelListDialog.js:94 addChannelDialog.js:106 searchDialog.js:108
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -57,17 +57,21 @@ msgstr "Alterar"
 msgid "Play"
 msgstr "Tocar"
 
-#: addChannelDialog.js:44
+#: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "Nome do Canal"
 
-#: addChannelDialog.js:63
+#: addChannelDialog.js:64
 msgid "Stream Address"
 msgstr "Endereço do Stream"
 
-#: addChannelDialog.js:82
+#: addChannelDialog.js:83
 msgid "Charset (optional)"
 msgstr "Charset (opcional)"
+
+#: addChannelDialog.js:111
+msgid "Save"
+msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"

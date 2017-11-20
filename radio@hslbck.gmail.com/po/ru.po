@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-08-31 19:23+0200\n"
+"POT-Creation-Date: 2017-11-19 16:46+0100\n"
 "PO-Revision-Date: 2017-11-13 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -34,42 +34,46 @@ msgstr "Включить управление мультимедиа кнопк�
 msgid "Show volume adjustment slider in menu"
 msgstr "Показывать слайдер регулировки громкости"
 
-#: channelListDialog.js:53
+#: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "Список радиостанций"
 
-#: channelListDialog.js:57
+#: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Управление радиостанциями"
 
-#: channelListDialog.js:93 addChannelDialog.js:106 searchDialog.js:108
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
 msgid "Cancel"
 msgstr "Отмена"
 
-#: channelListDialog.js:100
+#: channelListDialog.js:101
 msgid "Delete"
 msgstr "Удалить"
 
-#: channelListDialog.js:108
+#: channelListDialog.js:109
 msgid "Edit"
 msgstr "Изменить"
 
 # "Воспроизвести" не влазит в меню, поэтому так
-#: channelListDialog.js:117
+#: channelListDialog.js:118
 msgid "Play"
 msgstr "Включить"
 
-#: addChannelDialog.js:44
+#: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "Имя радиостанции"
 
-#: addChannelDialog.js:63
+#: addChannelDialog.js:64
 msgid "Stream Address"
 msgstr "Адрес потока"
 
-#: addChannelDialog.js:82
+#: addChannelDialog.js:83
 msgid "Charset (optional)"
 msgstr "Кодировка (опционально)"
+
+#: addChannelDialog.js:111
+msgid "Save"
+msgstr ""
 
 #: addChannelDialog.js:111 searchDialog.js:114
 msgid "Add"

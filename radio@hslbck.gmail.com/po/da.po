@@ -31,6 +31,30 @@ msgstr "Aktiver multimedieknapper"
 msgid "Show volume adjustment slider in menu"
 msgstr "Vis lydstyrkekontrol i menu"
 
+#: channelListDialog.js:54
+msgid "List of Channels"
+msgstr "Kanalliste"
+
+#: channelListDialog.js:58
+msgid "Manage your radio stations"
+msgstr "Redigér dine radiostationer"
+
+#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
+msgid "Cancel"
+msgstr "Annullér"
+
+#: channelListDialog.js:101
+msgid "Delete"
+msgstr "Slet"
+
+#: channelListDialog.js:109
+msgid "Edit"
+msgstr "Redigér"
+
+#: channelListDialog.js:118
+msgid "Play"
+msgstr "Afspil"
+
 #: addChannelDialog.js:45
 msgid "Channel Name"
 msgstr "Kanalnavn"
