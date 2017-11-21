@@ -31,10 +31,6 @@ msgstr "Aktiver multimedieknapper"
 msgid "Show volume adjustment slider in menu"
 msgstr "Vis lydstyrkekontrol i menu"
 
-#: channelListDialog.js:54
-msgid "List of Channels"
-msgstr "Kanalliste"
-
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Redigér dine radiostationer"
@@ -67,10 +63,6 @@ msgstr "Streamadresse"
 msgid "Charset (optional)"
 msgstr "Tegnsæt (valgfrit)"
 
-#: addChannelDialog.js:107 searchDialog.js:108 channelListDialog.js:94
-msgid "Cancel"
-msgstr "Annullér"
-
 #: addChannelDialog.js:111
 msgid "Save"
 msgstr "Gem"
@@ -102,22 +94,6 @@ msgstr "Søgeparameter var tom!"
 #: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "Kanalliste"
-
-#: channelListDialog.js:58
-msgid "Manage your radio stations"
-msgstr "Redigér dine radiostationer"
-
-#: channelListDialog.js:101
-msgid "Delete"
-msgstr "Slet"
-
-#: channelListDialog.js:109
-msgid "Edit"
-msgstr "Redigér"
-
-#: channelListDialog.js:118
-msgid "Play"
-msgstr "Afspil"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoritter"
