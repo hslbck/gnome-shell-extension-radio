@@ -8,7 +8,7 @@ const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Convenience = Extension.imports.convenience;
 const RadioMenu = Extension.imports.radioMenu;
 
-let radioMenu;
+var radioMenu;
 
 // init with translation support
 function init() {

@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2017-11-21 16:35+0100\n"
-"PO-Revision-Date: 2017-11-16 19:01+0100\n"
+"PO-Revision-Date: 2017-11-21 17:14+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -82,16 +82,15 @@ msgstr "Leere Sucheingabe!"
 
 #: player.js:96
 msgid "Missing plugin"
-msgstr ""
+msgstr "Fehlendes Plugin"
 
 #: player.js:133
-#, fuzzy
 msgid "Stream error"
-msgstr "Stream-Adresse"
+msgstr "Streamfehler"
 
 #: player.js:137
 msgid "End of stream"
-msgstr ""
+msgstr "Streamende"
 
 #: prefs.js:49
 msgid "Show title notifications"
