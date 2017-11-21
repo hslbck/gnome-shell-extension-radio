@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 16:46+0100\n"
+"POT-Creation-Date: 2017-11-21 16:35+0100\n"
 "PO-Revision-Date: 2016-10-15 00:07+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian \n"
@@ -16,23 +16,6 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Címértesítések megjelenítése"
-
-#: prefs.js:65
-#, fuzzy
-msgid "Show title notification in the panel"
-msgstr "Címértesítések megjelenítése"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr ""
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -97,6 +80,36 @@ msgstr "A kiszolgáló által visszaadott állapotkód"
 #: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "A keresési bemenet üres volt!"
+
+#: player.js:96
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:133
+#, fuzzy
+msgid "Stream error"
+msgstr "Adatfolyam címe"
+
+#: player.js:137
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Címértesítések megjelenítése"
+
+#: prefs.js:65
+#, fuzzy
+msgid "Show title notification in the panel"
+msgstr "Címértesítések megjelenítése"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr ""
 
 #~ msgid "Favourites"
 #~ msgstr "Kedvencek"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 21:30+0100\n"
+"POT-Creation-Date: 2017-11-21 16:35+0100\n"
 "PO-Revision-Date: 2017-11-19 21:33+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
@@ -15,21 +15,9 @@ msgstr ""
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Vis notifikationer"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Vis notifikationer i panelet"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Vis lydstyrkekontrol i menu"
+#: channelListDialog.js:54
+msgid "List of Channels"
+msgstr "Kanalliste"
 
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
@@ -91,9 +79,34 @@ msgstr "Serveren returnerede statuskode"
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
 
-#: channelListDialog.js:54
-msgid "List of Channels"
-msgstr "Kanalliste"
+#: player.js:96
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:133
+#, fuzzy
+msgid "Stream error"
+msgstr "Streamadresse"
+
+#: player.js:137
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Vis notifikationer i panelet"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Aktiver multimedieknapper"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Vis lydstyrkekontrol i menu"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoritter"

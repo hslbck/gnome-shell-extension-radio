@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 16:46+0100\n"
+"POT-Creation-Date: 2017-11-21 16:35+0100\n"
 "PO-Revision-Date: 2015-10-29 15:44+0100\n"
 "Last-Translator: Ahmet Sezgin Duran <marjinalist1@gmail.com>\n"
 "Language-Team: \n"
@@ -14,22 +14,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr ""
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr ""
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr ""
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr ""
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -94,6 +78,35 @@ msgstr ""
 
 #: searchDialog.js:164
 msgid "Search input was empty!"
+msgstr ""
+
+#: player.js:96
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:133
+#, fuzzy
+msgid "Stream error"
+msgstr "Akış Adresi"
+
+#: player.js:137
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr ""
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr ""
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr ""
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
 msgstr ""
 
 #~ msgid "Favourites"
