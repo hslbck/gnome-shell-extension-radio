@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 16:46+0100\n"
+"POT-Creation-Date: 2017-11-21 16:35+0100\n"
 "PO-Revision-Date: 2017-11-16 19:01+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
@@ -15,22 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Zeige Benachrichtigungen zu Titeln"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Zeige Sender- und Titelinformationen im Panel"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Play-/Stop-Steuerung über Medientasten"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Zeige separaten Lautstärkeregler"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -95,6 +79,35 @@ msgstr "Server antwortete mit dem Statuscode"
 #: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "Leere Sucheingabe!"
+
+#: player.js:96
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:133
+#, fuzzy
+msgid "Stream error"
+msgstr "Stream-Adresse"
+
+#: player.js:137
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Zeige Benachrichtigungen zu Titeln"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Zeige Sender- und Titelinformationen im Panel"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Play-/Stop-Steuerung über Medientasten"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Zeige separaten Lautstärkeregler"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoriten"

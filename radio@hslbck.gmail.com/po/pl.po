@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 16:46+0100\n"
+"POT-Creation-Date: 2017-11-21 16:35+0100\n"
 "PO-Revision-Date: 2017-09-22 06:55+0200\n"
 "Last-Translator: Piotr Komur <pkomur@gmail.com>\n"
 "Language-Team: \n"
@@ -17,22 +17,6 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Pokazuj powiadomienia"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Pokazuj powiadomienia na górnym pasku"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Pokazuj regulator głośności w menu"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -97,6 +81,35 @@ msgstr "Serwer zwrócił kod statusu"
 #: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "Nie podano nazwy stacji!"
+
+#: player.js:96
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:133
+#, fuzzy
+msgid "Stream error"
+msgstr "Adres strumienia"
+
+#: player.js:137
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Pokazuj powiadomienia"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Pokazuj powiadomienia na górnym pasku"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Pokazuj przyciski Odtwarzaj/Zatrzymaj"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Pokazuj regulator głośności w menu"
 
 #~ msgid "Favourites"
 #~ msgstr "Ulubione"

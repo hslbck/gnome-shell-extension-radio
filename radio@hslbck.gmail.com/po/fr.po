@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-19 16:46+0100\n"
+"POT-Creation-Date: 2017-11-21 16:35+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -16,22 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Afficher les notifications du titre à l'écoute"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Afficher le titre à l'écoute dans la barre supérieure"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Activer les touches démarrer/arrêter le multimédia"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Afficher la barre de réglage du volume dans le menu"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -96,6 +80,35 @@ msgstr "Le serveur a renvoyé le code d'état"
 #: searchDialog.js:164
 msgid "Search input was empty!"
 msgstr "Le texte saisi était vide !"
+
+#: player.js:96
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:133
+#, fuzzy
+msgid "Stream error"
+msgstr "Adresse du flux"
+
+#: player.js:137
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Afficher les notifications du titre à l'écoute"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Afficher le titre à l'écoute dans la barre supérieure"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Activer les touches démarrer/arrêter le multimédia"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Afficher la barre de réglage du volume dans le menu"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoris"
