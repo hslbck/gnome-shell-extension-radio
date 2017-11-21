@@ -83,16 +83,15 @@ msgstr "Le texte saisi était vide !"
 
 #: player.js:96
 msgid "Missing plugin"
-msgstr ""
+msgstr "Plugin manquant"
 
 #: player.js:133
-#, fuzzy
 msgid "Stream error"
-msgstr "Adresse du flux"
+msgstr "Erreur du flux"
 
 #: player.js:137
 msgid "End of stream"
-msgstr ""
+msgstr "Fin du flux"
 
 #: prefs.js:49
 msgid "Show title notifications"
