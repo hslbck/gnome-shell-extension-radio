@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-21 16:35+0100\n"
-"PO-Revision-Date: 2017-11-19 21:33+0100\n"
+"POT-Creation-Date: 2017-11-22 20:52+0100\n"
+"PO-Revision-Date: 2017-11-22 20:58+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -59,38 +59,17 @@ msgstr "Gem"
 msgid "Add"
 msgstr "Tilføj"
 
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Gennemse "
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Søg"
-
-#: searchDialog.js:156
-msgid "No radio station found!"
-msgstr "Ingen radiostationer fundet!"
-
-#: searchDialog.js:159
-msgid "Server returned status code"
-msgstr "Serveren returnerede statuskode"
-
-#: searchDialog.js:164
-msgid "Search input was empty!"
-msgstr "Søgeparameter var tom!"
-
 #: player.js:96
 msgid "Missing plugin"
-msgstr ""
+msgstr "Mangler udvidelsesmodul"
 
 #: player.js:133
-#, fuzzy
 msgid "Stream error"
-msgstr "Streamadresse"
+msgstr "Streamfejl"
 
 #: player.js:137
 msgid "End of stream"
-msgstr ""
+msgstr "Slut på stream"
 
 #: prefs.js:49
 msgid "Show title notifications"
@@ -107,6 +86,26 @@ msgstr "Aktiver multimedieknapper"
 #: prefs.js:97
 msgid "Show volume adjustment slider in menu"
 msgstr "Vis lydstyrkekontrol i menu"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Gennemse "
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Søg"
+
+#: searchDialog.js:158
+msgid "No radio station found!"
+msgstr "Ingen radiostationer fundet!"
+
+#: searchDialog.js:161
+msgid "Server returned status code"
+msgstr "Serveren returnerede statuskode"
+
+#: searchDialog.js:166
+msgid "Search input was empty!"
+msgstr "Søgeparameter var tom!"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoritter"
