@@ -14,6 +14,8 @@ var Channel = new Lang.Class({
         this._uri = uri;
         this._favourite = favourite;
         this._encoding = encoding;
+        this._bitrate = null;
+        this._codec = null;
     },
 
     setName: function (name) {
@@ -42,6 +44,22 @@ var Channel = new Lang.Class({
 
     getFavourite: function () {
         return this._favourite;
+    },
+
+    setBitrate: function(bitrate) {
+        this._bitrate = bitrate;
+    },
+
+    getBitrate: function() {
+        return this._bitrate;
+    },
+
+    setCodec: function(codec) {
+        this._codec = codec;
+    },
+
+    getCodec: function() {
+        return this._codec;
     },
 
     getEncoding: function () {

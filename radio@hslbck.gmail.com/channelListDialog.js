@@ -210,7 +210,8 @@ var ChannelListDialogItem = new Lang.Class({
         }));
 
         //  Set Channel Name
-        let title = channel.getName();
+        let streaminfo = channel.getCodec() != null && channel.getBitrate() != null ? " (" + channel.getCodec() + " | " + channel.getBitrate() + " kbps)" : "";
+        let title = channel.getName() + streaminfo;
         this._label = new St.Label({
             text: title
         });

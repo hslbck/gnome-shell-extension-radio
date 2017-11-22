@@ -123,6 +123,8 @@ var SearchDialog = new Lang.Class({
 
     _add: function() {
         if (_selectedChannel != null) {
+            _selectedChannel.setBitrate(null);
+            _selectedChannel.setCodec(null);
             MyE.radioMenu._addChannel(_selectedChannel);
             if (_selectedChannel.getFavourite()) {
                 MyE.radioMenu._destroyMenuItems();
@@ -170,8 +172,12 @@ var SearchDialog = new Lang.Class({
         if (jsonObject.lastcheckok == 1) {
             let name = jsonObject.name;
             let url = jsonObject.url;
+            let bitrate = jsonObject.bitrate;
+            let codec = jsonObject.codec;
             let streamAddress = AddChannelDialog.getStreamAddress(url);
-            let channel = new Channel.Channel(name, streamAddress, false, false);
+            let channel = new Channel.Channel(name, streamAddress, false, false, bitrate, codec);
+            channel.setCodec(codec);
+            channel.setBitrate(bitrate);
             this._createChannelListItem(channel);
         }
     },
