@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-21 16:35+0100\n"
+"POT-Creation-Date: 2017-11-23 12:01+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -12,6 +12,23 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Mostrar notificaciones de título"
+
+#: prefs.js:65
+#, fuzzy
+msgid "Show title notification in the panel"
+msgstr "Mostrar notificaciones de título"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Habilitar el botón de inicio / parada de la multimedia"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr ""
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -65,15 +82,15 @@ msgstr "Vistazo"
 msgid "Search"
 msgstr "Buscar"
 
-#: searchDialog.js:156
+#: searchDialog.js:158
 msgid "No radio station found!"
 msgstr "No se encontró ninguna estación de radio!"
 
-#: searchDialog.js:159
+#: searchDialog.js:161
 msgid "Server returned status code"
 msgstr "El servidor devolvió el código de estado"
 
-#: searchDialog.js:164
+#: searchDialog.js:166
 msgid "Search input was empty!"
 msgstr "La entrada de búsqueda estaba vacía."
 
@@ -88,23 +105,6 @@ msgstr "Dirección del flujo"
 
 #: player.js:137
 msgid "End of stream"
-msgstr ""
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Mostrar notificaciones de título"
-
-#: prefs.js:65
-#, fuzzy
-msgid "Show title notification in the panel"
-msgstr "Mostrar notificaciones de título"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Habilitar el botón de inicio / parada de la multimedia"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
 msgstr ""
 
 #~ msgid "Favourites"

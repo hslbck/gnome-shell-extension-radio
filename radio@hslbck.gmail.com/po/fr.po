@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-21 16:35+0100\n"
+"POT-Creation-Date: 2017-11-23 12:01+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -16,6 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Afficher les notifications du titre à l'écoute"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Afficher le titre à l'écoute dans la barre supérieure"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Activer les touches démarrer/arrêter le multimédia"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Afficher la barre de réglage du volume dans le menu"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -69,15 +85,15 @@ msgstr "Parcourir"
 msgid "Search"
 msgstr "Rechercher"
 
-#: searchDialog.js:156
+#: searchDialog.js:158
 msgid "No radio station found!"
 msgstr "Aucune station de radio trouvée"
 
-#: searchDialog.js:159
+#: searchDialog.js:161
 msgid "Server returned status code"
 msgstr "Le serveur a renvoyé le code d'état"
 
-#: searchDialog.js:164
+#: searchDialog.js:166
 msgid "Search input was empty!"
 msgstr "Le texte saisi était vide !"
 
@@ -92,22 +108,6 @@ msgstr "Erreur du flux"
 #: player.js:137
 msgid "End of stream"
 msgstr "Fin du flux"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Afficher les notifications du titre à l'écoute"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Afficher le titre à l'écoute dans la barre supérieure"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Activer les touches démarrer/arrêter le multimédia"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Afficher la barre de réglage du volume dans le menu"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoris"

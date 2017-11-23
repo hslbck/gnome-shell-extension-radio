@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-21 16:35+0100\n"
+"POT-Creation-Date: 2017-11-23 12:01+0100\n"
 "PO-Revision-Date: 2017-11-13 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -17,6 +17,22 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: prefs.js:49
+msgid "Show title notifications"
+msgstr "Показывать уведомления"
+
+#: prefs.js:65
+msgid "Show title notification in the panel"
+msgstr "Показывать заголовок уведомления на панели"
+
+#: prefs.js:81
+msgid "Enable Play/Stop Media Keys"
+msgstr "Включить управление мультимедиа кнопками"
+
+#: prefs.js:97
+msgid "Show volume adjustment slider in menu"
+msgstr "Показывать слайдер регулировки громкости"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -71,15 +87,15 @@ msgstr "Поиск "
 msgid "Search"
 msgstr "Найти"
 
-#: searchDialog.js:156
+#: searchDialog.js:158
 msgid "No radio station found!"
 msgstr "Радиостанции не найдены"
 
-#: searchDialog.js:159
+#: searchDialog.js:161
 msgid "Server returned status code"
 msgstr "Сервер вернул код статуса"
 
-#: searchDialog.js:164
+#: searchDialog.js:166
 msgid "Search input was empty!"
 msgstr "Пустой запрос поиска"
 
@@ -95,22 +111,6 @@ msgstr "Адрес потока"
 #: player.js:137
 msgid "End of stream"
 msgstr ""
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Показывать уведомления"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Показывать заголовок уведомления на панели"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Включить управление мультимедиа кнопками"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Показывать слайдер регулировки громкости"
 
 #~ msgid "Favourites"
 #~ msgstr "Избранные"
