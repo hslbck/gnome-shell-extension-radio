@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
@@ -14,11 +13,10 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: prefs.js:49
-msgi#: prefs.js:49
 msgid "Show title notifications"
 msgstr "Mostra notifiche brani"
 
