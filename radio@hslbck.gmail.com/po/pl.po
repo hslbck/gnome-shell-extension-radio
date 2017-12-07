@@ -1,4 +1,4 @@
-# Copyright (C) 2016 Piotr Komur <pkomur@gmail.com>
+# Copyright (C) 2016-2017 Piotr Komur <pkomur@gmail.com>
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
