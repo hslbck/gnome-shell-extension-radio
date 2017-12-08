@@ -1,4 +1,4 @@
-# Copyright (C) 2017 Stas Solovey <whats_up@tut.by>
+# Copyright (C) 2016-2017 Stas Solovey <whats_up@tut.by>
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
