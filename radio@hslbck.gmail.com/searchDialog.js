@@ -132,7 +132,6 @@ var SearchDialog = new Lang.Class({
                 MyE.radioMenu._buildMenuItems();
             }
         }
-        this.close();
     },
 
     _search: function() {

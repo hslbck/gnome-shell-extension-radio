@@ -1,17 +1,15 @@
 .control-box {
-    border-radius: 2px;
-    padding: .1em 1.5em;
+  border-radius: 2px;
+  padding: .1em 1.5em;
 }
-
 .play-label {
-	font-size: 18px;
-	font-weight: bold;
-	padding: .5em 1.7em;
+  font-size: 18px;
+  font-weight: bold;
+  padding: .5em 1.7em;
 }
-
 .custom-search-button {
   min-width: 75px;
   margin-left: 10px;
   margin-bottom: 5px;
   padding: 2px 8px;
-  }
+}
