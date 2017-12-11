@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-23 12:01+0100\n"
+"POT-Creation-Date: 2017-12-11 12:39+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -85,15 +85,19 @@ msgstr "Parcourir"
 msgid "Search"
 msgstr "Rechercher"
 
-#: searchDialog.js:158
+#: searchDialog.js:135
+msgid "Station added:"
+msgstr "Station ajoutée:"
+
+#: searchDialog.js:161
 msgid "No radio station found!"
 msgstr "Aucune station de radio trouvée"
 
-#: searchDialog.js:161
+#: searchDialog.js:164
 msgid "Server returned status code"
 msgstr "Le serveur a renvoyé le code d'état"
 
-#: searchDialog.js:166
+#: searchDialog.js:169
 msgid "Search input was empty!"
 msgstr "Le texte saisi était vide !"
 
