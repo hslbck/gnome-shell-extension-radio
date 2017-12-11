@@ -131,6 +131,10 @@ var SearchDialog = new Lang.Class({
                 MyE.radioMenu._addToFavourites(_selectedChannel);
                 MyE.radioMenu._buildMenuItems();
             }
+            this._itemBox.remove_all_children();
+            this._addMessage(_("Station added:") + " " + _selectedChannel.getName());
+            this._addButton.reactive = false;
+            this._addButton.can_focus = false;
         }
     },
 

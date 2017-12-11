@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-23 12:01+0100\n"
-"PO-Revision-Date: 2017-11-21 17:14+0100\n"
+"POT-Creation-Date: 2017-12-11 11:56+0100\n"
+"PO-Revision-Date: 2017-12-11 12:20+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -76,26 +76,6 @@ msgstr "Speichern"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Durchsuche "
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Suche"
-
-#: searchDialog.js:158
-msgid "No radio station found!"
-msgstr "Es wurde kein Radiosender gefunden!"
-
-#: searchDialog.js:161
-msgid "Server returned status code"
-msgstr "Server antwortete mit dem Statuscode"
-
-#: searchDialog.js:166
-msgid "Search input was empty!"
-msgstr "Leere Sucheingabe!"
-
 #: player.js:96
 msgid "Missing plugin"
 msgstr "Fehlendes Plugin"
@@ -107,6 +87,30 @@ msgstr "Streamfehler"
 #: player.js:137
 msgid "End of stream"
 msgstr "Streamende"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Durchsuche "
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Suche"
+
+#: searchDialog.js:135
+msgid "Station added:"
+msgstr "Sender hinzugefügt:"
+
+#: searchDialog.js:159
+msgid "No radio station found!"
+msgstr "Es wurde kein Radiosender gefunden!"
+
+#: searchDialog.js:162
+msgid "Server returned status code"
+msgstr "Server antwortete mit dem Statuscode"
+
+#: searchDialog.js:167
+msgid "Search input was empty!"
+msgstr "Leere Sucheingabe!"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoriten"
