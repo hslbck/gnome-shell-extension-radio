@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Italian translation
 
 ### Changed
+- #93 keep search dialog open after channel has been added
 - #72 open channel list after edit
 - Updated German translation
 - Updated Danish translation
