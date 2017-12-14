@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Added
 - Italian translation
+- Ukrainian translation
 
 ### Changed
 - #91 keep search dialog open after channel has been added
@@ -42,7 +43,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Layout: removed submenu for favourite -> inital show, new button for the channellist
 
 ### Fixed
-- #66 on search only add selection to favourites  
+- #66 on search only add selection to favourites
 - Mising plugin message
 
 ## [1.6] - 2017-03-28
