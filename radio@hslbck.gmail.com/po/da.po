@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-22 20:52+0100\n"
-"PO-Revision-Date: 2017-11-22 20:58+0100\n"
+"POT-Creation-Date: 2017-12-21 16:06+0100\n"
+"PO-Revision-Date: 2017-12-21 16:07+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
 "Language: da\n"
@@ -95,15 +95,19 @@ msgstr "Gennemse "
 msgid "Search"
 msgstr "Søg"
 
-#: searchDialog.js:158
+#: searchDialog.js:135
+msgid "Station added:"
+msgstr "Station tilføjet:"
+
+#: searchDialog.js:161
 msgid "No radio station found!"
 msgstr "Ingen radiostationer fundet!"
 
-#: searchDialog.js:161
+#: searchDialog.js:164
 msgid "Server returned status code"
 msgstr "Serveren returnerede statuskode"
 
-#: searchDialog.js:166
+#: searchDialog.js:169
 msgid "Search input was empty!"
 msgstr "Søgeparameter var tom!"
 
