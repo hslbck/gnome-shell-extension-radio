@@ -1,6 +1,6 @@
 /*
     Copyright (C) 2016-2017 hslbck <hslbck@gmail.com>
-    Copyright (C) 2016 Léo Andrès <leo@ndrs.fr>
+    Copyright (C) 2016-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const Clutter = imports.gi.Clutter;
@@ -221,8 +221,7 @@ var SearchDialog = new Lang.Class({
        let keyPressed = event.get_key_symbol();
        if (keyPressed == Clutter.KEY_Return || keyPressed == Clutter.KEY_KP_Enter || keyPressed == Clutter.KEY_ISO_Entern){
            this._search();
-       }
-       if (keyPressed == Clutter.KEY_Escape){
+       } else if (keyPressed == Clutter.KEY_Escape){
            this.close();
        }
    }

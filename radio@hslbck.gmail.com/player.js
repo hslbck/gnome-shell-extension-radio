@@ -2,6 +2,7 @@
     Copyright (C) 2015-2017 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
+    Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 /**
@@ -70,7 +71,7 @@ var Player = new Lang.Class({
     _setVolume: function(volume) {
         let level = Math.pow(volume, 3);
         if(this._source){
-    	this._source.set_property("volume", level);
+          this._source.set_property("volume", level);
         }
         this._settings.set_double(SETTING_VOLUME_LEVEL, level);
     },
@@ -150,13 +151,11 @@ var Player = new Lang.Class({
         let tmpTag = "";
         let splitIndex = 42;
         for (let i = 0; i < tagArray.length; i++) {
-            if ((tmpTag.length + tagArray[i].length) < splitIndex) {
-                tmpTag = tmpTag + tagArray[i] + " ";
-            }
-            else {
-                splitIndex = splitIndex + 42;
-                tmpTag = tmpTag + "\n" + tagArray[i] + " " ;
-            }
+          if ((tmpTag.length + tagArray[i].length) >= splitIndex) {
+            splitIndex += 42;
+            tmpTag += "\n";
+          }
+          tmpTag += tagArray[i] + " ";
         }
         return tmpTag;
     },

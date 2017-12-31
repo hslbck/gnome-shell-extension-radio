@@ -3,6 +3,7 @@
     Copyright (C) 2016 x4lldux <x4lldux@vectron.io>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
+    Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
@@ -335,10 +336,9 @@ var RadioMenuButton = new Lang.Class({
         if (this.player !== null) {
             let currentChannel = this.player._getCurrentChannel();
             let channels = this.channelList.channels;
-            let nextChannel = channels[0];
-            for (var i=0; i < channels.length; i++) {
+            let nextChannel = channels[channels.length - 1];
+            for (var i=1; i < channels.length; i++) {
                 if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
-                    if (i == 0) { i = channels.length; }
                     nextChannel = channels[i-1];
                     break;
                 }
@@ -353,9 +353,8 @@ var RadioMenuButton = new Lang.Class({
             let currentChannel = this.player._getCurrentChannel();
             let channels = this.channelList.channels;
             let nextChannel = channels[0];
-            for (var i=0; i < channels.length; i++) {
+            for (var i=0; i < channels.length - 1; i++) {
                 if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
-                    if (i+1 == channels.length) { i=-1; }
                     nextChannel = channels[i+1];
                     break;
                 }

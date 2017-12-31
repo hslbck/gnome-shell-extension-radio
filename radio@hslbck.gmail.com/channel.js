@@ -2,6 +2,7 @@
 /*
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const Lang = imports.lang;
@@ -63,14 +64,13 @@ var Channel = new Lang.Class({
     },
 
     getEncoding: function () {
-        if(typeof this._encoding === 'undefined') {
-            this.setEncoding(false);
-        }
 
         if(typeof this._encoding === 'string') {
             return this._encoding.toLowerCase();
-        } else {
-            return this._encoding;
+        } else if(typeof this._encoding === 'undefined') {
+              this.setEncoding(false);
         }
+
+        return this._encoding;
     }
 });
