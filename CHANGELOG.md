@@ -40,7 +40,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Volume slider
 
 ### Changed
-- Layout: removed submenu for favourite -> inital show, new button for the channellist
+- Layout: removed submenu for favourite -> initial show, new button for the channellist
 
 ### Fixed
 - #66 on search only add selection to favourites
