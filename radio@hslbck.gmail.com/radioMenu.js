@@ -71,6 +71,7 @@ const MediaKeysInterface = '<node> \
   </interface> \
 </node>';
 const MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
+const Clipboard = St.Clipboard.get_default();
 
 var RadioMenuButton = new Lang.Class({
     Name: 'Radio Button',
@@ -150,7 +151,17 @@ var RadioMenuButton = new Lang.Class({
         this.tagListLabel = new St.Label({
             text: ""
         });
+        this.copyTagButton = new St.Button({
+            style_class: 'copy-tag-button',
+            can_focus: true
+        });
+        this.copyTagIcon = new St.Icon({
+            icon_name: 'edit-copy-symbolic'
+        });
+        this.copyTagButton.set_child(this.copyTagIcon);
+        this.copyTagButton.hide();
         this.tagListBox.add(this.tagListLabel);
+        this.tagListBox.add(this.copyTagButton);
 
         // Add ControlsBox to the Menu
         this.menu.box.add_child(this.controlsBox);
@@ -158,6 +169,7 @@ var RadioMenuButton = new Lang.Class({
 
         // Connect the Button
         this.playButton.connect('clicked', Lang.bind(this, this._onPlayButtonClicked));
+        this.copyTagButton.connect('clicked', Lang.bind(this, this._copyTagToClipboard));
 
         // PopupSeparator
         let separator1 = new PopupMenu.PopupSeparatorMenuItem();
@@ -276,6 +288,10 @@ var RadioMenuButton = new Lang.Class({
         }
     },
 
+    _copyTagToClipboard: function() {
+        Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.tagListLabel.get_text());
+    },
+
     _onVolumeSliderValueChanged: function(slider, value, property){
         if (this.player !== null) {
             this.player._setVolume(value);
@@ -309,6 +325,7 @@ var RadioMenuButton = new Lang.Class({
         }
         this.radioIcon.set_icon_name(StoppedIcon);
         this.tagListLabel.set_text("");
+        this.copyTagButton.hide();
         this.isPlaying = false;
         this.playButton.set_child(this.playIcon);
     },
@@ -580,6 +597,7 @@ var RadioMenuButton = new Lang.Class({
             let tagWithLineBreaks = this.player._getTagWithLineBreaks();
             let channel = this.player._getCurrentChannel().getName();
             this.tagListLabel.set_text(tagWithLineBreaks);
+            this.copyTagButton.show();
             this._enableTitleNotification(tagWithLineBreaks, channel);
             this._checkTitle(Interval);
             TitleMenu.updateTitle(channel, tag);

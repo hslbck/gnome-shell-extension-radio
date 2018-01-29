@@ -9,6 +9,7 @@ const Lang = imports.lang;
 const Clutter = imports.gi.Clutter;
 const PanelMenu = imports.ui.panelMenu;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
+const MyE = Extension.imports.extension;
 
 var TitleMenuButton = new Lang.Class({
     Name: 'Title Button',
@@ -23,10 +24,18 @@ var TitleMenuButton = new Lang.Class({
 
         this.actor.add_actor(this._titleInfo);
         this.actor.add_style_class_name('panel-status-button');
+        this.actor.connect('button-press-event', Lang.bind(this, this._copyTagOnMiddleClick));
     },
 
     _updateTitleInfo: function (channel, titleInfo) {
         this._titleInfo.set_text(channel + ": " + titleInfo);
+    },
+
+    _copyTagOnMiddleClick: function (actor, event) {
+        // left click === 1, middle click === 2, right click === 3
+        if (event.get_button() === 2) {
+            MyE.radioMenu._copyTagToClipboard();
+        }
     }
 });
 

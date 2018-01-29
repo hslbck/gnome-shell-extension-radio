@@ -14,6 +14,7 @@ A GNOME Shell extension for listening to internet radio streams.
 * show tags in the panel or via notification
 * search online radio directory [radio-browser]
 * separate volume slider
+* copy title to clipboard via button in the radio menu or via middle click on the panel title  
 
 ### Installation
 

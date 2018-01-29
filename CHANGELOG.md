@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Added
 - Italian translation
 - Ukrainian translation
+- #102 Copy title to clipboard  
 
 ### Changed
 - #91 keep search dialog open after channel has been added

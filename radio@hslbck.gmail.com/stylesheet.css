@@ -13,3 +13,10 @@
   margin-bottom: 5px;
   padding: 2px 8px;
 }
+
+.copy-tag-button {
+    float: right;
+  width: 17px;
+  height: 4px;
+  margin-left: 10px;
+}
