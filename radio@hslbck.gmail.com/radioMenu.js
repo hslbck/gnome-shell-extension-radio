@@ -289,7 +289,7 @@ var RadioMenuButton = new Lang.Class({
     },
 
     _copyTagToClipboard: function() {
-        Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.tagListLabel.get_text());
+        Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
     },
 
     _onVolumeSliderValueChanged: function(slider, value, property){
