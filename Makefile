@@ -1,3 +1,8 @@
+#!/usr/bin/make -f
+
+# Copyright (C) 2016-2017 Léo Andrès <leo@ndrs.fr>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
+
 .PHONY: clean mrproper
 
 EXTENSION_NAME := radio
