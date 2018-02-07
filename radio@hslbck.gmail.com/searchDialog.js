@@ -19,6 +19,8 @@ const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 const MyE = Extension.imports.extension;
 
+var ChannelCreator = Extension.imports.channelCreator;
+
 const _httpSession = new Soup.SessionAsync();
 _httpSession.user_agent = "GSE Radio";
 _httpSession.timeout = 10;
@@ -26,7 +28,7 @@ let _selectedChannel;
 
 var SearchDialog = new Lang.Class({
     Name: 'SearchDialog',
-    Extends: ModalDialog.ModalDialog,
+    Extends: ChannelCreator.ChannelCreator,
 
     _init: function () {
         this.parent({
@@ -119,6 +121,8 @@ var SearchDialog = new Lang.Class({
         });
         this._addButton.reactive = false;
         this._addButton.can_focus = false;
+
+        this._buildErrorLayout();
     },
 
     _add: function() {
@@ -177,11 +181,14 @@ var SearchDialog = new Lang.Class({
             let url = jsonObject.url;
             let bitrate = jsonObject.bitrate;
             let codec = jsonObject.codec;
-            let streamAddress = AddChannelDialog.getStreamAddress(url);
-            let channel = new Channel.Channel(name, streamAddress, false, false, bitrate, codec);
-            channel.setCodec(codec);
-            channel.setBitrate(bitrate);
-            this._createChannelListItem(channel);
+            let streamAddress = this._getStreamAddress(url);
+            if (streamAddress) {
+              let channel = new Channel.Channel(name, streamAddress, false, false, bitrate, codec);
+              channel.setCodec(codec);
+              channel.setBitrate(bitrate);
+              this._createChannelListItem(channel);
+              this._errorBox.hide();
+            }
         }
     },
 
