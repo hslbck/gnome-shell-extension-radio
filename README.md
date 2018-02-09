@@ -25,15 +25,6 @@ Prerequisites: GStreamer plugins are installed.
 * install from [GNOME Shell extension website]
 * build and install from source, see [CONTRIBUTING]
 
-### Known issues
-
-* Multimedia Keys not working with Wayland [#63]
-* On some hardware configurations `gnome-shell` freezes when started in Wayland session.
-This is believed to be caused by [GStreamer not initialising fully] before the extension tries using it.
-Removal of the `gstreamer-vaapi` package fixes this.
-  * E.g. affects Ubuntu 17.10 and Wayland where `gstreamer-vaapi` is installed by default
-
-
 ### Charset conversion
 
 Radio station streams may include tags - track artist and title.
@@ -59,7 +50,7 @@ See [CONTRIBUTING].
 
 ### License
 
-Copyright © 2014-2017 hslbck.
+Copyright © 2014-2018 hslbck.
 
 GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYING] for details.
 
@@ -68,10 +59,13 @@ GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYIN
 [screenshot01]: https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png
 [GNOME Shell extension website]: https://extensions.gnome.org/extension/836/internet-radio/
 [gnome-shell-extension-radio-git]: https://aur.archlinux.org/packages/gnome-shell-extension-radio-git/
-[GStreamer not initialising fully]: https://github.com/EasyScreenCast/EasyScreenCast/issues/118
 [AUR]: https://aur.archlinux.org
 [radio-browser]: https://www.radio-browser.info/
 [2cyr/decode]: https://2cyr.com/decode/
 [CONTRIBUTING]: ./CONTRIBUTING.md
 [COPYING]: ./COPYING
-[#63]: https://github.com/hslbck/gnome-shell-extension-radio/issues/63
+
+[//]: # (Following lines are only about this file.)
+[//]: # (Copyright © 2014-2018 hslbck <hslbck@gmail.com>)
+[//]: # (Copyright © 2016-2017 Léo Andrès <leo@ndrs.fr>)
+[//]: # (This file is distributed under the same license as the gnome-shell-extension-radio package.)
