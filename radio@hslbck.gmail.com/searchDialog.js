@@ -7,7 +7,6 @@ const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
 const St = imports.gi.St;
-const ModalDialog = imports.ui.modalDialog;
 const ShellEntry = imports.ui.shellEntry;
 const Util = imports.misc.util;
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
@@ -18,8 +17,7 @@ const ChannelListDialog = Extension.imports.channelListDialog;
 const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
 const MyE = Extension.imports.extension;
-
-var ChannelCreator = Extension.imports.channelCreator;
+const ChannelCreator = Extension.imports.channelCreator;
 
 const _httpSession = new Soup.SessionAsync();
 _httpSession.user_agent = "GSE Radio";

@@ -2,7 +2,6 @@
     Copyright (C) 2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
-
 const Lang = imports.lang;
 const St = imports.gi.St;
 const ModalDialog = imports.ui.modalDialog;
@@ -19,7 +18,10 @@ const _ = Gettext.gettext;
 const Soup = imports.gi.Soup;
 const _httpSession = new Soup.SessionSync();
 
-class ChannelCreator extends ModalDialog.ModalDialog {
+var ChannelCreator = new Lang.Class({
+    Name: 'ChannelCreator',
+    Extends: ModalDialog.ModalDialog,
+
 
     _buildErrorLayout () {
 
@@ -39,7 +41,7 @@ class ChannelCreator extends ModalDialog.ModalDialog {
                                                  y_fill: false });
 
         this._errorBox.hide();
-    }
+    },
 
     _showError(message) {
 
@@ -60,7 +62,7 @@ class ChannelCreator extends ModalDialog.ModalDialog {
                 })
             });
         }
-    }
+    },
 
     // get the valid stream address
     _getStreamAddress(input) {
@@ -87,14 +89,13 @@ class ChannelCreator extends ModalDialog.ModalDialog {
                       }
                   }
               }
-              this._showError(_("Invalid server answer"));
+              this._showError(_("No server stream address found!"));
           } else {
-            this._showError(_("Invalid input"));
+            this._showError(_("Invalid input stream address!"));
           }
 
             return;
         }
-
         return input; // case for valid stream address
     }
-}
+});

@@ -14,7 +14,7 @@ const Channel = Extension.imports.channel;
 const ChannelListDialog = Extension.imports.channelListDialog;
 const MyE = Extension.imports.extension;
 const Convert = Extension.imports.convertCharset;
-var ChannelCreator = Extension.imports.channelCreator;
+const ChannelCreator = Extension.imports.channelCreator;
 
 // translation support
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
