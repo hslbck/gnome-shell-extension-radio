@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2015-2016 hslbck <hslbck@gmail.com>
+    Copyright (C) 2015-2018 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
@@ -70,6 +70,7 @@ function write(channels, lastPlayed) {
 		for (var i = 0; i < channels.length; i++) {
 			Shell.write_string_to_stream(out, "\t");
 			Shell.write_string_to_stream(out, JSON.stringify({
+				id: channels[i].getId(),
 				name: channels[i].getName(),
 				address: channels[i].getUri(),
 				favourite: channels[i].getFavourite(),
@@ -83,6 +84,7 @@ function write(channels, lastPlayed) {
 		// write lastplayed channel
 		Shell.write_string_to_stream(out, "\n],\n\n  \"lastplayed\":");
 		Shell.write_string_to_stream(out, JSON.stringify({
+			id: lastPlayed.getId(),
 			name: lastPlayed.getName(),
 			address: lastPlayed.getUri(),
 			encoding: lastPlayed.getEncoding()

@@ -1,33 +1,45 @@
 { "channels":[
 	{
+	"id": "afaea783-5d7b-4ef5-9e79-c8a61fa8f67e",
 	"name": "Byte FM",
 	"address": "http://streamingserver01.byte.fm:8000/",
 	"favourite": true,
 	"encoding": false
 },	{
-	"name": "FM 4",
-	"address": "http://mp3stream1.apasf.apa.at:8000",
-	"favourite": true,
-	"encoding": false
-},	{
+	"id": "ce4eb78e-ef48-4846-92fd-2faa8ecb82ce",
 	"name": "egoFM",
 	"address": "http://mp3ad.egofm.c.nmdn.net/ps-egofm_192/livestream.mp3\r",
 	"favourite": true,
 	"encoding": false
 },	{
+	"id": "f26c648c-c7fd-4d81-9959-27f61d3265ca",
 	"name": "egoFM Riff",
 	"address": "http://mp3ad.egofm.c.nmdn.net/ps-egofmriff_192/livestream.mp3",
 	"favourite": true,
 	"encoding": false
 },	{
+	"id": "81482b2e-7573-45e2-b724-57381b2de397",
+	"name": "Bayern 1 Niederbayern/ Oberpfalz",
+	"address": "http://br-br1-nbopf.cast.addradio.de/br/br1/nbopf/mp3/56/stream.mp3",
+	"favourite": false,
+	"encoding": false
+},	{
+	"id": "7848dc71-861c-48c3-a3c7-a7f068d16fbe",
 	"name": "Deutschlandfunk Nova",
 	"address": "http://st03.dlf.de/dlf/03/128/mp3/stream.mp3",
-	"favourite": false,
+	"favourite": true,
+	"encoding": false
+},	{
+	"id": "8fdaa309-a184-4115-b178-9fe3a4f0c3db",
+	"name": "FM 4",
+	"address": "http://mp3stream1.apasf.apa.at:8000",
+	"favourite": true,
 	"encoding": false
 }
 ],
 
   "lastplayed":{
+	"id": "afaea783-5d7b-4ef5-9e79-c8a61fa8f67e",
 	"name": "Byte FM",
 	"address": "http://streamingserver01.byte.fm:8000/",
 	"encoding": false

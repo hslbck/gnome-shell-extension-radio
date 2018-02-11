@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2016-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016-2018 hslbck <hslbck@gmail.com>
     Copyright (C) 2016-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
@@ -181,7 +181,7 @@ var SearchDialog = new Lang.Class({
             let codec = jsonObject.codec;
             let streamAddress = this._getStreamAddress(url);
             if (streamAddress) {
-              let channel = new Channel.Channel(name, streamAddress, false, false, bitrate, codec);
+              let channel = new Channel.Channel(null, name, streamAddress, true, false);
               channel.setCodec(codec);
               channel.setBitrate(bitrate);
               this._createChannelListItem(channel);
