@@ -26,5 +26,10 @@
             <summary>Volume level</summary>
             <description>Output volume level</description>
         </key>
+        <key name="enable-search-provider" type="b">
+            <default>false</default>
+            <summary>Enable as search provider for GNOME Shell</summary>
+            <description>Show radio stations as search results in GNOME overview</description>
+        </key>
     </schema>
 </schemalist>

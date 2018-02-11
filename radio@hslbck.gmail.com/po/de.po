@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2018-02-09 15:39+0100\n"
-"PO-Revision-Date: 2018-02-09 15:38+0100\n"
+"POT-Creation-Date: 2018-02-11 16:45+0100\n"
+"PO-Revision-Date: 2018-02-11 16:46+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -15,46 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Zeige Benachrichtigungen zu Titeln"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Zeige Sender- und Titelinformationen im Panel"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Play-/Stop-Steuerung über Medientasten"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Zeige separaten Lautstärkeregler"
-
-#: channelListDialog.js:54
-msgid "List of Channels"
-msgstr "Senderliste"
-
-#: channelListDialog.js:58
-msgid "Manage your radio stations"
-msgstr "Verwalten Sie hier Ihre Senderliste"
-
-#: channelListDialog.js:94 addChannelDialog.js:105 searchDialog.js:108
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: channelListDialog.js:101
-msgid "Delete"
-msgstr "Löschen"
-
-#: channelListDialog.js:109
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: channelListDialog.js:118
-msgid "Play"
-msgstr "Abspielen"
 
 #: addChannelDialog.js:42
 msgid "Channel Name"
@@ -68,6 +28,10 @@ msgstr "Stream-Adresse"
 msgid "Charset (optional)"
 msgstr "Charset (optional)"
 
+#: addChannelDialog.js:105 channelListDialog.js:94 searchDialog.js:108
+msgid "Cancel"
+msgstr "Abbrechen"
+
 #: addChannelDialog.js:109
 msgid "Save"
 msgstr "Speichern"
@@ -75,6 +39,34 @@ msgstr "Speichern"
 #: addChannelDialog.js:109 searchDialog.js:114
 msgid "Add"
 msgstr "Hinzufügen"
+
+#: channelCreator.js:92
+msgid "No server stream address found!"
+msgstr "Keine Server Streamadresse gefunden!"
+
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
+msgstr "Ungültige Streamadresse!"
+
+#: channelListDialog.js:54
+msgid "List of Channels"
+msgstr "Senderliste"
+
+#: channelListDialog.js:58
+msgid "Manage your radio stations"
+msgstr "Verwalten Sie hier Ihre Senderliste"
+
+#: channelListDialog.js:101
+msgid "Delete"
+msgstr "Löschen"
+
+#: channelListDialog.js:109
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: channelListDialog.js:118
+msgid "Play"
+msgstr "Abspielen"
 
 #: player.js:97
 msgid "Missing plugin"
@@ -87,6 +79,26 @@ msgstr "Streamfehler"
 #: player.js:138
 msgid "End of stream"
 msgstr "Streamende"
+
+#: prefs.js:51
+msgid "Show title notifications"
+msgstr "Zeige Benachrichtigungen zu Titeln"
+
+#: prefs.js:67
+msgid "Show title notification in the panel"
+msgstr "Zeige Sender- und Titelinformationen im Panel"
+
+#: prefs.js:83
+msgid "Enable Play/Stop Media Keys"
+msgstr "Play-/Stop-Steuerung über Medientasten"
+
+#: prefs.js:99
+msgid "Show volume adjustment slider in menu"
+msgstr "Zeige separaten Lautstärkeregler"
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
+msgstr "Als Suchprovider für die GNOME Shell Übersicht zulassen"
 
 #: searchDialog.js:47
 msgid "Browse "
@@ -111,14 +123,6 @@ msgstr "Server antwortete mit dem Statuscode"
 #: searchDialog.js:171
 msgid "Search input was empty!"
 msgstr "Leere Sucheingabe!"
-
-#: channelCreator.js:92
-msgid "No server stream address found!"
-msgstr "Keine Server Streamadresse gefunden!"
-
-#: channelCreator.js:94
-msgid "Invalid input stream address!"
-msgstr "Ungültige Streamadresse!"
 
 #~ msgid "No server stream found!"
 #~ msgstr "Kein ServerStream gefunden!"

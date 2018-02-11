@@ -31,6 +31,7 @@ const ChannelListDialog = Extension.imports.channelListDialog;
 const SearchDialog = Extension.imports.searchDialog;
 const Io = Extension.imports.io;
 const TitleMenu = Extension.imports.titleMenu;
+const RadioSearchProvider = Extension.imports.searchProvider;
 
 // translation support
 const Convenience = Extension.imports.convenience;
@@ -52,6 +53,7 @@ const SETTING_TITLE_NOTIFICATION = 'title-notification';
 const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 const SETTING_VOLUME_LEVEL = 'volume-level';
+const SETTING_ENABLE_SEARCH_PROVIDER = 'enable-search-provider';
 
 // media keys
 const BUS_NAME = 'org.gnome.SettingsDaemon.MediaKeys';
@@ -223,6 +225,20 @@ var RadioMenuButton = new Lang.Class({
             }
         }));
 
+        // search provider setting change
+        this._settings.connect("changed::" + SETTING_ENABLE_SEARCH_PROVIDER, Lang.bind(this, function() {
+            if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
+                RadioSearchProvider.enableProvider();
+            }
+            else {
+                RadioSearchProvider.disableProvider();
+            }
+        }));
+
+    },
+
+    _disableSearchProvider: function(){
+        RadioSearchProvider.disableProvider();
     },
 
     _registerMediaKeys: function() {
@@ -376,6 +392,16 @@ var RadioMenuButton = new Lang.Class({
         this._start();
     },
 
+    _changeChannelById: function (id) {
+        if (this.isPlaying && id === this.player._getCurrentChannel().getId()) {
+            this._stop();
+        }
+        else {
+            let channel = this._getChannelById(id);
+            this._changeChannel(channel);
+        }
+    },
+
     // init channel and add channels to the PopupMenu
     _initChannels: function (chas) {
         for (var i in chas) {
@@ -410,6 +436,15 @@ var RadioMenuButton = new Lang.Class({
             }
         }
         return contains;
+    },
+
+    _getChannelById: function (id) {
+        for (let i = 0; i < this.helperChannelList.length; i++) {
+            if (this.helperChannelList[i].getId() === id) {
+                return this.helperChannelList[i];
+            }
+        }
+        return null;
     },
 
     _buildVolumeSlider: function(menuItemOffset) {

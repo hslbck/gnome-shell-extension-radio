@@ -15,6 +15,7 @@ const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
 const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
+const SETTING_ENABLE_SEARCH_PROVIDER = 'enable-search-provider';
 
 var RadioPrefsWidget = new GObject.Class({
     Name: 'RadioPrefsWidget',
@@ -39,7 +40,8 @@ var RadioPrefsWidget = new GObject.Class({
         this._addTitleNotificationsSwitch();
         this._addShowTitleInPanelSwitch();
         this._addEnableMediaKeysSwitch();
-	this._addShowVolumeAdjustmentSliderSwitch();
+	    this._addShowVolumeAdjustmentSliderSwitch();
+        this._addEnableSearchProviderSwitch();
 
         this.add(this._widgets.box);
     },
@@ -106,7 +108,23 @@ var RadioPrefsWidget = new GObject.Class({
         this._widgets.volumeAdjustmentSliderSwitch.connect('notify::active', Lang.bind(this, function(button) {
             this._settings.set_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, button.get_active());
         }));
-    }
+    },
+
+    _addEnableSearchProviderSwitch: function() {
+        let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
+        let label = new Gtk.Label({label: _("Enable as search provider for GNOME Shell"),
+                                        xalign: 0});
+        this._widgets.searchProviderSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)});
+
+        hbox.pack_start(label, true, true, 0);
+        hbox.add(this._widgets.searchProviderSwitch);
+
+        this._widgets.box.add(hbox);
+
+        this._widgets.searchProviderSwitch.connect('notify::active', Lang.bind(this, function(button) {
+            this._settings.set_boolean(SETTING_ENABLE_SEARCH_PROVIDER, button.get_active());
+        }));
+    },
 });
 
 function init() {
