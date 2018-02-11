@@ -190,11 +190,6 @@ var RadioMenuButton = new Lang.Class({
         this.isPlaying = false;
         this.actor.connect('button-press-event', Lang.bind(this, this._middleClick));
 
-        // media keys for registration on startup
-        if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
-            this._registerMediaKeys();
-        }
-
         // media keys setting change
         this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, Lang.bind(this, function() {
             if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
@@ -235,6 +230,20 @@ var RadioMenuButton = new Lang.Class({
             }
         }));
 
+    },
+
+    // search provider registration on startup
+    _enableSearchProvider: function() {
+        if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
+            RadioSearchProvider.enableProvider();
+        }
+    },
+
+    // media keys for registration on startup
+    _enableMediaKeys: function () {
+        if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
+            this._registerMediaKeys();
+        }
     },
 
     _disableSearchProvider: function(){

@@ -19,6 +19,8 @@ function init() {
 function enable() {
     radioMenu = new RadioMenu.RadioMenuButton();
     Main.panel.addToStatusArea('radioMenu', radioMenu);
+    radioMenu._enableSearchProvider();
+    radioMenu._enableMediaKeys();
 }
 
 //  stop playing and destroy extension content
