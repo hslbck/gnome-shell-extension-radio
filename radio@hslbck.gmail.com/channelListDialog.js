@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2014-2018 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const Clutter = imports.gi.Clutter;
@@ -63,7 +63,7 @@ var ChannelListDialog = new Lang.Class({
         headline.add(icon);
         headline.add(titleBox);
 
-        this.contentLayout.style_class = 'nm-dialog-content';
+        this.contentLayout.set_style_pseudo_class('nm-dialog-content');
         this.contentLayout.add(headline);
 
         // Create ScrollView and ItemBox
@@ -249,7 +249,7 @@ var ChannelListDialogItem = new Lang.Class({
 
         // Add Action, Label and Favourite icon to the Actor
         this.actor.add_action(action);
-        this.actor.label_actor = this._label;
+        this.actor.set_label_actor(this._label);
         this.actor.add(this._label, {
             x_align: St.Align.START
         });

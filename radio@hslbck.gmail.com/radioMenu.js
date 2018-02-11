@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2014-2018 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 x4lldux <x4lldux@vectron.io>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
@@ -102,9 +102,11 @@ var RadioMenuButton = new Lang.Class({
         this.chas = this.channelList.channels;
         this.lastPlayed = this.channelList.lastplayed;
         let encoding = this.lastPlayed.hasOwnProperty('encoding') ? this.lastPlayed.encoding : null;
+        let lastPlayedId = this.lastPlayed.hasOwnProperty('id') ? this.lastPlayed.id : null;
 
         // init last played channel
-        this.lastPlayedChannel = new Channel.Channel(this.lastPlayed.name, this.lastPlayed.address, false, encoding);
+        // ToDo: hard to match
+        this.lastPlayedChannel = new Channel.Channel(lastPlayedId, this.lastPlayed.name, this.lastPlayed.address, false, encoding);
 
         // init player
         this.player = null;
@@ -338,12 +340,12 @@ var RadioMenuButton = new Lang.Class({
             let channels = this.channelList.channels;
             let nextChannel = channels[channels.length - 1];
             for (var i=1; i < channels.length; i++) {
-                if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
+                if (channels[i].id == currentChannel.getId() && channels[i].address == currentChannel.getUri()) {
                     nextChannel = channels[i-1];
                     break;
                 }
             }
-            this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
+            this._changeChannel(new Channel.Channel(nextChannel.id,nextChannel.name, nextChannel.address, false, nextChannel.encoding));
         }
     },
 
@@ -354,12 +356,12 @@ var RadioMenuButton = new Lang.Class({
             let channels = this.channelList.channels;
             let nextChannel = channels[0];
             for (var i=0; i < channels.length - 1; i++) {
-                if (channels[i].name == currentChannel.getName() && channels[i].address == currentChannel.getUri()) {
+                if (channels[i].id == currentChannel.getId() && channels[i].address == currentChannel.getUri()) {
                     nextChannel = channels[i+1];
                     break;
                 }
             }
-            this._changeChannel(new Channel.Channel(nextChannel.name, nextChannel.address, false, nextChannel.encoding));
+            this._changeChannel(new Channel.Channel(nextChannel.id,nextChannel.name, nextChannel.address, false, nextChannel.encoding));
         }
     },
 
@@ -378,7 +380,8 @@ var RadioMenuButton = new Lang.Class({
     _initChannels: function (chas) {
         for (var i in chas) {
             let encoding = chas[i].hasOwnProperty('encoding') ? chas[i].encoding : null;
-            let channel = new Channel.Channel(chas[i].name, chas[i].address, chas[i].favourite, encoding);
+            let id = chas[i].hasOwnProperty('id') ? chas[i].id : null;
+            let channel = new Channel.Channel(id, chas[i].name, chas[i].address, chas[i].favourite, encoding);
             this.helperChannelList[i] = channel;
             if (chas[i].favourite) {
                 this._addToFavourites(channel);
@@ -391,6 +394,7 @@ var RadioMenuButton = new Lang.Class({
         let contains = this._containsChannel(cha);
         if (contains) {
             let item = new PopupMenu.PopupMenuItem(cha.getName());
+            item.actor.set_name(cha.getId());
             item.connect('activate', Lang.bind(this, function () {
                 this._changeChannel(cha);
             }));
@@ -401,7 +405,7 @@ var RadioMenuButton = new Lang.Class({
     _containsChannel: function (cha) {
         let contains = false;
         for (let i = 0; i < this.helperChannelList.length; i++) {
-            if (this.helperChannelList[i].getName() === cha.getName()) {
+            if (this.helperChannelList[i].getId() === cha.getId()) {
                 contains = true;
             }
         }
@@ -539,10 +543,8 @@ var RadioMenuButton = new Lang.Class({
         let items = this.menu._getMenuItems();
         for (var i in items) {
             let item = items[i];
-            if (item.label) {
-                let _label = item.label.get_text();
-                if (_label === cha.getName())
-                    item.destroy();
+            if (item && item.actor.get_name() === cha.getId()) {
+                item.destroy();
             }
         }
     },
@@ -559,7 +561,7 @@ var RadioMenuButton = new Lang.Class({
             this._removeFromFavourites(cha);
         }
         for (var i in this.helperChannelList) {
-            if (this.helperChannelList[i].getName() === cha.getName()) {
+            if (this.helperChannelList[i].getId() === cha.getId()) {
                 this.helperChannelList.splice(i, 1); // remove 1 element from the given index
                 Io.write(this.helperChannelList, this.lastPlayedChannel);
             }
@@ -573,7 +575,7 @@ var RadioMenuButton = new Lang.Class({
     // set new values for a specific channel
     _updateChannel: function (cha) {
         for (var i in this.helperChannelList) {
-            if (this.helperChannelList[i].getName() === cha.getName()) {
+            if (this.helperChannelList[i].getId() === cha.getId()) {
                 this.helperChannelList[i] = cha;
                 Io.write(this.helperChannelList, this.lastPlayedChannel);
             }

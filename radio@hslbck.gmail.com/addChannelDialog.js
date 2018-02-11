@@ -50,8 +50,8 @@ var AddChannelDialog = new Lang.Class({
             can_focus: true
         });
         ShellEntry.addContextMenu(this._nameEntry);
-        this._nameEntry.label_actor = name;
-        this._nameEntryText = this._nameEntry.clutter_text;
+        this._nameEntry.set_label_actor(name);
+        this._nameEntryText = this._nameEntry.get_clutter_text();
         this.contentLayout.add(this._nameEntry, {
             y_align: St.Align.START
         });
@@ -69,8 +69,8 @@ var AddChannelDialog = new Lang.Class({
             can_focus: true
         });
         ShellEntry.addContextMenu(this._addressEntry);
-        this._addressEntry.label_actor = address;
-        this._addressEntryText = this._addressEntry.clutter_text;
+        this._addressEntry.set_label_actor(address);
+        this._addressEntryText = this._addressEntry.get_clutter_text();
         this.contentLayout.add(this._addressEntry, {
             y_align: St.Align.START
         });
@@ -88,8 +88,8 @@ var AddChannelDialog = new Lang.Class({
             can_focus: true
         });
         ShellEntry.addContextMenu(this._charsetEntry);
-        this._charsetEntry.label_actor = charset;
-        this._charsetEntryText = this._charsetEntry.clutter_text;
+        this._charsetEntry.set_label_actor(charset);
+        this._charsetEntryText = this._charsetEntry.get_clutter_text();
         this.contentLayout.add(this._charsetEntry, {
             y_align: St.Align.START
         });
@@ -142,7 +142,8 @@ var AddChannelDialog = new Lang.Class({
           if (this._charsetEntry.get_text() !== "") {
               inputCharset = Convert.validate(this._charsetEntry.get_text().toLowerCase());
           }
-          let newChannel = new Channel.Channel(inputName, inputStream, false, inputCharset);
+
+          let newChannel = new Channel.Channel(null, inputName, inputStream, false, inputCharset);
           if (oldChannel != null) {
               if (oldChannel.getFavourite()){
                   newChannel.setFavourite(oldChannel.getFavourite());
