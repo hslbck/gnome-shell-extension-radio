@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-12-21 16:06+0100\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2017-12-21 16:07+0100\n"
 "Last-Translator: Niels Rune Brandt <nielsrune@hotmail.com>\n"
 "Language-Team: \n"
@@ -15,6 +15,86 @@ msgstr ""
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Kanalnavn"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Streamadresse"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr "Tegnsæt (valgfrit)"
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Annullér"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr "Gem"
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Tilføj"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Gennemse "
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Søg"
+
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr "Station tilføjet:"
+
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Ingen radiostationer fundet!"
+
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "Serveren returnerede statuskode"
+
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "Søgeparameter var tom!"
+
+#: player.js:97
+msgid "Missing plugin"
+msgstr "Mangler udvidelsesmodul"
+
+#: player.js:134
+msgid "Stream error"
+msgstr "Streamfejl"
+
+#: player.js:138
+msgid "End of stream"
+msgstr "Slut på stream"
+
+#: prefs.js:51
+msgid "Show title notifications"
+msgstr "Vis notifikationer"
+
+#: prefs.js:67
+msgid "Show title notification in the panel"
+msgstr "Vis notifikationer i panelet"
+
+#: prefs.js:83
+msgid "Enable Play/Stop Media Keys"
+msgstr "Aktiver multimedieknapper"
+
+#: prefs.js:99
+msgid "Show volume adjustment slider in menu"
+msgstr "Vis lydstyrkekontrol i menu"
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
+msgstr ""
+
 #: channelListDialog.js:54
 msgid "List of Channels"
 msgstr "Kanalliste"
@@ -22,10 +102,6 @@ msgstr "Kanalliste"
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Redigér dine radiostationer"
-
-#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
-msgid "Cancel"
-msgstr "Annullér"
 
 #: channelListDialog.js:101
 msgid "Delete"
@@ -39,77 +115,13 @@ msgstr "Redigér"
 msgid "Play"
 msgstr "Afspil"
 
-#: addChannelDialog.js:45
-msgid "Channel Name"
-msgstr "Kanalnavn"
+#: channelCreator.js:92
+msgid "No server stream address found!"
+msgstr ""
 
-#: addChannelDialog.js:64
-msgid "Stream Address"
-msgstr "Streamadresse"
-
-#: addChannelDialog.js:83
-msgid "Charset (optional)"
-msgstr "Tegnsæt (valgfrit)"
-
-#: addChannelDialog.js:111
-msgid "Save"
-msgstr "Gem"
-
-#: addChannelDialog.js:111 searchDialog.js:114
-msgid "Add"
-msgstr "Tilføj"
-
-#: player.js:96
-msgid "Missing plugin"
-msgstr "Mangler udvidelsesmodul"
-
-#: player.js:133
-msgid "Stream error"
-msgstr "Streamfejl"
-
-#: player.js:137
-msgid "End of stream"
-msgstr "Slut på stream"
-
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Vis notifikationer"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Vis notifikationer i panelet"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Aktiver multimedieknapper"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Vis lydstyrkekontrol i menu"
-
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Gennemse "
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Søg"
-
-#: searchDialog.js:135
-msgid "Station added:"
-msgstr "Station tilføjet:"
-
-#: searchDialog.js:161
-msgid "No radio station found!"
-msgstr "Ingen radiostationer fundet!"
-
-#: searchDialog.js:164
-msgid "Server returned status code"
-msgstr "Serveren returnerede statuskode"
-
-#: searchDialog.js:169
-msgid "Search input was empty!"
-msgstr "Søgeparameter var tom!"
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
+msgstr ""
 
 #~ msgid "Favourites"
 #~ msgstr "Favoritter"

@@ -4,16 +4,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-12-13 18:55+0200\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2017-12-13 19:07+0200\n"
+"Last-Translator: Alice Charlotte Liddell <e-liss@tuta.io>\n"
 "Language-Team: \n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.4\n"
-"Last-Translator: Alice Charlotte Liddell <e-liss@tuta.io>\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Назва Станції"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Адреса потоку"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr "Кодування (необов'язково)"
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr "Зберегти"
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Додати"
 
 #: searchDialog.js:47
 msgid "Browse "
@@ -23,57 +48,53 @@ msgstr "Пошук на "
 msgid "Search"
 msgstr "Шукати"
 
-#: searchDialog.js:108 channelListDialog.js:94 addChannelDialog.js:107
-msgid "Cancel"
-msgstr "Скасувати"
-
-#: searchDialog.js:114 addChannelDialog.js:111
-msgid "Add"
-msgstr "Додати"
-
-#: searchDialog.js:135
+#: searchDialog.js:137
 msgid "Station added:"
 msgstr "Станцію додано:"
 
-#: searchDialog.js:161
+#: searchDialog.js:163
 msgid "No radio station found!"
 msgstr "Станцій не знайдено!"
 
-#: searchDialog.js:164
+#: searchDialog.js:166
 msgid "Server returned status code"
 msgstr "Сервер повернув код стану"
 
-#: searchDialog.js:169
+#: searchDialog.js:171
 msgid "Search input was empty!"
 msgstr "Пошуковий запит був порожнім!"
 
-#: prefs.js:49
-msgid "Show title notifications"
-msgstr "Сповіщати про назви пісень"
-
-#: prefs.js:65
-msgid "Show title notification in the panel"
-msgstr "Показувати назву пісні на панелі"
-
-#: prefs.js:81
-msgid "Enable Play/Stop Media Keys"
-msgstr "Увімкнути мультимедійні клавіші Грати/Зупинити"
-
-#: prefs.js:97
-msgid "Show volume adjustment slider in menu"
-msgstr "Показувати власний слайдер керування гучністю"
-
-#: player.js:96
+#: player.js:97
 msgid "Missing plugin"
 msgstr "Потрібний модуль відсутній"
 
-#: player.js:133
+#: player.js:134
 msgid "Stream error"
 msgstr "Помилка потоку"
 
-#: player.js:137
+#: player.js:138
 msgid "End of stream"
 msgstr "Кінець потоку"
+
+#: prefs.js:51
+msgid "Show title notifications"
+msgstr "Сповіщати про назви пісень"
+
+#: prefs.js:67
+msgid "Show title notification in the panel"
+msgstr "Показувати назву пісні на панелі"
+
+#: prefs.js:83
+msgid "Enable Play/Stop Media Keys"
+msgstr "Увімкнути мультимедійні клавіші Грати/Зупинити"
+
+#: prefs.js:99
+msgid "Show volume adjustment slider in menu"
+msgstr "Показувати власний слайдер керування гучністю"
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
+msgstr ""
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -95,18 +116,10 @@ msgstr "Змінити"
 msgid "Play"
 msgstr "Грати"
 
-#: addChannelDialog.js:45
-msgid "Channel Name"
-msgstr "Назва Станції"
+#: channelCreator.js:92
+msgid "No server stream address found!"
+msgstr ""
 
-#: addChannelDialog.js:64
-msgid "Stream Address"
-msgstr "Адреса потоку"
-
-#: addChannelDialog.js:83
-msgid "Charset (optional)"
-msgstr "Кодування (необов'язково)"
-
-#: addChannelDialog.js:111
-msgid "Save"
-msgstr "Зберегти"
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
+msgstr ""

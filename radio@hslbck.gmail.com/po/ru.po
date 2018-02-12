@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-23 12:01+0100\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2017-11-13 00:08+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -18,21 +18,86 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: prefs.js:49
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Имя радиостанции"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Адрес потока"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr "Кодировка (опционально)"
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Отмена"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr ""
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Добавить"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Поиск "
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Найти"
+
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr ""
+
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Радиостанции не найдены"
+
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "Сервер вернул код статуса"
+
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "Пустой запрос поиска"
+
+#: player.js:97
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:134
+#, fuzzy
+msgid "Stream error"
+msgstr "Адрес потока"
+
+#: player.js:138
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:51
 msgid "Show title notifications"
 msgstr "Показывать уведомления"
 
-#: prefs.js:65
+#: prefs.js:67
 msgid "Show title notification in the panel"
 msgstr "Показывать заголовок уведомления на панели"
 
-#: prefs.js:81
+#: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
 msgstr "Включить управление мультимедиа кнопками"
 
-#: prefs.js:97
+#: prefs.js:99
 msgid "Show volume adjustment slider in menu"
 msgstr "Показывать слайдер регулировки громкости"
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
+msgstr ""
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -41,10 +106,6 @@ msgstr "Список радиостанций"
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Управление радиостанциями"
-
-#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
-msgid "Cancel"
-msgstr "Отмена"
 
 #: channelListDialog.js:101
 msgid "Delete"
@@ -59,57 +120,12 @@ msgstr "Изменить"
 msgid "Play"
 msgstr "Включить"
 
-#: addChannelDialog.js:45
-msgid "Channel Name"
-msgstr "Имя радиостанции"
-
-#: addChannelDialog.js:64
-msgid "Stream Address"
-msgstr "Адрес потока"
-
-#: addChannelDialog.js:83
-msgid "Charset (optional)"
-msgstr "Кодировка (опционально)"
-
-#: addChannelDialog.js:111
-msgid "Save"
+#: channelCreator.js:92
+msgid "No server stream address found!"
 msgstr ""
 
-#: addChannelDialog.js:111 searchDialog.js:114
-msgid "Add"
-msgstr "Добавить"
-
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Поиск "
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Найти"
-
-#: searchDialog.js:158
-msgid "No radio station found!"
-msgstr "Радиостанции не найдены"
-
-#: searchDialog.js:161
-msgid "Server returned status code"
-msgstr "Сервер вернул код статуса"
-
-#: searchDialog.js:166
-msgid "Search input was empty!"
-msgstr "Пустой запрос поиска"
-
-#: player.js:96
-msgid "Missing plugin"
-msgstr ""
-
-#: player.js:133
-#, fuzzy
-msgid "Stream error"
-msgstr "Адрес потока"
-
-#: player.js:137
-msgid "End of stream"
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
 msgstr ""
 
 #~ msgid "Favourites"
