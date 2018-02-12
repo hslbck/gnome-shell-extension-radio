@@ -1,4 +1,4 @@
-# Copyright (C) 2016-2017 Léo Andrès <leo@ndrs.fr>
+# Copyright (C) 2016-2018 Léo Andrès <leo@ndrs.fr>
 # Copyright (C) 2016 Anthony Chaput <thonyc4@openmailbox.org>
 # Copyright (C) 2016 Berthault Justin <justin.berthault@zaclys.net>
 # Copyright (C) 2016 Quentin Daem <quentin.daem@gmail.com>
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-12-11 12:39+0100\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -17,21 +17,85 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: prefs.js:49
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Nom du Canal"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Adresse du flux"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr "Jeu de caractères (facultatif)"
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Annuler"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr "Enregistrer"
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Ajouter"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Parcourir"
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Rechercher"
+
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr "Station ajoutée:"
+
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Aucune station de radio trouvée"
+
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "Le serveur a renvoyé le code d'état"
+
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "Le texte saisi était vide !"
+
+#: player.js:97
+msgid "Missing plugin"
+msgstr "Plugin manquant"
+
+#: player.js:134
+msgid "Stream error"
+msgstr "Erreur du flux"
+
+#: player.js:138
+msgid "End of stream"
+msgstr "Fin du flux"
+
+#: prefs.js:51
 msgid "Show title notifications"
 msgstr "Afficher les notifications du titre à l'écoute"
 
-#: prefs.js:65
+#: prefs.js:67
 msgid "Show title notification in the panel"
 msgstr "Afficher le titre à l'écoute dans la barre supérieure"
 
-#: prefs.js:81
+#: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
 msgstr "Activer les touches démarrer/arrêter le multimédia"
 
-#: prefs.js:97
+#: prefs.js:99
 msgid "Show volume adjustment slider in menu"
 msgstr "Afficher la barre de réglage du volume dans le menu"
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
+msgstr "Utiliser en tant que fournisseur pour les recherches GNOME Shell"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -40,10 +104,6 @@ msgstr "Liste des Canaux"
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Gérer vos stations de radio"
-
-#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
-msgid "Cancel"
-msgstr "Annuler"
 
 #: channelListDialog.js:101
 msgid "Delete"
@@ -57,67 +117,10 @@ msgstr "Modifier"
 msgid "Play"
 msgstr "Lecture"
 
-#: addChannelDialog.js:45
-msgid "Channel Name"
-msgstr "Nom du Canal"
+#: channelCreator.js:92
+msgid "No server stream address found!"
+msgstr "Aucune adresse de flux trouvée sur le serveur !"
 
-#: addChannelDialog.js:64
-msgid "Stream Address"
-msgstr "Adresse du flux"
-
-#: addChannelDialog.js:83
-msgid "Charset (optional)"
-msgstr "Jeu de caractères (facultatif)"
-
-#: addChannelDialog.js:111
-msgid "Save"
-msgstr "Enregistrer"
-
-#: addChannelDialog.js:111 searchDialog.js:114
-msgid "Add"
-msgstr "Ajouter"
-
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Parcourir"
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Rechercher"
-
-#: searchDialog.js:135
-msgid "Station added:"
-msgstr "Station ajoutée:"
-
-#: searchDialog.js:161
-msgid "No radio station found!"
-msgstr "Aucune station de radio trouvée"
-
-#: searchDialog.js:164
-msgid "Server returned status code"
-msgstr "Le serveur a renvoyé le code d'état"
-
-#: searchDialog.js:169
-msgid "Search input was empty!"
-msgstr "Le texte saisi était vide !"
-
-#: player.js:96
-msgid "Missing plugin"
-msgstr "Plugin manquant"
-
-#: player.js:133
-msgid "Stream error"
-msgstr "Erreur du flux"
-
-#: player.js:137
-msgid "End of stream"
-msgstr "Fin du flux"
-
-#~ msgid "Favourites"
-#~ msgstr "Favoris"
-
-#~ msgid "Channels"
-#~ msgstr "Canaux"
-
-#~ msgid "Add Channel"
-#~ msgstr "Ajouter Canal"
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
+msgstr "Adresse du flux saisie invalide !"

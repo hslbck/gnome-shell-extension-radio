@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2018-02-11 16:45+0100\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2018-02-11 16:46+0100\n"
 "Last-Translator: bezcitu <secitem@tuta.io>\n"
 "Language-Team: \n"
@@ -28,7 +28,7 @@ msgstr "Stream-Adresse"
 msgid "Charset (optional)"
 msgstr "Charset (optional)"
 
-#: addChannelDialog.js:105 channelListDialog.js:94 searchDialog.js:108
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -40,33 +40,29 @@ msgstr "Speichern"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: channelCreator.js:92
-msgid "No server stream address found!"
-msgstr "Keine Server Streamadresse gefunden!"
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Durchsuche "
 
-#: channelCreator.js:94
-msgid "Invalid input stream address!"
-msgstr "Ungültige Streamadresse!"
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Suche"
 
-#: channelListDialog.js:54
-msgid "List of Channels"
-msgstr "Senderliste"
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr "Sender hinzugefügt:"
 
-#: channelListDialog.js:58
-msgid "Manage your radio stations"
-msgstr "Verwalten Sie hier Ihre Senderliste"
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Es wurde kein Radiosender gefunden!"
 
-#: channelListDialog.js:101
-msgid "Delete"
-msgstr "Löschen"
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "Server antwortete mit dem Statuscode"
 
-#: channelListDialog.js:109
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: channelListDialog.js:118
-msgid "Play"
-msgstr "Abspielen"
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "Leere Sucheingabe!"
 
 #: player.js:97
 msgid "Missing plugin"
@@ -100,29 +96,33 @@ msgstr "Zeige separaten Lautstärkeregler"
 msgid "Enable as search provider for GNOME Shell"
 msgstr "Als Suchprovider für die GNOME Shell Übersicht zulassen"
 
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Durchsuche "
+#: channelListDialog.js:54
+msgid "List of Channels"
+msgstr "Senderliste"
 
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Suche"
+#: channelListDialog.js:58
+msgid "Manage your radio stations"
+msgstr "Verwalten Sie hier Ihre Senderliste"
 
-#: searchDialog.js:137
-msgid "Station added:"
-msgstr "Sender hinzugefügt:"
+#: channelListDialog.js:101
+msgid "Delete"
+msgstr "Löschen"
 
-#: searchDialog.js:163
-msgid "No radio station found!"
-msgstr "Es wurde kein Radiosender gefunden!"
+#: channelListDialog.js:109
+msgid "Edit"
+msgstr "Bearbeiten"
 
-#: searchDialog.js:166
-msgid "Server returned status code"
-msgstr "Server antwortete mit dem Statuscode"
+#: channelListDialog.js:118
+msgid "Play"
+msgstr "Abspielen"
 
-#: searchDialog.js:171
-msgid "Search input was empty!"
-msgstr "Leere Sucheingabe!"
+#: channelCreator.js:92
+msgid "No server stream address found!"
+msgstr "Keine Server Streamadresse gefunden!"
+
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
+msgstr "Ungültige Streamadresse!"
 
 #~ msgid "No server stream found!"
 #~ msgstr "Kein ServerStream gefunden!"

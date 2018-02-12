@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-23 12:01+0100\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2016-10-15 00:07+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian \n"
@@ -17,21 +17,86 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: prefs.js:49
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Csatorna neve"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Adatfolyam címe"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr ""
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Mégse"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr ""
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Tallózás "
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Keresés"
+
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr ""
+
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Nem található rádióállomás!"
+
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "A kiszolgáló által visszaadott állapotkód"
+
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "A keresési bemenet üres volt!"
+
+#: player.js:97
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:134
+#, fuzzy
+msgid "Stream error"
+msgstr "Adatfolyam címe"
+
+#: player.js:138
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:51
 msgid "Show title notifications"
 msgstr "Címértesítések megjelenítése"
 
-#: prefs.js:65
+#: prefs.js:67
 #, fuzzy
 msgid "Show title notification in the panel"
 msgstr "Címértesítések megjelenítése"
 
-#: prefs.js:81
+#: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
 msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
 
-#: prefs.js:97
+#: prefs.js:99
 msgid "Show volume adjustment slider in menu"
+msgstr ""
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
 msgstr ""
 
 #: channelListDialog.js:54
@@ -41,10 +106,6 @@ msgstr "Csatornák listája"
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Rádióállomások kezelése"
-
-#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
-msgid "Cancel"
-msgstr "Mégse"
 
 #: channelListDialog.js:101
 msgid "Delete"
@@ -58,57 +119,12 @@ msgstr "Szerkesztés"
 msgid "Play"
 msgstr "Lejátszás"
 
-#: addChannelDialog.js:45
-msgid "Channel Name"
-msgstr "Csatorna neve"
-
-#: addChannelDialog.js:64
-msgid "Stream Address"
-msgstr "Adatfolyam címe"
-
-#: addChannelDialog.js:83
-msgid "Charset (optional)"
+#: channelCreator.js:92
+msgid "No server stream address found!"
 msgstr ""
 
-#: addChannelDialog.js:111
-msgid "Save"
-msgstr ""
-
-#: addChannelDialog.js:111 searchDialog.js:114
-msgid "Add"
-msgstr "Hozzáadás"
-
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Tallózás "
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Keresés"
-
-#: searchDialog.js:158
-msgid "No radio station found!"
-msgstr "Nem található rádióállomás!"
-
-#: searchDialog.js:161
-msgid "Server returned status code"
-msgstr "A kiszolgáló által visszaadott állapotkód"
-
-#: searchDialog.js:166
-msgid "Search input was empty!"
-msgstr "A keresési bemenet üres volt!"
-
-#: player.js:96
-msgid "Missing plugin"
-msgstr ""
-
-#: player.js:133
-#, fuzzy
-msgid "Stream error"
-msgstr "Adatfolyam címe"
-
-#: player.js:137
-msgid "End of stream"
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
 msgstr ""
 
 #~ msgid "Favourites"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2017-11-23 12:01+0100\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
 "PO-Revision-Date: 2016-06-15 22:05+0200\n"
 "Last-Translator: Léo Andrès <leo@ndrs.fr>\n"
 "Language-Team: \n"
@@ -13,21 +13,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: prefs.js:49
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Nome do Canal"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Endereço de fluxo"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr "Charset (facultativo)"
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr ""
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Adicionar"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Folhear"
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Buscar"
+
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr ""
+
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Nenhuma estação de rádio encontrada"
+
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "O servidor retornou o código de status"
+
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "A entrada de pesquisa estava vazia!"
+
+#: player.js:97
+msgid "Missing plugin"
+msgstr ""
+
+#: player.js:134
+#, fuzzy
+msgid "Stream error"
+msgstr "Endereço de fluxo"
+
+#: player.js:138
+msgid "End of stream"
+msgstr ""
+
+#: prefs.js:51
 msgid "Show title notifications"
 msgstr "Mostrar notificações de título"
 
-#: prefs.js:65
+#: prefs.js:67
 #, fuzzy
 msgid "Show title notification in the panel"
 msgstr "Mostrar notificações de título"
 
-#: prefs.js:81
+#: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
 msgstr "Ative os botões iniciar / parar o multimedia"
 
-#: prefs.js:97
+#: prefs.js:99
 msgid "Show volume adjustment slider in menu"
+msgstr ""
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
 msgstr ""
 
 #: channelListDialog.js:54
@@ -37,10 +102,6 @@ msgstr "Lista dos Canais"
 #: channelListDialog.js:58
 msgid "Manage your radio stations"
 msgstr "Gerir as suas estações de rádio"
-
-#: channelListDialog.js:94 addChannelDialog.js:107 searchDialog.js:108
-msgid "Cancel"
-msgstr "Cancelar"
 
 #: channelListDialog.js:101
 msgid "Delete"
@@ -54,57 +115,12 @@ msgstr "Modificar"
 msgid "Play"
 msgstr "Tocar"
 
-#: addChannelDialog.js:45
-msgid "Channel Name"
-msgstr "Nome do Canal"
-
-#: addChannelDialog.js:64
-msgid "Stream Address"
-msgstr "Endereço de fluxo"
-
-#: addChannelDialog.js:83
-msgid "Charset (optional)"
-msgstr "Charset (facultativo)"
-
-#: addChannelDialog.js:111
-msgid "Save"
+#: channelCreator.js:92
+msgid "No server stream address found!"
 msgstr ""
 
-#: addChannelDialog.js:111 searchDialog.js:114
-msgid "Add"
-msgstr "Adicionar"
-
-#: searchDialog.js:47
-msgid "Browse "
-msgstr "Folhear"
-
-#: searchDialog.js:68
-msgid "Search"
-msgstr "Buscar"
-
-#: searchDialog.js:158
-msgid "No radio station found!"
-msgstr "Nenhuma estação de rádio encontrada"
-
-#: searchDialog.js:161
-msgid "Server returned status code"
-msgstr "O servidor retornou o código de status"
-
-#: searchDialog.js:166
-msgid "Search input was empty!"
-msgstr "A entrada de pesquisa estava vazia!"
-
-#: player.js:96
-msgid "Missing plugin"
-msgstr ""
-
-#: player.js:133
-#, fuzzy
-msgid "Stream error"
-msgstr "Endereço de fluxo"
-
-#: player.js:137
-msgid "End of stream"
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
 msgstr ""
 
 #~ msgid "Favourites"
