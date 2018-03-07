@@ -121,8 +121,12 @@ var RadioMenuButton = new Lang.Class({
         });
         this.tagListBox = new St.BoxLayout({
             name: 'tagListBox',
-            style_class: 'control-box',
-            width: 350
+            style_class: 'tag-list-box'
+        });
+
+        this.tagItem = new PopupMenu.PopupBaseMenuItem({
+            reactive: false,
+            can_focus: false
         });
 
         // Play and Stop Button Images
@@ -157,7 +161,7 @@ var RadioMenuButton = new Lang.Class({
             text: ""
         });
         this.copyTagButton = new St.Button({
-            style_class: 'copy-tag-button',
+            style_class: 'datemenu-today-button copy-tag-button',
             can_focus: true
         });
         this.copyTagIcon = new St.Icon({
@@ -166,11 +170,12 @@ var RadioMenuButton = new Lang.Class({
         this.copyTagButton.set_child(this.copyTagIcon);
         this.copyTagButton.hide();
         this.tagListBox.add(this.tagListLabel);
-        this.tagListBox.add(this.copyTagButton);
 
         // Add ControlsBox to the Menu
         this.menu.box.add_child(this.controlsBox);
-        this.menu.box.add_child(this.tagListBox);
+        this.tagItem.actor.add(this.tagListBox, {expand: false, x_fill: false});
+        this.tagItem.actor.add(this.copyTagButton, {expand: false, y_fill: false});
+        this.menu.addMenuItem(this.tagItem);
 
         // Connect the Button
         this.playButton.connect('clicked', Lang.bind(this, this._onPlayButtonClicked));

@@ -14,9 +14,12 @@
   padding: 2px 8px;
 }
 
+.tag-list-box{
+    margin-top: 7px;
+}
+
 .copy-tag-button {
-    float: right;
-  width: 17px;
-  height: 4px;
-  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
 }
