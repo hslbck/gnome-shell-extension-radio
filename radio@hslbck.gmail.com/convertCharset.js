@@ -1,6 +1,7 @@
 /*
   Copyright (C) 2005 David Mzareulyan <david@hiero.ru>
   Copyright (C) 2016-2017 Niels Rune Brandt <nielsrune@hotmail.com>
+  Copyright (C) 2018 Léo Andrès <leo@ndrs.fr>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -101,7 +102,6 @@ function convertToUnicode(enc, str) {
             break;
         default:
             return str;
-            break;
     }
     for(let i = 0; i < str.length; i++) res = res + code2char(str.charCodeAt(i));
     return res;
