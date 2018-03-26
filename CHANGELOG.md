@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [9] - 2018-03-26
+
 ### Added
 - Italian translation
 - Ukrainian translation
@@ -96,6 +98,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[9]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v9
 [8]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v8
 [7]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v7
 [1.6]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v1.6
