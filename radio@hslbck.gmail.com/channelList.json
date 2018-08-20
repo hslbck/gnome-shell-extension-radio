@@ -2,7 +2,7 @@
 	{
 	"id": "afaea783-5d7b-4ef5-9e79-c8a61fa8f67e",
 	"name": "Byte FM",
-	"address": "http://streamingserver01.byte.fm:8000/",
+	"address": "http://bytefm.cast.addradio.de/bytefm/main/mid/stream\r",
 	"favourite": true,
 	"encoding": false
 },	{
