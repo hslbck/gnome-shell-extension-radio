@@ -1,11 +1,12 @@
 # Copyright (C) 2015 Ahmet Sezgin Duran <marjinalist1@gmail.com>
+# Serdar Sağlam <teknomobil@yandex.com> 2018 çeviri
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2018-02-12 10:34+0100\n"
-"PO-Revision-Date: 2015-10-29 15:44+0100\n"
+"PO-Revision-Date: 2018-09-23 15:44+0100\n"
 "Last-Translator: Ahmet Sezgin Duran <marjinalist1@gmail.com>\n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -25,7 +26,7 @@ msgstr "Akış Adresi"
 
 #: addChannelDialog.js:81
 msgid "Charset (optional)"
-msgstr ""
+msgstr "Karekter seti (isteğe bağlı)"
 
 #: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
 msgid "Cancel"
@@ -33,7 +34,7 @@ msgstr "İptal"
 
 #: addChannelDialog.js:109
 msgid "Save"
-msgstr ""
+msgstr "Kaydet"
 
 #: addChannelDialog.js:109 searchDialog.js:114
 msgid "Add"
@@ -41,15 +42,15 @@ msgstr "Ekle"
 
 #: searchDialog.js:47
 msgid "Browse "
-msgstr ""
+msgstr "Radyo Ara"
 
 #: searchDialog.js:68
 msgid "Search"
-msgstr ""
+msgstr "Ara"
 
 #: searchDialog.js:137
 msgid "Station added:"
-msgstr ""
+msgstr "Eklenen istasyon:"
 
 #: searchDialog.js:163
 #, fuzzy
@@ -58,15 +59,15 @@ msgstr "Radyo istasyonlarınızı yönetin"
 
 #: searchDialog.js:166
 msgid "Server returned status code"
-msgstr ""
+msgstr "Sunucu durum kodu döndürdü"
 
 #: searchDialog.js:171
 msgid "Search input was empty!"
-msgstr ""
+msgstr "Aradığınız istasyonu yazın!"
 
 #: player.js:97
 msgid "Missing plugin"
-msgstr ""
+msgstr "Eklenti eksik"
 
 #: player.js:134
 #, fuzzy
@@ -75,27 +76,27 @@ msgstr "Akış Adresi"
 
 #: player.js:138
 msgid "End of stream"
-msgstr ""
+msgstr "Yayın akışı sonlandı"
 
 #: prefs.js:51
 msgid "Show title notifications"
-msgstr ""
+msgstr "Bildirimleri göster"
 
 #: prefs.js:67
 msgid "Show title notification in the panel"
-msgstr ""
+msgstr "Bildirimleri görev çubuğunda göster"
 
 #: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
-msgstr ""
+msgstr "Oynat/Durdur Medya Tuşlarını Etkinleştir"
 
 #: prefs.js:99
 msgid "Show volume adjustment slider in menu"
-msgstr ""
+msgstr "Menü üstünde ses denetimini göster"
 
 #: prefs.js:115
 msgid "Enable as search provider for GNOME Shell"
-msgstr ""
+msgstr "GNOME Shell arama sağlayıcı olarak etkinleştir"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -111,7 +112,7 @@ msgstr "Sil"
 
 #: channelListDialog.js:109
 msgid "Edit"
-msgstr ""
+msgstr "Düzenle"
 
 #: channelListDialog.js:118
 msgid "Play"
@@ -119,11 +120,11 @@ msgstr "Oynat"
 
 #: channelCreator.js:92
 msgid "No server stream address found!"
-msgstr ""
+msgstr "Sunucu akış adresi bulunamadı!"
 
 #: channelCreator.js:94
 msgid "Invalid input stream address!"
-msgstr ""
+msgstr "Geçersiz istasyon akış adresi!"
 
 #~ msgid "Favourites"
 #~ msgstr "Favoriler"
