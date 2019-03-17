@@ -1,20 +1,22 @@
-# Copyright (C) 2015 Ahmet Sezgin Duran <marjinalist1@gmail.com>
-# Serdar Sağlam <teknomobil@yandex.com> 2018 çeviri
+# Copyright (C) 2015
 # This file is distributed under the same license as the gnome-shell-extension-radio package.
+# Ahmet Sezgin Duran <marjinalist1@gmail.com>, 2015.
+# Serdar Sağlam <teknomobil@yandex.com>, 2019.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2018-02-12 10:34+0100\n"
-"PO-Revision-Date: 2018-09-23 15:44+0100\n"
-"Last-Translator: Ahmet Sezgin Duran <marjinalist1@gmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2019-03-17 21:30+0300\n"
+"Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
+"Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 3.32.0\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
 #: addChannelDialog.js:42
 msgid "Channel Name"
@@ -26,7 +28,7 @@ msgstr "Akış Adresi"
 
 #: addChannelDialog.js:81
 msgid "Charset (optional)"
-msgstr "Karekter seti (isteğe bağlı)"
+msgstr "Karakter kümesi (isteğe bağlı)"
 
 #: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
 msgid "Cancel"
@@ -42,7 +44,7 @@ msgstr "Ekle"
 
 #: searchDialog.js:47
 msgid "Browse "
-msgstr "Radyo Ara"
+msgstr "Gözat "
 
 #: searchDialog.js:68
 msgid "Search"
@@ -53,9 +55,8 @@ msgid "Station added:"
 msgstr "Eklenen istasyon:"
 
 #: searchDialog.js:163
-#, fuzzy
 msgid "No radio station found!"
-msgstr "Radyo istasyonlarınızı yönetin"
+msgstr "Radyo istasyonu bulunamadı!"
 
 #: searchDialog.js:166
 msgid "Server returned status code"
@@ -63,16 +64,15 @@ msgstr "Sunucu durum kodu döndürdü"
 
 #: searchDialog.js:171
 msgid "Search input was empty!"
-msgstr "Aradığınız istasyonu yazın!"
+msgstr "Arama girişi boştu!"
 
 #: player.js:97
 msgid "Missing plugin"
 msgstr "Eklenti eksik"
 
 #: player.js:134
-#, fuzzy
 msgid "Stream error"
-msgstr "Akış Adresi"
+msgstr "Akış hatası"
 
 #: player.js:138
 msgid "End of stream"
@@ -80,19 +80,19 @@ msgstr "Yayın akışı sonlandı"
 
 #: prefs.js:51
 msgid "Show title notifications"
-msgstr "Bildirimleri göster"
+msgstr "Başlık bildirimlerini göster"
 
 #: prefs.js:67
 msgid "Show title notification in the panel"
-msgstr "Bildirimleri görev çubuğunda göster"
+msgstr "Panelde başlık bildirimini göster"
 
 #: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
-msgstr "Oynat/Durdur Medya Tuşlarını Etkinleştir"
+msgstr "Medya Tuşlarını Etkinleştir Oynat/Durdur"
 
 #: prefs.js:99
 msgid "Show volume adjustment slider in menu"
-msgstr "Menü üstünde ses denetimini göster"
+msgstr "Menüde ses ayarı kaydırıcısını göster"
 
 #: prefs.js:115
 msgid "Enable as search provider for GNOME Shell"
