@@ -15,11 +15,11 @@ const Lang = imports.lang;
 const Gst = imports.gi.Gst;
 const Gstpbutils = imports.gi.GstPbutils;
 const Mainloop = imports.mainloop;
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
 const MyE = Extension.imports.extension;
 const Convert = Extension.imports.convertCharset;
-const Convenience = Extension.imports.convenience;
 
 const SETTING_VOLUME_LEVEL = 'volume-level';
 
@@ -39,7 +39,7 @@ var Player = new Lang.Class({
         });
 
 	    //read settings
-        this._settings = Convenience.getSettings();
+        this._settings = ExtensionUtils.getSettings();
 
         this._tag = "";
         this._setup();

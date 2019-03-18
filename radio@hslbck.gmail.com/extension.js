@@ -4,15 +4,15 @@
 */
 
 const Main = imports.ui.main;
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Convenience = Extension.imports.convenience;
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
 const RadioMenu = Extension.imports.radioMenu;
 
 var radioMenu;
 
 // init with translation support
 function init() {
-    Convenience.initTranslations("radio@hslbck.gmail.com");
+    ExtensionUtils.initTranslations();
 }
 
 // build and add the extension

@@ -23,7 +23,8 @@ const Slider = imports.ui.slider;
 const Mainloop = imports.mainloop;
 
 // import custom files
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
 const Player = Extension.imports.player;
 const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
@@ -34,7 +35,6 @@ const TitleMenu = Extension.imports.titleMenu;
 const RadioSearchProvider = Extension.imports.searchProvider;
 
 // translation support
-const Convenience = Extension.imports.convenience;
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
 const _ = Gettext.gettext;
 
@@ -84,7 +84,7 @@ var RadioMenuButton = new Lang.Class({
     	this.parent(0.0, Extension.metadata.name);
 
         // read settings
-        this._settings = Convenience.getSettings();
+        this._settings = ExtensionUtils.getSettings();
 
         // path for icon
         Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());

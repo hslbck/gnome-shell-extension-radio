@@ -5,8 +5,8 @@
 */
 const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Convenience = Extension.imports.convenience;
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
 const _ = Gettext.gettext;
 const Lang = imports.lang;
@@ -26,7 +26,7 @@ var RadioPrefsWidget = new GObject.Class({
         this.parent(params);
         this.orientation = Gtk.Orientation.VERTICAL;
         this.margin = 12;
-        this._settings = Convenience.getSettings();
+        this._settings = ExtensionUtils.getSettings();
 
         this._widgets = {};
 
@@ -128,7 +128,7 @@ var RadioPrefsWidget = new GObject.Class({
 });
 
 function init() {
-    Convenience.initTranslations("radio@hslbck.gmail.com");
+    ExtensionUtils.initTranslations();
 }
 
 function buildPrefsWidget() {
