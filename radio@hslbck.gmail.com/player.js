@@ -14,7 +14,6 @@ imports.gi.versions.Gst = '1.0';
 const Lang = imports.lang;
 const Gst = imports.gi.Gst;
 const Gstpbutils = imports.gi.GstPbutils;
-const Mainloop = imports.mainloop;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;

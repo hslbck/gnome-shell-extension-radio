@@ -19,9 +19,6 @@ const GLib = imports.gi.GLib;
 const Shell = imports.gi.Shell;
 const Slider = imports.ui.slider;
 
-// import for timer
-const Mainloop = imports.mainloop;
-
 // import custom files
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
@@ -634,9 +631,9 @@ var RadioMenuButton = new Lang.Class({
     // timer to check the stream title
     _checkTitle: function (timeout) {
         if (timeoutId !== 0) {
-            Mainloop.source_remove(timeoutId);
+            GLib.source_remove(timeoutId);
         }
-        timeoutId = Mainloop.timeout_add(timeout, Lang.bind(this, this._setTagLabel));
+        timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, timeout, this._setTagLabel.bind(this));
     },
 
 
@@ -669,7 +666,7 @@ var RadioMenuButton = new Lang.Class({
 
     destroy: function () {
         if (timeoutId !== 0) {
-            Mainloop.source_remove(timeoutId);
+            GLib.source_remove(timeoutId);
             timeoutId = 0;
         }
         if (this.player !== null) {
