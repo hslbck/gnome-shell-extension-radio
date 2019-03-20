@@ -8,13 +8,13 @@
 },	{
 	"id": "ce4eb78e-ef48-4846-92fd-2faa8ecb82ce",
 	"name": "egoFM",
-	"address": "http://mp3ad.egofm.c.nmdn.net/ps-egofm_192/livestream.mp3\r",
+	"address": "https://egofm-live.cast.addradio.de/egofm/live/mp3/high/stream.mp3\r",
 	"favourite": true,
 	"encoding": false
 },	{
 	"id": "f26c648c-c7fd-4d81-9959-27f61d3265ca",
 	"name": "egoFM Riff",
-	"address": "http://mp3ad.egofm.c.nmdn.net/ps-egofmriff_192/livestream.mp3",
+	"address": "https://egofm-riff.cast.addradio.de/egofm/riff/mp3/high/stream.mp3",
 	"favourite": true,
 	"encoding": false
 },	{
