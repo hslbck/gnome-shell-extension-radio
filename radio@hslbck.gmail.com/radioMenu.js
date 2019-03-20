@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2014-2018 hslbck <hslbck@gmail.com>
+    Copyright (C) 2014-2019 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 x4lldux <x4lldux@vectron.io>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
@@ -12,11 +12,11 @@ const Main = imports.ui.main;
 const MessageTray = imports.ui.messageTray;
 const PopupMenu = imports.ui.popupMenu;
 const PanelMenu = imports.ui.panelMenu;
-const Lang = imports.lang;
 const Gtk = imports.gi.Gtk;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Shell = imports.gi.Shell;
+const GObject = imports.gi.GObject;
 const Slider = imports.ui.slider;
 
 // import custom files
@@ -73,27 +73,33 @@ const MediaKeysInterface = '<node> \
 const MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
 const Clipboard = St.Clipboard.get_default();
 
-var RadioMenuButton = new Lang.Class({
-    Name: 'Radio Button',
-    Extends: PanelMenu.Button,
-
-    _init: function () {
-    	this.parent(0.0, Extension.metadata.name);
+let RadioMenuButton = GObject.registerClass (
+    class RadioMenuButton extends PanelMenu.Button {
+    _init() {
+    	super._init(0.0, Extension.metadata.name);
 
         // read settings
         this._settings = ExtensionUtils.getSettings();
 
         // path for icon
-        Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
+        //Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
+
+        let hbox = new St.BoxLayout({
+                   style_class: 'panel-status-menu-box'
+       });
+
+        this.iconStopped = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
+        this.iconPlaying = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-playing-symbolic.svg');
+
 
         // Icon for the Panel
         this.radioIcon = new St.Icon({
-            icon_name: StoppedIcon,
+            gicon: this.iconStopped,
             style_class: 'system-status-icon'
         });
 
-
-        this.actor.add_actor(this.radioIcon);
+        hbox.add_actor(this.radioIcon);
+        this.actor.add_actor(hbox);
         this.actor.add_style_class_name('panel-status-button');
 
         // get channels from json file
@@ -175,8 +181,8 @@ var RadioMenuButton = new Lang.Class({
         this.menu.addMenuItem(this.tagItem);
 
         // Connect the Button
-        this.playButton.connect('clicked', Lang.bind(this, this._onPlayButtonClicked));
-        this.copyTagButton.connect('clicked', Lang.bind(this, this._copyTagToClipboard));
+        this.playButton.connect('clicked', this._onPlayButtonClicked.bind(this));
+        this.copyTagButton.connect('clicked', this._copyTagToClipboard.bind(this));
 
         // PopupSeparator
         let separator1 = new PopupMenu.PopupSeparatorMenuItem();
@@ -190,88 +196,88 @@ var RadioMenuButton = new Lang.Class({
         this._buildMenuItems();
 
         this.isPlaying = false;
-        this.actor.connect('button-press-event', Lang.bind(this, this._middleClick));
+        this.actor.connect('button-press-event', this._middleClick.bind(this));
 
         // media keys setting change
-        this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, Lang.bind(this, function() {
+        this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, () => {
             if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
                 this._registerMediaKeys();
             }
             else {
                 this._disconnectMediaKeys();
             }
-        }));
+        });
 
         // title panel setting change
-        this._settings.connect("changed::" + SETTING_SHOW_TITLE_IN_PANEL, Lang.bind(this, function() {
+        this._settings.connect("changed::" + SETTING_SHOW_TITLE_IN_PANEL, () => {
             if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
                 TitleMenu.addToPanel();
             }
             else {
                 TitleMenu.removeFromPanel();
             }
-        }));
+        });
 
         // Volume slider setting change
-        this._settings.connect("changed::" + SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, Lang.bind(this, function() {
+        this._settings.connect("changed::" + SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, () => {
             if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
                 this._buildVolumeSlider(2);
             }
             else {
                 this._destroyVolumeSlider();
             }
-        }));
+        });
 
         // search provider setting change
-        this._settings.connect("changed::" + SETTING_ENABLE_SEARCH_PROVIDER, Lang.bind(this, function() {
+        this._settings.connect("changed::" + SETTING_ENABLE_SEARCH_PROVIDER, () => {
             if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
                 RadioSearchProvider.enableProvider();
             }
             else {
                 RadioSearchProvider.disableProvider();
             }
-        }));
+        });
 
-    },
+    }
 
     // search provider registration on startup
-    _enableSearchProvider: function() {
+    _enableSearchProvider() {
         if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
             RadioSearchProvider.enableProvider();
         }
-    },
+    }
 
     // media keys for registration on startup
-    _enableMediaKeys: function () {
+    _enableMediaKeys() {
         if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
             this._registerMediaKeys();
         }
-    },
+    }
 
-    _disableSearchProvider: function(){
+    _disableSearchProvider(){
         RadioSearchProvider.disableProvider();
-    },
+    }
 
-    _registerMediaKeys: function() {
+    _registerMediaKeys() {
         if (this._mediaKeysProxy) {
                 this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
         }
         else {
             new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
-                                        Lang.bind(this, function(proxy, error) {
+                                        (proxy, error) => {
                                             if (error) {
                                                 global.log(error.message);
                                                 return;
                                             }
                                             this._mediaKeysProxy = proxy;
-                                            this._proxyId = this._mediaKeysProxy.connectSignal('MediaPlayerKeyPressed', Lang.bind(this, this._mediaKeysPressed));
+                                            this._proxyId = this._mediaKeysProxy.connectSignal('MediaPlayerKeyPressed', this._mediaKeysPressed.bind(this));
                                             this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
-                                        }));
+                                        });
 
         }
-    },
+    }
 
-     _disconnectMediaKeys: function() {
+     _disconnectMediaKeys() {
          if (this._mediaKeysProxy) {
              this._mediaKeysProxy.ReleaseMediaPlayerKeysRemote("GSE Radio");
              if (this._proxyId) {
@@ -280,10 +286,10 @@ var RadioMenuButton = new Lang.Class({
              this._proxyId = 0;
              this._mediaKeysProxy = null;
          }
-     },
+     }
 
     // handle play/stop media key events
-    _mediaKeysPressed: function(sender, signal, parameters) {
+    _mediaKeysPressed(sender, signal, parameters) {
         let [app, key] = parameters;
         // global.log("Received key: " + _key);
         if (key == 'Play') {
@@ -298,38 +304,38 @@ var RadioMenuButton = new Lang.Class({
         else if (key == 'Next') {
             this._next();
         }
-     },
+     }
 
     // quick play option by middle click
-    _middleClick: function(actor, event) {
+    _middleClick(actor, event) {
         // left click === 1, middle click === 2, right click === 3
         if (event.get_button() === 2) {
             this.menu.close();
             this._onPlayButtonClicked();
         }
-    },
+    }
 
     // play button clicked
-    _onPlayButtonClicked: function () {
+    _onPlayButtonClicked() {
         if (!this.isPlaying) {
             this._start();
         } else {
             this._stop();
         }
-    },
+    }
 
-    _copyTagToClipboard: function() {
+    _copyTagToClipboard() {
         Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
-    },
+    }
 
-    _onVolumeSliderValueChanged: function(slider, value, property){
+    _onVolumeSliderValueChanged(slider, value, property){
         if (this.player !== null) {
             this.player._setVolume(value);
         }
-    },
+    }
 
     // start streaming
-    _start: function () {
+    _start() {
         if (this.player === null) {
             this.player = new Player.Player(this.lastPlayedChannel);
         }
@@ -341,27 +347,29 @@ var RadioMenuButton = new Lang.Class({
         global.log("Source Bus Id: " + this.player._sourceBusId);
 */
         this.playLabel.set_text(this.player._getCurrentChannel().getName());
-        this.radioIcon.set_icon_name(PlayingIcon);
+        //this.radioIcon.set_icon_name(PlayingIcon);
+        this.radioIcon.set_gicon(this.iconPlaying);
         this._checkTitle(Interval);
         this.isPlaying = true;
         this.playButton.set_child(this.stopIcon);
-    },
+    }
 
     // stop streaming
-    _stop: function () {
+    _stop() {
         if (this.isPlaying && this.player !== null) {
             this.player._stop();
             TitleMenu.removeFromPanel();
         }
-        this.radioIcon.set_icon_name(StoppedIcon);
+        //this.radioIcon.set_icon_name(StoppedIcon);
+        this.radioIcon.set_gicon(this.iconStopped);
         this.tagListLabel.set_text("");
         this.copyTagButton.hide();
         this.isPlaying = false;
         this.playButton.set_child(this.playIcon);
-    },
+    }
 
     // change channel to previous on the list
-    _prev: function () {
+    _prev() {
         if (this.player !== null) {
             let currentChannel = this.player._getCurrentChannel();
             let channels = this.channelList.channels;
@@ -374,10 +382,10 @@ var RadioMenuButton = new Lang.Class({
             }
             this._changeChannel(new Channel.Channel(nextChannel.id,nextChannel.name, nextChannel.address, false, nextChannel.encoding));
         }
-    },
+    }
 
     // change channel to next on the list
-    _next: function () {
+    _next() {
         if (this.player !== null) {
             let currentChannel = this.player._getCurrentChannel();
             let channels = this.channelList.channels;
@@ -390,10 +398,10 @@ var RadioMenuButton = new Lang.Class({
             }
             this._changeChannel(new Channel.Channel(nextChannel.id,nextChannel.name, nextChannel.address, false, nextChannel.encoding));
         }
-    },
+    }
 
     // change radio station
-    _changeChannel: function (cha) {
+    _changeChannel(cha) {
         this._stop();
         if (this.player !== null) {
             this.player._changeChannel(cha);
@@ -401,9 +409,9 @@ var RadioMenuButton = new Lang.Class({
         this.lastPlayedChannel = cha;
         Io.write(this.helperChannelList, this.lastPlayedChannel);
         this._start();
-    },
+    }
 
-    _changeChannelById: function (id) {
+    _changeChannelById(id) {
         if (this.isPlaying && id === this.player._getCurrentChannel().getId()) {
             this._stop();
         }
@@ -411,10 +419,10 @@ var RadioMenuButton = new Lang.Class({
             let channel = this._getChannelById(id);
             this._changeChannel(channel);
         }
-    },
+    }
 
     // init channel and add channels to the PopupMenu
-    _initChannels: function (chas) {
+    _initChannels(chas) {
         for (var i in chas) {
             let encoding = chas[i].hasOwnProperty('encoding') ? chas[i].encoding : null;
             let id = chas[i].hasOwnProperty('id') ? chas[i].id : null;
@@ -425,21 +433,21 @@ var RadioMenuButton = new Lang.Class({
             }
 
         }
-    },
+    }
 
-    _addToFavourites: function (cha) {
+    _addToFavourites(cha) {
         let contains = this._containsChannel(cha);
         if (contains) {
             let item = new PopupMenu.PopupMenuItem(cha.getName());
             item.actor.set_name(cha.getId());
-            item.connect('activate', Lang.bind(this, function () {
+            item.connect('activate', () => {
                 this._changeChannel(cha);
-            }));
+            });
             this.menu.addMenuItem(item);
         }
-    },
+    }
 
-    _containsChannel: function (cha) {
+    _containsChannel(cha) {
         let contains = false;
         for (let i = 0; i < this.helperChannelList.length; i++) {
             if (this.helperChannelList[i].getId() === cha.getId()) {
@@ -447,18 +455,18 @@ var RadioMenuButton = new Lang.Class({
             }
         }
         return contains;
-    },
+    }
 
-    _getChannelById: function (id) {
+    _getChannelById(id) {
         for (let i = 0; i < this.helperChannelList.length; i++) {
             if (this.helperChannelList[i].getId() === id) {
                 return this.helperChannelList[i];
             }
         }
         return null;
-    },
+    }
 
-    _buildVolumeSlider: function(menuItemOffset) {
+    _buildVolumeSlider(menuItemOffset) {
         // Add volume slider separator
         this.separator3 = new PopupMenu.PopupSeparatorMenuItem();
         this.menu.addMenuItem(this.separator3, this.menu.numMenuItems - menuItemOffset);
@@ -471,20 +479,20 @@ var RadioMenuButton = new Lang.Class({
         this.volumeSliderBox.actor.add(this.volumeSlider.actor, { expand: true });
 
         // Connect sliders 'value-changed' handler
-        this.volumeSlider.connect('value-changed', Lang.bind(this, this._onVolumeSliderValueChanged));
+        this.volumeSlider.connect('value-changed', this._onVolumeSliderValueChanged.bind(this));
 
         // Add volume slider box
         this.menu.addMenuItem(this.volumeSliderBox,this.menu.numMenuItems - menuItemOffset);
-    },
+    }
 
-    _destroyVolumeSlider: function(){
+    _destroyVolumeSlider(){
         this.separator3.destroy();
         this.volumeIcon.destroy();
         this.volumeSlider.actor.destroy();
         this.volumeSliderBox.destroy();
-    },
+    }
 
-    _buildMenuItems: function() {
+    _buildMenuItems() {
         // Add VolumeSliderBox to the PopupMenu on startup
         if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
             this._buildVolumeSlider(0);
@@ -505,18 +513,18 @@ var RadioMenuButton = new Lang.Class({
         this.settingsItem.actor.add(this.addChannelButton, {expand: true, x_fill: false});
         this.settingsItem.actor.add(this.searchButton, {expand: true, x_fill: false});
         this.menu.addMenuItem(this.settingsItem);
-    },
+    }
 
-    _destroyMenuItems: function() {
+    _destroyMenuItems() {
         this._destroyMenuItemButtons();
         this.separator2.destroy();
         this.settingsItem.destroy();
         if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
     		this._destroyVolumeSlider();
         }
-    },
+    }
 
-    _buildMenuItemButtons: function() {
+    _buildMenuItemButtons() {
         this.settingsIcon = new St.Icon({
             icon_name: 'preferences-system-symbolic'
         });
@@ -525,10 +533,10 @@ var RadioMenuButton = new Lang.Class({
             can_focus: true
         });
         this.settingsButton.set_child(this.settingsIcon);
-        this.settingsButton.connect('clicked', Lang.bind(this, function() {
+        this.settingsButton.connect('clicked', () => {
             this.menu.close();
             this._openPrefs();
-        }));
+        });
 
         this.channelListIcon = new St.Icon({
             icon_name: 'view-list-symbolic'
@@ -538,11 +546,11 @@ var RadioMenuButton = new Lang.Class({
             can_focus: true
         });
         this.channelListButton.set_child(this.channelListIcon);
-        this.channelListButton.connect('clicked', Lang.bind(this, function () {
+        this.channelListButton.connect('clicked', () => {
             this.menu.close();
             this.channelListDialog = new ChannelListDialog.ChannelListDialog();
             this.channelListDialog.open();
-        }));
+        });
 
         this.addChannelIcon = new St.Icon({
             icon_name: 'list-add-symbolic'
@@ -552,11 +560,11 @@ var RadioMenuButton = new Lang.Class({
             can_focus: true
         });
         this.addChannelButton.set_child(this.addChannelIcon);
-        this.addChannelButton.connect('clicked', Lang.bind(this, function () {
+        this.addChannelButton.connect('clicked', () => {
             this.menu.close();
             this.addChannelDialog = new AddChannelDialog.AddChannelDialog(null);
             this.addChannelDialog.open();
-        }));
+        });
 
         this.searchIcon = new St.Icon({
             icon_name: 'system-search-symbolic'
@@ -566,14 +574,14 @@ var RadioMenuButton = new Lang.Class({
             can_focus: true
         });
         this.searchButton.set_child(this.searchIcon);
-        this.searchButton.connect('clicked', Lang.bind(this, function () {
+        this.searchButton.connect('clicked', () => {
             this.menu.close();
             this.searchDialog = new SearchDialog.SearchDialog();
             this.searchDialog.open();
-        }));
-    },
+        });
+    }
 
-    _destroyMenuItemButtons: function() {
+    _destroyMenuItemButtons() {
         this.settingsIcon.destroy();
         this.settingsButton.destroy();
         this.channelListIcon.destroy();
@@ -582,10 +590,10 @@ var RadioMenuButton = new Lang.Class({
         this.addChannelButton.destroy();
         this.searchIcon.destroy();
         this.searchButton.destroy();
-    },
+    }
 
     // get Favourites Menu Item
-    _removeFromFavourites: function (cha) {
+    _removeFromFavourites(cha) {
         let items = this.menu._getMenuItems();
         for (var i in items) {
             let item = items[i];
@@ -593,16 +601,16 @@ var RadioMenuButton = new Lang.Class({
                 item.destroy();
             }
         }
-    },
+    }
 
     // create a new Channel
-    _addChannel: function (cha) {
+    _addChannel(cha) {
         this.helperChannelList.push(cha);
         Io.write(this.helperChannelList, this.lastPlayedChannel);
-    },
+    }
 
     // Delete a Channel
-    _deleteChannel: function (cha) {
+    _deleteChannel(cha) {
         if (cha.getFavourite()) {
             this._removeFromFavourites(cha);
         }
@@ -612,33 +620,33 @@ var RadioMenuButton = new Lang.Class({
                 Io.write(this.helperChannelList, this.lastPlayedChannel);
             }
         }
-    },
+    }
 
-    _getHelperChannelList: function() {
+    _getHelperChannelList() {
             return this.helperChannelList;
-    },
+    }
 
     // set new values for a specific channel
-    _updateChannel: function (cha) {
+    _updateChannel(cha) {
         for (var i in this.helperChannelList) {
             if (this.helperChannelList[i].getId() === cha.getId()) {
                 this.helperChannelList[i] = cha;
                 Io.write(this.helperChannelList, this.lastPlayedChannel);
             }
         }
-    },
+    }
 
     // timer to check the stream title
-    _checkTitle: function (timeout) {
+    _checkTitle(timeout) {
         if (timeoutId !== 0) {
             GLib.source_remove(timeoutId);
         }
         timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, timeout, this._setTagLabel.bind(this));
-    },
+    }
 
 
     // update Title label
-    _setTagLabel: function () {
+    _setTagLabel() {
         if (this.isPlaying && this.player !== null) {
             let tag = this.player._getTag();
             let tagWithLineBreaks = this.player._getTagWithLineBreaks();
@@ -649,9 +657,9 @@ var RadioMenuButton = new Lang.Class({
             this._checkTitle(Interval);
             TitleMenu.updateTitle(channel, tag);
         }
-    },
+    }
 
-    _enableTitleNotification: function(tagLabel, senderLabel) {
+    _enableTitleNotification(tagLabel, senderLabel) {
         if (this._settings.get_boolean(SETTING_TITLE_NOTIFICATION) && tagLabel !== oldTagLabel) {
             oldTagLabel = tagLabel;
             let source = new MessageTray.Source("Radio", StoppedIcon);
@@ -662,9 +670,9 @@ var RadioMenuButton = new Lang.Class({
             Main.messageTray.add(source);
             source.notify(notification);
         }
-    },
+    }
 
-    destroy: function () {
+    destroy() {
         if (timeoutId !== 0) {
             GLib.source_remove(timeoutId);
             timeoutId = 0;
@@ -672,10 +680,10 @@ var RadioMenuButton = new Lang.Class({
         if (this.player !== null) {
             this.player._disconnectSourceBus();
         }
-    	this.parent();
-    },
+    	super.destroy();
+    }
 
-    _openPrefs: function () {
+    _openPrefs() {
         let _appSys = Shell.AppSystem.get_default();
         let _gsmPrefs = _appSys.lookup_app('gnome-shell-extension-prefs.desktop');
 
@@ -689,3 +697,19 @@ var RadioMenuButton = new Lang.Class({
         }
     }
 });
+
+var radioMenu;
+
+function addToPanel() {
+    radioMenu = new RadioMenuButton();
+    Main.panel.addToStatusArea('radioMenu', radioMenu, 0, 'right');
+    radioMenu._enableSearchProvider();
+    radioMenu._enableMediaKeys();
+}
+
+function removeFromPanel() {
+    radioMenu._stop();
+    radioMenu._disconnectMediaKeys();
+    radioMenu._disableSearchProvider();
+    radioMenu.destroy();
+}

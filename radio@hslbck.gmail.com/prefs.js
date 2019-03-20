@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2016 - 2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016 - 2019 hslbck <hslbck@gmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
@@ -9,7 +9,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
 const _ = Gettext.gettext;
-const Lang = imports.lang;
 
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
@@ -17,13 +16,11 @@ const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 const SETTING_ENABLE_SEARCH_PROVIDER = 'enable-search-provider';
 
-var RadioPrefsWidget = new GObject.Class({
-    Name: 'RadioPrefsWidget',
-    GTypeName: 'RadioPrefsWidget',
-    Extends: Gtk.Grid,
+var RadioPrefsWidget = GObject.registerClass(
+    class RadioPrefsWidget extends Gtk.Grid {
 
-    _init: function(params) {
-        this.parent(params);
+    _init(params) {
+        super._init(params);
         this.orientation = Gtk.Orientation.VERTICAL;
         this.margin = 12;
         this._settings = ExtensionUtils.getSettings();
@@ -44,9 +41,9 @@ var RadioPrefsWidget = new GObject.Class({
         this._addEnableSearchProviderSwitch();
 
         this.add(this._widgets.box);
-    },
+    }
 
-    _addTitleNotificationsSwitch: function() {
+    _addTitleNotificationsSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Show title notifications"),
                                         xalign: 0});
@@ -57,12 +54,12 @@ var RadioPrefsWidget = new GObject.Class({
 
         this._widgets.box.add(hbox);
 
-        this._widgets.titleNotificationsSwitch.connect('notify::active', Lang.bind(this, function(button) {
+        this._widgets.titleNotificationsSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_TITLE_NOTIFICATION, button.get_active());
-        }));
-    },
+        });
+    }
 
-    _addShowTitleInPanelSwitch: function() {
+    _addShowTitleInPanelSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Show title notification in the panel"),
                                         xalign: 0});
@@ -73,12 +70,12 @@ var RadioPrefsWidget = new GObject.Class({
 
         this._widgets.box.add(hbox);
 
-        this._widgets.titleInPanelSwitch.connect('notify::active', Lang.bind(this, function(button) {
+        this._widgets.titleInPanelSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_SHOW_TITLE_IN_PANEL, button.get_active());
-        }));
-    },
+        });
+    }
 
-    _addEnableMediaKeysSwitch: function() {
+    _addEnableMediaKeysSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Enable Play/Stop Media Keys"),
                                         xalign: 0});
@@ -89,12 +86,12 @@ var RadioPrefsWidget = new GObject.Class({
 
         this._widgets.box.add(hbox);
 
-        this._widgets.mediaKeySwitch.connect('notify::active', Lang.bind(this, function(button) {
+        this._widgets.mediaKeySwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_USE_MEDIA_KEYS, button.get_active());
-        }));
-    },
+        });
+    }
 
-    _addShowVolumeAdjustmentSliderSwitch: function() {
+    _addShowVolumeAdjustmentSliderSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Show volume adjustment slider in menu"),
                                         xalign: 0});
@@ -105,12 +102,12 @@ var RadioPrefsWidget = new GObject.Class({
 
         this._widgets.box.add(hbox);
 
-        this._widgets.volumeAdjustmentSliderSwitch.connect('notify::active', Lang.bind(this, function(button) {
+        this._widgets.volumeAdjustmentSliderSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, button.get_active());
-        }));
-    },
+        });
+    }
 
-    _addEnableSearchProviderSwitch: function() {
+    _addEnableSearchProviderSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Enable as search provider for GNOME Shell"),
                                         xalign: 0});
@@ -121,10 +118,10 @@ var RadioPrefsWidget = new GObject.Class({
 
         this._widgets.box.add(hbox);
 
-        this._widgets.searchProviderSwitch.connect('notify::active', Lang.bind(this, function(button) {
+        this._widgets.searchProviderSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_ENABLE_SEARCH_PROVIDER, button.get_active());
-        }));
-    },
+        });
+    }
 });
 
 function init() {

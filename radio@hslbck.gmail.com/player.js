@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2015-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2015-2019 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
     Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
@@ -11,13 +11,12 @@
  */
 imports.gi.versions.Gst = '1.0';
 
-const Lang = imports.lang;
 const Gst = imports.gi.Gst;
 const Gstpbutils = imports.gi.GstPbutils;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
-const MyE = Extension.imports.extension;
+const MyE = Extension.imports.radioMenu;
 const Convert = Extension.imports.convertCharset;
 
 const SETTING_VOLUME_LEVEL = 'volume-level';
@@ -26,10 +25,9 @@ const SETTING_VOLUME_LEVEL = 'volume-level';
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
 const _ = Gettext.gettext;
 
-var Player = new Lang.Class({
-    Name: 'Player',
+var Player = class Player {
 
-    _init: function (channel) {
+    constructor(channel) {
         Gst.init(null);
 
         this._currentChannel = channel;
@@ -42,52 +40,52 @@ var Player = new Lang.Class({
 
         this._tag = "";
         this._setup();
-    },
+    }
 
-    _setup: function() {
+    _setup() {
         this._source = Gst.ElementFactory.make("playbin", "source");
         this._source.set_property("uri", this._currentChannel.getUri());
 
         this._source.set_property("volume", this._settings.get_double(SETTING_VOLUME_LEVEL) );
         this._pipeline.add(this._source);
         this._readTags();
-    },
+    }
 
-    _start: function() {
+    _start() {
         this._pipeline.set_state(Gst.State.PLAYING);
-    },
+    }
 
-    _stop: function() {
+    _stop() {
         this._pipeline.set_state(Gst.State.NULL);
-    },
+    }
 
-    _changeChannel: function(channel) {
+    _changeChannel(channel) {
         this._currentChannel = channel;
         this._pipeline.remove(this._source);
         this._setup();
-    },
+    }
 
-    _setVolume: function(volume) {
+    _setVolume(volume) {
         let level = Math.pow(volume, 3);
         if(this._source){
           this._source.set_property("volume", level);
         }
         this._settings.set_double(SETTING_VOLUME_LEVEL, level);
-    },
+    }
 
 
-    _readTags: function() {
+    _readTags() {
         this._sourceBus = this._pipeline.get_bus();
         let sbus = this._sourceBus;
         this._sourceBus.add_signal_watch();
-        this._sourceBusId = this._sourceBus.connect('message', Lang.bind(this, function(sbus, message) {
+        this._sourceBusId = this._sourceBus.connect('message', (sbus, message) => {
             if (message !== null) {
                 this._onGstMessage(message);
             }
-        }));
-    },
+        });
+    }
 
-    _onGstMessage: function(message) {
+    _onGstMessage(message) {
         switch (message.type) {
             case Gst.MessageType.ELEMENT:
                  if (Gstpbutils.is_missing_plugin_message(message)) {
@@ -139,13 +137,13 @@ var Player = new Lang.Class({
             default:
                 break;
         }
-    },
+    }
 
-    _getTag: function() {
+    _getTag() {
         return this._tag;
-    },
+    }
 
-    _getTagWithLineBreaks: function() {
+    _getTagWithLineBreaks() {
         let tagArray = this._tag.trim().split(" ");
         let tmpTag = "";
         let splitIndex = 42;
@@ -157,16 +155,16 @@ var Player = new Lang.Class({
           tmpTag += tagArray[i] + " ";
         }
         return tmpTag;
-    },
+    }
 
-    _getCurrentChannel: function() {
+    _getCurrentChannel() {
             return this._currentChannel;
-    },
+    }
 
-    _disconnectSourceBus: function() {
+    _disconnectSourceBus() {
         if (this._sourceBusId) {
             this._sourceBus.disconnect(this._sourceBusId);
             this._sourceBusId = 0;
         }
     }
-});
+};

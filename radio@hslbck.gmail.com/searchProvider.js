@@ -5,11 +5,10 @@
 
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const Search = imports.ui.search;
 const St = imports.gi.St;
 const Io = Extension.imports.io;
-const MyE = Extension.imports.extension;
+const MyE = Extension.imports.radioMenu;
 const Main = imports.ui.main;
 
 const StoppedIcon = "gser-icon-stopped-symbolic";
@@ -30,11 +29,9 @@ function disableProvider() {
     }
 }
 
-var RadioSearchProvider = new Lang.Class({
-    Name: 'RadioSearchProvider',
-    Extends: Search.SearchProvider,
+var RadioSearchProvider = class RadioSearchProvider{
 
-    _init: function () {
+    constructor() {
         this.id = "RadioSearchProvider";
         this.title = "Internet Radio Search Provider";
 
@@ -48,15 +45,15 @@ var RadioSearchProvider = new Lang.Class({
                 },
                 get_id: function() {return this.id;}
         };
-    },
+    }
 
-    getInitialResultSet: function (terms, callback) {
+    getInitialResultSet(terms, callback) {
         let channels = Io.read().channels;
         this._results = channels.map(this._createProviderObject);
         this.getSubsearchResultSet(undefined, terms, callback);
-    },
+    }
 
-    getSubsearchResultSet: function (previous_results, terms, callback) {
+    getSubsearchResultSet(previous_results, terms, callback) {
         let search = terms.join(" ").toLowerCase();
            function containsSearch(candidate) {
              return candidate.name.toLowerCase().indexOf(search) !== -1;
@@ -65,27 +62,27 @@ var RadioSearchProvider = new Lang.Class({
              return candidate.id;
            };
         callback(this._results.filter(containsSearch).map(getId));
-    },
+    }
 
-    getResultMetas: function (ids, callback) {
+    getResultMetas(ids, callback) {
         let resultMetas = this._results.filter(function (res) {
             return ids.indexOf(res.id) !== -1;
         });
         callback(resultMetas);
-    },
+    }
 
-    activateResult: function (id, terms, timestamp) {
+    activateResult(id, terms, timestamp) {
         let result = this._results.filter(function(res) {
             return res.id === id;
         })[0];
         MyE.radioMenu._changeChannelById(result.id);
-    },
+    }
 
-    filterResults: function(results, max) {
+    filterResults(results, max) {
         return results.slice(0, max);
-    },
+    }
 
-    _createProviderObject: function(channel) {
+    _createProviderObject(channel) {
         return {
             id: channel.id,
             name: channel.name,
@@ -94,4 +91,4 @@ var RadioSearchProvider = new Lang.Class({
         };
     }
 
-});
+};

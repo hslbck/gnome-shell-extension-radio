@@ -1,11 +1,10 @@
 /*
-    Copyright (C) 2016-2018 hslbck <hslbck@gmail.com>
+    Copyright (C) 2016-2019 hslbck <hslbck@gmail.com>
     Copyright (C) 2016-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
-const Lang = imports.lang;
 const St = imports.gi.St;
 const ShellEntry = imports.ui.shellEntry;
 const Util = imports.misc.util;
@@ -16,7 +15,7 @@ const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const ChannelListDialog = Extension.imports.channelListDialog;
 const Channel = Extension.imports.channel;
 const AddChannelDialog = Extension.imports.addChannelDialog;
-const MyE = Extension.imports.extension;
+const MyE = Extension.imports.radioMenu;
 const ChannelCreator = Extension.imports.channelCreator;
 
 const _httpSession = new Soup.SessionAsync();
@@ -24,18 +23,16 @@ _httpSession.user_agent = "GSE Radio";
 _httpSession.timeout = 10;
 let _selectedChannel;
 
-var SearchDialog = new Lang.Class({
-    Name: 'SearchDialog',
-    Extends: ChannelCreator.ChannelCreator,
+var SearchDialog = class SearchDialog extends ChannelCreator.ChannelCreator {
 
-    _init: function () {
-        this.parent({
+    constructor() {
+        super({
             styleClass: 'nm-dialog'
         });
         this._buildLayout();
-    },
+    }
 
-    _buildLayout: function () {
+    _buildLayout() {
         let headline = new St.BoxLayout({
             style_class: 'nm-dialog-header-hbox',
             vertical: true
@@ -59,7 +56,7 @@ var SearchDialog = new Lang.Class({
         });
         ShellEntry.addContextMenu(this._searchEntry);
         this._searchEntryText = this._searchEntry.clutter_text;
-        this._searchEntryText.connect('key-press-event', Lang.bind(this, this._onKeyPressEvent));
+        this._searchEntryText.connect('key-press-event', this._onKeyPressEvent.bind(this));
 
         this.setInitialKeyFocus(this._searchEntryText);
 
@@ -69,7 +66,7 @@ var SearchDialog = new Lang.Class({
             can_focus: true,
             reactive: true
         });
-        searchButton.connect('clicked', Lang.bind(this, this._search));
+        searchButton.connect('clicked', this._search.bind(this));
 
         titleBox.add(this._searchEntry);
         titleBox.add(searchButton);
@@ -104,13 +101,13 @@ var SearchDialog = new Lang.Class({
 
         // Cancel and Add Channel Button
         this._cancelButton = this.addButton({
-            action: Lang.bind(this, this.close),
+            action: this.close.bind(this),
             label: _("Cancel")
         }, {
             x_align: St.Align.START
         });
         this._addButton = this.addButton({
-            action: Lang.bind(this, this._add),
+            action: this._add.bind(this),
             label: _("Add")
         }, {
             expand: true,
@@ -121,9 +118,9 @@ var SearchDialog = new Lang.Class({
         this._addButton.can_focus = false;
 
         this._buildErrorLayout();
-    },
+    }
 
-    _add: function() {
+    _add() {
         if (_selectedChannel != null) {
             _selectedChannel.setBitrate(null);
             _selectedChannel.setCodec(null);
@@ -138,9 +135,9 @@ var SearchDialog = new Lang.Class({
             this._addButton.reactive = false;
             this._addButton.can_focus = false;
         }
-    },
+    }
 
-    _search: function() {
+    _search() {
         let searchDialog = this;
         let input = this._searchEntry.get_text();
         this._itemBox.remove_all_children();
@@ -170,9 +167,9 @@ var SearchDialog = new Lang.Class({
         } else {
             searchDialog._addMessage(_("Search input was empty!"));
         }
-    },
+    }
 
-    _createChannel: function(jsonObject) {
+    _createChannel(jsonObject) {
         // only add playable stations
         if (jsonObject.lastcheckok == 1) {
             let name = jsonObject.name;
@@ -188,18 +185,18 @@ var SearchDialog = new Lang.Class({
               this._errorBox.hide();
             }
         }
-    },
+    }
 
-    _addMessage: function(message) {
+    _addMessage(message) {
         let messageLabel = new St.Label({
             style_class: 'nm-dialog-header',
             text: message
         });
         this._itemBox.add_child(messageLabel);
-    },
+    }
 
     // Set the Selected Channel
-    _selectChannel: function (cha) {
+    _selectChannel(cha) {
         this._addButton.reactive = true;
         this._addButton.can_focus = true;
         if (_selectedChannel) {
@@ -211,18 +208,18 @@ var SearchDialog = new Lang.Class({
         if (_selectedChannel) {
             _selectedChannel.item.actor.add_style_pseudo_class('selected');
         }
-    },
+    }
 
-    _createChannelListItem: function (cha) {
+    _createChannelListItem (cha) {
         cha.item = new ChannelListDialog.ChannelListDialogItem(cha);
-        cha.item.connect('selected', Lang.bind(this, function () {
+        cha.item.connect('selected', () => {
             Util.ensureActorVisibleInScrollView(this._scrollView, cha.item.actor);
             this._selectChannel(cha);
-        }));
+        });
         this._itemBox.add_child(cha.item.actor);
-    },
+    }
 
-    _onKeyPressEvent: function(object, event) {
+    _onKeyPressEvent(object, event) {
        let keyPressed = event.get_key_symbol();
        if (keyPressed == Clutter.KEY_Return || keyPressed == Clutter.KEY_KP_Enter || keyPressed == Clutter.KEY_ISO_Entern){
            this._search();
@@ -230,4 +227,4 @@ var SearchDialog = new Lang.Class({
            this.close();
        }
    }
-});
+};

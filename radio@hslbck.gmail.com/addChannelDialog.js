@@ -1,18 +1,17 @@
 /*
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
-    Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
+    Copyright (C) 2014-2019 hslbck <hslbck@gmail.com>
     Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
 const Clutter = imports.gi.Clutter;
-const Lang = imports.lang;
 const St = imports.gi.St;
 const ShellEntry = imports.ui.shellEntry;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
 const ChannelListDialog = Extension.imports.channelListDialog;
-const MyE = Extension.imports.extension;
+const MyE = Extension.imports.radioMenu;
 const Convert = Extension.imports.convertCharset;
 const ChannelCreator = Extension.imports.channelCreator;
 
@@ -22,19 +21,17 @@ const _ = Gettext.gettext;
 
 let oldChannel = null;
 
-var AddChannelDialog = new Lang.Class({
-    Name: 'AddChannelDialog',
-    Extends: ChannelCreator.ChannelCreator,
+var AddChannelDialog = class AddChannelDialog extends ChannelCreator.ChannelCreator {
 
-    _init: function (channel) {
+    constructor(channel) {
       oldChannel = channel;
-      this.parent({
+      super({
           styleClass: 'run-dialog'
       });
       this._buildLayout();
-    },
+    }
 
-    _buildLayout: function () {
+    _buildLayout() {
 
         // Entry for the name of the channel
         let name = new St.Label({
@@ -101,7 +98,7 @@ var AddChannelDialog = new Lang.Class({
         this.setInitialKeyFocus(this._nameEntryText);
 
         this._disconnectButton = this.addButton({
-            action: Lang.bind(this, this._closeDialog),
+            action: this._closeDialog.bind(this),
             label: _("Cancel"),
             key: Clutter.Escape
         });
@@ -109,7 +106,7 @@ var AddChannelDialog = new Lang.Class({
         let connectLabel = oldChannel != null ? _("Save") : _("Add");
 
         this._connectButton = this.addButton({
-            action: Lang.bind(this, this._createChannel),
+            action: this._createChannel.bind(this),
             label: connectLabel,
             key: Clutter.Return
         }, {
@@ -119,9 +116,9 @@ var AddChannelDialog = new Lang.Class({
         });
 
         this._buildErrorLayout();
-    },
+    }
 
-    _setTextValues: function () {
+    _setTextValues() {
         if (oldChannel != null) {
             this._nameEntry.set_text(oldChannel.getName());
             this._addressEntry.set_text(oldChannel.getUri());
@@ -129,10 +126,10 @@ var AddChannelDialog = new Lang.Class({
                 this._charsetEntry.set_text(oldChannel.getEncoding());
             }
         }
-    },
+    }
 
     // create a new channel
-    _createChannel: function () {
+    _createChannel() {
 
         let inputName = this._nameEntry.get_text();
         let inputStream = this._getStreamAddress(this._addressEntry.get_text());
@@ -158,13 +155,13 @@ var AddChannelDialog = new Lang.Class({
           }
           this._closeDialog();
         }
-    },
+    }
 
-    _closeDialog: function() {
+    _closeDialog() {
         this.close();
         if (oldChannel != null) {
             this.channelListDialog = new ChannelListDialog.ChannelListDialog();
             this.channelListDialog.open();
         }
     }
-});
+};

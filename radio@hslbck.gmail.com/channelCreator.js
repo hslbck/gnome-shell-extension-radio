@@ -1,8 +1,8 @@
 /*
     Copyright (C) 2018 Léo Andrès <leo@ndrs.fr>
+    Copyright (C) 2019 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
-const Lang = imports.lang;
 const St = imports.gi.St;
 const ModalDialog = imports.ui.modalDialog;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
@@ -18,9 +18,7 @@ const _ = Gettext.gettext;
 const Soup = imports.gi.Soup;
 const _httpSession = new Soup.SessionSync();
 
-var ChannelCreator = new Lang.Class({
-    Name: 'ChannelCreator',
-    Extends: ModalDialog.ModalDialog,
+var ChannelCreator = class ChannelCreator extends ModalDialog.ModalDialog {
 
 
     _buildErrorLayout () {
@@ -41,7 +39,7 @@ var ChannelCreator = new Lang.Class({
                                                  y_fill: false });
 
         this._errorBox.hide();
-    },
+    }
 
     _showError(message) {
 
@@ -56,13 +54,13 @@ var ChannelCreator = new Lang.Class({
               { height: parentActor.height + errorBoxNaturalHeight,
                 time: DIALOG_GROW_TIME,
                 transition: 'easeOutQuad',
-                onComplete: Lang.bind(this, function() {
+                onComplete: () => {
                   parentActor.set_height(-1);
                   this._errorBox.show();
-                })
+                }
             });
         }
-    },
+    }
 
     // get the valid stream address
     _getStreamAddress(input) {
@@ -98,4 +96,4 @@ var ChannelCreator = new Lang.Class({
         }
         return input; // case for valid stream address
     }
-});
+}
