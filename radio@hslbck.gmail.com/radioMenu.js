@@ -40,10 +40,6 @@ const Interval = 10000; // 10 seconds
 let timeoutId = 0;
 let oldTagLabel = '';
 
-// icons
-const PlayingIcon = "gser-icon-playing-symbolic";
-const StoppedIcon = "gser-icon-stopped-symbolic";
-
 // Settings
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
@@ -81,16 +77,12 @@ let RadioMenuButton = GObject.registerClass (
         // read settings
         this._settings = ExtensionUtils.getSettings();
 
-        // path for icon
-        //Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
-
         let hbox = new St.BoxLayout({
                    style_class: 'panel-status-menu-box'
        });
 
         this.iconStopped = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
         this.iconPlaying = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-playing-symbolic.svg');
-
 
         // Icon for the Panel
         this.radioIcon = new St.Icon({
@@ -347,7 +339,6 @@ let RadioMenuButton = GObject.registerClass (
         global.log("Source Bus Id: " + this.player._sourceBusId);
 */
         this.playLabel.set_text(this.player._getCurrentChannel().getName());
-        //this.radioIcon.set_icon_name(PlayingIcon);
         this.radioIcon.set_gicon(this.iconPlaying);
         this._checkTitle(Interval);
         this.isPlaying = true;
@@ -360,7 +351,6 @@ let RadioMenuButton = GObject.registerClass (
             this.player._stop();
             TitleMenu.removeFromPanel();
         }
-        //this.radioIcon.set_icon_name(StoppedIcon);
         this.radioIcon.set_gicon(this.iconStopped);
         this.tagListLabel.set_text("");
         this.copyTagButton.hide();
@@ -662,10 +652,10 @@ let RadioMenuButton = GObject.registerClass (
     _enableTitleNotification(tagLabel, senderLabel) {
         if (this._settings.get_boolean(SETTING_TITLE_NOTIFICATION) && tagLabel !== oldTagLabel) {
             oldTagLabel = tagLabel;
-            let source = new MessageTray.Source("Radio", StoppedIcon);
+            let source = new MessageTray.Source("Radio", null);
             let notification = new MessageTray.Notification(source,
                                                 tagLabel,
-                                                senderLabel);
+                                                senderLabel,{gicon: this.iconStopped});
             notification.setTransient(true);
             Main.messageTray.add(source);
             source.notify(notification);
