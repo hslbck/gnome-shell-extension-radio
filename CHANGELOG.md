@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+### Added
+- Added domain to metadata
+- Support for GNOME 3.32
+
+### Changed
+- Updated Turkish translation
+- Updated egoFM and egoFM url
+- Set support to GNOME 3.32 only
+- Dropped convenience library
+- Removed mainloop
+- Dropped Lang.class
+
+### Fixed
+- #124 Missing panel icon
+
 ## [9] - 2018-03-26
 
 ### Added
