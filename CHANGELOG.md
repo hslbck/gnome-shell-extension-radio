@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [11] - 2019-03-21
+
 ### Added
 - Added domain to metadata
 - Support for GNOME 3.32
@@ -20,6 +22,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ### Fixed
 - #124 Missing panel icon
+
+## [10] - 2018-09-18
+
+## Added
+- Support GNOME 3.30
 
 ## [9] - 2018-03-26
 
@@ -113,6 +120,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[11]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v11
+[10]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v10
 [9]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v9
 [8]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v8
 [7]: https://github.com/hslbck/gnome-shell-extension-radio/tree/v7
