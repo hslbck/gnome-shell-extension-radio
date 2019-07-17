@@ -1,0 +1,140 @@
+# Copyright (C) 2019 Vangelis Skarmoutsos <skarmoutsosv@gmail.com>
+# Copyright (C) 20xx xxxxxxx <xxxxx@xxxx.xx>
+# This file is distributed under the same license as the gnome-shell-extension-radio package.
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-shell-extension-radio 1.6\n"
+"Report-Msgid-Bugs-To: hslbck@gmail.com\n"
+"POT-Creation-Date: 2018-02-12 10:34+0100\n"
+"PO-Revision-Date: 2019-07-14 10:42+0300\n"
+"Last-Translator: Vangelis Skarmoutsos <skarmoutsosv@gmail.com>\n"
+"Language-Team: \n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: addChannelDialog.js:42
+msgid "Channel Name"
+msgstr "Όνομα καναλιού"
+
+#: addChannelDialog.js:62
+msgid "Stream Address"
+msgstr "Διεύθυνση ροής"
+
+#: addChannelDialog.js:81
+msgid "Charset (optional)"
+msgstr "Κωδικοσελίδα (προαιρετικό)"
+
+#: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
+msgid "Cancel"
+msgstr "Άκυρο"
+
+#: addChannelDialog.js:109
+msgid "Save"
+msgstr "Αποθήκευση"
+
+#: addChannelDialog.js:109 searchDialog.js:114
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: searchDialog.js:47
+msgid "Browse "
+msgstr "Πλοήγηση "
+
+#: searchDialog.js:68
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: searchDialog.js:137
+msgid "Station added:"
+msgstr "Προστέθηκε ο σταθμός:"
+
+#: searchDialog.js:163
+msgid "No radio station found!"
+msgstr "Δεν βρέθηκε σταθμός!"
+
+#: searchDialog.js:166
+msgid "Server returned status code"
+msgstr "Ο εξυπηρετητής επέστρεψε κώδικα κατάστασης"
+
+#: searchDialog.js:171
+msgid "Search input was empty!"
+msgstr "Η εισαγωγή αναζήτησης ήταν κενή!"
+
+#: player.js:97
+msgid "Missing plugin"
+msgstr "Λείπει plugin"
+
+#: player.js:134
+msgid "Stream error"
+msgstr "Σφάλμα ροής"
+
+#: player.js:138
+msgid "End of stream"
+msgstr "Τέλος της ροής"
+
+#: prefs.js:51
+msgid "Show title notifications"
+msgstr "Εμφάνιση ειδοποιήσεων τίτλων"
+
+#: prefs.js:67
+msgid "Show title notification in the panel"
+msgstr "Εμφάνιση ειδοποιήσεων τίτλων στο πάνελ"
+
+#: prefs.js:83
+msgid "Enable Play/Stop Media Keys"
+msgstr "Ενεργοποίηση των πλήκτρων πολυμέσων Play/Stop"
+
+#: prefs.js:99
+msgid "Show volume adjustment slider in menu"
+msgstr "Εμφάνιση ρυθμιστικού έντασης στο μενού"
+
+#: prefs.js:115
+msgid "Enable as search provider for GNOME Shell"
+msgstr "Ενεργοποίηση ως παροχέας αναζήτησης στο GNOME Shell"
+
+#: channelListDialog.js:54
+msgid "List of Channels"
+msgstr "Λίστα καναλιών"
+
+#: channelListDialog.js:58
+msgid "Manage your radio stations"
+msgstr "Διαχείσηση των σταθμών σας"
+
+#: channelListDialog.js:101
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#: channelListDialog.js:109
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: channelListDialog.js:118
+msgid "Play"
+msgstr "Αναπαραγωγή"
+
+#: channelCreator.js:92
+msgid "No server stream address found!"
+msgstr "Δεν βρέθηκε διεύθυνση ροής εξυπηρετητή!"
+
+#: channelCreator.js:94
+msgid "Invalid input stream address!"
+msgstr "Άκυρη εισαγωγή διεύθυνσης  ροής!"
+
+#~ msgid "No server stream found!"
+#~ msgstr "Δεν βρέθηκε ροή εξυπηρετητή!"
+
+#~ msgid "Favourites"
+#~ msgstr "Αγαπημένα"
+
+#~ msgid "Channels"
+#~ msgstr "Κανάλια"
+
+#~ msgid "Browse directory"
+#~ msgstr "Περιήγηση καταλόγου"
+
+#~ msgid "Add Channel"
+#~ msgstr "Προσθήκη καναλιού"
