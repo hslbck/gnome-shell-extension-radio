@@ -320,9 +320,9 @@ let RadioMenuButton = GObject.registerClass (
         Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
     }
 
-    _onVolumeSliderValueChanged(slider, value, property){
+    _onVolumeSliderValueChanged(actor, event){
         if (this.player !== null) {
-            this.player._setVolume(value);
+            this.player._setVolume(this.volumeSlider.value);
         }
     }
 
@@ -468,8 +468,8 @@ let RadioMenuButton = GObject.registerClass (
         this.volumeSliderBox.actor.add(this.volumeIcon);
         this.volumeSliderBox.actor.add(this.volumeSlider.actor, { expand: true });
 
-        // Connect sliders 'value-changed' handler
-        this.volumeSlider.connect('value-changed', this._onVolumeSliderValueChanged.bind(this));
+        // Connect sliders 'notify::value' handler
+        this.volumeSlider.connect('notify::value', this._onVolumeSliderValueChanged.bind(this));
 
         // Add volume slider box
         this.menu.addMenuItem(this.volumeSliderBox,this.menu.numMenuItems - menuItemOffset);
