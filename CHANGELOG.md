@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## Added
+- Support for GNOME 3.34
+- Greek translation
+
+## Changed
+
+## Fixed
+- #133 Fix volume slider for GNOME 3.34
+
 ## [11] - 2019-03-21
 
 ### Added

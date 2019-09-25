@@ -4,6 +4,7 @@
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const St = imports.gi.St;
+const GObject = imports.gi.GObject;
 const ModalDialog = imports.ui.modalDialog;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Tweener = imports.ui.tweener;
@@ -18,7 +19,8 @@ const _ = Gettext.gettext;
 const Soup = imports.gi.Soup;
 const _httpSession = new Soup.SessionSync();
 
-var ChannelCreator = class ChannelCreator extends ModalDialog.ModalDialog {
+var ChannelCreator = GObject.registerClass(
+  class ChannelCreator extends ModalDialog.ModalDialog {
 
 
     _buildErrorLayout () {
@@ -96,4 +98,4 @@ var ChannelCreator = class ChannelCreator extends ModalDialog.ModalDialog {
         }
         return input; // case for valid stream address
     }
-}
+});

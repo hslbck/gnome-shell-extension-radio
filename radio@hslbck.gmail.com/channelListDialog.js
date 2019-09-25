@@ -6,6 +6,7 @@ const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
 const Signals = imports.signals;
 const St = imports.gi.St;
+const GObject = imports.gi.GObject;
 const ModalDialog = imports.ui.modalDialog;
 const Util = imports.misc.util;
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
@@ -22,10 +23,11 @@ const FavouriteDisabledIcon = 'non-starred-symbolic';
 
 let _selectedChannel;
 
-var ChannelListDialog = class ChannelListDialog extends ModalDialog.ModalDialog {
+var ChannelListDialog = GObject.registerClass(
+  class ChannelListDialog extends ModalDialog.ModalDialog {
 
-    constructor() {
-        super({
+    _init() {
+        super._init({
             styleClass: 'nm-dialog'
         });
         this._buildLayout();
@@ -181,7 +183,7 @@ var ChannelListDialog = class ChannelListDialog extends ModalDialog.ModalDialog 
         });
         this._itemBox.add_child(cha.item.actor);
     }
-};
+});
 
 
 var ChannelListDialogItem = class ChannelListDialogItem {

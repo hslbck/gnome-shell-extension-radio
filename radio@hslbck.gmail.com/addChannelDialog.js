@@ -7,6 +7,7 @@
 
 const Clutter = imports.gi.Clutter;
 const St = imports.gi.St;
+const GObject = imports.gi.GObject;
 const ShellEntry = imports.ui.shellEntry;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Channel = Extension.imports.channel;
@@ -21,11 +22,12 @@ const _ = Gettext.gettext;
 
 let oldChannel = null;
 
-var AddChannelDialog = class AddChannelDialog extends ChannelCreator.ChannelCreator {
+var AddChannelDialog = GObject.registerClass(
+  class AddChannelDialog extends ChannelCreator.ChannelCreator {
 
-    constructor(channel) {
+    _init(channel) {
       oldChannel = channel;
-      super({
+      super._init({
           styleClass: 'run-dialog'
       });
       this._buildLayout();
@@ -164,4 +166,4 @@ var AddChannelDialog = class AddChannelDialog extends ChannelCreator.ChannelCrea
             this.channelListDialog.open();
         }
     }
-};
+});

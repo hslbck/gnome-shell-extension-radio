@@ -6,6 +6,7 @@
 const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
 const St = imports.gi.St;
+const GObject = imports.gi.GObject;
 const ShellEntry = imports.ui.shellEntry;
 const Util = imports.misc.util;
 const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
@@ -23,10 +24,11 @@ _httpSession.user_agent = "GSE Radio";
 _httpSession.timeout = 10;
 let _selectedChannel;
 
-var SearchDialog = class SearchDialog extends ChannelCreator.ChannelCreator {
+var SearchDialog = GObject.registerClass(
+  class SearchDialog extends ChannelCreator.ChannelCreator {
 
-    constructor() {
-        super({
+    _init() {
+        super._init({
             styleClass: 'nm-dialog'
         });
         this._buildLayout();
@@ -227,4 +229,4 @@ var SearchDialog = class SearchDialog extends ChannelCreator.ChannelCreator {
            this.close();
        }
    }
-};
+});
