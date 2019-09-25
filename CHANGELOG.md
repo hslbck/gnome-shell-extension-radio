@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [12] - 2019-09-25
+
 ## Added
 - Support for GNOME 3.34
 - Greek translation
@@ -129,6 +131,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[12]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v12
 [11]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v11
 [10]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v10
 [9]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v9
