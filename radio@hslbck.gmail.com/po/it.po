@@ -5,13 +5,14 @@ msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2018-02-12 10:36+0100\n"
-"PO-Revision-Date: 2018-02-12 10:34+0100\n"
-"Last-Translator: Duilio Rumbazzi <Zerrossetto@users.noreply.github.com>\n"
+"PO-Revision-Date: 2019-10-01 15:41+0200\n"
+"Last-Translator: Giuseppe Pignataro (Fastbyte01) <rogepix@gmail.com>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: addChannelDialog.js:42
 msgid "Channel Name"
@@ -47,7 +48,7 @@ msgstr "Cerca"
 
 #: searchDialog.js:137
 msgid "Station added:"
-msgstr ""
+msgstr "Stazione aggiunta:"
 
 #: searchDialog.js:163
 msgid "No radio station found!"
@@ -91,7 +92,7 @@ msgstr "Mostra il cursore di regolazione volume nel menù"
 
 #: prefs.js:115
 msgid "Enable as search provider for GNOME Shell"
-msgstr ""
+msgstr "Abilita come provider di ricerca per GNOME Shell"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -115,8 +116,8 @@ msgstr "Riproduci"
 
 #: channelCreator.js:92
 msgid "No server stream address found!"
-msgstr ""
+msgstr "Nessun indirizzo di flusso del server trovato!"
 
 #: channelCreator.js:94
 msgid "Invalid input stream address!"
-msgstr ""
+msgstr "Indirizzo del flusso di input non valido."
