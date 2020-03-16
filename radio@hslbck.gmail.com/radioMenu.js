@@ -675,7 +675,7 @@ let RadioMenuButton = GObject.registerClass (
 
     _openPrefs() {
         let _appSys = Shell.AppSystem.get_default();
-        let _gsmPrefs = _appSys.lookup_app('gnome-shell-extension-prefs.desktop');
+        let _gsmPrefs = _appSys.lookup_app('org.gnome.Extensions.desktop');
 
         if (_gsmPrefs.get_state() == _gsmPrefs.SHELL_APP_STATE_RUNNING) {
             _gsmPrefs.activate();
