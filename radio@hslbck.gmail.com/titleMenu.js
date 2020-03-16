@@ -48,6 +48,7 @@ function addToPanel() {
 function removeFromPanel() {
     if (titleMenu != null) {
         titleMenu.destroy();
+        titleMenu = null;
     }
 }
 
