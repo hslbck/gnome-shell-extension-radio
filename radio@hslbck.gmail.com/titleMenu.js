@@ -21,9 +21,9 @@ let TitleMenuButton = GObject.registerClass (
             y_align: Clutter.ActorAlign.CENTER,
         });
 
-        this.actor.add_actor(this._titleInfo);
-        this.actor.add_style_class_name('panel-status-button');
-        this.actor.connect('button-press-event', this._copyTagOnMiddleClick.bind(this));
+        this.add_actor(this._titleInfo);
+        this.add_style_class_name('panel-status-button');
+        this.connect('button-press-event', this._copyTagOnMiddleClick.bind(this));
     }
 
     _updateTitleInfo(channel, titleInfo) {
