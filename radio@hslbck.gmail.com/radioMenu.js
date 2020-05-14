@@ -18,6 +18,7 @@ const GLib = imports.gi.GLib;
 const Shell = imports.gi.Shell;
 const GObject = imports.gi.GObject;
 const Slider = imports.ui.slider;
+const Util = imports.misc.util;
 
 // import custom files
 const ExtensionUtils = imports.misc.extensionUtils;
@@ -680,16 +681,13 @@ let RadioMenuButton = GObject.registerClass (
     }
 
     _openPrefs() {
-        let _appSys = Shell.AppSystem.get_default();
-        let _gsmPrefs = _appSys.lookup_app('org.gnome.Extensions.desktop');
-
-        if (_gsmPrefs.get_state() == _gsmPrefs.SHELL_APP_STATE_RUNNING) {
-            _gsmPrefs.activate();
+        if (typeof ExtensionUtils.openPrefs === 'function') {
+            ExtensionUtils.openPrefs();
         } else {
-            let info = _gsmPrefs.get_app_info();
-            let timestamp = global.display.get_current_time_roundtrip();
-            let metadata = Extension.metadata;
-            info.launch_uris([metadata.uuid], global.create_app_launch_context(timestamp, -1));
+            Util.spawn([
+                "gnome-shell-extension-prefs",
+                Extension.metadata.uuid
+            ]);
         }
     }
 });
