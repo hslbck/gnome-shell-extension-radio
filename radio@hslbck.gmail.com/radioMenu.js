@@ -126,10 +126,12 @@ let RadioMenuButton = GObject.registerClass (
 
         // Play and Stop Button Images
         this.playIcon = new St.Icon({
-            icon_name: 'media-playback-start-symbolic'
+            icon_name: 'media-playback-start-symbolic',
+            style_class: 'popup-menu-icon'
         });
         this.stopIcon = new St.Icon({
-            icon_name: 'media-playback-stop-symbolic'
+            icon_name: 'media-playback-stop-symbolic',
+            style_class: 'popup-menu-icon'
         });
 
         // Play - Stop Button
@@ -516,7 +518,8 @@ let RadioMenuButton = GObject.registerClass (
 
     _buildMenuItemButtons() {
         this.settingsIcon = new St.Icon({
-            icon_name: 'preferences-system-symbolic'
+            icon_name: 'preferences-system-symbolic',
+            style_class: 'popup-menu-icon'
         });
         this.settingsButton = new St.Button({
             style_class: 'system-menu-action',
@@ -529,7 +532,8 @@ let RadioMenuButton = GObject.registerClass (
         });
 
         this.channelListIcon = new St.Icon({
-            icon_name: 'view-list-symbolic'
+            icon_name: 'view-list-symbolic',
+            style_class: 'popup-menu-icon'
         });
         this.channelListButton = new St.Button({
             style_class: 'system-menu-action',
@@ -543,7 +547,8 @@ let RadioMenuButton = GObject.registerClass (
         });
 
         this.addChannelIcon = new St.Icon({
-            icon_name: 'list-add-symbolic'
+            icon_name: 'list-add-symbolic',
+            style_class: 'popup-menu-icon'
         });
         this.addChannelButton = new St.Button({
             style_class: 'system-menu-action',
@@ -557,7 +562,8 @@ let RadioMenuButton = GObject.registerClass (
         });
 
         this.searchIcon = new St.Icon({
-            icon_name: 'system-search-symbolic'
+            icon_name: 'system-search-symbolic',
+            style_class: 'popup-menu-icon'
         });
         this.searchButton = new St.Button({
             style_class: 'system-menu-action',
