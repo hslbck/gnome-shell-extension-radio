@@ -665,7 +665,7 @@ let RadioMenuButton = GObject.registerClass (
                                                 senderLabel,{gicon: this.iconStopped});
             notification.setTransient(true);
             Main.messageTray.add(source);
-            source.notify(notification);
+            source.showNotification(notification);
         }
     }
 
