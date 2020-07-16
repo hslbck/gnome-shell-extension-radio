@@ -97,34 +97,43 @@ var Player = class Player {
                  break;
             case Gst.MessageType.TAG:
                 let tagList = message.parse_tag();
-                let tmp = tagList.get_string('title').toString();
-                if (tmp.match('true')) {
-                    switch (this._getCurrentChannel().getEncoding()) {
-                        case "windows-1251":
-                            this._tag = Convert.convertToUnicode("windows-1251", tmp.slice(5));
-                            break;
-                        case "windows-1252":
-                            this._tag = Convert.convertToUnicode("windows-1252", tmp.slice(5));
-                            break;
-                        case "windows-1253":
-                            this._tag = Convert.convertToUnicode("windows-1253", tmp.slice(5));
-                            break;
-                        case "windows-1257":
-                            this._tag = Convert.convertToUnicode("windows-1257", tmp.slice(5));
-                            break;
-                        case "koi8-r":
-                            this._tag = Convert.convertToUnicode("koi8-r", tmp.slice(5));
-                            break;
-                        case "koi8-u":
-                            this._tag = Convert.convertToUnicode("koi8-u", tmp.slice(5));
-                            break;
-                         default:
-                            this._tag = tmp.slice(5);
-                            break;
-                    }
-                } else {
-                    this._tag = "";
+                let tags = {
+                    artist: tagList.get_string('artist').toString(),
+                    title: tagList.get_string('title').toString(),
                 }
+                for (let tag in tags) {
+                    const tagValue = tags[tag]
+                    if (tagValue.match('true')) {
+                        switch (this._getCurrentChannel().getEncoding()) {
+                            case "windows-1251":
+                                tags[tag] = Convert.convertToUnicode("windows-1251", tagValue.slice(5));
+                                break;
+                            case "windows-1252":
+                                tags[tag] = Convert.convertToUnicode("windows-1252", tagValue.slice(5));
+                                break;
+                            case "windows-1253":
+                                tags[tag] = Convert.convertToUnicode("windows-1253", tagValue.slice(5));
+                                break;
+                            case "windows-1257":
+                                tags[tag] = Convert.convertToUnicode("windows-1257", tagValue.slice(5));
+                                break;
+                            case "koi8-r":
+                                tags[tag] = Convert.convertToUnicode("koi8-r", tagValue.slice(5));
+                                break;
+                            case "koi8-u":
+                                tags[tag] = Convert.convertToUnicode("koi8-u", tagValue.slice(5));
+                                break;
+                             default:
+                                tags[tag] = tagValue.slice(5);
+                                break;
+                        }
+                    } else {
+                        tags[tag] = "";
+                    }
+                }
+                const artistStr = tags.artist ? tags.artist + " - " : ""
+                const titleStr = tags.title
+                this._tag = artistStr + titleStr
                 break;
             case Gst.MessageType.ERROR:
                 MyE.radioMenu._stop();
