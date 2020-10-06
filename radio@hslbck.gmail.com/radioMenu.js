@@ -92,8 +92,8 @@ let RadioMenuButton = GObject.registerClass (
         });
 
         hbox.add_actor(this.radioIcon);
-        this.actor.add_actor(hbox);
-        this.actor.add_style_class_name('panel-status-button');
+        this.add_actor(hbox);
+        this.add_style_class_name('panel-status-button');
 
         // get channels from json file
         this.channelList = Io.read();
@@ -171,8 +171,8 @@ let RadioMenuButton = GObject.registerClass (
 
         // Add ControlsBox to the Menu
         this.menu.box.add_child(this.controlsBox);
-        this.tagItem.actor.add(this.tagListBox, {expand: false, x_fill: false});
-        this.tagItem.actor.add(this.copyTagButton, {expand: false, y_fill: false});
+        this.tagItem.add_child(this.tagListBox, {expand: false, x_fill: false});
+        this.tagItem.add_child(this.copyTagButton, {expand: false, y_fill: false});
         this.menu.addMenuItem(this.tagItem);
 
         // Connect the Button
@@ -191,7 +191,7 @@ let RadioMenuButton = GObject.registerClass (
         this._buildMenuItems();
 
         this.isPlaying = false;
-        this.actor.connect('button-press-event', this._middleClick.bind(this));
+        this.connect('button-press-event', this._middleClick.bind(this));
 
         // media keys setting change
         this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, () => {
@@ -432,7 +432,7 @@ let RadioMenuButton = GObject.registerClass (
         let contains = this._containsChannel(cha);
         if (contains) {
             let item = new PopupMenu.PopupMenuItem(cha.getName());
-            item.actor.set_name(cha.getId());
+            item.set_name(cha.getId());
             item.connect('activate', () => {
                 this._changeChannel(cha);
             });
@@ -468,8 +468,8 @@ let RadioMenuButton = GObject.registerClass (
         this.volumeSliderBox = new PopupMenu.PopupBaseMenuItem();
         this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
         this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1/3));
-        this.volumeSliderBox.actor.add(this.volumeIcon);
-        this.volumeSliderBox.actor.add(this.volumeSlider.actor, { expand: true });
+        this.volumeSliderBox.add_child(this.volumeIcon);
+        this.volumeSliderBox.add_child(this.volumeSlider, { expand: true });
 
         // Connect sliders 'notify::value' handler
         this.volumeSlider.connect('notify::value', this._onVolumeSliderValueChanged.bind(this));
@@ -481,7 +481,7 @@ let RadioMenuButton = GObject.registerClass (
     _destroyVolumeSlider(){
         this.separator3.destroy();
         this.volumeIcon.destroy();
-        this.volumeSlider.actor.destroy();
+        this.volumeSlider.destroy();
         this.volumeSliderBox.destroy();
     }
 
@@ -501,10 +501,10 @@ let RadioMenuButton = GObject.registerClass (
             reactive: false,
             can_focus: false
         });
-        this.settingsItem.actor.add(this.settingsButton, {expand: true, x_fill: false});
-        this.settingsItem.actor.add(this.channelListButton, {expand: true, x_fill: false});
-        this.settingsItem.actor.add(this.addChannelButton, {expand: true, x_fill: false});
-        this.settingsItem.actor.add(this.searchButton, {expand: true, x_fill: false});
+        this.settingsItem.add_child(this.settingsButton, {expand: true, x_fill: false});
+        this.settingsItem.add_child(this.channelListButton, {expand: true, x_fill: false});
+        this.settingsItem.add_child(this.addChannelButton, {expand: true, x_fill: false});
+        this.settingsItem.add_child(this.searchButton, {expand: true, x_fill: false});
         this.menu.addMenuItem(this.settingsItem);
     }
 
@@ -594,7 +594,7 @@ let RadioMenuButton = GObject.registerClass (
         let items = this.menu._getMenuItems();
         for (var i in items) {
             let item = items[i];
-            if (item && item.actor.get_name() === cha.getId()) {
+            if (item && item.get_name() === cha.getId()) {
                 item.destroy();
             }
         }

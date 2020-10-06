@@ -83,7 +83,7 @@ var ChannelListDialog = GObject.registerClass(
         this._scrollView.add_actor(this._itemBox);
         this._stack.add_child(this._scrollView);
 
-        this.contentLayout.add(this._stack, {
+        this.contentLayout.add_child(this._stack, {
             expand: true
         });
 
@@ -247,10 +247,10 @@ var ChannelListDialogItem = class ChannelListDialogItem {
         // Add Action, Label and Favourite icon to the Actor
         this.actor.add_action(action);
         this.actor.set_label_actor(this._label);
-        this.actor.add(this._label, {
+        this.actor.add_child(this._label, {
             x_align: St.Align.START
         });
-        this.actor.add(this._icons, {
+        this.actor.add_child(this._icons, {
             expand: true,
             x_fill: false,
             x_align: St.Align.END
