@@ -7,7 +7,7 @@ const St = imports.gi.St;
 const GObject = imports.gi.GObject;
 const ModalDialog = imports.ui.modalDialog;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Tweener = imports.ui.tweener;
+const Tweener = imports.tweener.tweener;
 
 const DIALOG_GROW_TIME = 0.1;
 
