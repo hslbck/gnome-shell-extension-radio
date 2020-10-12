@@ -97,7 +97,7 @@ var SearchDialog = GObject.registerClass(
         this._scrollView.add_actor(this._itemBox);
         this._stack.add_child(this._scrollView);
 
-        this.contentLayout.add(this._stack, {
+        this.contentLayout.add_child(this._stack, {
             expand: true
         });
 
