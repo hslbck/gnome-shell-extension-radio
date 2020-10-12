@@ -41,7 +41,7 @@ var AddChannelDialog = GObject.registerClass(
             text: _("Channel Name")
         });
 
-        this.contentLayout.add(name, {
+        this.contentLayout.add_child(name, {
             y_align: St.Align.START
         });
         this._nameEntry = new St.Entry({
@@ -51,7 +51,7 @@ var AddChannelDialog = GObject.registerClass(
         ShellEntry.addContextMenu(this._nameEntry);
         this._nameEntry.set_label_actor(name);
         this._nameEntryText = this._nameEntry.get_clutter_text();
-        this.contentLayout.add(this._nameEntry, {
+        this.contentLayout.add_child(this._nameEntry, {
             y_align: St.Align.START
         });
 
@@ -60,7 +60,7 @@ var AddChannelDialog = GObject.registerClass(
             style_class: 'run-dialog-label',
             text: _("Stream Address")
         });
-        this.contentLayout.add(address, {
+        this.contentLayout.add_child(address, {
             y_align: St.Align.START
         });
         this._addressEntry = new St.Entry({
@@ -70,7 +70,7 @@ var AddChannelDialog = GObject.registerClass(
         ShellEntry.addContextMenu(this._addressEntry);
         this._addressEntry.set_label_actor(address);
         this._addressEntryText = this._addressEntry.get_clutter_text();
-        this.contentLayout.add(this._addressEntry, {
+        this.contentLayout.add_child(this._addressEntry, {
             y_align: St.Align.START
         });
 
@@ -79,7 +79,7 @@ var AddChannelDialog = GObject.registerClass(
             style_class: 'run-dialog-label',
             text: _("Charset (optional)")
         });
-        this.contentLayout.add(charset, {
+        this.contentLayout.add_child(charset, {
             y_align: St.Align.START
         });
         this._charsetEntry = new St.Entry({
@@ -89,7 +89,7 @@ var AddChannelDialog = GObject.registerClass(
         ShellEntry.addContextMenu(this._charsetEntry);
         this._charsetEntry.set_label_actor(charset);
         this._charsetEntryText = this._charsetEntry.get_clutter_text();
-        this.contentLayout.add(this._charsetEntry, {
+        this.contentLayout.add_child(this._charsetEntry, {
             y_align: St.Align.START
         });
 

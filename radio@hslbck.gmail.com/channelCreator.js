@@ -7,7 +7,7 @@ const St = imports.gi.St;
 const GObject = imports.gi.GObject;
 const ModalDialog = imports.ui.modalDialog;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Tweener = imports.ui.tweener;
+const Tweener = imports.tweener.tweener;
 
 const DIALOG_GROW_TIME = 0.1;
 
@@ -27,16 +27,16 @@ var ChannelCreator = GObject.registerClass(
 
         this._errorBox = new St.BoxLayout({ style_class: 'run-dialog-error-box' });
 
-        this.contentLayout.add(this._errorBox, { expand: true });
+        this.contentLayout.add_child(this._errorBox, { expand: true });
 
         let errorIcon = new St.Icon({ icon_name: 'dialog-error', icon_size: 24, style_class: 'run-dialog-error-icon' });
 
-        this._errorBox.add(errorIcon, { y_align: St.Align.MIDDLE });
+        this._errorBox.add_child(errorIcon, { y_align: St.Align.MIDDLE });
 
         this._errorMessage = new St.Label({ style_class: 'run-dialog-error-label' });
         this._errorMessage.clutter_text.line_wrap = true;
 
-        this._errorBox.add(this._errorMessage, { expand: true,
+        this._errorBox.add_child(this._errorMessage, { expand: true,
                                                  y_align: St.Align.MIDDLE,
                                                  y_fill: false });
 
