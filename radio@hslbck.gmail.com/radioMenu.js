@@ -113,7 +113,7 @@ let RadioMenuButton = GObject.registerClass (
         this.controlsBox = new St.BoxLayout({
             name: 'controlsBox',
             style_class: 'control-box',
-            width: 350
+            width: 300
         });
         this.tagListBox = new St.BoxLayout({
             name: 'tagListBox',
@@ -137,7 +137,7 @@ let RadioMenuButton = GObject.registerClass (
 
         // Play - Stop Button
         this.playButton = new St.Button({
-            style_class: 'system-menu-action',
+            style_class: 'radio-menu-action',
             can_focus: true
         });
 
@@ -523,7 +523,7 @@ let RadioMenuButton = GObject.registerClass (
             style_class: 'popup-menu-icon'
         });
         this.settingsButton = new St.Button({
-            style_class: 'system-menu-action',
+            style_class: 'radio-menu-action',
             can_focus: true
         });
         this.settingsButton.set_child(this.settingsIcon);
@@ -537,7 +537,7 @@ let RadioMenuButton = GObject.registerClass (
             style_class: 'popup-menu-icon'
         });
         this.channelListButton = new St.Button({
-            style_class: 'system-menu-action',
+            style_class: 'radio-menu-action',
             can_focus: true
         });
         this.channelListButton.set_child(this.channelListIcon);
@@ -552,7 +552,7 @@ let RadioMenuButton = GObject.registerClass (
             style_class: 'popup-menu-icon'
         });
         this.addChannelButton = new St.Button({
-            style_class: 'system-menu-action',
+            style_class: 'radio-menu-action',
             can_focus: true
         });
         this.addChannelButton.set_child(this.addChannelIcon);
@@ -567,7 +567,7 @@ let RadioMenuButton = GObject.registerClass (
             style_class: 'popup-menu-icon'
         });
         this.searchButton = new St.Button({
-            style_class: 'system-menu-action',
+            style_class: 'radio-menu-action',
             can_focus: true
         });
         this.searchButton.set_child(this.searchIcon);

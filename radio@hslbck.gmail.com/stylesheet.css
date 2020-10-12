@@ -7,6 +7,12 @@
   font-weight: bold;
   padding: .5em 1.7em;
 }
+
+.custom-dialog-entry {
+    width: 20em;
+    margin-bottom: 6px; 
+}
+
 .custom-search-button {
   min-width: 75px;
   margin-left: 10px;
@@ -23,3 +29,23 @@
   height: 16px;
   margin-left: 2px;
 }
+
+.radio-menu-action {
+  color: #eeeeec;
+  border-radius: 32px;
+  padding: 13px;
+  border: 1px solid #282c2c; 
+}
+
+.radio-menu-action:hover, .radio-menu-action:focus {
+    background-color: rgba(238, 238, 236, 0.1);
+    color: #eeeeec;
+    border: none;
+    padding: 14px; 
+}
+
+.radio-menu-action:active {
+    background-color: #215d9c;
+    color: #ffffff; 
+}
+

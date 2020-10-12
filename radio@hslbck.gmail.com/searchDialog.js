@@ -53,7 +53,7 @@ var SearchDialog = GObject.registerClass(
         //this._pressedKey = null;
 
         this._searchEntry = new St.Entry({
-            style_class: 'run-dialog-entry',
+            style_class: 'custom-dialog-entry',
             can_focus: true
         });
         ShellEntry.addContextMenu(this._searchEntry);

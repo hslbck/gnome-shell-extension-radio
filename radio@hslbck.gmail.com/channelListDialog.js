@@ -62,7 +62,7 @@ var ChannelListDialog = GObject.registerClass(
         headline.add(icon);
         headline.add(titleBox);
 
-        this.contentLayout.set_style_pseudo_class('nm-dialog-content');
+        this.contentLayout.style_class = 'nm-dialog-content';
         this.contentLayout.add(headline);
 
         // Create ScrollView and ItemBox
