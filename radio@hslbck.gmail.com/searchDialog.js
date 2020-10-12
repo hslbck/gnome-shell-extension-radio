@@ -144,9 +144,8 @@ var SearchDialog = GObject.registerClass(
         let input = this._searchEntry.get_text();
         this._itemBox.remove_all_children();
         if (input != null && input.trim().length > 0) {
-            // todo: choose random ip from DNS:
-            //    $ dig all.api.radio-browser.info A +noall +answer
-            let url = "http://95.179.139.106/json/stations/byname/" + input
+            // todo: choose random ip from DNS: `$ dig all.api.radio-browser.info A +noall +answer`
+            let url = "http://all.api.radio-browser.info/json/stations/byname/" + input
             var message = Soup.Message.new('POST', url);
             var postParams = 'name=' + input + '&limit=15';
             message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, postParams);
