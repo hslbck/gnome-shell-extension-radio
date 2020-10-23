@@ -19,10 +19,11 @@ const AddChannelDialog = Extension.imports.addChannelDialog;
 const MyE = Extension.imports.radioMenu;
 const ChannelCreator = Extension.imports.channelCreator;
 
-const _httpSession = new Soup.SessionAsync();
-_httpSession.user_agent = "GSE Radio";
-_httpSession.timeout = 10;
+const RADIO_BROWSER_API = 'http://all.api.radio-browser.info/json/servers';
+
 let _selectedChannel;
+let _httpSession;
+let _server
 
 var SearchDialog = GObject.registerClass(
   class SearchDialog extends ChannelCreator.ChannelCreator {
@@ -31,8 +32,34 @@ var SearchDialog = GObject.registerClass(
         super._init({
             styleClass: 'nm-dialog'
         });
+        _httpSession = new Soup.Session({
+            user_agent: 'GSE Radio',
+            timeout: 10
+        });
+        this._setServer();
         this._buildLayout();
     }
+
+        _setServer() {
+            if (!_server) {
+                let message = Soup.Message.new('GET', RADIO_BROWSER_API);
+
+                if (message != null) {
+                    _httpSession.send_message(message);
+
+                    // request ok
+                    if (message.status_code === 200) {
+                        let response = message.response_body.data;
+                        let jsonResponse = JSON.parse(response);
+                        if (jsonResponse.length > 0) {
+                            _server = jsonResponse[Math.floor(Math.random() * jsonResponse.length)].name;
+                        } else {
+                            global.log("radio@ : No radio server api!");
+                        }
+                    }
+                }
+            }
+        }
 
     _buildLayout() {
         let headline = new St.BoxLayout({
@@ -144,7 +171,7 @@ var SearchDialog = GObject.registerClass(
         let input = this._searchEntry.get_text();
         this._itemBox.remove_all_children();
         if (input != null && input.trim().length > 0) {
-            let url = "http://www.radio-browser.info/webservice/json/stations/search"
+            let url = "http://" + _server + "/json/stations/byname/" + input;
             var message = Soup.Message.new('POST', url);
             var postParams = 'name=' + input + '&limit=15';
             message.set_request('application/x-www-form-urlencoded', Soup.MemoryUse.COPY, postParams);

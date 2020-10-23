@@ -89,7 +89,9 @@ var ChannelCreator = GObject.registerClass(
                       }
                   }
               }
-              this._showError(_("No server stream address found!"));
+              else {
+                this._showError(_("No server stream address found!"));
+              }
           } else {
             this._showError(_("Invalid input stream address!"));
           }
