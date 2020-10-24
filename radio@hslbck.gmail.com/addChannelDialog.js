@@ -41,9 +41,7 @@ var AddChannelDialog = GObject.registerClass(
             text: _("Channel Name")
         });
 
-        this.contentLayout.add_child(name, {
-            y_align: St.Align.START
-        });
+        this.contentLayout.add_child(name);
         this._nameEntry = new St.Entry({
             style_class: 'run-dialog-entry',
             can_focus: true
@@ -51,18 +49,14 @@ var AddChannelDialog = GObject.registerClass(
         ShellEntry.addContextMenu(this._nameEntry);
         this._nameEntry.set_label_actor(name);
         this._nameEntryText = this._nameEntry.get_clutter_text();
-        this.contentLayout.add_child(this._nameEntry, {
-            y_align: St.Align.START
-        });
+        this.contentLayout.add_child(this._nameEntry);
 
         // entry for the stream address of the channel
         let address = new St.Label({
             style_class: 'run-dialog-label',
             text: _("Stream Address")
         });
-        this.contentLayout.add_child(address, {
-            y_align: St.Align.START
-        });
+        this.contentLayout.add_child(address);
         this._addressEntry = new St.Entry({
             style_class: 'run-dialog-entry',
             can_focus: true
@@ -70,18 +64,14 @@ var AddChannelDialog = GObject.registerClass(
         ShellEntry.addContextMenu(this._addressEntry);
         this._addressEntry.set_label_actor(address);
         this._addressEntryText = this._addressEntry.get_clutter_text();
-        this.contentLayout.add_child(this._addressEntry, {
-            y_align: St.Align.START
-        });
+        this.contentLayout.add_child(this._addressEntry);
 
         // entry for optional tag text charset conversion
         let charset = new St.Label({
             style_class: 'run-dialog-label',
             text: _("Charset (optional)")
         });
-        this.contentLayout.add_child(charset, {
-            y_align: St.Align.START
-        });
+        this.contentLayout.add_child(charset);
         this._charsetEntry = new St.Entry({
             style_class: 'run-dialog-entry',
             can_focus: true
@@ -89,9 +79,7 @@ var AddChannelDialog = GObject.registerClass(
         ShellEntry.addContextMenu(this._charsetEntry);
         this._charsetEntry.set_label_actor(charset);
         this._charsetEntryText = this._charsetEntry.get_clutter_text();
-        this.contentLayout.add_child(this._charsetEntry, {
-            y_align: St.Align.START
-        });
+        this.contentLayout.add_child(this._charsetEntry);
 
         // set values when editing a channel
         this._setTextValues();

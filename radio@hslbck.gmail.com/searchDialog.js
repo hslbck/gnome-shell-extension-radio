@@ -124,9 +124,7 @@ var SearchDialog = GObject.registerClass(
         this._scrollView.add_actor(this._itemBox);
         this._stack.add_child(this._scrollView);
 
-        this.contentLayout.add_child(this._stack, {
-            expand: true
-        });
+        this.contentLayout.add_child(this._stack);
 
         // Cancel and Add Channel Button
         this._cancelButton = this.addButton({

@@ -83,9 +83,7 @@ var ChannelListDialog = GObject.registerClass(
         this._scrollView.add_actor(this._itemBox);
         this._stack.add_child(this._scrollView);
 
-        this.contentLayout.add_child(this._stack, {
-            expand: true
-        });
+        this.contentLayout.add_child(this._stack);
 
         // Cancel, Delete, Edit and Play Button
         this._cancelButton = this.addButton({
@@ -210,7 +208,8 @@ var ChannelListDialogItem = class ChannelListDialogItem {
         let streaminfo = channel.getCodec() != null && channel.getBitrate() != null ? " (" + channel.getCodec() + " | " + channel.getBitrate() + " kbps)" : "";
         let title = channel.getName() + streaminfo;
         this._label = new St.Label({
-            text: title
+            text: title,
+            x_expand: true,
         });
 
         this._favouriteIcon = new St.Icon({
@@ -218,7 +217,8 @@ var ChannelListDialogItem = class ChannelListDialogItem {
         });
         // Set Favourite Icon
         this._icons = new St.Button({
-            style_class: 'nm-dialog-icons'
+            style_class: 'nm-dialog-icons',
+            x_align: Clutter.ActorAlign.END,
         });
         if (channel.getFavourite()) {
             this._favouriteIcon.set_icon_name(FavouriteEnabledIcon);
@@ -247,14 +247,8 @@ var ChannelListDialogItem = class ChannelListDialogItem {
         // Add Action, Label and Favourite icon to the Actor
         this.actor.add_action(action);
         this.actor.set_label_actor(this._label);
-        this.actor.add_child(this._label, {
-            x_align: St.Align.START
-        });
-        this.actor.add_child(this._icons, {
-            expand: true,
-            x_fill: false,
-            x_align: St.Align.END
-        });
+        this.actor.add_child(this._label);
+        this.actor.add_child(this._icons);
     }
 };
 Signals.addSignalMethods(ChannelListDialogItem.prototype);

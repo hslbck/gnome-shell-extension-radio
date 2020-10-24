@@ -27,18 +27,16 @@ var ChannelCreator = GObject.registerClass(
 
         this._errorBox = new St.BoxLayout({ style_class: 'run-dialog-error-box' });
 
-        this.contentLayout.add_child(this._errorBox, { expand: true });
+        this.contentLayout.add_child(this._errorBox);
 
         let errorIcon = new St.Icon({ icon_name: 'dialog-error', icon_size: 24, style_class: 'run-dialog-error-icon' });
 
-        this._errorBox.add_child(errorIcon, { y_align: St.Align.MIDDLE });
+        this._errorBox.add_child(errorIcon);
 
         this._errorMessage = new St.Label({ style_class: 'run-dialog-error-label' });
         this._errorMessage.clutter_text.line_wrap = true;
 
-        this._errorBox.add_child(this._errorMessage, { expand: true,
-                                                 y_align: St.Align.MIDDLE,
-                                                 y_fill: false });
+        this._errorBox.add_child(this._errorMessage);
 
         this._errorBox.hide();
     }

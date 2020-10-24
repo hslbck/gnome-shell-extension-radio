@@ -113,7 +113,7 @@ let RadioMenuButton = GObject.registerClass (
         this.controlsBox = new St.BoxLayout({
             name: 'controlsBox',
             style_class: 'control-box',
-            width: 300
+            width: 350
         });
         this.tagListBox = new St.BoxLayout({
             name: 'tagListBox',
@@ -171,8 +171,8 @@ let RadioMenuButton = GObject.registerClass (
 
         // Add ControlsBox to the Menu
         this.menu.box.add_child(this.controlsBox);
-        this.tagItem.add_child(this.tagListBox, {expand: false, x_fill: false});
-        this.tagItem.add_child(this.copyTagButton, {expand: false, y_fill: false});
+        this.tagItem.add_child(this.tagListBox);
+        this.tagItem.add_child(this.copyTagButton);
         this.menu.addMenuItem(this.tagItem);
 
         // Connect the Button
@@ -469,7 +469,7 @@ let RadioMenuButton = GObject.registerClass (
         this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
         this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1/3));
         this.volumeSliderBox.add_child(this.volumeIcon);
-        this.volumeSliderBox.add_child(this.volumeSlider, { expand: true });
+        this.volumeSliderBox.add_child(this.volumeSlider);
 
         // Connect sliders 'notify::value' handler
         this.volumeSlider.connect('notify::value', this._onVolumeSliderValueChanged.bind(this));
@@ -501,10 +501,10 @@ let RadioMenuButton = GObject.registerClass (
             reactive: false,
             can_focus: false
         });
-        this.settingsItem.add_child(this.settingsButton, {expand: true, x_fill: false});
-        this.settingsItem.add_child(this.channelListButton, {expand: true, x_fill: false});
-        this.settingsItem.add_child(this.addChannelButton, {expand: true, x_fill: false});
-        this.settingsItem.add_child(this.searchButton, {expand: true, x_fill: false});
+        this.settingsItem.add_child(this.settingsButton);
+        this.settingsItem.add_child(this.channelListButton);
+        this.settingsItem.add_child(this.addChannelButton);
+        this.settingsItem.add_child(this.searchButton);
         this.menu.addMenuItem(this.settingsItem);
     }
 
