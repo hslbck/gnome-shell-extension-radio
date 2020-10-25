@@ -45,18 +45,22 @@ var SearchDialog = GObject.registerClass(
                 let message = Soup.Message.new('GET', RADIO_BROWSER_API);
 
                 if (message != null) {
-                    _httpSession.send_message(message);
 
-                    // request ok
-                    if (message.status_code === 200) {
-                        let response = message.response_body.data;
-                        let jsonResponse = JSON.parse(response);
-                        if (jsonResponse.length > 0) {
-                            _server = jsonResponse[Math.floor(Math.random() * jsonResponse.length)].name;
+                    // async call
+                    _httpSession.queue_message(message, function (_httpSession, message) {
+                        if (message.status_code === 200) {
+                            let response = message.response_body.data;
+                            let jsonResponse = JSON.parse(response);
+                            if (jsonResponse.length > 0) {
+                                _server = jsonResponse[Math.floor(Math.random() * jsonResponse.length)].name;
+                            } else {
+                                global.log("radio@ : No radio server api!");
+                            }
                         } else {
-                            global.log("radio@ : No radio server api!");
+                            let txt = _("Server returned status code");
+                            searchDialog._addMessage(txt + " " + message.status_code);
                         }
-                    }
+                    });
                 }
             }
         }
