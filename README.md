@@ -6,25 +6,23 @@ A GNOME Shell extension for listening to internet radio streams.
 
 ### Features
 
-* supports GNOME Shell 3.34 - for older versions see [releases]
-* manage internet radio streams
-* middle click to start/stop last played station
+* Supports GNOME Shell 3.36 and 3.38 - for older versions see [releases]
+* Manage internet radio streams
+* Middle click to start/stop last played station
 * Cyrillic tag support - see [charset conversion]
-* support for multimedia keys: play / stop, cycle through stations via next / prev
-* show tags in the panel or via notification
-* search online radio directory [radio-browser]
-* separate volume slider
-* copy title to clipboard via button in the radio menu or via middle click on the panel title  
+* Support for multimedia keys: play / stop, cycle through stations via next / prev
+* Show tags in the panel or via notification
+* Search online radio directory [radio-browser]
+* Separate volume slider
+* Copy title to clipboard via button in the radio menu or via middle click on the panel title  
 * Show radio stations as search results in GNOME overview  
 
 ### Installation
 
 Prerequisites: GStreamer plugins are installed.
 
-* install from your distribution's package manager:
-  * ArchLinux: [gnome-shell-extension-radio-git] from [AUR]
-* install from [GNOME Shell extension website]
-* build and install from source, see [CONTRIBUTING]
+* Install from [GNOME Shell extension website]
+* Build and install from source, see [CONTRIBUTING]
 
 ### Charset conversion
 
@@ -51,7 +49,7 @@ See [CONTRIBUTING].
 
 ### License
 
-Copyright © 2014-2019 hslbck.
+Copyright © 2014-2020 hslbck.
 
 GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYING] for details.
 
@@ -59,8 +57,6 @@ GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYIN
 [charset conversion]: #charset-conversion
 [screenshot01]: https://raw.githubusercontent.com/hslbck/gnome-shell-extension-radio/master/radio-extension.png
 [GNOME Shell extension website]: https://extensions.gnome.org/extension/836/internet-radio/
-[gnome-shell-extension-radio-git]: https://aur.archlinux.org/packages/gnome-shell-extension-radio-git/
-[AUR]: https://aur.archlinux.org
 [radio-browser]: https://www.radio-browser.info/
 [2cyr/decode]: https://2cyr.com/decode/
 [CONTRIBUTING]: ./CONTRIBUTING.md
