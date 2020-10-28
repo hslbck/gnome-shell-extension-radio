@@ -207,7 +207,8 @@ var SearchDialog = GObject.registerClass(
             let url = jsonObject.url;
             let bitrate = jsonObject.bitrate;
             let codec = jsonObject.codec;
-            let streamAddress = this._getStreamAddress(url);
+            //let streamAddress = this._getStreamAddress(url);
+            let streamAddress = jsonObject.url_resolved;
             if (streamAddress) {
               let channel = new Channel.Channel(null, name, streamAddress, true, false);
               channel.setCodec(codec);
