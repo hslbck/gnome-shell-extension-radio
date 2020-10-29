@@ -247,6 +247,7 @@ let RadioMenuButton = GObject.registerClass (
         if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
             this._registerMediaKeys();
         }
+        return false;
     }
 
     _disableSearchProvider(){
@@ -698,7 +699,7 @@ function addToPanel() {
     radioMenu = new RadioMenuButton();
     Main.panel.addToStatusArea('radioMenu', radioMenu, 0, 'right');
     radioMenu._enableSearchProvider();
-    radioMenu._enableMediaKeys();
+    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => radioMenu._enableMediaKeys());
 }
 
 function removeFromPanel() {
