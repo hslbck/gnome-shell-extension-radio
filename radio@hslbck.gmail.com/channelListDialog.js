@@ -4,6 +4,7 @@
 */
 const Clutter = imports.gi.Clutter;
 const Gtk = imports.gi.Gtk;
+const Gio = imports.gi.Gio;
 const Signals = imports.signals;
 const St = imports.gi.St;
 const GObject = imports.gi.GObject;
@@ -35,6 +36,8 @@ var ChannelListDialog = GObject.registerClass(
     }
 
     _buildLayout() {
+        this.iconStopped = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
+
         // Set Header
         let headline = new St.BoxLayout({
             style_class: 'nm-dialog-header-hbox'
@@ -42,7 +45,7 @@ var ChannelListDialog = GObject.registerClass(
 
         let icon = new St.Icon({
             style_class: 'nm-dialog-header-icon',
-            icon_name: StoppedIcon
+            gicon: this.iconStopped,
         });
 
         let titleBox = new St.BoxLayout({
