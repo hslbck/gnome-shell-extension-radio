@@ -1,17 +1,16 @@
 /*
-    Copyright (C) 2018 hslbck <hslbck@gmail.com>
+    Copyright (C) 2018-2020 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
 const Gtk = imports.gi.Gtk;
+const Gio = imports.gi.Gio;
 const Search = imports.ui.search;
 const St = imports.gi.St;
 const Io = Extension.imports.io;
 const MyE = Extension.imports.radioMenu;
 const Main = imports.ui.main;
-
-const StoppedIcon = "gser-icon-stopped-symbolic";
 
 var radioSearchProvider;
 
@@ -29,21 +28,17 @@ function disableProvider() {
     }
 }
 
-var RadioSearchProvider = class RadioSearchProvider{
+var RadioSearchProvider = class RadioSearchProvider {
 
     constructor() {
-        this.id = "RadioSearchProvider";
-        this.title = "Internet Radio Search Provider";
+        Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
 
-        this.appInfo = {
-                get_name: function () { return 'Internet Radio';},
-                get_icon: function() {
-                    Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
-                    return new St.Icon({
-                        icon_name: StoppedIcon
-                    }).get_gicon();
-                },
-                get_id: function() {return this.id;}
+        this.appInfo = Gio.AppInfo.get_default_for_uri_scheme('http');
+        this.appInfo.get_name = () => {
+            return 'Internet Radio';
+        };
+        this.appInfo.get_icon = () => {
+            return Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
         };
     }
 
@@ -55,12 +50,12 @@ var RadioSearchProvider = class RadioSearchProvider{
 
     getSubsearchResultSet(previous_results, terms, callback) {
         let search = terms.join(" ").toLowerCase();
-           function containsSearch(candidate) {
-             return candidate.name.toLowerCase().indexOf(search) !== -1;
-           }
-           function getId(candidate) {
-             return candidate.id;
-           };
+        function containsSearch(candidate) {
+            return candidate.name.toLowerCase().indexOf(search) !== -1;
+        }
+        function getId(candidate) {
+            return candidate.id;
+        };
         callback(this._results.filter(containsSearch).map(getId));
     }
 
@@ -72,7 +67,7 @@ var RadioSearchProvider = class RadioSearchProvider{
     }
 
     activateResult(id, terms, timestamp) {
-        let result = this._results.filter(function(res) {
+        let result = this._results.filter(function (res) {
             return res.id === id;
         })[0];
         MyE.radioMenu._changeChannelById(result.id);
@@ -87,7 +82,7 @@ var RadioSearchProvider = class RadioSearchProvider{
             id: channel.id,
             name: channel.name,
             description: channel.address,
-            createIcon: function (size) {}
+            createIcon: function (size) { }
         };
     }
 
