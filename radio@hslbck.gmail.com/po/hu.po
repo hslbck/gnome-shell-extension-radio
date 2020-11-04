@@ -5,17 +5,17 @@ msgstr ""
 "Project-Id-Version: gnome-shell-extension-radio 1.6\n"
 "Report-Msgid-Bugs-To: hslbck@gmail.com\n"
 "POT-Creation-Date: 2018-02-12 10:34+0100\n"
-"PO-Revision-Date: 2016-10-15 00:07+0100\n"
-"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
-"Language-Team: Hungarian \n"
+"PO-Revision-Date: 2020-10-31 16:33+0100\n"
+"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
+"Language-Team: Hungarian\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: addChannelDialog.js:42
 msgid "Channel Name"
@@ -23,11 +23,11 @@ msgstr "Csatorna neve"
 
 #: addChannelDialog.js:62
 msgid "Stream Address"
-msgstr "Adatfolyam címe"
+msgstr "Közvetítés címe"
 
 #: addChannelDialog.js:81
 msgid "Charset (optional)"
-msgstr ""
+msgstr "Karakterkódolás (nem kötelező)"
 
 #: addChannelDialog.js:105 searchDialog.js:108 channelListDialog.js:94
 msgid "Cancel"
@@ -35,7 +35,7 @@ msgstr "Mégse"
 
 #: addChannelDialog.js:109
 msgid "Save"
-msgstr ""
+msgstr "Mentés"
 
 #: addChannelDialog.js:109 searchDialog.js:114
 msgid "Add"
@@ -51,11 +51,11 @@ msgstr "Keresés"
 
 #: searchDialog.js:137
 msgid "Station added:"
-msgstr ""
+msgstr "Állomás hozzáadva:"
 
 #: searchDialog.js:163
 msgid "No radio station found!"
-msgstr "Nem található rádióállomás!"
+msgstr "Nem található rádióállomás."
 
 #: searchDialog.js:166
 msgid "Server returned status code"
@@ -63,29 +63,27 @@ msgstr "A kiszolgáló által visszaadott állapotkód"
 
 #: searchDialog.js:171
 msgid "Search input was empty!"
-msgstr "A keresési bemenet üres volt!"
+msgstr "A keresés bemenete üres volt."
 
 #: player.js:97
 msgid "Missing plugin"
-msgstr ""
+msgstr "Hiányzó bővítmény"
 
 #: player.js:134
-#, fuzzy
 msgid "Stream error"
-msgstr "Adatfolyam címe"
+msgstr "Közvetítési hiba"
 
 #: player.js:138
 msgid "End of stream"
-msgstr ""
+msgstr "Közvetítés vége"
 
 #: prefs.js:51
 msgid "Show title notifications"
 msgstr "Címértesítések megjelenítése"
 
 #: prefs.js:67
-#, fuzzy
 msgid "Show title notification in the panel"
-msgstr "Címértesítések megjelenítése"
+msgstr "Címértesítések megjelenítése a panelen"
 
 #: prefs.js:83
 msgid "Enable Play/Stop Media Keys"
@@ -93,11 +91,11 @@ msgstr "Lejátszás/leállítás médiabillentyűk engedélyezése"
 
 #: prefs.js:99
 msgid "Show volume adjustment slider in menu"
-msgstr ""
+msgstr "Hangerőszabályzó csúszka megjelenítése a menüben"
 
 #: prefs.js:115
 msgid "Enable as search provider for GNOME Shell"
-msgstr ""
+msgstr "Engedélyezés keresőszolgáltatóként a GNOME Shellben"
 
 #: channelListDialog.js:54
 msgid "List of Channels"
@@ -121,11 +119,11 @@ msgstr "Lejátszás"
 
 #: channelCreator.js:92
 msgid "No server stream address found!"
-msgstr ""
+msgstr "A közvetítési kiszolgáló címe nem található."
 
 #: channelCreator.js:94
 msgid "Invalid input stream address!"
-msgstr ""
+msgstr "A bemeneti közvetítés címe érvénytelen."
 
 #~ msgid "Favourites"
 #~ msgstr "Kedvencek"
