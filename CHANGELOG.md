@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [14] - 2020-11-15
+
 - Support for GNOME 3.36 and GNOME 3.38
 - Search API update
 - Styles updates
@@ -135,6 +137,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[14]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v12
 [12]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v12
 [11]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v11
 [10]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v10
