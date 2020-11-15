@@ -137,7 +137,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
-[14]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v12
+[14]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v14
 [12]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v12
 [11]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v11
 [10]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v10
