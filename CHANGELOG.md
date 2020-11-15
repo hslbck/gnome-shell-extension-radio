@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Support for GNOME 3.36 and GNOME 3.38
+- Search API update
+- Styles updates
+
 ## [12] - 2019-09-25
 
 ## Added
