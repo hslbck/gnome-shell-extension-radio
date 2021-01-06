@@ -81,7 +81,7 @@ var ChannelCreator = GObject.registerClass(
                   let contentLines = content.split('\n');
                   // look for stream url
                   for (var line in contentLines) {
-                      if (contentLines[line].search(/http/i) != -1) {
+                      if (contentLines[line].search(/https?:/i) != -1) {
                           // get url
                           return contentLines[line].slice((contentLines[line].search(/http/))) //, contentLines[line].search(/\n/));
                       }
