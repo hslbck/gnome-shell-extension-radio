@@ -28,31 +28,34 @@ var RadioPrefsWidget = GObject.registerClass(
         this._widgets = {};
 
         this._widgets.box = new Gtk.Box({orientation: Gtk.Orientation.VERTICAL,
-                            margin: 20,
-                            margin_top: 10,
-                            expand: true,
-                             spacing: 10
+                            "margin-start": 20,
+                            "margin-end": 20,
+                            "margin-top": 10,
+                            "margin-bottom": 20,
+                            "spacing": 10
         });
 
         this._addTitleNotificationsSwitch();
         this._addShowTitleInPanelSwitch();
         this._addEnableMediaKeysSwitch();
-	    this._addShowVolumeAdjustmentSliderSwitch();
+	this._addShowVolumeAdjustmentSliderSwitch();
         this._addEnableSearchProviderSwitch();
 
-        this.add(this._widgets.box);
+        this.attach(this._widgets.box, 0, 0, 1, 1);
     }
 
     _addTitleNotificationsSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Show title notifications"),
-                                        xalign: 0});
+                                        "xalign": 0,
+                                        "hexpand": true
+        });
         this._widgets.titleNotificationsSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_TITLE_NOTIFICATION)});
 
-        hbox.pack_start(label, true, true, 0);
-        hbox.add(this._widgets.titleNotificationsSwitch);
+        hbox.prepend(label);
+        hbox.append(this._widgets.titleNotificationsSwitch);
 
-        this._widgets.box.add(hbox);
+        this._widgets.box.append(hbox);
 
         this._widgets.titleNotificationsSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_TITLE_NOTIFICATION, button.get_active());
@@ -62,13 +65,15 @@ var RadioPrefsWidget = GObject.registerClass(
     _addShowTitleInPanelSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Show title notification in the panel"),
-                                        xalign: 0});
+                                        "xalign": 0,
+                                        "hexpand": true
+        });
         this._widgets.titleInPanelSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)});
 
-        hbox.pack_start(label, true, true, 0);
-        hbox.add(this._widgets.titleInPanelSwitch);
+        hbox.prepend(label);
+        hbox.append(this._widgets.titleInPanelSwitch);
 
-        this._widgets.box.add(hbox);
+        this._widgets.box.append(hbox);
 
         this._widgets.titleInPanelSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_SHOW_TITLE_IN_PANEL, button.get_active());
@@ -78,13 +83,15 @@ var RadioPrefsWidget = GObject.registerClass(
     _addEnableMediaKeysSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Enable Play/Stop Media Keys"),
-                                        xalign: 0});
+                                        "xalign": 0,
+                                        "hexpand": true
+        });
         this._widgets.mediaKeySwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)});
 
-        hbox.pack_start(label, true, true, 0);
-        hbox.add(this._widgets.mediaKeySwitch);
+        hbox.prepend(label);
+        hbox.append(this._widgets.mediaKeySwitch);
 
-        this._widgets.box.add(hbox);
+        this._widgets.box.append(hbox);
 
         this._widgets.mediaKeySwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_USE_MEDIA_KEYS, button.get_active());
@@ -94,13 +101,15 @@ var RadioPrefsWidget = GObject.registerClass(
     _addShowVolumeAdjustmentSliderSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Show volume adjustment slider in menu"),
-                                        xalign: 0});
+                                        "xalign": 0,
+                                        "hexpand": true
+        });
         this._widgets.volumeAdjustmentSliderSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)});
 
-        hbox.pack_start(label, true, true, 0);
-        hbox.add(this._widgets.volumeAdjustmentSliderSwitch);
+        hbox.prepend(label);
+        hbox.append(this._widgets.volumeAdjustmentSliderSwitch);
 
-        this._widgets.box.add(hbox);
+        this._widgets.box.append(hbox);
 
         this._widgets.volumeAdjustmentSliderSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, button.get_active());
@@ -110,13 +119,15 @@ var RadioPrefsWidget = GObject.registerClass(
     _addEnableSearchProviderSwitch() {
         let hbox = new Gtk.Box({orientation: Gtk.Orientation.HORIZONTAL});
         let label = new Gtk.Label({label: _("Enable as search provider for GNOME Shell"),
-                                        xalign: 0});
+                                        "xalign": 0,
+                                        "hexpand": true
+        });
         this._widgets.searchProviderSwitch = new Gtk.Switch({active: this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)});
 
-        hbox.pack_start(label, true, true, 0);
-        hbox.add(this._widgets.searchProviderSwitch);
+        hbox.prepend(label);
+        hbox.append(this._widgets.searchProviderSwitch);
 
-        this._widgets.box.add(hbox);
+        this._widgets.box.append(hbox);
 
         this._widgets.searchProviderSwitch.connect('notify::active', (button) => {
             this._settings.set_boolean(SETTING_ENABLE_SEARCH_PROVIDER, button.get_active());
@@ -130,7 +141,6 @@ function init() {
 
 function buildPrefsWidget() {
     let widget = new RadioPrefsWidget();
-    widget.show_all();
 
     return widget;
 }
