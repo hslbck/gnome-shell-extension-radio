@@ -132,7 +132,7 @@ var SearchDialog = GObject.registerClass(
 
         // Cancel and Add Channel Button
         this._cancelButton = this.addButton({
-            action: this.close.bind(this),
+            action: this._closeDialog.bind(this),
             label: _("Cancel")
         }, {
             x_align: St.Align.START
@@ -198,6 +198,10 @@ var SearchDialog = GObject.registerClass(
         } else {
             searchDialog._addMessage(_("Search input was empty!"));
         }
+    }
+
+    _closeDialog() {
+        this.close();
     }
 
     _createChannel(jsonObject) {
