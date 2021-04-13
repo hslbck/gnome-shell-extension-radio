@@ -90,7 +90,7 @@ var ChannelListDialog = GObject.registerClass(
 
         // Cancel, Delete, Edit and Play Button
         this._cancelButton = this.addButton({
-            action: this.close.bind(this),
+            action: this._closeDialog.bind(this),
             label: _("Cancel"),
             key: Clutter.Escape
         }, {
@@ -183,6 +183,10 @@ var ChannelListDialog = GObject.registerClass(
             this._selectChannel(cha);
         });
         this._itemBox.add_child(cha.item.actor);
+    }
+
+    _closeDialog() {
+        this.close();
     }
 });
 
