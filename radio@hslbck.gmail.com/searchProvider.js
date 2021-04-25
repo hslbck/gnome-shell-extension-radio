@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2018-2020 hslbck <hslbck@gmail.com>
+    Copyright (C) 2018-2021 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
@@ -17,13 +17,13 @@ var radioSearchProvider;
 function enableProvider() {
     if (!radioSearchProvider) {
         radioSearchProvider = new RadioSearchProvider();
-        Main.overview.viewSelector._searchResults._registerProvider(radioSearchProvider);
+        Main.overview._overview.controls._searchController._searchResults._registerProvider(radioSearchProvider);
     }
 }
 
 function disableProvider() {
     if (radioSearchProvider) {
-        Main.overview.viewSelector._searchResults._unregisterProvider(radioSearchProvider);
+        Main.overview._overview.controls._searchController._searchResults._unregisterProvider(radioSearchProvider);
         radioSearchProvider = null;
     }
 }
