@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017 - 2019 hslbck <hslbck@gmail.com>
+    Copyright (C) 2017 - 2021 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
@@ -27,7 +27,7 @@ let TitleMenuButton = GObject.registerClass (
     }
 
     _updateTitleInfo(channel, titleInfo) {
-        this._titleInfo.set_text(channel + ": " + titleInfo);
+        this._titleInfo.set_text(titleInfo);
     }
 
     _copyTagOnMiddleClick(actor, event) {
