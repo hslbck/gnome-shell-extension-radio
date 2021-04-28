@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Remove channel name in panelbar
+- Update searchprovider
+- Support GNOME 40 only
+- Port preferences to GTK4
+- Improve regex for channelcreator
+
 ## [14] - 2020-11-15
 
 - Support for GNOME 3.36 and GNOME 3.38
