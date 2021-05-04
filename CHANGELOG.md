@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [15] - 2021-05-04
+
 - Remove channel name in panelbar
 - Update searchprovider
 - Support GNOME 40 only
@@ -143,6 +145,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[15]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v15
 [14]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v14
 [12]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v12
 [11]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v11
