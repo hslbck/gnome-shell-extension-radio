@@ -49,7 +49,7 @@ See [CONTRIBUTING].
 
 ### License
 
-Copyright © 2014-2020 hslbck.
+Copyright © 2014-2021 hslbck.
 
 GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYING] for details.
 
