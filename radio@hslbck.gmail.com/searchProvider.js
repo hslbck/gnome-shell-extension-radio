@@ -4,10 +4,8 @@
 */
 
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Gtk = imports.gi.Gtk;
-const Gio = imports.gi.Gio;
+const {Gtk, Gdk, Gio, St} = imports.gi;
 const Search = imports.ui.search;
-const St = imports.gi.St;
 const Io = Extension.imports.io;
 const MyE = Extension.imports.radioMenu;
 const Main = imports.ui.main;
@@ -31,8 +29,6 @@ function disableProvider() {
 var RadioSearchProvider = class RadioSearchProvider {
 
     constructor() {
-        Gtk.IconTheme.get_default().append_search_path(Extension.dir.get_child('icons').get_path());
-
         this.appInfo = Gio.AppInfo.get_default_for_uri_scheme('http');
         this.appInfo.get_name = () => {
             return 'Internet Radio';
