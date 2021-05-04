@@ -1,13 +1,12 @@
 /*
     Copyright (C) 2018 Léo Andrès <leo@ndrs.fr>
-    Copyright (C) 2019 hslbck <hslbck@gmail.com>
+    Copyright (C) 2019-2021 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 const St = imports.gi.St;
 const GObject = imports.gi.GObject;
 const ModalDialog = imports.ui.modalDialog;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Tweener = imports.tweener.tweener;
 
 const DIALOG_GROW_TIME = 0.1;
 
@@ -50,13 +49,14 @@ var ChannelCreator = GObject.registerClass(
             let [errorBoxMinHeight, errorBoxNaturalHeight] = this._errorBox.get_preferred_height(-1);
             let parentActor = this._errorBox.get_parent();
 
-            Tweener.addTween(parentActor,
-              { height: parentActor.height + errorBoxNaturalHeight,
-                time: DIALOG_GROW_TIME,
-                transition: 'easeOutQuad',
+            let height = parentActor.height + errorBoxNaturalHeight;
+            parentActor.ease({
+                height,
+                duration: DIALOG_GROW_TIME,
+                mode: Clutter.AnimationMode.EASE_OUT_QUAD,
                 onComplete: () => {
-                  parentActor.set_height(-1);
-                  this._errorBox.show();
+                    parentActor.set_height(-1);
+                    this._errorBox.show();
                 }
             });
         }
