@@ -1,5 +1,5 @@
 {
-	"shell-version": ["40"],
+	"shell-version": ["40","41"],
 	"uuid": "radio@hslbck.gmail.com",
 	"name": "Internet Radio",
 	"description": "Listen to an Internet Radio Stream",
