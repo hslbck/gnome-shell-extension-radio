@@ -39,6 +39,7 @@ const _ = Gettext.gettext;
 // timer for stream tag
 const Interval = 10000; // 10 seconds
 let timeoutId = 0;
+let mediaKeysTimeoutId = null;
 let oldTagLabel = '';
 
 // Settings
@@ -699,12 +700,18 @@ function addToPanel() {
     radioMenu = new RadioMenuButton();
     Main.panel.addToStatusArea('radioMenu', radioMenu, 0, 'right');
     radioMenu._enableSearchProvider();
-    GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => radioMenu._enableMediaKeys());
+    mediaKeysTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => radioMenu._enableMediaKeys());
 }
 
 function removeFromPanel() {
     radioMenu._stop();
     radioMenu._disconnectMediaKeys();
     radioMenu._disableSearchProvider();
+
+    if (mediaKeysTimeoutId) {
+        GLib.Source.remove(mediaKeysTimeoutId);
+        mediaKeysTimeoutId = null;
+    }
+
     radioMenu.destroy();
 }
