@@ -22,7 +22,7 @@ A GNOME Shell extension for listening to internet radio streams.
 Prerequisites: GStreamer plugins are installed.
 
 * Install from [GNOME Shell extension website]
-* Build and install from source, see [CONTRIBUTING]
+* Build and install from source: Run `sh build.sh -i` in folder of build.sh file
 
 ### Charset conversion
 

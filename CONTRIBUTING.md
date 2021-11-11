@@ -2,14 +2,12 @@
 
 After doing any contribution, please, don't forget to add yourself as a copyright holder and to document any notable change in [CHANGELOG].
 
-You'll need the `glib-compile-schemas` and `msgfmt` commands on your system, available through `libglib` and `gettext`.
+You'll need `libglib` and `gettext` installed on your system
 
 ## Building and installing from source
 
 * download source from GitHub - clone repository or download zip
-* from the `gnome-shell-extension-radio` directory:
-  * for a user only installation: `make install`
-  * for a system-wide installation: `sudo make install DESTDIR=/`
+* from the `gnome-shell-extension-radio` directory: `sh build.sh -i`
 * reload the shell using X:
   * press <kbd>Alt</kbd>+<kbd>F2</kbd>
   * write <kbd>r</kbd>
