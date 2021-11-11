@@ -6,5 +6,5 @@
 	"settings-schema": "org.gnome.shell.extensions.radio",
 	"gettext-domain": "radio@hslbck.gmail.com",
 	"url": "https://github.com/hslbck/gnome-shell-extension-radio",
-	"version": 17
+	"version": 18
 }
