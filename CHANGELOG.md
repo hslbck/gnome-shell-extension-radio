@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [19] - 2022-04-08
+
+- Update to GNOME 42
+
 ## [18] - 2021-11-11
 
 - Removed Makefile
@@ -153,6 +157,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[19]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v18
 [18]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v18
 [15]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v15
 [14]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v14
