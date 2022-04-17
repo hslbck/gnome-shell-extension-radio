@@ -64,6 +64,7 @@ var ChannelCreator = GObject.registerClass(
 
     // get the valid stream address
     _getStreamAddress(input) {
+        input = input.trim();
         let regexp = /\.(m3u|m3u8|pls)/i;
 
         // test for m3u / pls
