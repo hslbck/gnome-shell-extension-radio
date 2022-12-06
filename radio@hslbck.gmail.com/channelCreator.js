@@ -16,7 +16,7 @@ const _ = Gettext.gettext;
 
 // import to get m3u, pls files
 const Soup = imports.gi.Soup;
-const _httpSession = new Soup.SessionSync();
+const _httpSession = new Soup.Session();
 
 var ChannelCreator = GObject.registerClass(
   class ChannelCreator extends ModalDialog.ModalDialog {
