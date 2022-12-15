@@ -6,7 +6,7 @@ A GNOME Shell extension for listening to internet radio streams.
 
 ### Features
 
-* Supports GNOME Shell 40, 41 and 42 - for older versions see [releases]
+* Supports GNOME Shell 43 - for older versions see [releases]
 * Manage internet radio streams
 * Middle click to start/stop last played station
 * Cyrillic tag support - see [charset conversion]
@@ -49,7 +49,7 @@ See [CONTRIBUTING].
 
 ### License
 
-Copyright © 2014-2021 hslbck.
+Copyright © 2014-2022 hslbck.
 
 GNOME Shell Extension Radio is published under the `GPL-3+` license, see [COPYING] for details.
 

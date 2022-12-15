@@ -1,47 +1,38 @@
-{ "channels":[
-	{
-	"id": "afaea783-5d7b-4ef5-9e79-c8a61fa8f67e",
-	"name": "Byte FM",
-	"address": "http://bytefm.cast.addradio.de/bytefm/main/mid/stream\r",
-	"favourite": true,
-	"encoding": false
-},	{
-	"id": "ce4eb78e-ef48-4846-92fd-2faa8ecb82ce",
-	"name": "egoFM",
-	"address": "https://egofm-live.cast.addradio.de/egofm/live/mp3/high/stream.mp3\r",
-	"favourite": true,
-	"encoding": false
-},	{
-	"id": "f26c648c-c7fd-4d81-9959-27f61d3265ca",
-	"name": "egoFM Riff",
-	"address": "https://egofm-riff.cast.addradio.de/egofm/riff/mp3/high/stream.mp3",
-	"favourite": true,
-	"encoding": false
-},	{
-	"id": "81482b2e-7573-45e2-b724-57381b2de397",
-	"name": "Bayern 1 Niederbayern/ Oberpfalz",
-	"address": "http://br-br1-nbopf.cast.addradio.de/br/br1/nbopf/mp3/56/stream.mp3",
-	"favourite": false,
-	"encoding": false
-},	{
-	"id": "7848dc71-861c-48c3-a3c7-a7f068d16fbe",
-	"name": "Deutschlandfunk Nova",
-	"address": "http://st03.dlf.de/dlf/03/128/mp3/stream.mp3",
-	"favourite": true,
-	"encoding": false
-},	{
-	"id": "8fdaa309-a184-4115-b178-9fe3a4f0c3db",
-	"name": "FM 4",
-	"address": "http://mp3stream1.apasf.apa.at:8000",
-	"favourite": true,
-	"encoding": false
-}
-],
-
-  "lastplayed":{
-	"id": "afaea783-5d7b-4ef5-9e79-c8a61fa8f67e",
-	"name": "Byte FM",
-	"address": "http://bytefm.cast.addradio.de/bytefm/main/mid/stream\r",
-	"encoding": false
-}
+{
+	"channels": [
+		{
+			"id": "afaea783-5d7b-4ef5-9e79-c8a61fa8f67e",
+			"name": "Byte FM",
+			"address": "http://bytefm.cast.addradio.de/bytefm/main/mid/stream",
+			"favourite": true,
+			"encoding": false
+		},
+		{
+			"id": "0a9b9cbf-7b07-45d4-8d36-cc1b8c2dbbb3",
+			"name": "egoFM",
+			"address": "http://egofm--di--nacs-ais-lgc--0b--cdn.cast.addradio.de/egofm/live/aac/low/stream.aac?ar-distributor=ffa0&_art=dj0yJmlwPTkxLjEzMi4xNDUuMTE0JmlkPWljc2N4bC11cW5vbmNubWImdD0xNjcxMTAwNzQ0JnM9Nzg2NmYyOWMjZjZkMDllMWQ1M2Y3YmQ2MWE2NjU5MzhjNDMxNDJmZmI",
+			"favourite": true,
+			"encoding": false
+		},
+		{
+			"id": "1b4399b8-a541-420c-a0a6-062be084743a",
+			"name": "egoFM Riff",
+			"address": "http://egofm--di--nacs-ais-lgc--05--cdn.cast.addradio.de/egofm/riff/mp3/high/stream.mp3?_art=dj0yJmlwPTk1LjE3OS4xMzkuMTA2JmlkPWljc2N4bC16a2c2czYzamImdD0xNjcxMDcxNjc2JnM9Nzg2NmYyOWMjNWZhNmM4Yjc3OTRkOGMzNmQwN2JmMmRkYjg2NDg1NjA",
+			"favourite": true,
+			"encoding": false
+		},
+		{
+			"id": "ae89afd9-5a9a-4e58-8c2f-45fe3ae749f6",
+			"name": "FM 4",
+			"address": "https://orf-live.ors-shoutcast.at/fm4-q1a",
+			"favourite": true,
+			"encoding": false
+		}
+	],
+	"lastplayed": {
+		"id": "0a9b9cbf-7b07-45d4-8d36-cc1b8c2dbbb3",
+		"name": "egoFM",
+		"address": "http://egofm--di--nacs-ais-lgc--0b--cdn.cast.addradio.de/egofm/live/aac/low/stream.aac?ar-distributor=ffa0&_art=dj0yJmlwPTkxLjEzMi4xNDUuMTE0JmlkPWljc2N4bC11cW5vbmNubWImdD0xNjcxMTAwNzQ0JnM9Nzg2NmYyOWMjZjZkMDllMWQ1M2Y3YmQ2MWE2NjU5MzhjNDMxNDJmZmI",
+		"encoding": false
+	}
 }

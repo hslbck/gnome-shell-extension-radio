@@ -1,11 +1,5 @@
-.control-box {
-  border-radius: 2px;
-  padding: .1em 1.5em;
-}
-.play-label {
-  font-size: 18px;
-  font-weight: bold;
-  padding: .5em 1.7em;
+.box-width{
+	width: 350px;
 }
 
 .custom-dialog-entry {
@@ -19,34 +13,3 @@
   margin-bottom: 5px;
   padding: 2px 8px;
 }
-
-.tag-list-box{
-    margin-top: 7px;
-}
-
-.copy-tag-button {
-  width: 16px;
-  height: 16px;
-  margin-left: 2px;
-}
-
-.radio-menu-action {
-  margin-left: 20px;
-  color: #eeeeec;
-  border-radius: 32px;
-  padding: 13px;
-  border: 1px solid #282c2c; 
-}
-
-.radio-menu-action:hover, .radio-menu-action:focus {
-    background-color: rgba(238, 238, 236, 0.1);
-    color: #eeeeec;
-    border: none;
-    padding: 14px; 
-}
-
-.radio-menu-action:active {
-    background-color: #215d9c;
-    color: #ffffff; 
-}
-

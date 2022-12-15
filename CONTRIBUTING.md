@@ -19,8 +19,7 @@ You'll need `libglib` and `gettext` installed on your system
 ## Adding a new translation
 
 * open your source folder
-* run `make` in your source directory
-* the file `radio@hslbck.gmail.com.pot` should be created in the `po` folder
+* the file `radio@hslbck.gmail.com.pot` should be in the `po` folder
 * rename the file to `id.po` where `id` is the [ISO 3166] country code corresponding
 * you're ready to go
 

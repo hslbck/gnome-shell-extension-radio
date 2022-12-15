@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Update to GNOME 43
+- Fix input with leading spaces
+- Move station management to prefs window
+- Remove modal dialogs
+- Update to libsoup3
+
 ## [19] - 2022-04-08
 
 - Update to GNOME 42

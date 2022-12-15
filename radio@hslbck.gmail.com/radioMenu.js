@@ -25,9 +25,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const Player = Extension.imports.player;
 const Channel = Extension.imports.channel;
-const AddChannelDialog = Extension.imports.addChannelDialog;
-const ChannelListDialog = Extension.imports.channelListDialog;
-const SearchDialog = Extension.imports.searchDialog;
 const Io = Extension.imports.io;
 const TitleMenu = Extension.imports.titleMenu;
 const RadioSearchProvider = Extension.imports.searchProvider;
@@ -49,6 +46,13 @@ const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 const SETTING_VOLUME_LEVEL = 'volume-level';
 const SETTING_ENABLE_SEARCH_PROVIDER = 'enable-search-provider';
+const SETTING_STATION_ACTION = 'station-action';
+
+const ACTION_ENABLE = "enable";
+const ACTION_DISABLE = "disable";
+const ACTION_DELETE = "delete";
+const ACTION_CREATE = "create";
+const ACTION_EDIT = "edit";
 
 // media keys
 const BUS_NAME = 'org.gnome.SettingsDaemon.MediaKeys';
@@ -71,628 +75,507 @@ const MediaKeysInterface = '<node> \
 const MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
 const Clipboard = St.Clipboard.get_default();
 
-let RadioMenuButton = GObject.registerClass (
+let RadioMenuButton = GObject.registerClass(
     class RadioMenuButton extends PanelMenu.Button {
-    _init() {
-    	super._init(0.0, Extension.metadata.name);
+        _init() {
+            super._init(0.0, Extension.metadata.name);
 
-        // read settings
-        this._settings = ExtensionUtils.getSettings();
+            // read settings
+            this._settings = ExtensionUtils.getSettings();
 
-        let hbox = new St.BoxLayout({
-                   style_class: 'panel-status-menu-box'
-       });
+            let hbox = new St.BoxLayout({
+                style_class: 'panel-status-menu-box'
+            });
 
-        this.iconStopped = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
-        this.iconPlaying = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-playing-symbolic.svg');
+            this.iconStopped = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
+            this.iconPlaying = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-playing-symbolic.svg');
 
-        // Icon for the Panel
-        this.radioIcon = new St.Icon({
-            gicon: this.iconStopped,
-            style_class: 'system-status-icon'
-        });
+            // Icon for the Panel
+            this.radioIcon = new St.Icon({
+                gicon: this.iconStopped,
+                style_class: 'system-status-icon'
+            });
 
-        hbox.add_actor(this.radioIcon);
-        this.add_actor(hbox);
-        this.add_style_class_name('panel-status-button');
+            hbox.add_actor(this.radioIcon);
+            this.add_actor(hbox);
+            this.add_style_class_name('panel-status-button');
 
-        // get channels from json file
-        this.channelList = Io.read();
-        this.chas = this.channelList.channels;
-        this.lastPlayed = this.channelList.lastplayed;
-        let encoding = this.lastPlayed.hasOwnProperty('encoding') ? this.lastPlayed.encoding : null;
-        let lastPlayedId = this.lastPlayed.hasOwnProperty('id') ? this.lastPlayed.id : null;
+            // get channels from json file
+            this.channelList = Io.read();
+            this.chas = this.channelList.channels;
+            this.lastPlayed = this.channelList.lastplayed;
+            let encoding = this.lastPlayed.hasOwnProperty('encoding') ? this.lastPlayed.encoding : null;
+            let lastPlayedId = this.lastPlayed.hasOwnProperty('id') ? this.lastPlayed.id : null;
 
-        // init last played channel
-        // ToDo: hard to match
-        this.lastPlayedChannel = new Channel.Channel(lastPlayedId, this.lastPlayed.name, this.lastPlayed.address, false, encoding);
+            // init last played channel
+            // ToDo: hard to match
+            this.lastPlayedChannel = new Channel.Channel(lastPlayedId, this.lastPlayed.name, this.lastPlayed.address, false, encoding);
 
-        // init player
-        this.player = null;
+            // init player
+            this.player = null;
 
-        // Box for the Control Elements
-        this.controlsBox = new St.BoxLayout({
-            name: 'controlsBox',
-            style_class: 'control-box',
-            width: 350
-        });
-        this.tagListBox = new St.BoxLayout({
-            name: 'tagListBox',
-            style_class: 'tag-list-box'
-        });
+            this.playIconSymbolic = 'media-playback-start-symbolic';
+            this.stopIconSymbolic = 'media-playback-stop-symbolic';
 
-        this.tagItem = new PopupMenu.PopupBaseMenuItem({
-            reactive: false,
-            can_focus: false
-        });
+            // Play - Stop Button
+            this.playMenuItem = new PopupMenu.PopupImageMenuItem(this.lastPlayedChannel.getName(), this.playIconSymbolic, { style_class: 'box-width' });
+            this.playMenuItem.connect('activate', () => {
+                this._onPlayButtonClicked();
+            });
+            this.menu.addMenuItem(this.playMenuItem);
 
-        // Play and Stop Button Images
-        this.playIcon = new St.Icon({
-            icon_name: 'media-playback-start-symbolic',
-            style_class: 'popup-menu-icon'
-        });
-        this.stopIcon = new St.Icon({
-            icon_name: 'media-playback-stop-symbolic',
-            style_class: 'popup-menu-icon'
-        });
+            // PopupSeparator
+            let separator1 = new PopupMenu.PopupSeparatorMenuItem();
+            this.menu.addMenuItem(separator1);
 
-        // Play - Stop Button
-        this.playButton = new St.Button({
-            style_class: 'radio-menu-action',
-            can_focus: true
-        });
+            // Init and add Channels to the PopupMenu
+            this.helperChannelList = [];
+            this._initChannels(this.chas);
 
-        // Set the Icon of the Button
-        this.playButton.set_child(this.playIcon);
+            // create buttons for settings, list, add and search
+            this._buildMenuItems();
 
-        // Currently Played Label
-        this.playLabel = new St.Label({
-            text: "Radio",
-            style_class: 'play-label'
-        });
+            this.isPlaying = false;
+            this.connect('button-press-event', this._middleClick.bind(this));
 
-        // Add Button to the BoxLayout
-        this.controlsBox.add(this.playButton);
-        this.controlsBox.add(this.playLabel);
+            // media keys setting change
+            this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, () => {
+                if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
+                    this._registerMediaKeys();
+                }
+                else {
+                    this._disconnectMediaKeys();
+                }
+            });
 
-        // tagListlabel
-        this.tagListLabel = new St.Label({
-            text: ""
-        });
-        this.copyTagButton = new St.Button({
-            style_class: 'datemenu-today-button copy-tag-button',
-            can_focus: true
-        });
-        this.copyTagIcon = new St.Icon({
-            icon_name: 'edit-copy-symbolic'
-        });
-        this.copyTagButton.set_child(this.copyTagIcon);
-        this.copyTagButton.hide();
-        this.tagListBox.add(this.tagListLabel);
+            // title panel setting change
+            this._settings.connect("changed::" + SETTING_SHOW_TITLE_IN_PANEL, () => {
+                if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
+                    TitleMenu.addToPanel();
+                }
+                else {
+                    TitleMenu.removeFromPanel();
+                }
+            });
 
-        // Add ControlsBox to the Menu
-        this.menu.box.add_child(this.controlsBox);
-        this.tagItem.add_child(this.tagListBox);
-        this.tagItem.add_child(this.copyTagButton);
-        this.menu.addMenuItem(this.tagItem);
+            // Volume slider setting change
+            this._settings.connect("changed::" + SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, () => {
+                if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
+                    this._buildVolumeSlider(2);
+                }
+                else {
+                    this._destroyVolumeSlider();
+                }
+            });
 
-        // Connect the Button
-        this.playButton.connect('clicked', this._onPlayButtonClicked.bind(this));
-        this.copyTagButton.connect('clicked', this._copyTagToClipboard.bind(this));
+            // search provider setting change
+            this._settings.connect("changed::" + SETTING_ENABLE_SEARCH_PROVIDER, () => {
+                if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
+                    RadioSearchProvider.enableProvider();
+                }
+                else {
+                    RadioSearchProvider.disableProvider();
+                }
+            });
 
-        // PopupSeparator
-        let separator1 = new PopupMenu.PopupSeparatorMenuItem();
-        this.menu.addMenuItem(separator1);
+            // setting: station-action
+            this._settings.connect("changed::" + SETTING_STATION_ACTION, () => {
+                let settingValue = JSON.parse(this._settings.get_string(SETTING_STATION_ACTION));
+                let station = settingValue.station;
+                let actionValue = settingValue.action;
+                let cha = new Channel.Channel(station.id, station.name, station.address, station.favourite, station.encoding);
+                let menuItemOffset = this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER) ? 4 : 2;
 
-        // Init and add Channels to the PopupMenu
-        this.helperChannelList = [];
-        this._initChannels(this.chas);
+                switch (actionValue) {
+                    case ACTION_ENABLE:
+                        this._addToFavourites(cha, menuItemOffset);
+                        this._updateChannel(cha);
+                        break;
+                    case ACTION_DISABLE:
+                        this._removeFromFavourites(cha);
+                        this._updateChannel(cha);
+                        break;
+                    case ACTION_DELETE:
+                        this._deleteChannel(cha);
+                        break;
+                    case ACTION_CREATE:
+                    case ACTION_EDIT:
+                        this._addChannel(cha);
+                        if (cha.getFavourite()) {
+                            this._addToFavourites(cha, menuItemOffset);
+                        }
+                        break;
+                    default:
+                        log("radio@hslbck.gmail.com: No matching action found for " + actionValue);
 
-        // create buttons for settings, list, add and search
-        this._buildMenuItems();
+                }
+            });
+        }
 
-        this.isPlaying = false;
-        this.connect('button-press-event', this._middleClick.bind(this));
-
-        // media keys setting change
-        this._settings.connect("changed::" + SETTING_USE_MEDIA_KEYS, () => {
-            if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
-                this._registerMediaKeys();
-            }
-            else {
-                this._disconnectMediaKeys();
-            }
-        });
-
-        // title panel setting change
-        this._settings.connect("changed::" + SETTING_SHOW_TITLE_IN_PANEL, () => {
-            if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
-                TitleMenu.addToPanel();
-            }
-            else {
-                TitleMenu.removeFromPanel();
-            }
-        });
-
-        // Volume slider setting change
-        this._settings.connect("changed::" + SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER, () => {
-            if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
-                this._buildVolumeSlider(2);
-            }
-            else {
-                this._destroyVolumeSlider();
-            }
-        });
-
-        // search provider setting change
-        this._settings.connect("changed::" + SETTING_ENABLE_SEARCH_PROVIDER, () => {
+        // search provider registration on startup
+        _enableSearchProvider() {
             if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
                 RadioSearchProvider.enableProvider();
             }
-            else {
-                RadioSearchProvider.disableProvider();
+        }
+
+        // media keys for registration on startup
+        _enableMediaKeys() {
+            if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
+                this._registerMediaKeys();
             }
-        });
-
-    }
-
-    // search provider registration on startup
-    _enableSearchProvider() {
-        if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
-            RadioSearchProvider.enableProvider();
+            return false;
         }
-    }
 
-    // media keys for registration on startup
-    _enableMediaKeys() {
-        if (this._settings.get_boolean(SETTING_USE_MEDIA_KEYS)) {
-            this._registerMediaKeys();
+        _disableSearchProvider() {
+            RadioSearchProvider.disableProvider();
         }
-        return false;
-    }
 
-    _disableSearchProvider(){
-        RadioSearchProvider.disableProvider();
-    }
-
-    _registerMediaKeys() {
-        if (this._mediaKeysProxy) {
+        _registerMediaKeys() {
+            if (this._mediaKeysProxy) {
                 this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
-        }
-        else {
-            new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
-                                        (proxy, error) => {
-                                            if (error) {
-                                                global.log(error.message);
-                                                return;
-                                            }
-                                            this._mediaKeysProxy = proxy;
-                                            this._proxyId = this._mediaKeysProxy.connectSignal('MediaPlayerKeyPressed', this._mediaKeysPressed.bind(this));
-                                            this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
-                                        });
+            }
+            else {
+                new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
+                    (proxy, error) => {
+                        if (error) {
+                            global.log(error.message);
+                            return;
+                        }
+                        this._mediaKeysProxy = proxy;
+                        this._proxyId = this._mediaKeysProxy.connectSignal('MediaPlayerKeyPressed', this._mediaKeysPressed.bind(this));
+                        this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
+                    });
 
+            }
         }
-    }
 
-     _disconnectMediaKeys() {
-         if (this._mediaKeysProxy) {
-             this._mediaKeysProxy.ReleaseMediaPlayerKeysRemote("GSE Radio");
-             if (this._proxyId) {
-                 this._mediaKeysProxy.disconnectSignal(this._proxyId);
-             }
-             this._proxyId = 0;
-             this._mediaKeysProxy = null;
-         }
-     }
-
-    // handle play/stop media key events
-    _mediaKeysPressed(sender, signal, parameters) {
-        let [app, key] = parameters;
-        // global.log("Received key: " + _key);
-        if (key == 'Play') {
-            this._onPlayButtonClicked();
-        }
-        else if (key == 'Stop') {
-            this._stop();
-        }
-        else if (key == 'Previous') {
-            this._prev();
-        }
-        else if (key == 'Next') {
-            this._next();
-        }
-     }
-
-    // quick play option by middle click
-    _middleClick(actor, event) {
-        // left click === 1, middle click === 2, right click === 3
-        if (event.get_button() === 2) {
-            this.menu.close();
-            this._onPlayButtonClicked();
-        }
-    }
-
-    // play button clicked
-    _onPlayButtonClicked() {
-        if (!this.isPlaying) {
-            this._start();
-        } else {
-            this._stop();
-        }
-    }
-
-    _copyTagToClipboard() {
-        Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
-    }
-
-    _onVolumeSliderValueChanged(actor, event){
-        if (this.player !== null) {
-            this.player._setVolume(this.volumeSlider.value);
-        }
-    }
-
-    // start streaming
-    _start() {
-        if (this.player === null) {
-            this.player = new Player.Player(this.lastPlayedChannel);
-        }
-        this.player._start();
-        if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
-            TitleMenu.addToPanel();
-        }
-/*
-        global.log("Source Bus Id: " + this.player._sourceBusId);
-*/
-        this.playLabel.set_text(this.player._getCurrentChannel().getName());
-        this.radioIcon.set_gicon(this.iconPlaying);
-        this._checkTitle(Interval);
-        this.isPlaying = true;
-        this.playButton.set_child(this.stopIcon);
-    }
-
-    // stop streaming
-    _stop() {
-        if (this.isPlaying && this.player !== null) {
-            this.player._stop();
-            TitleMenu.removeFromPanel();
-        }
-        this.radioIcon.set_gicon(this.iconStopped);
-        this.tagListLabel.set_text("");
-        this.copyTagButton.hide();
-        this.isPlaying = false;
-        this.playButton.set_child(this.playIcon);
-    }
-
-    // change channel to previous on the list
-    _prev() {
-        if (this.player !== null) {
-            let currentChannel = this.player._getCurrentChannel();
-            let channels = this.channelList.channels;
-            let nextChannel = channels[channels.length - 1];
-            for (var i=1; i < channels.length; i++) {
-                if (channels[i].id == currentChannel.getId() && channels[i].address == currentChannel.getUri()) {
-                    nextChannel = channels[i-1];
-                    break;
+        _disconnectMediaKeys() {
+            if (this._mediaKeysProxy) {
+                this._mediaKeysProxy.ReleaseMediaPlayerKeysRemote("GSE Radio");
+                if (this._proxyId) {
+                    this._mediaKeysProxy.disconnectSignal(this._proxyId);
                 }
-            }
-            this._changeChannel(new Channel.Channel(nextChannel.id,nextChannel.name, nextChannel.address, false, nextChannel.encoding));
-        }
-    }
-
-    // change channel to next on the list
-    _next() {
-        if (this.player !== null) {
-            let currentChannel = this.player._getCurrentChannel();
-            let channels = this.channelList.channels;
-            let nextChannel = channels[0];
-            for (var i=0; i < channels.length - 1; i++) {
-                if (channels[i].id == currentChannel.getId() && channels[i].address == currentChannel.getUri()) {
-                    nextChannel = channels[i+1];
-                    break;
-                }
-            }
-            this._changeChannel(new Channel.Channel(nextChannel.id,nextChannel.name, nextChannel.address, false, nextChannel.encoding));
-        }
-    }
-
-    // change radio station
-    _changeChannel(cha) {
-        this._stop();
-        if (this.player !== null) {
-            this.player._changeChannel(cha);
-        }
-        this.lastPlayedChannel = cha;
-        Io.write(this.helperChannelList, this.lastPlayedChannel);
-        this._start();
-    }
-
-    _changeChannelById(id) {
-        if (this.isPlaying && id === this.player._getCurrentChannel().getId()) {
-            this._stop();
-        }
-        else {
-            let channel = this._getChannelById(id);
-            this._changeChannel(channel);
-        }
-    }
-
-    // init channel and add channels to the PopupMenu
-    _initChannels(chas) {
-        for (var i in chas) {
-            let encoding = chas[i].hasOwnProperty('encoding') ? chas[i].encoding : null;
-            let id = chas[i].hasOwnProperty('id') ? chas[i].id : null;
-            let channel = new Channel.Channel(id, chas[i].name, chas[i].address, chas[i].favourite, encoding);
-            this.helperChannelList[i] = channel;
-            if (chas[i].favourite) {
-                this._addToFavourites(channel);
-            }
-
-        }
-    }
-
-    _addToFavourites(cha) {
-        let contains = this._containsChannel(cha);
-        if (contains) {
-            let item = new PopupMenu.PopupMenuItem(cha.getName());
-            item.set_name(cha.getId());
-            item.connect('activate', () => {
-                this._changeChannel(cha);
-            });
-            this.menu.addMenuItem(item);
-        }
-    }
-
-    _containsChannel(cha) {
-        let contains = false;
-        for (let i = 0; i < this.helperChannelList.length; i++) {
-            if (this.helperChannelList[i].getId() === cha.getId()) {
-                contains = true;
+                this._proxyId = 0;
+                this._mediaKeysProxy = null;
             }
         }
-        return contains;
-    }
 
-    _getChannelById(id) {
-        for (let i = 0; i < this.helperChannelList.length; i++) {
-            if (this.helperChannelList[i].getId() === id) {
-                return this.helperChannelList[i];
+        // handle play/stop media key events
+        _mediaKeysPressed(sender, signal, parameters) {
+            let [app, key] = parameters;
+            // global.log("Received key: " + _key);
+            if (key == 'Play') {
+                this._onPlayButtonClicked();
+            }
+            else if (key == 'Stop') {
+                this._stop();
+            }
+            else if (key == 'Previous') {
+                this._prev();
+            }
+            else if (key == 'Next') {
+                this._next();
             }
         }
-        return null;
-    }
 
-    _buildVolumeSlider(menuItemOffset) {
-        // Add volume slider separator
-        this.separator3 = new PopupMenu.PopupSeparatorMenuItem();
-        this.menu.addMenuItem(this.separator3, this.menu.numMenuItems - menuItemOffset);
-
-        // Create volume slider box
-        this.volumeSliderBox = new PopupMenu.PopupBaseMenuItem();
-        this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
-        this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1/3));
-        this.volumeSliderBox.add_child(this.volumeIcon);
-        this.volumeSliderBox.add_child(this.volumeSlider);
-
-        // Connect sliders 'notify::value' handler
-        this.volumeSlider.connect('notify::value', this._onVolumeSliderValueChanged.bind(this));
-
-        // Add volume slider box
-        this.menu.addMenuItem(this.volumeSliderBox,this.menu.numMenuItems - menuItemOffset);
-    }
-
-    _destroyVolumeSlider(){
-        this.separator3.destroy();
-        this.volumeIcon.destroy();
-        this.volumeSlider.destroy();
-        this.volumeSliderBox.destroy();
-    }
-
-    _buildMenuItems() {
-        // Add VolumeSliderBox to the PopupMenu on startup
-        if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
-            this._buildVolumeSlider(0);
-        }
-
-        // PopupSeparator
-        this.separator2 = new PopupMenu.PopupSeparatorMenuItem();
-        this.menu.addMenuItem(this.separator2);
-
-        this._buildMenuItemButtons();
-        // settings, add channel and search item
-        this.settingsItem = new PopupMenu.PopupBaseMenuItem({
-            reactive: false,
-            can_focus: false
-        });
-        this.settingsItem.add_child(this.settingsButton);
-        this.settingsItem.add_child(this.channelListButton);
-        this.settingsItem.add_child(this.addChannelButton);
-        this.settingsItem.add_child(this.searchButton);
-        this.menu.addMenuItem(this.settingsItem);
-    }
-
-    _destroyMenuItems() {
-        this._destroyMenuItemButtons();
-        this.separator2.destroy();
-        this.settingsItem.destroy();
-        if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
-    		this._destroyVolumeSlider();
-        }
-    }
-
-    _buildMenuItemButtons() {
-        this.settingsIcon = new St.Icon({
-            icon_name: 'preferences-system-symbolic',
-            style_class: 'popup-menu-icon'
-        });
-        this.settingsButton = new St.Button({
-            style_class: 'radio-menu-action',
-            can_focus: true
-        });
-        this.settingsButton.set_child(this.settingsIcon);
-        this.settingsButton.connect('clicked', () => {
-            this.menu.close();
-            this._openPrefs();
-        });
-
-        this.channelListIcon = new St.Icon({
-            icon_name: 'view-list-symbolic',
-            style_class: 'popup-menu-icon'
-        });
-        this.channelListButton = new St.Button({
-            style_class: 'radio-menu-action',
-            can_focus: true
-        });
-        this.channelListButton.set_child(this.channelListIcon);
-        this.channelListButton.connect('clicked', () => {
-            this.menu.close();
-            this.channelListDialog = new ChannelListDialog.ChannelListDialog();
-            this.channelListDialog.open();
-        });
-
-        this.addChannelIcon = new St.Icon({
-            icon_name: 'list-add-symbolic',
-            style_class: 'popup-menu-icon'
-        });
-        this.addChannelButton = new St.Button({
-            style_class: 'radio-menu-action',
-            can_focus: true
-        });
-        this.addChannelButton.set_child(this.addChannelIcon);
-        this.addChannelButton.connect('clicked', () => {
-            this.menu.close();
-            this.addChannelDialog = new AddChannelDialog.AddChannelDialog(null);
-            this.addChannelDialog.open();
-        });
-
-        this.searchIcon = new St.Icon({
-            icon_name: 'system-search-symbolic',
-            style_class: 'popup-menu-icon'
-        });
-        this.searchButton = new St.Button({
-            style_class: 'radio-menu-action',
-            can_focus: true
-        });
-        this.searchButton.set_child(this.searchIcon);
-        this.searchButton.connect('clicked', () => {
-            this.menu.close();
-            this.searchDialog = new SearchDialog.SearchDialog();
-            this.searchDialog.open();
-        });
-    }
-
-    _destroyMenuItemButtons() {
-        this.settingsIcon.destroy();
-        this.settingsButton.destroy();
-        this.channelListIcon.destroy();
-        this.channelListButton.destroy();
-        this.addChannelIcon.destroy();
-        this.addChannelButton.destroy();
-        this.searchIcon.destroy();
-        this.searchButton.destroy();
-    }
-
-    // get Favourites Menu Item
-    _removeFromFavourites(cha) {
-        let items = this.menu._getMenuItems();
-        for (var i in items) {
-            let item = items[i];
-            if (item && item.get_name() === cha.getId()) {
-                item.destroy();
+        // quick play option by middle click
+        _middleClick(actor, event) {
+            // left click === 1, middle click === 2, right click === 3
+            if (event.get_button() === 2) {
+                this.menu.close();
+                this._onPlayButtonClicked();
             }
         }
-    }
 
-    // create a new Channel
-    _addChannel(cha) {
-        this.helperChannelList.push(cha);
-        Io.write(this.helperChannelList, this.lastPlayedChannel);
-    }
-
-    // Delete a Channel
-    _deleteChannel(cha) {
-        if (cha.getFavourite()) {
-            this._removeFromFavourites(cha);
-        }
-        for (var i in this.helperChannelList) {
-            if (this.helperChannelList[i].getId() === cha.getId()) {
-                this.helperChannelList.splice(i, 1); // remove 1 element from the given index
-                Io.write(this.helperChannelList, this.lastPlayedChannel);
+        // play button clicked
+        _onPlayButtonClicked() {
+            if (!this.isPlaying) {
+                this._start();
+            } else {
+                this._stop();
             }
         }
-    }
 
-    _getHelperChannelList() {
-            return this.helperChannelList;
-    }
+        _copyTagToClipboard() {
+            Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
+        }
 
-    // set new values for a specific channel
-    _updateChannel(cha) {
-        for (var i in this.helperChannelList) {
-            if (this.helperChannelList[i].getId() === cha.getId()) {
-                this.helperChannelList[i] = cha;
-                Io.write(this.helperChannelList, this.lastPlayedChannel);
+        _onVolumeSliderValueChanged(actor, event) {
+            if (this.player !== null) {
+                this.player._setVolume(this.volumeSlider.value);
             }
         }
-    }
 
-    // timer to check the stream title
-    _checkTitle(timeout) {
-        if (timeoutId !== 0) {
-            GLib.source_remove(timeoutId);
-        }
-        timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, timeout, this._setTagLabel.bind(this));
-    }
-
-
-    // update Title label
-    _setTagLabel() {
-        if (this.isPlaying && this.player !== null) {
-            let tag = this.player._getTag();
-            let tagWithLineBreaks = this.player._getTagWithLineBreaks();
-            let channel = this.player._getCurrentChannel().getName();
-            this.tagListLabel.set_text(tagWithLineBreaks);
-            this.copyTagButton.show();
-            this._enableTitleNotification(tagWithLineBreaks, channel);
+        // start streaming
+        _start() {
+            if (this.player === null) {
+                this.player = new Player.Player(this.lastPlayedChannel);
+            }
+            this.player._start();
+            if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
+                TitleMenu.addToPanel();
+            }
+            this.radioIcon.set_gicon(this.iconPlaying);
             this._checkTitle(Interval);
-            TitleMenu.updateTitle(channel, tag);
+            this.isPlaying = true;
+            this.playMenuItem.setIcon(this.stopIconSymbolic);
         }
-    }
 
-    _enableTitleNotification(tagLabel, senderLabel) {
-        if (this._settings.get_boolean(SETTING_TITLE_NOTIFICATION) && tagLabel !== oldTagLabel) {
-            oldTagLabel = tagLabel;
-            let source = new MessageTray.Source("Radio", null);
-            let notification = new MessageTray.Notification(source,
-                                                tagLabel,
-                                                senderLabel,{gicon: this.iconStopped});
-            notification.setTransient(true);
-            Main.messageTray.add(source);
-            source.showNotification(notification);
+        // stop streaming
+        _stop() {
+            if (this.isPlaying && this.player !== null) {
+                this.player._stop();
+                TitleMenu.removeFromPanel();
+            }
+            this.radioIcon.set_gicon(this.iconStopped);
+            this.isPlaying = false;
+            this.playMenuItem.setIcon(this.playIconSymbolic);
+            this.playMenuItem.label.set_text(this.lastPlayedChannel.getName());
         }
-    }
 
-    destroy() {
-        if (timeoutId !== 0) {
-            GLib.source_remove(timeoutId);
-            timeoutId = 0;
+        // change channel to previous on the list
+        _prev() {
+            if (this.player !== null) {
+                let currentChannel = this.player._getCurrentChannel();
+                let channels = this.channelList.channels;
+                let nextChannel = channels[channels.length - 1];
+                for (var i = 1; i < channels.length; i++) {
+                    if (channels[i].id == currentChannel.getId() && channels[i].address == currentChannel.getUri()) {
+                        nextChannel = channels[i - 1];
+                        break;
+                    }
+                }
+                this._changeChannel(new Channel.Channel(nextChannel.id, nextChannel.name, nextChannel.address, false, nextChannel.encoding));
+            }
         }
-        if (this.player !== null) {
-            this.player._disconnectSourceBus();
-        }
-    	super.destroy();
-    }
 
-    _openPrefs() {
-        if (typeof ExtensionUtils.openPrefs === 'function') {
-            ExtensionUtils.openPrefs();
-        } else {
-            Util.spawn([
-                "gnome-shell-extension-prefs",
-                Extension.metadata.uuid
-            ]);
+        // change channel to next on the list
+        _next() {
+            if (this.player !== null) {
+                let currentChannel = this.player._getCurrentChannel();
+                let channels = this.channelList.channels;
+                let nextChannel = channels[0];
+                for (var i = 0; i < channels.length - 1; i++) {
+                    if (channels[i].id == currentChannel.getId() && channels[i].address == currentChannel.getUri()) {
+                        nextChannel = channels[i + 1];
+                        break;
+                    }
+                }
+                this._changeChannel(new Channel.Channel(nextChannel.id, nextChannel.name, nextChannel.address, false, nextChannel.encoding));
+            }
         }
-    }
-});
+
+        // change radio station
+        _changeChannel(cha) {
+            this._stop();
+            if (this.player !== null) {
+                this.player._changeChannel(cha);
+            }
+            this.lastPlayedChannel = cha;
+            Io.write(this.helperChannelList, this.lastPlayedChannel);
+            this.playMenuItem.label.set_text(this.lastPlayedChannel.getName());
+            this._start();
+        }
+
+        _changeChannelById(id) {
+            if (this.isPlaying && id === this.player._getCurrentChannel().getId()) {
+                this._stop();
+            }
+            else {
+                let channel = this._getChannelById(id);
+                this._changeChannel(channel);
+            }
+        }
+
+        // init channel and add channels to the PopupMenu
+        _initChannels(chas) {
+            for (var i in chas) {
+                let encoding = chas[i].hasOwnProperty('encoding') ? chas[i].encoding : null;
+                let id = chas[i].hasOwnProperty('id') ? chas[i].id : null;
+                let channel = new Channel.Channel(id, chas[i].name, chas[i].address, chas[i].favourite, encoding);
+                this.helperChannelList[i] = channel;
+                if (chas[i].favourite) {
+                    this._addToFavourites(channel, 0);
+                }
+            }
+        }
+
+        _addToFavourites(cha, menuItemOffset) {
+            let contains = this._containsChannel(cha);
+            if (contains) {
+                let item = new PopupMenu.PopupImageMenuItem(cha.getName(), 'emblem-music-symbolic');
+                item.set_name(cha.getId());
+                item.connect('activate', () => {
+                    this._changeChannel(cha);
+                });
+                this.menu.addMenuItem(item, this.menu.numMenuItems - menuItemOffset);
+            }
+        }
+
+        _containsChannel(cha) {
+            let contains = false;
+            for (let i = 0; i < this.helperChannelList.length; i++) {
+                if (this.helperChannelList[i].getId() === cha.getId()) {
+                    contains = true;
+                }
+            }
+            return contains;
+        }
+
+        _getChannelById(id) {
+            for (let i = 0; i < this.helperChannelList.length; i++) {
+                if (this.helperChannelList[i].getId() === id) {
+                    return this.helperChannelList[i];
+                }
+            }
+            return null;
+        }
+
+        _buildVolumeSlider(menuItemOffset) {
+            // Add volume slider separator
+            this.separator3 = new PopupMenu.PopupSeparatorMenuItem();
+            this.menu.addMenuItem(this.separator3, this.menu.numMenuItems - menuItemOffset);
+
+            // Create volume slider box
+            this.volumeSliderBox = new PopupMenu.PopupBaseMenuItem();
+            this.volumeIcon = new St.Icon({ style_class: 'popup-menu-icon', icon_name: 'audio-speakers-symbolic' });
+            this.volumeSlider = new Slider.Slider(Math.pow(this._settings.get_double(SETTING_VOLUME_LEVEL), 1 / 3));
+            this.volumeSliderBox.add_child(this.volumeIcon);
+            this.volumeSliderBox.add_child(this.volumeSlider);
+
+            // Connect sliders 'notify::value' handler
+            this.volumeSlider.connect('notify::value', this._onVolumeSliderValueChanged.bind(this));
+
+            // Add volume slider box
+            this.menu.addMenuItem(this.volumeSliderBox, this.menu.numMenuItems - menuItemOffset);
+        }
+
+        _destroyVolumeSlider() {
+            this.separator3.destroy();
+            this.volumeIcon.destroy();
+            this.volumeSlider.destroy();
+            this.volumeSliderBox.destroy();
+        }
+
+        _buildMenuItems() {
+            // Add VolumeSliderBox to the PopupMenu on startup
+            if (this._settings.get_boolean(SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER)) {
+                this._buildVolumeSlider(0);
+            }
+
+            // PopupSeparator
+            this.separator2 = new PopupMenu.PopupSeparatorMenuItem();
+            this.menu.addMenuItem(this.separator2);
+
+            let settingsMenuItem = new PopupMenu.PopupImageMenuItem(_('Settings'), 'emblem-system-symbolic');
+            settingsMenuItem.connect('activate', () => {
+                this._openPrefs();
+            });
+            this.menu.addMenuItem(settingsMenuItem);
+        }
+
+        // get Favourites Menu Item
+        _removeFromFavourites(cha) {
+            let items = this.menu._getMenuItems();
+            for (var i in items) {
+                let item = items[i];
+                if (item && item.get_name() === cha.getId()) {
+                    item.destroy();
+                }
+            }
+        }
+
+        // create a new Channel
+        _addChannel(cha) {
+            this.helperChannelList.push(cha);
+            Io.write(this.helperChannelList, this.lastPlayedChannel);
+        }
+
+        // Delete a Channel
+        _deleteChannel(cha) {
+            if (cha.getFavourite()) {
+                this._removeFromFavourites(cha);
+            }
+            for (var i in this.helperChannelList) {
+                if (this.helperChannelList[i].getId() === cha.getId()) {
+                    this.helperChannelList.splice(i, 1); // remove 1 element from the given index
+                    Io.write(this.helperChannelList, this.lastPlayedChannel);
+                }
+            }
+        }
+
+        _getHelperChannelList() {
+            return this.helperChannelList;
+        }
+
+        // set new values for a specific channel
+        _updateChannel(cha) {
+            for (var i in this.helperChannelList) {
+                if (this.helperChannelList[i].getId() === cha.getId()) {
+                    this.helperChannelList[i] = cha;
+                    Io.write(this.helperChannelList, this.lastPlayedChannel);
+                }
+            }
+        }
+
+        // timer to check the stream title
+        _checkTitle(timeout) {
+            if (timeoutId !== 0) {
+                GLib.source_remove(timeoutId);
+            }
+            timeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, timeout, this._setTagLabel.bind(this));
+        }
+
+
+        // update Title label
+        _setTagLabel() {
+            if (this.isPlaying && this.player !== null) {
+                let tag = this.player._getTag();
+                let tagWithLineBreaks = this.player._getTagWithLineBreaks();
+                let channel = this.player._getCurrentChannel().getName();
+                this.playMenuItem.label.set_text(this.lastPlayedChannel.getName() + ": " + tagWithLineBreaks);
+                this._enableTitleNotification(tagWithLineBreaks, channel);
+                this._checkTitle(Interval);
+                TitleMenu.updateTitle(channel, tag);
+            }
+        }
+
+        _enableTitleNotification(tagLabel, senderLabel) {
+            if (this._settings.get_boolean(SETTING_TITLE_NOTIFICATION) && tagLabel !== oldTagLabel) {
+                oldTagLabel = tagLabel;
+                let source = new MessageTray.Source("Radio", null);
+                let notification = new MessageTray.Notification(source,
+                    tagLabel,
+                    senderLabel, { gicon: this.iconStopped });
+                notification.setTransient(true);
+                Main.messageTray.add(source);
+                source.showNotification(notification);
+            }
+        }
+
+        destroy() {
+            if (timeoutId !== 0) {
+                GLib.source_remove(timeoutId);
+                timeoutId = 0;
+            }
+            if (this.player !== null) {
+                this.player._disconnectSourceBus();
+            }
+            super.destroy();
+        }
+
+        _openPrefs() {
+            if (typeof ExtensionUtils.openPrefs === 'function') {
+                ExtensionUtils.openPrefs();
+            } else {
+                Util.spawn([
+                    "gnome-shell-extension-prefs",
+                    Extension.metadata.uuid
+                ]);
+            }
+        }
+    });
 
 var radioMenu;
 

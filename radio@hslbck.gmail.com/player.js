@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2015-2019 hslbck <hslbck@gmail.com>
+    Copyright (C) 2015-2022 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
     Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
@@ -91,8 +91,8 @@ var Player = class Player {
                  if (Gstpbutils.is_missing_plugin_message(message)) {
                      let pluginDescription = Gstpbutils.missing_plugin_message_get_description(message);
                      MyE.radioMenu._stop();
-                     MyE.radioMenu.playLabel.set_text(_("Missing plugin"));
-                     global.log("Gstreamer plugin missing for " + pluginDescription);
+                     MyE.radioMenu.playMenuItem.label.set_text(_("Missing plugin") + ": " + pluginDescription);
+                     log("Gstreamer plugin missing for " + pluginDescription);
                  }
                  break;
             case Gst.MessageType.TAG:
@@ -137,11 +137,11 @@ var Player = class Player {
                 break;
             case Gst.MessageType.ERROR:
                 MyE.radioMenu._stop();
-                MyE.radioMenu.playLabel.set_text(_("Stream error"));
+                MyE.radioMenu.playMenuItem.label.set_text(_("Streaming error! Please check provided url"));
                 break;
             case Gst.MessageType.EOS:
                 MyE.radioMenu._stop();
-                MyE.radioMenu.playLabel.set_text(_("End of stream"));
+                MyE.radioMenu.playMenuItem.label.set_text(_("End of stream"));
                 break;
             default:
                 break;

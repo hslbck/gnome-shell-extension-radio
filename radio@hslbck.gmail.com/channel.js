@@ -1,7 +1,7 @@
 /* jshint esnext:true */
 /*
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
-    Copyright (C) 2014-2019 hslbck <hslbck@gmail.com>
+    Copyright (C) 2014-2022 hslbck <hslbck@gmail.com>
     Copyright (C) 2017-2018 Léo Andrès <leo@ndrs.fr>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */

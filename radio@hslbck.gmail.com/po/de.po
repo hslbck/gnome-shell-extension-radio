@@ -1,141 +1,122 @@
-# Copyright (C) 2017 bezcitu <secitem@tuta.io>
-# Copyright (C) 2014-2017 hslbck <hslbck@gmail.com>
-# This file is distributed under the same license as the gnome-shell-extension-radio package.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-shell-extension-radio 1.6\n"
-"Report-Msgid-Bugs-To: hslbck@gmail.com\n"
-"POT-Creation-Date: 2019-09-25 11:42+0200\n"
-"PO-Revision-Date: 2022-05-12 19:33+0200\n"
-"Language-Team: German < >\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-12-15 00:56+0100\n"
+"PO-Revision-Date: 2022-12-15 00:56+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-
-#: prefs.js:48
-msgid "Show title notifications"
-msgstr "Benachrichtigungen zu Titeln anzeigen"
-
-#: prefs.js:64
-msgid "Show title notification in the panel"
-msgstr "Sender- und Titelinformationen im Panel anzeigen"
-
-#: prefs.js:80
-msgid "Enable Play/Stop Media Keys"
-msgstr "Wiedergeben-/Stoppen-Steuerung mit Multimediatasten"
-
-#: prefs.js:96
-msgid "Show volume adjustment slider in menu"
-msgstr "Separaten Lautstärkeregler anzeigen"
-
-#: prefs.js:112
-msgid "Enable as search provider for GNOME Shell"
-msgstr "Als Suchprovider für die GNOME-Shell-Übersicht zulassen"
-
-#: channelListDialog.js:53
-msgid "List of Channels"
-msgstr "Senderliste"
-
-#: channelListDialog.js:57
-msgid "Manage your radio stations"
-msgstr "Senderliste verwalten"
-
-#: channelListDialog.js:93 addChannelDialog.js:104 searchDialog.js:107
-msgid "Cancel"
-msgstr "Schließen"
-
-#: channelListDialog.js:100
-msgid "Delete"
-msgstr "Entfernen"
-
-#: channelListDialog.js:108
-msgid "Edit"
-msgstr "Bearbeiten"
-
-#: channelListDialog.js:116
-msgid "Play"
-msgstr "Wiedergeben"
-
-#: addChannelDialog.js:41
-msgid "Channel Name"
-msgstr "Sendername"
-
-#: addChannelDialog.js:61
-msgid "Stream Address"
-msgstr "Stream-Adresse"
-
-#: addChannelDialog.js:80
-msgid "Charset (optional)"
-msgstr "Zeichensatz (optional)"
-
-#: addChannelDialog.js:108
-msgid "Save"
-msgstr "Speichern"
-
-#: addChannelDialog.js:108 searchDialog.js:113
-msgid "Add"
-msgstr "Hinzufügen"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: po\n"
+"X-Poedit-SearchPath-1: channel.js\n"
+"X-Poedit-SearchPath-2: channelList.json\n"
+"X-Poedit-SearchPath-3: convertCharset.js\n"
+"X-Poedit-SearchPath-4: extension.js\n"
+"X-Poedit-SearchPath-5: io.js\n"
+"X-Poedit-SearchPath-6: metadata.json\n"
+"X-Poedit-SearchPath-7: player.js\n"
+"X-Poedit-SearchPath-8: prefs.js\n"
+"X-Poedit-SearchPath-9: radioMenu.js\n"
+"X-Poedit-SearchPath-10: searchProvider.js\n"
+"X-Poedit-SearchPath-11: titleMenu.js\n"
 
 #: player.js:94
 msgid "Missing plugin"
 msgstr "Fehlendes Plugin"
 
-#: player.js:131
-msgid "Stream error"
-msgstr "Stream-Fehler"
+#: player.js:140
+msgid "Streaming error! Please check provided url"
+msgstr "Streamfehler! Bitte überprüfen sie die Sender-URL"
 
-#: player.js:135
+#: player.js:144
 msgid "End of stream"
 msgstr "Stream-Ende"
 
-#: searchDialog.js:46
-msgid "Browse "
-msgstr "Durchsuchen "
+#: prefs.js:53
+msgid "Stations"
+msgstr "Senderliste"
 
-#: searchDialog.js:67
+#: prefs.js:56
+msgid "Features"
+msgstr "Funktionen"
+
+#: prefs.js:59
+msgid "New"
+msgstr "Neu"
+
+#: prefs.js:191
+msgid "Create"
+msgstr "Erstellen"
+
+#: prefs.js:192 prefs.js:411
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: prefs.js:194
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: prefs.js:195
+msgid "Save"
+msgstr "Speichern"
+
+#: prefs.js:206
+msgid "Close"
+msgstr "Schließen"
+
+#: prefs.js:219
+msgid "Name"
+msgstr "Name"
+
+#: prefs.js:237
+msgid "URL"
+msgstr "URL"
+
+#: prefs.js:255
+msgid "Charset (optional)"
+msgstr "Zeichensatz (optional)"
+
+#: prefs.js:404
+msgid "Add a new radio station"
+msgstr "Neuen Radiosender hinzufügen"
+
+#: prefs.js:441
+msgid "Find radio stations online"
+msgstr "Radiosender online finden"
+
+#: prefs.js:451
+msgid "Station name"
+msgstr "Sendername"
+
+#: prefs.js:457
 msgid "Search"
 msgstr "Suchen"
 
-#: searchDialog.js:136
-msgid "Station added:"
-msgstr "Sender hinzugefügt:"
+#: prefs.js:612
+msgid "Show title notifications"
+msgstr "Benachrichtigungen zu Titeln anzeigen"
 
-#: searchDialog.js:162
-msgid "No radio station found!"
-msgstr "Es wurde kein Radiosender gefunden!"
+#: prefs.js:631
+msgid "Show title notification in the panel"
+msgstr "Sender- und Titelinformationen im Panel anzeigen"
 
-#: searchDialog.js:165
-msgid "Server returned status code"
-msgstr "Server antwortete mit dem Statuscode"
+#: prefs.js:650
+msgid "Enable Play/Stop Media Keys"
+msgstr "Wiedergeben-/Stoppen-Steuerung mit Multimediatasten"
 
-#: searchDialog.js:170
-msgid "Search input was empty!"
-msgstr "Sucheingabe fehlt!"
+#: prefs.js:669
+msgid "Show volume adjustment slider in menu"
+msgstr "Separaten Lautstärkeregler anzeigen"
 
-#: channelCreator.js:92
-msgid "No server stream address found!"
-msgstr "Keine Server-Stream-Adresse gefunden!"
+#: prefs.js:688
+msgid "Enable as search provider for GNOME Shell"
+msgstr "Als Suchprovider für die GNOME-Shell-Übersicht zulassen"
 
-#: channelCreator.js:94
-msgid "Invalid input stream address!"
-msgstr "Ungültige Stream-Adresse!"
-
-#~ msgid "No server stream found!"
-#~ msgstr "Kein Server-Stream gefunden!"
-
-#~ msgid "Favourites"
-#~ msgstr "Favoriten"
-
-#~ msgid "Channels"
-#~ msgstr "Meine Sender"
-
-#~ msgid "Browse directory"
-#~ msgstr "Senderverzeichnis durchsuchen"
-
-#~ msgid "Add Channel"
-#~ msgstr "Sender hinzufügen"
+#: radioMenu.js:471
+msgid "Settings"
+msgstr "Einstellungen"

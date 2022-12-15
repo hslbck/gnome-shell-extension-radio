@@ -1,5 +1,5 @@
 /*
-    Copyright (C) 2017 - 2021 hslbck <hslbck@gmail.com>
+    Copyright (C) 2017 - 2022 hslbck <hslbck@gmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 

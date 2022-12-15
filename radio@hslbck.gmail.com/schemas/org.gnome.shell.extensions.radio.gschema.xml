@@ -31,5 +31,10 @@
             <summary>Enable as search provider for GNOME Shell</summary>
             <description>Show radio stations as search results in GNOME overview</description>
         </key>
+         <key name="station-action" type="s">
+            <default>""</default>
+            <summary>Manage stations</summary>
+            <description>Enable, disable, add, edit and delete stations from the preferences window</description>
+        </key>
     </schema>
 </schemalist>

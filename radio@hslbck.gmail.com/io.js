@@ -1,33 +1,39 @@
 /*
-    Copyright (C) 2015-2018 hslbck <hslbck@gmail.com>
+    Copyright (C) 2015-2022 hslbck <hslbck@gmail.com>
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
+const ByteArray = imports.byteArray;
 const Gio = imports.gi.Gio;
 const GLib = imports.gi.GLib;
 const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const Shell = imports.gi.Shell;
 
 const FILE_NAME = 'channelList.json'
 const DIR_NAME = '.gse-radio'
 
-function read(){
+function getFile() {
 	let dir_path = GLib.get_home_dir() + "/" + DIR_NAME ;
 	create(dir_path);
 	let file_path = GLib.get_home_dir() + "/" + DIR_NAME + "/" + FILE_NAME;
+	return Gio.file_new_for_path(file_path);
+}
+
+function read(){
+	let file = getFile();
 	let content;
+	let success;
 	let channelList;
 	try {
-		content = Shell.get_file_contents_utf8_sync(file_path);
+		[success, content] = file.load_contents(null);
 	} catch (e) {
-		global.logError('Failed to load channelList.json: ' + e);
+		logError(e, 'radio@hslbck.gmail.com: Failed to load channelList.json: ');
 		return null;
 	}
 	// parse json file
 	try {
-		channelList = JSON.parse(content);
+		channelList = JSON.parse(ByteArray.toString(content));
 	} catch (e) {
-		global.logError('Failed to parse channelList.json: ' + e);
+		logError(e, 'radio@hslbck.gmail.com: Failed to parse channelList.json:');
 		return null;
 	}
 	return channelList;
@@ -44,7 +50,7 @@ function create(dir_path) {
 			let file = dir.get_child(FILE_NAME);
 			source_file.copy(file, Gio.FileCopyFlags.NONE, null, null);
 		} catch (e) {
-			global.logError('Failed to create directory and/or file! ' + e);
+			logError(e, 'radio@hslbck.gmail.com: Failed to create directory and/or file! ');
 		}
 	} else {
 		let file = dir.get_child(FILE_NAME);
@@ -52,11 +58,12 @@ function create(dir_path) {
 			try {
 				source_file.copy(file, Gio.FileCopyFlags.NONE, null, null);
 			} catch (e) {
-				global.logError('Failed to create file! ' + e);
+				logError(e, 'radio@hslbck.gmail.com: Failed to create file! ');
 			}
 		}
 	}
 }
+
 
 function write(channels, lastPlayed) {
 	if (channels != null && channels.length > 0) {
@@ -64,32 +71,33 @@ function write(channels, lastPlayed) {
 		let file = Gio.file_new_for_path(filepath);
 		let raw = file.replace(null, false, Gio.FileCreateFlags.NONE, null);
 		let out = Gio.BufferedOutputStream.new_sized(raw, 4096);
+		let dout = Gio.DataOutputStream.new(out);
 
 		// Format output and write channels
-		Shell.write_string_to_stream(out, "{ \"channels\":[\n");
+		dout.put_string("{ \"channels\":[\n", null);
 		for (var i = 0; i < channels.length; i++) {
-			Shell.write_string_to_stream(out, "\t");
-			Shell.write_string_to_stream(out, JSON.stringify({
+			dout.put_string("\t", null);
+			dout.put_string(JSON.stringify({
 				id: channels[i].getId(),
 				name: channels[i].getName(),
 				address: channels[i].getUri(),
 				favourite: channels[i].getFavourite(),
 				encoding: channels[i].getEncoding()
-			}, null, "\t"));
+			}, null, "\t"), null);
 			// remove last comma
 			if (i != channels.length - 1) {
-				Shell.write_string_to_stream(out, ",");
+				dout.put_string(",", null);
 			}
 		}
 		// write lastplayed channel
-		Shell.write_string_to_stream(out, "\n],\n\n  \"lastplayed\":");
-		Shell.write_string_to_stream(out, JSON.stringify({
+		dout.put_string("\n],\n\n  \"lastplayed\":", null);
+		dout.put_string(JSON.stringify({
 			id: lastPlayed.getId(),
 			name: lastPlayed.getName(),
 			address: lastPlayed.getUri(),
 			encoding: lastPlayed.getEncoding()
-		}, null, "\t"));
-		Shell.write_string_to_stream(out, "\n}");
-		out.close(null);
+		}, null, "\t"), null);
+		dout.put_string("\n}", null);
+		dout.close(null);
 	}
 }

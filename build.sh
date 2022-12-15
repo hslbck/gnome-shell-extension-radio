@@ -15,11 +15,8 @@ echo "Packing extension ..."
 gnome-extensions pack radio@hslbck.gmail.com \
 	--force \
 	--extra-source="icons" \
-	--extra-source="addChannelDialog.js" \
 	--extra-source="channel.js" \
-	--extra-source="channelCreator.js" \
 	--extra-source="channelList.json" \
-	--extra-source="channelListDialog.js" \
 	--extra-source="convertCharset.js" \
 	--extra-source="io.js" \
 	--extra-source="player.js" \
