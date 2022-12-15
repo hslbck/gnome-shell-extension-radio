@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [20] - 2022-12-15
+
 - Update to GNOME 43
 - Fix input with leading spaces
 - Move station management to prefs window
@@ -163,7 +165,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
-[19]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v18
+[20]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v20
+[19]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v19
 [18]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v18
 [15]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v15
 [14]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v14
