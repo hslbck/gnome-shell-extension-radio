@@ -597,4 +597,5 @@ function removeFromPanel() {
     }
 
     radioMenu.destroy();
+    radioMenu = null;
 }
