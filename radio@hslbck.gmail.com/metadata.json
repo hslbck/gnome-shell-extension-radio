@@ -4,7 +4,8 @@
 	"name": "Internet Radio",
 	"description": "Listen to an Internet Radio Stream",
 	"settings-schema": "org.gnome.shell.extensions.radio",
+	"session-modes":["user", "unlock-dialog"],
 	"gettext-domain": "radio@hslbck.gmail.com",
 	"url": "https://github.com/hslbck/gnome-shell-extension-radio",
-	"version": 21
+	"version": 22
 }

@@ -1,6 +1,7 @@
 /*
 	Copyright (C) 2016 - 2022 hslbck <hslbck@gmail.com>
 	Copyright (C) 2017 Justinas Narusevicius <github@junaru.com>
+	Copyright (C) 2023 Marek Mosiewicz <marekmosiewicz@gmail.com>
 	This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
@@ -20,6 +21,9 @@ const Convert = Extension.imports.convertCharset;
 
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
 const SETTING_TITLE_NOTIFICATION = 'title-notification';
+const SETTING_PLAY_AFTER_LOCK = 'play-after-lock';
+const SETTING_RESUME_AFTER_UNLOCK = 'resume-after-unlock';
+const SETTING_RESUME_AFTER_NETWORK_RECONNECT = 'resume-after-network-reconnect';
 const SETTING_SHOW_TITLE_IN_PANEL = 'show-title-in-panel';
 const SETTING_SHOW_VOLUME_ADJUSTMENT_SLIDER = 'show-volume-adjustment-slider';
 const SETTING_ENABLE_SEARCH_PROVIDER = 'enable-search-provider';
@@ -600,10 +604,73 @@ var GeneralPane = GObject.registerClass(
 			this._addTitleNotificationsSwitch();
 			this._addShowTitleInPanelSwitch();
 			this._addEnableMediaKeysSwitch();
-			this._addShowVolumeAdjustmentSliderSwitch();
+			this._addPlayAfterScreenLock();
+			this._addResumeAfterScreenUnLock();
+	    this._addResumeAfterNetworkReconnect();
+      this._addShowVolumeAdjustmentSliderSwitch();
 			this._addEnableSearchProviderSwitch();
 
 			this.attach(this._widgets.box, 0, 0, 1, 1);
+		}
+		_addPlayAfterScreenLock() {
+			let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+			let label = new Gtk.Label({
+				label: _("Play music after screen lock"),
+				"xalign": 0,
+				"hexpand": true
+			});
+			this._widgets.playAfterScreenLockSwitch = new Gtk.Switch({ active: this._settings.get_boolean(SETTING_PLAY_AFTER_LOCK) });
+
+			hbox.prepend(label);
+			hbox.append(this._widgets.playAfterScreenLockSwitch);
+
+			this._widgets.box.append(hbox);
+
+			this._widgets.playAfterScreenLockSwitch.connect('notify::active', (button) => {
+				this._settings.set_boolean(SETTING_PLAY_AFTER_LOCK, button.get_active());
+				this._widgets.resumeAfterScreenUnLockSwitch.set_sensitive(this._settings.get_boolean(SETTING_PLAY_AFTER_LOCK) === false);
+			});
+		}
+		_addResumeAfterScreenUnLock() {
+			let hbox = new Gtk.Box({ orientation:  Gtk.Orientation.HORIZONTAL });
+			let label = new Gtk.Label({
+				label: _("Resume music after screen unlock"),
+				"xalign": 0,
+				"hexpand": true
+			});
+			this._widgets.resumeAfterScreenUnLockSwitch = new Gtk.Switch({ active: this._settings.get_boolean(SETTING_RESUME_AFTER_UNLOCK) });
+
+			this._widgets.resumeAfterScreenUnLockSwitch.set_sensitive(this._settings.get_boolean(SETTING_PLAY_AFTER_LOCK) === false);
+
+			hbox.prepend(label);
+			hbox.append(this._widgets.resumeAfterScreenUnLockSwitch);
+
+			this._widgets.box.append(hbox);
+
+			this._widgets.resumeAfterScreenUnLockSwitch.connect('notify::active', (button) => {
+				this._settings.set_boolean(SETTING_RESUME_AFTER_UNLOCK, button.get_active());
+			});
+		}
+		_addResumeAfterNetworkReconnect() {
+			//TODO add implementation
+			/**
+			let hbox = new Gtk.Box({ orientation: Gtk.Orientation.HORIZONTAL });
+			let label = new Gtk.Label({
+				label: _("Reconnect station after network failure"),
+				"xalign": 0,
+				"hexpand": true
+			});
+			this._widgets.resumeAfterNetworkReconnectSwitch = new Gtk.Switch({ active: this._settings.get_boolean(SETTING_RESUME_AFTER_NETWORK_RECONNECT) });
+
+			hbox.prepend(label);
+			hbox.append(this._widgets.resumeAfterNetworkReconnectSwitch);
+
+			this._widgets.box.append(hbox);
+
+			this._widgets.resumeAfterNetworkReconnectSwitch.connect('notify::active', (button) => {
+				this._settings.set_boolean(SETTING_RESUME_AFTER_NETWORK_RECONNECT, button.get_active());
+			});
+			*/
 		}
 
 		_addTitleNotificationsSwitch() {
