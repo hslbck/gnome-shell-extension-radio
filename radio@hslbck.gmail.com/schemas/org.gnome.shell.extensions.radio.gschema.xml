@@ -11,6 +11,21 @@
             <summary>Title Notification</summary>
             <description>Show title notifications</description>
         </key>
+        <key name="play-after-lock" type="b">
+            <default>false</default>
+            <summary>Play after lock</summary>
+            <description>Play music after screen lock</description>
+        </key>
+        <key name="resume-after-unlock" type="b">
+            <default>false</default>
+            <summary>Resume after unlock</summary>
+            <description>Resume radio after screen unlock</description>
+        </key>
+        <key name="resume-after-network-reconnect" type="b">
+            <default>true</default>
+            <summary>Resume after network reconnect</summary>
+            <description>Resume radio after network problems</description>
+        </key>
         <key name="show-title-in-panel" type="b">
             <default>false</default>
             <summary>Show title in panel</summary>
