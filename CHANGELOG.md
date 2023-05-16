@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [21] - 2023-05-16
+
+- Update to GNOME 44
+
 ## [20] - 2022-12-15
 
 - Update to GNOME 43
@@ -165,6 +169,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
+[21]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v20
 [20]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v20
 [19]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v19
 [18]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v18
