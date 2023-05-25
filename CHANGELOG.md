@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Fix for search provider #202
+
 ## [21] - 2023-05-16
 
 - Update to GNOME 44
