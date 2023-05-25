@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
-- Fix for search provider #202
+- Fix for search provider https://github.com/hslbck/gnome-shell-extension-radio/pull/202
 
 ## [21] - 2023-05-16
 
