@@ -38,13 +38,13 @@ var RadioSearchProvider = class RadioSearchProvider {
         };
     }
 
-    getInitialResultSet(terms, callback) {
+    getInitialResultSet(terms, cancellable = null) {
         let channels = Io.read().channels;
         this._results = channels.map(this._createProviderObject);
-        this.getSubsearchResultSet(undefined, terms, callback);
+	    return new Promise(res => res(this._results));
     }
 
-    getSubsearchResultSet(previous_results, terms, callback) {
+    getSubsearchResultSet(previous_results, terms, cancellable = null) {
         let search = terms.join(" ").toLowerCase();
         function containsSearch(candidate) {
             return candidate.name.toLowerCase().indexOf(search) !== -1;
@@ -52,14 +52,14 @@ var RadioSearchProvider = class RadioSearchProvider {
         function getId(candidate) {
             return candidate.id;
         };
-        callback(this._results.filter(containsSearch).map(getId));
+        return new Promise(res => res(this._results.filter(containsSearch).map(getId)));
     }
 
-    getResultMetas(ids, callback) {
+    getResultMetas(ids, cancellable = null) {
         let resultMetas = this._results.filter(function (res) {
             return ids.indexOf(res.id) !== -1;
         });
-        callback(resultMetas);
+        return new Promise(res => res(resultMetas));
     }
 
     activateResult(id, terms, timestamp) {
