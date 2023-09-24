@@ -20,7 +20,6 @@ export default class RadioExt extends Extension {
     // build and add the extension
     enable() {
         RadioMenu.addToPanel(this);
-        Main.notify('radio');
     }
 
     //  stop playing and destroy extension content
