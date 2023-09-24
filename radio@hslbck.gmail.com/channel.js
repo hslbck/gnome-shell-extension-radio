@@ -6,7 +6,7 @@
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
-var Channel = class Channel {
+export var Channel = class Channel {
 
     constructor(id, name, uri, favourite, encoding) {
         this._id = id !== null && id !== undefined ? id : generateId();

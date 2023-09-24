@@ -7,31 +7,30 @@
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
-const St = imports.gi.St;
-const Main = imports.ui.main;
-const MessageTray = imports.ui.messageTray;
-const PopupMenu = imports.ui.popupMenu;
-const PanelMenu = imports.ui.panelMenu;
-const Gtk = imports.gi.Gtk;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Shell = imports.gi.Shell;
-const GObject = imports.gi.GObject;
-const Slider = imports.ui.slider;
-const Util = imports.misc.util;
+import St from 'gi://St';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
+import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
+
+import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
+import Shell from 'gi://Shell';
+import GObject from 'gi://GObject';
+import * as Slider from 'resource:///org/gnome/shell/ui/slider.js';
+import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 
 // import custom files
-const ExtensionUtils = imports.misc.extensionUtils;
-const Extension = ExtensionUtils.getCurrentExtension();
-const Player = Extension.imports.player;
-const Channel = Extension.imports.channel;
-const Io = Extension.imports.io;
-const TitleMenu = Extension.imports.titleMenu;
-const RadioSearchProvider = Extension.imports.searchProvider;
+import * as Player from './player.js';
+import * as Channel from './channel.js';
+import * as Io from './io.js';
+import * as TitleMenu from './titleMenu.js';
+import * as RadioSearchProvider from './searchProvider.js';
 
 // translation support
-const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
-const _ = Gettext.gettext;
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+
 
 // timer for stream tag
 const Interval = 10000; // 10 seconds
@@ -77,18 +76,19 @@ const Clipboard = St.Clipboard.get_default();
 
 let RadioMenuButton = GObject.registerClass(
     class RadioMenuButton extends PanelMenu.Button {
-        _init() {
-            super._init(0.0, Extension.metadata.name);
+        _init(extensionObject) {
+            super._init(0.0, extensionObject.metadata.name);
+	        this._extensionObject = extensionObject;
 
             // read settings
-            this._settings = ExtensionUtils.getSettings();
+            this._settings = extensionObject.getSettings();
 
             let hbox = new St.BoxLayout({
                 style_class: 'panel-status-menu-box'
             });
 
-            this.iconStopped = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
-            this.iconPlaying = Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-playing-symbolic.svg');
+            this.iconStopped = Gio.icon_new_for_string(extensionObject.path + '/icons/gser-icon-stopped-symbolic.svg');
+            this.iconPlaying = Gio.icon_new_for_string(extensionObject.path + '/icons/gser-icon-playing-symbolic.svg');
 
             // Icon for the Panel
             this.radioIcon = new St.Icon({
@@ -151,7 +151,7 @@ let RadioMenuButton = GObject.registerClass(
             // title panel setting change
             this._settings.connect("changed::" + SETTING_SHOW_TITLE_IN_PANEL, () => {
                 if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
-                    TitleMenu.addToPanel();
+                    TitleMenu.addToPanel(this._extensionObject);
                 }
                 else {
                     TitleMenu.removeFromPanel();
@@ -171,7 +171,7 @@ let RadioMenuButton = GObject.registerClass(
             // search provider setting change
             this._settings.connect("changed::" + SETTING_ENABLE_SEARCH_PROVIDER, () => {
                 if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
-                    RadioSearchProvider.enableProvider();
+                    RadioSearchProvider.enableProvider(this._extensionObject);
                 }
                 else {
                     RadioSearchProvider.disableProvider();
@@ -215,7 +215,7 @@ let RadioMenuButton = GObject.registerClass(
         // search provider registration on startup
         _enableSearchProvider() {
             if (this._settings.get_boolean(SETTING_ENABLE_SEARCH_PROVIDER)) {
-                RadioSearchProvider.enableProvider();
+                RadioSearchProvider.enableProvider(this._extensionObject);
             }
         }
 
@@ -310,11 +310,11 @@ let RadioMenuButton = GObject.registerClass(
         // start streaming
         _start() {
             if (this.player === null) {
-                this.player = new Player.Player(this.lastPlayedChannel);
+                this.player = new Player.Player(this.lastPlayedChannel, this._extensionObject);
             }
             this.player._start();
             if (this._settings.get_boolean(SETTING_SHOW_TITLE_IN_PANEL)) {
-                TitleMenu.addToPanel();
+                TitleMenu.addToPanel(this._extensionObject);
             }
             this.radioIcon.set_gicon(this.iconPlaying);
             this._checkTitle(Interval);
@@ -566,27 +566,20 @@ let RadioMenuButton = GObject.registerClass(
         }
 
         _openPrefs() {
-            if (typeof ExtensionUtils.openPrefs === 'function') {
-                ExtensionUtils.openPrefs();
-            } else {
-                Util.spawn([
-                    "gnome-shell-extension-prefs",
-                    Extension.metadata.uuid
-                ]);
-            }
+            this._extensionObject.openPreferences();
         }
     });
 
-var radioMenu;
+export var radioMenu;
 
-function addToPanel() {
-    radioMenu = new RadioMenuButton();
+export function addToPanel(extensionObject) {
+    radioMenu = new RadioMenuButton(extensionObject);
     Main.panel.addToStatusArea('radioMenu', radioMenu, 0, 'right');
     radioMenu._enableSearchProvider();
     mediaKeysTimeoutId = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 1000, () => radioMenu._enableMediaKeys());
 }
 
-function removeFromPanel() {
+export function removeFromPanel() {
     radioMenu._stop();
     radioMenu._disconnectMediaKeys();
     radioMenu._disableSearchProvider();

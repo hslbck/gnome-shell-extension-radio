@@ -3,23 +3,22 @@
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const {Gtk, Gdk, Gio, St} = imports.gi;
-const Search = imports.ui.search;
-const Io = Extension.imports.io;
-const MyE = Extension.imports.radioMenu;
-const Main = imports.ui.main;
-
+import Gio from 'gi://Gio';
+import * as Search from 'resource:///org/gnome/shell/ui/search.js';
+import * as Io from './io.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 var radioSearchProvider;
+var Extension;
 
-function enableProvider() {
+export function enableProvider(extensionObject) {
+	Extension = extensionObject;
     if (!radioSearchProvider) {
-        radioSearchProvider = new RadioSearchProvider();
+        radioSearchProvider = new RadioSearchProvider(Extension.radioMenu);
         Main.overview._overview.controls._searchController._searchResults._registerProvider(radioSearchProvider);
     }
 }
 
-function disableProvider() {
+export function disableProvider() {
     if (radioSearchProvider) {
         Main.overview._overview.controls._searchController._searchResults._unregisterProvider(radioSearchProvider);
         radioSearchProvider = null;
@@ -28,7 +27,7 @@ function disableProvider() {
 
 var RadioSearchProvider = class RadioSearchProvider {
 
-    constructor() {
+    constructor(radioMenu) {
         this.appInfo = Gio.AppInfo.get_default_for_uri_scheme('http');
         this.appInfo.get_name = () => {
             return 'Internet Radio';
@@ -36,6 +35,7 @@ var RadioSearchProvider = class RadioSearchProvider {
         this.appInfo.get_icon = () => {
             return Gio.icon_new_for_string(Extension.path + '/icons/gser-icon-stopped-symbolic.svg');
         };
+        this.radioMenu = radioMenu;
     }
 
     getInitialResultSet(terms, cancellable = null) {
@@ -66,7 +66,7 @@ var RadioSearchProvider = class RadioSearchProvider {
         let result = this._results.filter(function (res) {
             return res.id === id;
         })[0];
-        MyE.radioMenu._changeChannelById(result.id);
+        this.radioMenu._changeChannelById(result.id);
     }
 
     filterResults(results, max) {

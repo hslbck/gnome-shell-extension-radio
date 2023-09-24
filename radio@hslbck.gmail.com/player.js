@@ -9,25 +9,20 @@
  * player.js
  * setup the pipeline, start and stop the stream
  */
-imports.gi.versions.Gst = '1.0';
 
-const Gst = imports.gi.Gst;
-const Gstpbutils = imports.gi.GstPbutils;
-const ExtensionUtils = imports.misc.extensionUtils;
-const Extension = ExtensionUtils.getCurrentExtension();
-const Channel = Extension.imports.channel;
-const MyE = Extension.imports.radioMenu;
-const Convert = Extension.imports.convertCharset;
+import Gst from 'gi://Gst?version=1.0';
+import Gstpbutils from 'gi://GstPbutils';
+import * as Convert from './convertCharset.js';
 
 const SETTING_VOLUME_LEVEL = 'volume-level';
 
 // translation support
-const Gettext = imports.gettext.domain("radio@hslbck.gmail.com");
-const _ = Gettext.gettext;
+import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 
-var Player = class Player {
 
-    constructor(channel) {
+export var Player = class Player {
+
+    constructor(channel, extensionObject) {
         Gst.init(null);
 
         this._currentChannel = channel;
@@ -36,7 +31,7 @@ var Player = class Player {
         });
 
 	    //read settings
-        this._settings = ExtensionUtils.getSettings();
+        this._settings = extensionObject.getSettings();
 
         this._tag = "";
         this._setup();

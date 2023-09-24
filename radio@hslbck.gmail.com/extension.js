@@ -3,21 +3,28 @@
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
-const ExtensionUtils = imports.misc.extensionUtils;
-const Extension = ExtensionUtils.getCurrentExtension();
-const RadioMenu = Extension.imports.radioMenu;
+import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
+import * as RadioMenu from './radioMenu.js'
 
 // init with translation support
-function init() {
+/*function init() {
     ExtensionUtils.initTranslations();
 }
+*/
 
-// build and add the extension
-function enable() {
-    RadioMenu.addToPanel();
-}
+export default class RadioExt extends Extension {
+    constructor(metadata) {
+        super(metadata);
+        this.initTranslations();
+    }
+    // build and add the extension
+    enable() {
+        RadioMenu.addToPanel(this);
+        Main.notify('radio');
+    }
 
-//  stop playing and destroy extension content
-function disable() {
-    RadioMenu.removeFromPanel();
+    //  stop playing and destroy extension content
+    disable() {
+        RadioMenu.removeFromPanel();
+    }
 }

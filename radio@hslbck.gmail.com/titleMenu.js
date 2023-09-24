@@ -3,19 +3,18 @@
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
 
-const Main = imports.ui.main;
-const St = imports.gi.St;
-const GObject = imports.gi.GObject;
-const Clutter = imports.gi.Clutter;
-const PanelMenu = imports.ui.panelMenu;
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
-const MyE = Extension.imports.radioMenu;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
+import St from 'gi://St'; 
+import GObject from 'gi://GObject'; 
+import Clutter from 'gi://Clutter'; 
+
+import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
 let TitleMenuButton = GObject.registerClass (
     class TitleMenuButton extends PanelMenu.Button {
 
-    _init() {
-        super._init(0.0, Extension.metadata.name);
+    _init(extensionObject) {
+        super._init(0.0, extensionObject.metadata.name);
 
         this._titleInfo = new St.Label({
             y_align: Clutter.ActorAlign.CENTER,
@@ -24,6 +23,7 @@ let TitleMenuButton = GObject.registerClass (
         this.add_actor(this._titleInfo);
         this.add_style_class_name('panel-status-button');
         this.connect('button-press-event', this._copyTagOnMiddleClick.bind(this));
+        this.extensionObject = extensionObject;
     }
 
     _updateTitleInfo(channel, titleInfo) {
@@ -33,19 +33,19 @@ let TitleMenuButton = GObject.registerClass (
     _copyTagOnMiddleClick(actor, event) {
         // left click === 1, middle click === 2, right click === 3
         if (event.get_button() === 2) {
-            MyE.radioMenu._copyTagToClipboard();
+            this.extensionObject.radioMenu._copyTagToClipboard();
         }
     }
 });
 
 let titleMenu;
 
-function addToPanel() {
-    titleMenu = new TitleMenuButton();
+export function addToPanel(extensionObject) {
+    titleMenu = new TitleMenuButton(extensionObject);
     Main.panel.addToStatusArea('titleMenu', titleMenu, 0, 'right');
 }
 
-function removeFromPanel() {
+export function removeFromPanel() {
     if (titleMenu != null) {
         titleMenu.destroy();
         titleMenu = null;

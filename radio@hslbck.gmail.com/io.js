@@ -3,10 +3,8 @@
     Copyright (C) 2016 Niels Rune Brandt <nielsrune@hotmail.com>
     This file is distributed under the same license as the gnome-shell-extension-radio package.
 */
-const ByteArray = imports.byteArray;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const Extension = imports.misc.extensionUtils.getCurrentExtension();
+import Gio from 'gi://Gio';
+import GLib from 'gi://GLib';
 
 const FILE_NAME = 'channelList.json'
 const DIR_NAME = '.gse-radio'
@@ -18,7 +16,7 @@ function getFile() {
 	return Gio.file_new_for_path(file_path);
 }
 
-function read(){
+export function read(){
 	let file = getFile();
 	let content;
 	let success;
@@ -31,7 +29,8 @@ function read(){
 	}
 	// parse json file
 	try {
-		channelList = JSON.parse(ByteArray.toString(content));
+		let t = new TextDecoder();
+		channelList = JSON.parse(t.decode(content));
 	} catch (e) {
 		logError(e, 'radio@hslbck.gmail.com: Failed to parse channelList.json:');
 		return null;
@@ -43,7 +42,7 @@ function read(){
 // ~/.gse-radio/channelList.json
 function create(dir_path) {
 	let dir = Gio.file_new_for_path(dir_path);
-	let source_file = Gio.file_new_for_path(Extension.path).get_child(FILE_NAME);
+	let source_file = Gio.file_new_for_path('.').get_child(FILE_NAME);
 	if (!dir.query_exists(null)) {
 		try {
 			dir.make_directory(null);
@@ -65,7 +64,7 @@ function create(dir_path) {
 }
 
 
-function write(channels, lastPlayed) {
+export function write(channels, lastPlayed) {
 	if (channels != null && channels.length > 0) {
 		let filepath = GLib.get_home_dir() + "/" + DIR_NAME + "/" + FILE_NAME;
 		let file = Gio.file_new_for_path(filepath);

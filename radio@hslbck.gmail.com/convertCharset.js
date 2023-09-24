@@ -15,7 +15,7 @@
  * Supported charsets: windows-1251 windows-1252 windows-1253 windows-1257 koi8-r koi8-u
  */
 
-function convertToUnicode(enc, str) {
+export function convertToUnicode(enc, str) {
     let res = "";
     let charmap;
     let code2char;
@@ -107,7 +107,7 @@ function convertToUnicode(enc, str) {
     return res;
 }
 
-function validate(input){
+export function validate(input){
 if(~["windows-1251", "windows1251", "cp1251", "1251"].indexOf(input)) return "windows-1251";
 if(~["windows-1252", "windows1252", "cp1252", "1252", "latin1"].indexOf(input)) return "windows-1252";
 if(~["windows-1253", "windows1253", "cp1253", "1253", "greek"].indexOf(input)) return "windows-1253";
