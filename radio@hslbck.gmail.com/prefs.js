@@ -380,6 +380,7 @@ function addSearchRow(grp, apiStation, settings)
 
 function createSearch(page)
 {
+	_grpSearchResults = null;
 	_pageSearch = page;
 	const grp = new Adw.PreferencesGroup();
 	grp.title = _("Search");
