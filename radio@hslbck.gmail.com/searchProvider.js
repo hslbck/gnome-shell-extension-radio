@@ -6,6 +6,7 @@
 import Gio from 'gi://Gio';
 import * as Search from 'resource:///org/gnome/shell/ui/search.js';
 import * as Io from './io.js';
+import * as RadioMenu from './radioMenu.js';
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 var radioSearchProvider;
 var Extension;
@@ -13,7 +14,7 @@ var Extension;
 export function enableProvider(extensionObject) {
 	Extension = extensionObject;
     if (!radioSearchProvider) {
-        radioSearchProvider = new RadioSearchProvider(Extension.radioMenu);
+        radioSearchProvider = new RadioSearchProvider(RadioMenu.radioMenu);
         Main.overview._overview.controls._searchController._searchResults._registerProvider(radioSearchProvider);
     }
 }
