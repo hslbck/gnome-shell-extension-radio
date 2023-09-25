@@ -13,18 +13,17 @@
 import Gst from 'gi://Gst?version=1.0';
 import Gstpbutils from 'gi://GstPbutils';
 import * as Convert from './convertCharset.js';
+import * as RadioMenu from './radioMenu.js';
 
 const SETTING_VOLUME_LEVEL = 'volume-level';
 
 // translation support
 import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
-var MyE;
 
 export var Player = class Player {
 
     constructor(channel, extensionObject) {
         Gst.init(null);
-        MyE = extensionObject;
         this._currentChannel = channel;
         this._pipeline = new Gst.Pipeline({
             name: "Stream"
@@ -85,8 +84,8 @@ export var Player = class Player {
             case Gst.MessageType.ELEMENT:
                  if (Gstpbutils.is_missing_plugin_message(message)) {
                      let pluginDescription = Gstpbutils.missing_plugin_message_get_description(message);
-                     MyE.radioMenu._stop();
-                     MyE.radioMenu.playMenuItem.label.set_text(_("Missing plugin") + ": " + pluginDescription);
+                     RadioMenu.radioMenu._stop();
+                     RadioMenu.radioMenu.playMenuItem.label.set_text(_("Missing plugin") + ": " + pluginDescription);
                      log("Gstreamer plugin missing for " + pluginDescription);
                  }
                  break;
@@ -131,12 +130,12 @@ export var Player = class Player {
                 this._tag = artistStr + titleStr
                 break;
             case Gst.MessageType.ERROR:
-                MyE.radioMenu._stop();
-                MyE.radioMenu.playMenuItem.label.set_text(_("Streaming error! Please check provided url"));
+                RadioMenu.radioMenu._stop();
+                RadioMenu.radioMenu.playMenuItem.label.set_text(_("Streaming error! Please check provided url"));
                 break;
             case Gst.MessageType.EOS:
-                MyE.radioMenu._stop();
-                MyE.radioMenu.playMenuItem.label.set_text(_("End of stream"));
+                RadioMenu.radioMenu._stop();
+                RadioMenu.radioMenu.playMenuItem.label.set_text(_("End of stream"));
                 break;
             default:
                 break;
