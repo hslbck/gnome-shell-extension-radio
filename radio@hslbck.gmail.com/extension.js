@@ -6,12 +6,6 @@
 import {Extension, gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
 import * as RadioMenu from './radioMenu.js'
 
-// init with translation support
-/*function init() {
-    ExtensionUtils.initTranslations();
-}
-*/
-
 export default class RadioExt extends Extension {
     constructor(metadata) {
         super(metadata);
