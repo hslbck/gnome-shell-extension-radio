@@ -52,7 +52,7 @@ export function removeFromPanel() {
     }
 }
 
-function updateTitle(channel, title) {
+export function updateTitle(channel, title) {
     if (titleMenu != null) {
         titleMenu._updateTitleInfo(channel, title);
     }

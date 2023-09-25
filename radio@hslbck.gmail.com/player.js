@@ -18,13 +18,13 @@ const SETTING_VOLUME_LEVEL = 'volume-level';
 
 // translation support
 import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js';
-
+var MyE;
 
 export var Player = class Player {
 
     constructor(channel, extensionObject) {
         Gst.init(null);
-
+        MyE = extensionObject;
         this._currentChannel = channel;
         this._pipeline = new Gst.Pipeline({
             name: "Stream"
