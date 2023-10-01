@@ -9,7 +9,6 @@ import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Ex
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Gdk from 'gi://Gdk';
-import GdkPixbuf from 'gi://GdkPixbuf';
 import Adw from 'gi://Adw';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
@@ -39,6 +38,7 @@ let _grpStations;
 let _grpSearchResults;
 let _pageSearch;
 let _searchEntry;
+let _extensionPath;
 
 var CreateDialog = GObject.registerClass(
 	class CreateDialog extends Gtk.Dialog {
@@ -366,15 +366,30 @@ function addSearchRow(grp, apiStation, settings)
 	});
 	act.add_suffix(addButton);
 
-	/*const favicon = apiStation.favicon;
-	if(favicon) {
-		var fileStream = Gio.file_new_for_uri(favicon);
-		var pixbuf = GdkPixbuf.Pixbuf.new_from_stream(fileStream, null);
-
-		var img = Gtk.image_from_pixbuf(pixbuf);
+	const favicon = apiStation.favicon;
+	let img = null; 
+	if(favicon && !favicon.endsWith('/')) {
+		try
+		{
+			const file = Gio.File.new_for_uri(favicon);
+			const iconTexture = Gdk.Texture.new_from_file(file);
+			if(iconTexture) {
+				img = Gtk.Image.new_from_paintable(iconTexture);
+			}
+		}
+		catch(error)
+		{
+			log(error);
+		}
+	}
+	if(!img)
+	{
+		let gicon = Gio.icon_new_for_string(_extensionPath + '/icons/gser-icon-stopped-symbolic.svg');
+		img = Gtk.Image.new_from_gicon(gicon); 
+	}
+	if(img) {
 		act.add_prefix(img);
-	}*/
-
+	}	
 	grp.add(act);
 }
 
@@ -454,6 +469,7 @@ function transform(apiStation) {
 export default class MyExtensionPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
         window._settings = this.getSettings();
+	_extensionPath = this.metadata.path;
 	this.initTranslations();
 	_window = window;
 
