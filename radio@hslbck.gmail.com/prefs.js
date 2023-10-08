@@ -30,6 +30,7 @@ const ACTION_CREATE = "create";
 const ACTION_EDIT = "edit";
 
 const RADIO_BROWSER_API = 'http://all.api.radio-browser.info/json/servers';
+const RADIO_BROWSER_SERVER_API = 'all.api.radio-browser.info';
 
 let _httpSession;
 let _server;
@@ -367,31 +368,38 @@ function addSearchRow(grp, apiStation, settings)
 	act.add_suffix(addButton);
 
 	const favicon = apiStation.favicon;
-	let img = null; 
+	let img = Gtk.Image.new();
+	let loaded = false;
 	if(favicon && !favicon.endsWith('/')) {
-		try
-		{
-			const file = Gio.File.new_for_uri(favicon);
-			const iconTexture = Gdk.Texture.new_from_file(file);
-			if(iconTexture) {
-				img = Gtk.Image.new_from_paintable(iconTexture);
-			}
-		}
-		catch(error)
-		{
-			log(error);
-		}
+		loaded = loadImg(img, favicon);
 	}
-	if(!img)
+	if(!loaded)
 	{
 		let gicon = Gio.icon_new_for_string(_extensionPath + '/icons/gser-icon-stopped-symbolic.svg');
-		img = Gtk.Image.new_from_gicon(gicon); 
+		img.set_from_gicon(gicon); 
 	}
 	if(img) {
 		act.add_prefix(img);
 	}	
 	grp.add(act);
 }
+function loadImg(img, favicon) {
+	let loaded = false;
+	try
+	{
+		const file = Gio.File.new_for_uri(favicon);
+		const iconTexture = Gdk.Texture.new_from_file(file);
+		if(iconTexture) {
+			img.set_from_paintable(iconTexture);
+			loaded = true;
+		}
+	}
+	catch(error)
+	{
+		log(error);
+	}
+	return loaded;
+} 
 
 function createSearch(page)
 {
@@ -431,31 +439,15 @@ function createSearch(page)
 }
 
 function setServer() {
-	if (!_server) {
-		let message = Soup.Message.new('GET', RADIO_BROWSER_API);
-
-		_httpSession.send_and_read_async(
-			message,
-			GLib.PRIORITY_DEFAULT,
-			null,
-			(_httpSession, result) => {
-				if (message.get_status() === Soup.Status.OK) {
-					let bytes = _httpSession.send_and_read_finish(result);
-					let decoder = new TextDecoder('utf-8');
-					let response = decoder.decode(bytes.get_data());
-					let jsonResponse = JSON.parse(response);
-					if (jsonResponse.length > 0) {
-						_server = jsonResponse[Math.floor(Math.random() * jsonResponse.length)].name;
-					} else {
-						log("radio@: No radio server api!");
-					}
-				} else {
-					let txt = "radio@: Server returned status code";
-					log(txt + " " + message.get_status());
-				}
-			}
-		);
-	}
+	if(_server)
+		return;
+	const res = Gio.Resolver.get_default();
+	res.lookup_by_name_async(RADIO_BROWSER_SERVER_API,  null, 
+	(res, result) => {
+		const values = res.lookup_by_name_finish(result);
+		const value = values[Math.floor(Math.random()*values.length)];
+		_server = res.lookup_by_address(value, null);
+	});
 }
 function transform(apiStation) {
 	return {
