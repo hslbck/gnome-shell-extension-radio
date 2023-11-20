@@ -101,7 +101,7 @@ let RadioMenuButton = GObject.registerClass(
             this.add_style_class_name('panel-status-button');
 
             // get channels from json file
-            this.channelList = Io.read();
+            this.channelList = Io.read(this._extensionObject.path);
             this.chas = this.channelList.channels;
             this.lastPlayed = this.channelList.lastplayed;
             let encoding = this.lastPlayed.hasOwnProperty('encoding') ? this.lastPlayed.encoding : null;

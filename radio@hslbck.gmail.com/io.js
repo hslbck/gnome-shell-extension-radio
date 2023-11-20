@@ -9,6 +9,8 @@ import GLib from 'gi://GLib';
 const FILE_NAME = 'channelList.json'
 const DIR_NAME = '.gse-radio'
 
+let _extensionPath;
+
 function getFile() {
 	let dir_path = GLib.get_home_dir() + "/" + DIR_NAME ;
 	create(dir_path);
@@ -16,7 +18,8 @@ function getFile() {
 	return Gio.file_new_for_path(file_path);
 }
 
-export function read(){
+export function read(extensionPath){
+    _extensionPath = extensionPath
 	let file = getFile();
 	let content;
 	let success;
@@ -42,7 +45,7 @@ export function read(){
 // ~/.gse-radio/channelList.json
 function create(dir_path) {
 	let dir = Gio.file_new_for_path(dir_path);
-	let source_file = Gio.file_new_for_path('.').get_child(FILE_NAME);
+	let source_file = Gio.file_new_for_path(_extensionPath).get_child(FILE_NAME);
 	if (!dir.query_exists(null)) {
 		try {
 			dir.make_directory(null);

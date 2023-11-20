@@ -40,7 +40,7 @@ var RadioSearchProvider = class RadioSearchProvider {
     }
 
     getInitialResultSet(terms, cancellable = null) {
-        let channels = Io.read().channels;
+        let channels = Io.read(Extension.path).channels;
         this._results = channels.map(this._createProviderObject);
 	    return new Promise(res => res(this._results));
     }
