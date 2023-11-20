@@ -207,7 +207,7 @@ function createStations(page)
 {
 	_grpStations = new Adw.PreferencesGroup();
 	
-	const jsonfile = Io.read();
+	const jsonfile = Io.read(_extensionPath);
 	let stations = jsonfile.channels;
 	for (var i in stations) {
 		addStation(stations[i]);
