@@ -37,7 +37,7 @@ export var Player = class Player {
     }
 
     _setup() {
-        this._source = Gst.ElementFactory.make("playbin", "source");
+        this._source = Gst.ElementFactory.make("playbin3", "source");
         this._source.set_property("uri", this._currentChannel.getUri());
 
         this._source.set_property("volume", this._settings.get_double(SETTING_VOLUME_LEVEL) );
