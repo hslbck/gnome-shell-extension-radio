@@ -474,14 +474,17 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
 
 	const pageStations = new Adw.PreferencesPage();
 	pageStations.title = _("Stations");
+	pageStations.icon_name = "view-list-symbolic";
 	createStations(pageStations);
 	
 	const pageFeatures = new Adw.PreferencesPage();
 	pageFeatures.title = _("Features");
+	pageFeatures.icon_name = "preferences-system-symbolic";
 	createAllFeatures(pageFeatures);
 
 	const pageSearch = new Adw.PreferencesPage();
 	pageSearch.title = _("New");
+	pageSearch.icon_name = "system-search-symbolic";
 	createSearch(pageSearch);
 
 	window.add(pageStations);
