@@ -405,6 +405,30 @@ function createSearch(page)
 {
 	_grpSearchResults = null;
 	_pageSearch = page;
+
+	const createGrp = new Adw.PreferencesGroup();
+	createGrp.title = _("Add a new radio station");
+	let createButton = new Gtk.Button({
+		halign: Gtk.Align.START,
+		hexpand: false,
+		label: _('Add')
+	});
+
+	createButton.connect('clicked', () => {
+		let dialog = new CreateDialog(_window, null);
+		dialog.connect('response', (dlg, response_id) => {
+			if (response_id === Gtk.ResponseType.YES) {
+				let station = dlg._getStation();
+				addStation(station);
+				_window._settings.set_string(SETTING_STATION_ACTION, JSON.stringify({ station, action: ACTION_CREATE }));
+			}
+			dialog.destroy();
+		});
+		dialog.show();
+	});
+
+	createGrp.add(createButton);
+
 	const grp = new Adw.PreferencesGroup();
 	grp.title = _("Search");
  	_searchEntry = new Gtk.Entry({
@@ -422,10 +446,10 @@ function createSearch(page)
 	let hbox = new Gtk.Box({
 		orientation: Gtk.Orientation.HORIZONTAL,
 		"spacing": 10,
-		"margin-start": 36,
-		"margin-end": 36,
-		"margin-top": 10,
-		"margin-bottom": 36,
+		"margin-start": 0,
+		"margin-end": 0,
+		"margin-top": 0,
+		"margin-bottom": 0,
 	});
 			
 	searchButton.connect('clicked', () => createSearchResult());
@@ -434,7 +458,8 @@ function createSearch(page)
 	hbox.append(_searchEntry);
 	hbox.append(searchButton);
 
-	grp.add(hbox);	
+	grp.add(hbox);
+	page.add(createGrp);	
 	page.add(grp);
 }
 
