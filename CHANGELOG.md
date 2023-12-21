@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
-## [22]
+## [22] - 2023-12-21
 
 - Update to GNOME 45
 - Fix for search provider https://github.com/hslbck/gnome-shell-extension-radio/pull/202
