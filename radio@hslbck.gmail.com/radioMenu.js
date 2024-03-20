@@ -96,8 +96,8 @@ let RadioMenuButton = GObject.registerClass(
                 style_class: 'system-status-icon'
             });
 
-            hbox.add_actor(this.radioIcon);
-            this.add_actor(hbox);
+            hbox.actor.add_child(this.radioIcon);
+            this.actor.add_child(hbox);
             this.add_style_class_name('panel-status-button');
 
             // get channels from json file
