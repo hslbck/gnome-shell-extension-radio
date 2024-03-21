@@ -6,6 +6,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [22] - 2023-12-21
+
+- Update to GNOME 45
 - Fix for search provider https://github.com/hslbck/gnome-shell-extension-radio/pull/202
 
 ## [21] - 2023-05-16
@@ -171,7 +174,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - First release
 
 [Unreleased]: https://github.com/hslbck/gnome-shell-extension-radio/tree/master
-[21]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v20
+[22]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v22
+[21]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v21
 [20]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v20
 [19]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v19
 [18]: https://github.com/hslbck/gnome-shell-extension-radio/releases/tag/v18
