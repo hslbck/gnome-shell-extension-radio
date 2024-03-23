@@ -544,13 +544,13 @@ let RadioMenuButton = GObject.registerClass(
         _enableTitleNotification(tagLabel, senderLabel) {
             if (this._settings.get_boolean(SETTING_TITLE_NOTIFICATION) && tagLabel !== oldTagLabel) {
                 oldTagLabel = tagLabel;
-                let source = new MessageTray.Source("Radio", null);
-                let notification = new MessageTray.Notification(source,
-                    tagLabel,
-                    senderLabel, { gicon: this.iconStopped });
-                notification.setTransient(true);
+                let source = new MessageTray.Source({"title":"Radio"});
                 Main.messageTray.add(source);
-                source.showNotification(notification);
+                let notification = new MessageTray.Notification({source,
+                    "body": tagLabel,
+                    "title": senderLabel, "gicon": this.iconStopped,
+                    "is-transient": true });
+                source.addNotification(notification);
             }
         }
 
