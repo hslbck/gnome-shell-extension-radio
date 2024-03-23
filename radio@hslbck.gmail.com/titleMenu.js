@@ -20,7 +20,7 @@ let TitleMenuButton = GObject.registerClass (
             y_align: Clutter.ActorAlign.CENTER,
         });
 
-        this.add_actor(this._titleInfo);
+        this.add_child(this._titleInfo);
         this.add_style_class_name('panel-status-button');
         this.connect('button-press-event', this._copyTagOnMiddleClick.bind(this));
         this.extensionObject = extensionObject;
