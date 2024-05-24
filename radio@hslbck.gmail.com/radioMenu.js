@@ -13,13 +13,10 @@ import * as MessageTray from 'resource:///org/gnome/shell/ui/messageTray.js';
 import * as PopupMenu from 'resource:///org/gnome/shell/ui/popupMenu.js';
 import * as PanelMenu from 'resource:///org/gnome/shell/ui/panelMenu.js';
 
-import Gtk from 'gi://Gtk';
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
-import Shell from 'gi://Shell';
 import GObject from 'gi://GObject';
 import * as Slider from 'resource:///org/gnome/shell/ui/slider.js';
-import * as Util from 'resource:///org/gnome/shell/misc/util.js';
 
 // import custom files
 import * as Player from './player.js';
@@ -591,4 +588,5 @@ export function removeFromPanel() {
 
     radioMenu.destroy();
     radioMenu = null;
+    oldTagLabel = null;
 }

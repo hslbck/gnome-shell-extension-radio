@@ -41,7 +41,7 @@ let _pageSearch;
 let _searchEntry;
 let _extensionPath;
 
-var CreateDialog = GObject.registerClass(
+let CreateDialog = GObject.registerClass(
 	class CreateDialog extends Gtk.Dialog {
 		_init(parent, station) {
 			this.sta = station;
@@ -487,7 +487,6 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
     fillPreferencesWindow(window) {
         window._settings = this.getSettings();
 	_extensionPath = this.metadata.path;
-	this.initTranslations();
 	_window = window;
 
 	_httpSession = new Soup.Session({
@@ -515,5 +514,15 @@ export default class MyExtensionPreferences extends ExtensionPreferences {
 	window.add(pageStations);
 	window.add(pageFeatures);
 	window.add(pageSearch);
+	window.connect('close-request', ()=>{
+ 		_httpSession = null;
+		_server = null;
+                _window = null;
+                _grpStations = null;
+                _grpSearchResults = null;
+                _pageSearch = null;
+                _searchEntry = null;
+                _extensionPath = null;
+	});
     }
 }
