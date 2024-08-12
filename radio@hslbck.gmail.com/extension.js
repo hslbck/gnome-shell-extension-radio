@@ -9,7 +9,6 @@ import * as RadioMenu from './radioMenu.js'
 export default class RadioExt extends Extension {
     constructor(metadata) {
         super(metadata);
-        this.initTranslations();
     }
     // build and add the extension
     enable() {
