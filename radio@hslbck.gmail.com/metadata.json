@@ -1,10 +1,10 @@
 {
-	"shell-version": [ "45", "46", "47" ],
+	"shell-version": [ "45", "46", "47", "48" ],
 	"uuid": "radio@hslbck.gmail.com",
 	"name": "Internet Radio",
 	"description": "Listen to an Internet Radio Stream",
 	"settings-schema": "org.gnome.shell.extensions.radio",
 	"gettext-domain": "radio@hslbck.gmail.com",
 	"url": "https://github.com/hslbck/gnome-shell-extension-radio",
-	"version": 24
+	"version": 25
 }

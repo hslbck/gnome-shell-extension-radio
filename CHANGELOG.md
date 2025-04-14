@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [25] - 2025-04-14
+
+- Update to GNOME 48
+
 ## [24] - 2024-08-10
 
 - Update to GNOME 47
