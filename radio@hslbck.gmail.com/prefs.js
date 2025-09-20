@@ -13,7 +13,7 @@ import Adw from 'gi://Adw';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import * as Io from './io.js';
-import Soup from 'gi://Soup?version=3.0';
+import Soup from 'gi://Soup';
 import * as Convert from './convertCharset.js';
 
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';

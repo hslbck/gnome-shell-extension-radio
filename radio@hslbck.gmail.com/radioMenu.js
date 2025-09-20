@@ -68,8 +68,6 @@ const MediaKeysInterface = '<node> \
     </signal> \
   </interface> \
 </node>';
-const MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
-const Clipboard = St.Clipboard.get_default();
 
 let RadioMenuButton = GObject.registerClass(
     class RadioMenuButton extends PanelMenu.Button {
@@ -86,6 +84,7 @@ let RadioMenuButton = GObject.registerClass(
 
             this.iconStopped = Gio.icon_new_for_string(extensionObject.path + '/icons/gser-icon-stopped-symbolic.svg');
             this.iconPlaying = Gio.icon_new_for_string(extensionObject.path + '/icons/gser-icon-playing-symbolic.svg');
+            this.iconMusic = Gio.icon_new_for_string(extensionObject.path + '/icons/music-note-symbolic.svg');
 
             // Icon for the Panel
             this.radioIcon = new St.Icon({
@@ -233,7 +232,10 @@ let RadioMenuButton = GObject.registerClass(
                 this._mediaKeysProxy.GrabMediaPlayerKeysRemote('GSE Radio', 0);
             }
             else {
-                new MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
+                if(!this.MediaKeysProxy) {
+                    this.MediaKeysProxy = Gio.DBusProxy.makeProxyWrapper(MediaKeysInterface);
+                }
+                new this.MediaKeysProxy(Gio.DBus.session, BUS_NAME, OBJECT_PATH,
                     (proxy, error) => {
                         if (error) {
                             global.log(error.message);
@@ -295,7 +297,10 @@ let RadioMenuButton = GObject.registerClass(
         }
 
         _copyTagToClipboard() {
-            Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
+            if(!this.Clipboard) {
+                this.Clipboard = St.Clipboard.get_default();
+            }
+            this.Clipboard.set_text(St.ClipboardType.CLIPBOARD, this.player._getTag());
         }
 
         _onVolumeSliderValueChanged(actor, event) {
@@ -401,7 +406,8 @@ let RadioMenuButton = GObject.registerClass(
         _addToFavourites(cha, menuItemOffset) {
             let contains = this._containsChannel(cha);
             if (contains) {
-                let item = new PopupMenu.PopupImageMenuItem(cha.getName(), 'emblem-music-symbolic');
+                
+                let item = new PopupMenu.PopupImageMenuItem(cha.getName(), this.iconMusic);
                 item.set_name(cha.getId());
                 item.connect('activate', () => {
                     this._changeChannel(cha);
@@ -558,6 +564,12 @@ let RadioMenuButton = GObject.registerClass(
             }
             if (this.player !== null) {
                 this.player._disconnectSourceBus();
+            }
+            if(this.MediaKeysProxy !== null) {
+                this.MediaKeysProxy = null;
+            }
+            if(this.Clipboard != null ){
+                this.Clipboard = null;
             }
             super.destroy();
         }
