@@ -23,7 +23,7 @@ import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js'
 export var Player = class Player {
 
     constructor(channel, extensionObject) {
-        Gst.init(null);
+        Gst.init([]);
         this._currentChannel = channel;
         this._pipeline = new Gst.Pipeline({
             name: "Stream"

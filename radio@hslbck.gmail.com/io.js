@@ -5,6 +5,8 @@
 */
 import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
+import Gtk from 'gi://Gtk';
+import Gdk from 'gi://Gdk';
 
 const FILE_NAME = 'channelList.json'
 const DIR_NAME = '.gse-radio'
@@ -84,22 +86,58 @@ export function write(channels, lastPlayed) {
 				name: channels[i].getName(),
 				address: channels[i].getUri(),
 				favourite: channels[i].getFavourite(),
-				encoding: channels[i].getEncoding()
+				encoding: channels[i].getEncoding(),
+				favicon: channels[i].getFavIcon()
 			}, null, "\t"), null);
 			// remove last comma
 			if (i != channels.length - 1) {
 				dout.put_string(",", null);
 			}
 		}
+		dout.put_string("\n]", null);
 		// write lastplayed channel
-		dout.put_string("\n],\n\n  \"lastplayed\":", null);
-		dout.put_string(JSON.stringify({
-			id: lastPlayed.getId(),
-			name: lastPlayed.getName(),
-			address: lastPlayed.getUri(),
-			encoding: lastPlayed.getEncoding()
-		}, null, "\t"), null);
+		if (lastPlayed) {
+			dout.put_string(",\n\n\"lastplayed\":", null);
+			dout.put_string(JSON.stringify({
+				id: lastPlayed.getId(),
+				name: lastPlayed.getName(),
+				address: lastPlayed.getUri(),
+				encoding: lastPlayed.getEncoding(),
+				favicon: lastPlayed.getFavIcon(),
+			}, null, "\t"), null);
+		}
 		dout.put_string("\n}", null);
 		dout.close(null);
 	}
 }
+
+export function loadFavIcon(extPath, favicon) {
+	if(!favicon) {
+		return null;
+	}
+	let loaded = false;
+	let img = null;
+	try
+	{
+		const file = Gio.File.new_for_uri(favicon);
+		const iconTexture = Gdk.Texture.new_from_file(file);
+		if(iconTexture) {
+			img = Gtk.Image.new();
+			img.set_from_paintable(iconTexture);
+			loaded = true;
+		}
+	}
+	catch(error)
+	{
+		log(error);
+	}
+	if(!loaded)
+	{
+		let gicon = Gio.icon_new_for_string(extPath + '/icons/gser-icon-stopped-symbolic.svg');
+		if(!img) {
+			img = Gtk.Image.new();
+		}
+		img.set_from_gicon(gicon); 
+	}
+	return img;
+} 
