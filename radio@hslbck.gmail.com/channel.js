@@ -8,7 +8,7 @@
 
 export const Channel = class Channel {
 
-    constructor(id, name, uri, favourite, encoding) {
+    constructor(id, name, uri, favourite, encoding, favicon) {
         this._id = id !== null && id !== undefined ? id : generateId();
         this._name = name;
         this._uri = uri;
@@ -16,6 +16,7 @@ export const Channel = class Channel {
         this._encoding = encoding;
         this._bitrate = null;
         this._codec = null;
+        this._favicon = favicon;
     }
 
     setName(name) {
@@ -75,6 +76,9 @@ export const Channel = class Channel {
         }
 
         return this._encoding;
+    }
+    getFavIcon() {
+        return this._favicon;
     }
 };
 

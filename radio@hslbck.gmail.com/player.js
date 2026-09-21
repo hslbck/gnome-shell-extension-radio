@@ -23,7 +23,7 @@ import {gettext as _} from 'resource:///org/gnome/shell/extensions/extension.js'
 export var Player = class Player {
 
     constructor(channel, extensionObject) {
-        Gst.init(null);
+        Gst.init([]);
         this._currentChannel = channel;
         this._pipeline = new Gst.Pipeline({
             name: "Stream"
@@ -37,16 +37,29 @@ export var Player = class Player {
     }
 
     _setup() {
-        this._source = Gst.ElementFactory.make("playbin3", "source");
-        this._source.set_property("uri", this._currentChannel.getUri());
 
+        if(!this._audioSink) {
+            this._audioSink = Gst.ElementFactory.make('pipewiresink', 'Internet Radio');
+            this._audioSink.set_property('client-name', 'Internet Radio');
+        }
+
+        if(!this._source) {
+            this._source = Gst.ElementFactory.make("playbin3", "source");
+            this._source.set_property("audio-sink", this._audioSink);
+        }
+        this._source.set_property("uri", this._currentChannel.getUri());
         this._source.set_property("volume", this._settings.get_double(SETTING_VOLUME_LEVEL) );
+
         this._pipeline.add(this._source);
         this._readTags();
     }
 
     _start() {
         this._pipeline.set_state(Gst.State.PLAYING);
+        let props = Gst.Structure.new_empty('properties');
+        props.set_value('media.name', this._currentChannel.getName());
+        props.set_value('client.name', 'Internet Radio');
+        this._audioSink.set_property('stream-properties', props);
     }
 
     _stop() {
@@ -55,8 +68,9 @@ export var Player = class Player {
 
     _changeChannel(channel) {
         this._currentChannel = channel;
-        this._pipeline.remove(this._source);
-        this._setup();
+        this._stop();
+        this._source.set_property("uri", this._currentChannel.getUri());
+        this._start();
     }
 
     _setVolume(volume) {
@@ -69,8 +83,10 @@ export var Player = class Player {
 
 
     _readTags() {
+        if(this._sourceBus)
+            return;
+
         this._sourceBus = this._pipeline.get_bus();
-        let sbus = this._sourceBus;
         this._sourceBus.add_signal_watch();
         this._sourceBusId = this._sourceBus.connect('message', (sbus, message) => {
             if (message !== null) {
@@ -165,9 +181,13 @@ export var Player = class Player {
     }
 
     _disconnectSourceBus() {
-        if (this._sourceBusId) {
-            this._sourceBus.disconnect(this._sourceBusId);
-            this._sourceBusId = 0;
+        if (this._sourceBus) {
+            if (this._sourceBusId) {
+                this._sourceBus.disconnect(this._sourceBusId);
+                this._sourceBusId = 0;
+            }
+            this._sourceBus.remove_signal_watch();
+            this._sourceBus = null;
         }
-    }
+    }    
 };
