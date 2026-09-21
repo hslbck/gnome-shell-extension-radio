@@ -15,6 +15,8 @@ echo "Packing extension ..."
 gnome-extensions pack radio@hslbck.gmail.com \
 	--force \
 	--extra-source="icons" \
+	--extra-source="schemas" \
+	--schema="schemas/org.gnome.shell.extensions.radio.gschema.xml" \
 	--extra-source="channel.js" \
 	--extra-source="channelList.json" \
 	--extra-source="convertCharset.js" \
