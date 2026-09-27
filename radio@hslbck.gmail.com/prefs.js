@@ -8,12 +8,11 @@
 import {ExtensionPreferences, gettext as _} from 'resource:///org/gnome/Shell/Extensions/js/extensions/prefs.js';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
-import Gdk from 'gi://Gdk';
 import Adw from 'gi://Adw';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
 import * as Io from './io.js';
-import Soup from 'gi://Soup?version=3.0';
+import Soup from 'gi://Soup';
 import * as Convert from './convertCharset.js';
 
 const SETTING_USE_MEDIA_KEYS = 'use-media-keys';
@@ -29,7 +28,7 @@ const ACTION_DELETE = "delete";
 const ACTION_CREATE = "create";
 const ACTION_EDIT = "edit";
 
-const RADIO_BROWSER_API = 'http://all.api.radio-browser.info/json/servers';
+const RADIO_BROWSER_API = 'https://all.api.radio-browser.info/json/servers';
 const RADIO_BROWSER_SERVER_API = 'all.api.radio-browser.info';
 
 let _httpSession;
@@ -314,7 +313,7 @@ function search(grp, settings) {
 
 		let message = Soup.Message.new_from_encoded_form(
 			'POST',
-			"http://" + _server + "/json/stations/byname/" + input,
+			"https://" + _server + "/json/stations/byname/" + input,
 			Soup.form_encode_hash(params)
 		);
 
@@ -368,38 +367,12 @@ function addSearchRow(grp, apiStation, settings)
 	act.add_suffix(addButton);
 
 	const favicon = apiStation.favicon;
-	let img = Gtk.Image.new();
-	let loaded = false;
-	if(favicon && !favicon.endsWith('/')) {
-		loaded = loadImg(img, favicon);
-	}
-	if(!loaded)
-	{
-		let gicon = Gio.icon_new_for_string(_extensionPath + '/icons/gser-icon-stopped-symbolic.svg');
-		img.set_from_gicon(gicon); 
-	}
+	const img = Io.loadFavIcon(_extensionPath, favicon);
 	if(img) {
 		act.add_prefix(img);
 	}	
 	grp.add(act);
 }
-function loadImg(img, favicon) {
-	let loaded = false;
-	try
-	{
-		const file = Gio.File.new_for_uri(favicon);
-		const iconTexture = Gdk.Texture.new_from_file(file);
-		if(iconTexture) {
-			img.set_from_paintable(iconTexture);
-			loaded = true;
-		}
-	}
-	catch(error)
-	{
-		log(error);
-	}
-	return loaded;
-} 
 
 function createSearch(page)
 {
@@ -481,6 +454,7 @@ function transform(apiStation) {
 		address: apiStation.url_resolved,
 		favourite: true,
 		encoding: false,
+		favicon: apiStation.favicon
 	}
 }
 export default class MyExtensionPreferences extends ExtensionPreferences {

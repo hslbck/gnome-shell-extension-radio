@@ -79,6 +79,7 @@ var RadioSearchProvider = class RadioSearchProvider {
             id: channel.id,
             name: channel.name,
             description: channel.address,
+            favicon: channel.favicon,
             createIcon: function (size) { }
         };
     }
